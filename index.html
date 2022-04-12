@@ -324,7 +324,7 @@
         </header>
 
         <!-- Characters -->
-        <section style="max-width: 55em">
+        <section style="max-width: 60em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="character" :style="character.style" :title="character.name"></div>
@@ -338,7 +338,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 60em">
+        <section style="max-width: 65em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id), center: !weapon.itemIds.length || !config.evolutions}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
               <div class="weapon" :title="weapon.name">
@@ -393,7 +393,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: false, pixels: true, evolutions: true, size: 1, version: '0.4.2' }
+          const defaultConfig = { impacts: false, pixels: true, evolutions: true, size: 1, version: '0.5.0' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
 
@@ -416,6 +416,7 @@
             { type: 'common', name: 'Mortaccio', id: 'mortaccio', image: 'Mortaccio', itemIds: ['bone'] },
             { type: 'common', name: 'Cavallo', id: 'cavallo', image: 'Cavallo', itemIds: ['cherry'] },
             { type: 'common', name: 'Ramba', id: 'ramba', image: 'Ramba', itemIds: ['cart'] },
+            { type: 'common', name: 'Giovanna', id: 'giovanna', image: 'Giovanna', itemIds: ['cat'] },
             // secret
             { type: 'secret', name: 'Exdash', id: 'exdash', image: 'Exdash', itemIds: ['bird2'] },
             { type: 'secret', name: 'Toastie', id: 'uexdash', image: 'uExdash', itemIds: ['bird1'] },
@@ -442,11 +443,12 @@
             { type: 'weapon', id: 'guns2', name: 'Eight The Sparrow', image: 'Guns2' },
             { type: 'weapon', id: 'bird1', name: 'Peachone', image: 'Silf1' },
             { type: 'weapon', id: 'bird2', name: 'Ebony Wings', image: 'Silf2' },
+            { type: 'weapon', id: 'lancet', name: 'Clock Lancet', image: 'Lancet' },
+            { type: 'weapon', id: 'laurel', name: 'Laurel', image: 'Laurel' },
             { type: 'weapon', id: 'bone', name: 'bone', image: 'Bone' },
             { type: 'weapon', id: 'cherry', name: 'Cherry Bomb', image: 'Cherry' },
             { type: 'weapon', id: 'cart', name: 'Carréllo', image: 'CartWheel' },
-            { type: 'weapon', id: 'lancet', name: 'Clock Lancet', image: 'Lancet' },
-            { type: 'weapon', id: 'laurel', name: 'Laurel', image: 'Laurel' },
+            { type: 'weapon', id: 'cat', name: 'Gatti Amari', image: 'Cat' },
             // evolutions
             { type: 'evolution', id: 'magicwand_', name: 'Holy Wand', image: 'WandHoly2', itemIds: ['magicwand', 'cooldown'] },
             { type: 'evolution', id: 'firewand_', name: 'Hellfire', image: 'Hellfire', itemIds: ['firewand', 'might'] },
@@ -464,13 +466,13 @@
             { type: 'evolution', id: 'guns_', name: 'Phieraggi', image: 'Guns3', itemIds: ['guns1', 'guns2', 'revival'] },
             { type: 'evolution', id: 'bird_', name: 'Vandalier', image: 'Silf3', itemIds: ['bird1', 'bird2'] },
             // passives
-            { type: 'passive', id: 'cooldown', name: 'Empty tome', image: 'Book2', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'might', name: 'Spinach', image: 'Leaf', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'area', name: 'Candelabrador', image: 'Candelabra', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'amount', name: 'Duplicator', image: 'Ring', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'speed', name: 'Bracer', image: 'Gauntlet', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'duration', name: 'Spellbinder', image: 'EmblemEye', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
-            { type: 'passive', id: 'luck', name: 'Clover', image: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'knife_', 'cross_', 'whip_', 'guns_'] },
+            { type: 'passive', id: 'cooldown', name: 'Empty tome', image: 'Book2', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'might', name: 'Spinach', image: 'Leaf', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'area', name: 'Candelabrador', image: 'Candelabra', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'amount', name: 'Duplicator', image: 'Ring', impactIds: ['magicwand', 'firewand', 'axe', 'lighning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lighning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'speed', name: 'Bracer', image: 'Gauntlet', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'duration', name: 'Spellbinder', image: 'EmblemEye', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
+            { type: 'passive', id: 'luck', name: 'Clover', image: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
             { type: 'passive', id: 'recovery', name: 'Pummarola', image: 'HeartRuby', impactIds: ['garlic_'] },
             { type: 'passive', id: 'growth', name: 'Crown', image: 'Crown' },
             { type: 'passive', id: 'armor', name: 'Armor', image: 'ArmorIron' },
@@ -576,7 +578,7 @@
                 }
               }
             },
-            { immidiate: true }
+            { immediate: true }
           )
 
           watch(config, () => {
@@ -590,19 +592,24 @@
             localStorage.setItem('vs-build', JSON.stringify(userConfig))
           })
 
-          getFramesById(`characters`, /(.+)_(.\d+)\.png/).then((framesById) => {
-            for (const character of characters) {
-              character.frames = framesById[character.image] || []
-              character.style = character.frames.length ? character.frames[0].style : {}
-            }
-          })
-
-          getFramesById(`items`, /(.+)\.png/).then((framesById) => {
-            for (const item of items) {
-              item.frames = framesById[item.image] || []
-              item.style = item.frames.length ? item.frames[0].style : {}
-            }
-          })
+          watch(
+            () => config.version,
+            () => {
+              getFramesById(`characters`, /(.+)_(.\d+)\.png/).then((framesById) => {
+                for (const character of characters) {
+                  character.frames = framesById[character.image] || []
+                  character.style = character.frames.length ? character.frames[0].style : {}
+                }
+              })
+              getFramesById(`items`, /(.+)\.png/).then((framesById) => {
+                for (const item of items) {
+                  item.frames = framesById[item.image] || []
+                  item.style = item.frames.length ? item.frames[0].style : {}
+                }
+              })
+            },
+            { immediate: true }
+          )
 
           function onMouseEnter(object) {
             if (!object) {
@@ -787,6 +794,7 @@
                     framesById[id].push({ id, w, h, x, y, style })
                   }
                 }
+                // console.log(name, Object.keys(framesById))
                 return framesById
               })
           }
