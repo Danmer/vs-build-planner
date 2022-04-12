@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.429185,0,0,0.429185,50,50)">
+        <g id="Steam_icon_logo.svg" transform="matrix(1,0,0,1,-116.5,-116.5)">
+            <clipPath id="_clip1">
+                <rect x="0" y="0" width="233" height="233"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <path d="M4.891,150.01C19.284,198.02 63.807,233 116.501,233C180.841,233 233.001,180.84 233.001,116.5C233.001,52.159 180.841,0 116.501,0C54.76,0 4.241,48.029 0.251,108.76C7.79,121.42 10.732,129.25 4.892,150.01L4.891,150.01Z" style="fill:url(#_Linear2);fill-rule:nonzero;"/>
+                <path d="M110.5,87.322C110.5,87.518 110.5,87.714 110.51,87.898L82.002,129.31C77.384,129.1 72.75,129.91 68.356,131.72C66.419,132.51 64.604,133.48 62.901,134.6L0.302,108.83C0.302,108.83 -1.146,132.66 4.89,150.42L49.144,168.68C51.366,178.61 58.178,187.32 68.228,191.51C84.671,198.38 103.63,190.55 110.47,174.1C112.25,169.8 113.08,165.29 112.96,160.79L153.75,131.64C154.08,131.65 154.42,131.66 154.75,131.66C179.16,131.66 199,111.76 199,87.322C199,62.882 179.16,43 154.75,43C130.35,43 110.5,62.882 110.5,87.322ZM103.66,171.24C98.366,183.95 83.76,189.98 71.064,184.69C65.207,182.25 60.785,177.78 58.234,172.45L72.639,178.42C82.002,182.32 92.744,177.88 96.636,168.52C100.54,159.15 96.111,148.39 86.753,144.49L71.862,138.32C77.608,136.14 84.14,136.06 90.243,138.6C96.396,141.16 101.17,145.98 103.7,152.14C106.23,158.3 106.22,165.1 103.66,171.24M154.75,116.86C138.5,116.86 125.27,103.61 125.27,87.322C125.27,71.047 138.5,57.793 154.75,57.793C171.01,57.793 184.24,71.047 184.24,87.322C184.24,103.61 171.01,116.86 154.75,116.86M132.66,87.277C132.66,75.024 142.58,65.086 154.8,65.086C167.03,65.086 176.95,75.024 176.95,87.277C176.95,99.531 167.03,109.46 154.8,109.46C142.58,109.46 132.66,99.531 132.66,87.277Z" style="fill:white;fill-rule:nonzero;"/>
+            </g>
+        </g>
+        <g id="Steam_icon_logo.svg1" serif:id="Steam_icon_logo.svg">
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="_Linear2" x1="0" y1="0" x2="1" y2="0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.42671e-14,233,-233,1.42671e-14,116.626,0)"><stop offset="0" style="stop-color:rgb(17,29,46);stop-opacity:1"/><stop offset="0.21" style="stop-color:rgb(5,24,57);stop-opacity:1"/><stop offset="0.41" style="stop-color:rgb(10,27,72);stop-opacity:1"/><stop offset="0.58" style="stop-color:rgb(19,46,98);stop-opacity:1"/><stop offset="0.74" style="stop-color:rgb(20,75,126);stop-opacity:1"/><stop offset="0.87" style="stop-color:rgb(19,100,151);stop-opacity:1"/><stop offset="1" style="stop-color:rgb(19,135,184);stop-opacity:1"/></linearGradient>
+    </defs>
+</svg>
