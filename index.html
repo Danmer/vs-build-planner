@@ -101,8 +101,19 @@
         height: 5em;
         border-width: 0.1em;
       }
+      .slot.arcana {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4em;
+        height: 5em;
+        overflow: hidden;
+      }
       .slot:nth-child(n + 7) {
         opacity: 0.5;
+      }
+      .slot.arcana > div {
+        font-size: 0.85em;
       }
       .objects {
         display: flex;
@@ -165,6 +176,10 @@
       .object.evolution {
         align-items: center;
         justify-content: center;
+      }
+      .object.arcana {
+        height: 6em;
+        overflow: hidden;
       }
 
       .object > .title {
@@ -290,6 +305,13 @@
             <span>Build Planner ({{config.version}})</span>
           </h1>
           <div class="slots">
+            <div class="flex">
+              <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type">
+                <div :title="arcana.name" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+                  <div :style="arcana.style"></div>
+                </div>
+              </div>
+            </div>
             <div v-if="selectedCharacter" class="character slot" @mouseenter="startAnimation(selectedCharacter)" @mouseleave="stopAnimation(selectedCharacter)" :title="selectedCharacter.name">
               <div :style="selectedCharacter.style"></div>
             </div>
@@ -375,6 +397,22 @@
               </div>
               <div v-if="passive.items && config.evolutions" class="weapons">
                 <div v-for="object in passive.items" :title="object.name">
+                  <div :style="object.style"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Arcanas -->
+        <section style="max-width: 55em">
+          <div class="objects">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: isSelectedId(arcana.id) }" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+              <div class="arcana" :title="arcana.name">
+                <div :style="arcana.style"></div>
+              </div>
+              <div v-if="arcana.items && config.evolutions" class="weapons">
+                <div v-for="object in arcana.items" :title="object.name">
                   <div :style="object.style"></div>
                 </div>
               </div>
@@ -493,6 +531,13 @@
             { type: 'passive', id: 'revival', name: 'Tiragisú', image: 'Tiramisu', impactIds: ['guns_'] },
             { type: 'passive', id: 'wings', name: 'Wings', image: 'Wing', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
             { type: 'passive', id: 'greed', name: 'Stone Mask', image: 'Mask' },
+            // arcanas
+            { type: 'arcana', id: 'arcana4', name: 'Awake', image: '04', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
+            { type: 'arcana', id: 'arcana5', name: 'Chaos in the Dark Night', image: '05', impactIds: ['speed'] },
+            { type: 'arcana', id: 'arcana6', name: 'Sarabande of Healing', image: '06', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
+            { type: 'arcana', id: 'arcana16', name: 'Slash', image: '16', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
+            { type: 'arcana', id: 'arcana17', name: 'Lost & Found Painting', image: '17', impactIds: ['duration'] },
+            { type: 'arcana', id: 'arcana19', name: 'Heart of Fire', image: '19', impactIds: ['firewand', 'firewand_'] },
           ])
 
           const itemsById = keyById(items)
@@ -537,10 +582,12 @@
           const weapons = computed(() => items.filter((item) => item.type === 'weapon'))
           const evolutions = computed(() => items.filter((item) => item.type === 'evolution'))
           const passives = computed(() => items.filter((item) => item.type === 'passive'))
+          const arcanas = computed(() => items.filter((item) => item.type === 'arcana'))
 
           const selectedCharacter = computed(() => characters.find((character) => character.id === selectedCharacterId.value))
           const selectedItems = computed(() => selectedItemIds.map((itemId) => itemsById[itemId]))
           const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive'))
+          const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
           const selectedWeapons = computed(() => {
             const weaponIds = []
             for (const item of selectedItems.value) {
@@ -617,6 +664,12 @@
                   item.frames = framesById[item.image] || []
                   item.style = item.frames.length ? item.frames[0].style : {}
                 }
+                getFramesById(`randomazzo`, /(.+)\.png/).then((framesById) => {
+                  for (const item of arcanas.value) {
+                    item.frames = framesById[item.image] || []
+                    item.style = item.frames.length ? item.frames[0].style : {}
+                  }
+                })
               })
             },
             { immediate: true }
@@ -693,6 +746,9 @@
               if (isSelectedId(item.id) && !selectedCharacter.value.itemIds.includes(item.id)) {
                 removeItemId(item.id)
               } else {
+                if (item.type === 'arcana' && selectedArcanas.value.length > 2) {
+                  return
+                }
                 appendItemId(item.id)
               }
             }
@@ -816,9 +872,11 @@
             weapons,
             passives,
             evolutions,
+            arcanas,
             selectedCharacter,
             selectedWeapons,
             selectedPassives,
+            selectedArcanas,
             startAnimation,
             stopAnimation,
             onMouseEnter,
