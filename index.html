@@ -689,7 +689,7 @@
           }
 
           function isSelectedId(itemId) {
-            return selectedItems.value.find((selectedItem) => selectedItem.id === itemId || (selectedItem.type === 'evolution' && selectedItem.itemIds.includes(itemId)))
+            return selectedItems.value.find((selectedItem) => selectedItem.id === itemId || (selectedItem.type === 'evolution' && selectedItem.items.find((item) => item.type === 'weapon' && item.id === itemId)))
           }
 
           function appendItemId(newItemId) {
