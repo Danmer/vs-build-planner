@@ -129,7 +129,7 @@
         /* background-image: linear-gradient(-45deg, #024, #06f);
         border-color: #3cf !important; */
         border: 0.15em solid #ddc;
-        background: #333 linear-gradient(-45deg, #333, #ddd) no-repeat;
+        background: #333 linear-gradient(-45deg, #333, #ccb) no-repeat;
         transform: scale(1.3);
         z-index: 2;
       }
@@ -167,6 +167,12 @@
         justify-content: center;
       }
 
+      .object > .title {
+        position: absolute;
+        top: 0.1em;
+        left: 0.1em;
+        font-size: 0.7em;
+      }
       .object > .character {
         position: absolute;
         font-size: 1em;
@@ -181,7 +187,7 @@
         position: absolute;
         right: 0.1em;
         top: 0.1em;
-        font-size: 1em;
+        font-size: 0.9em;
       }
       .object > .impacts {
         display: flex;
@@ -315,6 +321,7 @@
             <div class="button" @click="copy($event)">COPY LINK</div>
             <div class="button" @click="save()">SAVE IMAGE</div>
             <div class="button" @click="config.pixels = !config.pixels">PIXELS: {{config.pixels ? 'ON' : 'OFF'}}</div>
+            <div class="button" @click="config.titles = !config.titles">TITLES: {{config.titles ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
             <div class="flex">
               <div class="button" @click="config.size -= 0.1">SIZE -</div>
@@ -327,6 +334,7 @@
         <section style="max-width: 60em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
+              <div v-if="config.titles" class="title">{{character.id}}</div>
               <div class="character" :style="character.style" :title="character.name"></div>
               <div class="weapons">
                 <div v-for="item in character.items" :title="item.name">
@@ -340,7 +348,8 @@
         <!-- Weapons -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id), center: !weapon.itemIds.length || !config.evolutions}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id)}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+              <div v-if="config.titles" class="title">{{weapon.id}}</div>
               <div class="weapon" :title="weapon.name">
                 <div :style="weapon.style"></div>
               </div>
@@ -359,7 +368,8 @@
         <!-- Passives -->
         <section style="max-width: 45em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: isSelectedId(passive.id), center: !passive.itemIds.length || !config.evolutions }" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: isSelectedId(passive.id) }" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+              <div v-if="config.titles" class="title">{{passive.id}}</div>
               <div class="passive" :title="passive.name">
                 <div :style="passive.style"></div>
               </div>
@@ -394,7 +404,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: false, pixels: true, evolutions: true, size: 1, version: '0.5.0' }
+          const defaultConfig = { impacts: false, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.0' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
 
