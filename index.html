@@ -20,6 +20,8 @@
     <meta property="twitter:title" content="Vampire Survivors - Build Planner" />
     <meta property="twitter:description" content="Vampire Survivors - Build Planner" />
     <meta property="twitter:image" content="https://danmer.github.io/vs-build-planner/img/preview.jpg" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/sprite.css" />
     <style>
       * {
         box-sizing: border-box;
@@ -114,6 +116,7 @@
       }
       .slot.arcana > div {
         font-size: 0.85em;
+        flex-shrink: 0;
       }
       .objects {
         display: flex;
@@ -123,12 +126,13 @@
       .object {
         position: relative;
         margin: 0.2em;
-        padding: 0.2em;
+        padding: 0.4em;
         display: flex;
         flex-direction: column;
         flex-shrink: 0;
         width: 5em;
         height: 5em;
+        overflow: hidden;
         border-radius: 0.2em;
         border: 0.15em solid #aa9;
         background: #333 linear-gradient(-45deg, #222, #998) no-repeat;
@@ -200,8 +204,8 @@
       .object > .weapons,
       .object > .evolutions {
         position: absolute;
-        right: 0.1em;
-        top: 0.1em;
+        right: 0.2em;
+        top: 0.2em;
         font-size: 0.9em;
       }
       .object > .impacts {
@@ -306,14 +310,12 @@
           </h1>
           <div class="slots">
             <div class="flex">
-              <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type">
-                <div :title="arcana.name" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
-                  <div :style="arcana.style"></div>
-                </div>
+              <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
             </div>
-            <div v-if="selectedCharacter" class="character slot" @mouseenter="startAnimation(selectedCharacter)" @mouseleave="stopAnimation(selectedCharacter)" :title="selectedCharacter.name">
-              <div :style="selectedCharacter.style"></div>
+            <div v-if="selectedCharacter" class="character slot" :title="selectedCharacter.name">
+              <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
             </div>
             <div v-else class="character slot">
               <div class="empty">CHARACTER</div>
@@ -321,7 +323,7 @@
             <div class="flex-1">
               <div class="flex">
                 <div v-for="weapon in selectedWeapons" :data-id="weapon.id" class="slot weapon selected" :class="weapon.type" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
-                  <div :style="weapon.style"></div>
+                  <div class="sprite" :class="`sprite-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (selectedWeapons.length < 7 ? 6 - selectedWeapons.length : 0)" class="slot weapon">
                   <div class="empty">WEAPON</div>
@@ -330,7 +332,7 @@
 
               <div class="flex">
                 <div v-for="passive in selectedPassives" :data-id="passive.id" class="slot passive selected" :class="passive.type" :title="passive.name" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
-                  <div :style="passive.style"></div>
+                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
                   <div class="empty">PASSIVE</div>
@@ -356,13 +358,11 @@
         <section style="max-width: 60em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
-              <div v-if="config.titles" class="title">{{character.id}}</div>
-              <div class="character" :style="character.style" :title="character.name"></div>
+              <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
               <div class="weapons">
-                <div v-for="item in character.items" :title="item.name">
-                  <div :style="item.style"></div>
-                </div>
+                <div v-for="item in character.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
               </div>
+              <div v-if="config.titles" class="title">{{character.id}}</div>
             </div>
           </div>
         </section>
@@ -370,19 +370,17 @@
         <!-- Weapons -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id)}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
-              <div v-if="config.titles" class="title">{{weapon.id}}</div>
-              <div class="weapon" :title="weapon.name">
-                <div :style="weapon.style"></div>
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id), center: !config.evolutions && !config.titles}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+              <div class="weapon">
+                <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
               <div v-if="weapon.impacts && config.impacts" class="impacts">
-                <div v-for="impact in weapon.impacts" :style="impact.style" :title="impact.name"></div>
+                <div v-for="impact in weapon.impacts" class="sprite" :class="`sprite-${impact.id}`" :title="impact.name"></div>
               </div>
               <div v-if="weapon.items && config.evolutions" class="evolutions">
-                <div v-for="object in weapon.items" :title="object.name">
-                  <div :style="object.style"></div>
-                </div>
+                <div v-for="object in weapon.items" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
               </div>
+              <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
           </div>
         </section>
@@ -390,16 +388,14 @@
         <!-- Passives -->
         <section style="max-width: 45em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: isSelectedId(passive.id) }" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
-              <div v-if="config.titles" class="title">{{passive.id}}</div>
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: isSelectedId(passive.id), center: !config.evolutions && !config.titles}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
               <div class="passive" :title="passive.name">
-                <div :style="passive.style"></div>
+                <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
               <div v-if="passive.items && config.evolutions" class="weapons">
-                <div v-for="object in passive.items" :title="object.name">
-                  <div :style="object.style"></div>
-                </div>
+                <div v-for="object in passive.items" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
               </div>
+              <div v-if="config.titles" class="title">{{passive.id}}</div>
             </div>
           </div>
         </section>
@@ -407,14 +403,9 @@
         <!-- Arcanas -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: isSelectedId(arcana.id) }" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
-              <div class="arcana" :title="arcana.name">
-                <div :style="arcana.style"></div>
-              </div>
-              <div v-if="arcana.items && config.evolutions" class="weapons">
-                <div v-for="object in arcana.items" :title="object.name">
-                  <div :style="object.style"></div>
-                </div>
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: isSelectedId(arcana.id)}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+              <div class="arcana">
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
             </div>
           </div>
@@ -435,6 +426,7 @@
         </footer>
       </main>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.32/vue.global.prod.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script>
@@ -448,96 +440,96 @@
 
           const characters = reactive([
             // common
-            { type: 'common', name: 'Antonio', id: 'antonio', image: 'Antonio', itemIds: ['whip'] },
-            { type: 'common', name: 'Imelda', id: 'imelda', image: 'Imelda', itemIds: ['magicwand'] },
-            { type: 'common', name: 'Pasqualina', id: 'pasqualina', image: 'Pasqualina', itemIds: ['runetracer'] },
-            { type: 'common', name: 'Gennaro', id: 'gennaro', image: 'Gennaro', itemIds: ['knife'] },
-            { type: 'common', name: 'Arca', id: 'arca', image: 'Arca', itemIds: ['firewand'] },
-            { type: 'common', name: 'Porta', id: 'porta', image: 'Porta', itemIds: ['lightning'] },
-            { type: 'common', name: 'Lama', id: 'lama', image: 'Lama', itemIds: ['axe'] },
-            { type: 'common', name: 'Poe', id: 'poe', image: 'Old3', itemIds: ['garlic'] },
-            { type: 'common', name: 'Clerici', id: 'suora', image: 'Suora', itemIds: ['water'] },
-            { type: 'common', name: 'Dommario', id: 'dommario', image: 'Dommario', itemIds: ['bible'] },
-            { type: 'common', name: 'Krochi', id: 'krochi', image: 'Krochi', itemIds: ['cross'] },
-            { type: 'common', name: 'Christine', id: 'christine', image: 'Christine', itemIds: ['pentagram'] },
-            { type: 'common', name: 'Pugnala', id: 'pugnala', image: 'Pugnala', itemIds: ['guns1', 'guns2'] },
-            { type: 'common', name: 'Poppea', id: 'poppea', image: 'Poppea', itemIds: ['mana'] },
-            { type: 'common', name: 'Mortaccio', id: 'mortaccio', image: 'Mortaccio', itemIds: ['bone'] },
-            { type: 'common', name: 'Cavallo', id: 'cavallo', image: 'Cavallo', itemIds: ['cherry'] },
-            { type: 'common', name: 'Ramba', id: 'ramba', image: 'Ramba', itemIds: ['cart'] },
-            { type: 'common', name: 'Giovanna', id: 'giovanna', image: 'Giovanna', itemIds: ['cat'] },
+            { type: 'common', name: 'Antonio', id: 'antonio', itemIds: ['whip'] },
+            { type: 'common', name: 'Imelda', id: 'imelda', itemIds: ['magicwand'] },
+            { type: 'common', name: 'Pasqualina', id: 'pasqualina', itemIds: ['runetracer'] },
+            { type: 'common', name: 'Gennaro', id: 'gennaro', itemIds: ['knife'] },
+            { type: 'common', name: 'Arca', id: 'arca', itemIds: ['firewand'] },
+            { type: 'common', name: 'Porta', id: 'porta', itemIds: ['lightning'] },
+            { type: 'common', name: 'Lama', id: 'lama', itemIds: ['axe'] },
+            { type: 'common', name: 'Poe', id: 'poe', itemIds: ['garlic'] },
+            { type: 'common', name: 'Clerici', id: 'clerici', itemIds: ['water'] },
+            { type: 'common', name: 'Dommario', id: 'dommario', itemIds: ['bible'] },
+            { type: 'common', name: 'Krochi', id: 'krochi', itemIds: ['cross'] },
+            { type: 'common', name: 'Christine', id: 'christine', itemIds: ['pentagram'] },
+            { type: 'common', name: 'Pugnala', id: 'pugnala', itemIds: ['guns1', 'guns2'] },
+            { type: 'common', name: 'Poppea', id: 'poppea', itemIds: ['mana'] },
+            { type: 'common', name: 'Mortaccio', id: 'mortaccio', itemIds: ['bone'] },
+            { type: 'common', name: 'Cavallo', id: 'cavallo', itemIds: ['cherry'] },
+            { type: 'common', name: 'Ramba', id: 'ramba', itemIds: ['cart'] },
+            { type: 'common', name: 'Giovanna', id: 'giovanna', itemIds: ['cat'] },
             // secret
-            { type: 'secret', name: 'Exdash', id: 'exdash', image: 'Exdash', itemIds: ['bird2'] },
-            { type: 'secret', name: 'Toastie', id: 'uexdash', image: 'uExdash', itemIds: ['bird1'] },
-            { type: 'secret', name: 'Reaper', id: 'reaper', image: 'XLReaper', itemIds: ['axe_'] },
-            // { type: "secret", name: "Leda", id: "leda", itemIds: ["magicwand_"] },
+            { type: 'secret', name: 'Exdash', id: 'exdash', itemIds: ['bird2'] },
+            { type: 'secret', name: 'Toastie', id: 'toastie', itemIds: ['bird1'] },
+            { type: 'secret', name: 'Reaper', id: 'reaper', itemIds: ['axe_'] },
+            // { type: 'secret', name: 'Leda', id: 'leda', itemIds: ['magicwand_'] },
           ])
 
           const items = reactive([
             // weapons
-            { type: 'weapon', id: 'magicwand', name: 'Magic Wand', image: 'WandHoly' },
-            { type: 'weapon', id: 'firewand', name: 'Fire Wand', image: 'WandFire2' },
-            { type: 'weapon', id: 'axe', name: 'Axe', image: 'Axe' },
-            { type: 'weapon', id: 'lightning', name: 'Lightning Ring', image: 'LighningRing' },
-            { type: 'weapon', id: 'knife', name: 'Knife', image: 'Knife' },
-            { type: 'weapon', id: 'bible', name: 'King Bible', image: 'HolyBook' },
-            { type: 'weapon', id: 'cross', name: 'Cross', image: 'Cross' },
-            { type: 'weapon', id: 'garlic', name: 'Garlic', image: 'Garlic' },
-            { type: 'weapon', id: 'pentagram', name: 'Pentagram', image: 'Pentagram' },
-            { type: 'weapon', id: 'runetracer', name: 'Runetracer', image: 'Diamond2' },
-            { type: 'weapon', id: 'water', name: 'Santa Water', image: 'HolyWater' },
-            { type: 'weapon', id: 'mana', name: 'Song of Mana', image: 'Song' },
-            { type: 'weapon', id: 'whip', name: 'whip', image: 'Whip' },
-            { type: 'weapon', id: 'guns1', name: 'Phiera Der Tuphello', image: 'Guns' },
-            { type: 'weapon', id: 'guns2', name: 'Eight The Sparrow', image: 'Guns2' },
-            { type: 'weapon', id: 'bird1', name: 'Peachone', image: 'Silf1' },
-            { type: 'weapon', id: 'bird2', name: 'Ebony Wings', image: 'Silf2' },
-            { type: 'weapon', id: 'lancet', name: 'Clock Lancet', image: 'Lancet' },
-            { type: 'weapon', id: 'laurel', name: 'Laurel', image: 'Laurel' },
-            { type: 'weapon', id: 'bone', name: 'bone', image: 'Bone' },
-            { type: 'weapon', id: 'cherry', name: 'Cherry Bomb', image: 'Cherry' },
-            { type: 'weapon', id: 'cart', name: 'Carréllo', image: 'CartWheel' },
-            { type: 'weapon', id: 'cat', name: 'Gatti Amari', image: 'Cat' },
+            { type: 'weapon', id: 'magicwand', name: 'Magic Wand' },
+            { type: 'weapon', id: 'firewand', name: 'Fire Wand' },
+            { type: 'weapon', id: 'axe', name: 'Axe' },
+            { type: 'weapon', id: 'lightning', name: 'Lightning Ring' },
+            { type: 'weapon', id: 'knife', name: 'Knife' },
+            { type: 'weapon', id: 'bible', name: 'King Bible' },
+            { type: 'weapon', id: 'cross', name: 'Cross' },
+            { type: 'weapon', id: 'garlic', name: 'Garlic' },
+            { type: 'weapon', id: 'pentagram', name: 'Pentagram' },
+            { type: 'weapon', id: 'runetracer', name: 'Runetracer' },
+            { type: 'weapon', id: 'water', name: 'Santa Water' },
+            { type: 'weapon', id: 'mana', name: 'Song of Mana' },
+            { type: 'weapon', id: 'whip', name: 'whip' },
+            { type: 'weapon', id: 'guns1', name: 'Phiera Der Tuphello' },
+            { type: 'weapon', id: 'guns2', name: 'Eight The Sparrow' },
+            { type: 'weapon', id: 'bird1', name: 'Peachone' },
+            { type: 'weapon', id: 'bird2', name: 'Ebony Wings' },
+            { type: 'weapon', id: 'lancet', name: 'Clock Lancet' },
+            { type: 'weapon', id: 'laurel', name: 'Laurel' },
+            { type: 'weapon', id: 'bone', name: 'bone' },
+            { type: 'weapon', id: 'cherry', name: 'Cherry Bomb' },
+            { type: 'weapon', id: 'cart', name: 'Carréllo' },
+            { type: 'weapon', id: 'cat', name: 'Gatti Amari' },
             // evolutions
-            { type: 'evolution', id: 'magicwand_', name: 'Holy Wand', image: 'WandHoly2', itemIds: ['magicwand', 'cooldown'] },
-            { type: 'evolution', id: 'firewand_', name: 'Hellfire', image: 'Hellfire', itemIds: ['firewand', 'might'] },
-            { type: 'evolution', id: 'axe_', name: 'Death Spiral', image: 'Scythe', itemIds: ['axe', 'area'] },
-            { type: 'evolution', id: 'lightning_', name: 'Thunder Loop', image: 'Thunderloop', itemIds: ['lightning', 'amount'] },
-            { type: 'evolution', id: 'knife_', name: 'Thousand Edge', image: 'Knife2', itemIds: ['knife', 'speed'] },
-            { type: 'evolution', id: 'bible_', name: 'Unholy Vespers', image: 'UnholyBook', itemIds: ['bible', 'duration'] },
-            { type: 'evolution', id: 'cross_', name: 'Heaven Sword', image: 'HeavenSword', itemIds: ['cross', 'luck'] },
-            { type: 'evolution', id: 'garlic_', name: 'Soul Eater', image: 'OrbOrange', itemIds: ['garlic', 'recovery'] },
-            { type: 'evolution', id: 'pentagram_', name: 'Gorgeous Moon', image: 'Pentagram2', itemIds: ['pentagram', 'growth'] },
-            { type: 'evolution', id: 'runetracer_', name: 'NO FUTURE', image: 'Carnage', itemIds: ['runetracer', 'armor'] },
-            { type: 'evolution', id: 'water_', name: 'La Borra', image: 'Water2', itemIds: ['water', 'magnet'] },
-            { type: 'evolution', id: 'mana_', name: 'Mannajja', image: 'Song2', itemIds: ['mana', 'curse'] },
-            { type: 'evolution', id: 'whip_', name: 'Bloody Tear', image: 'Whip2', itemIds: ['whip', 'health'] },
-            { type: 'evolution', id: 'guns_', name: 'Phieraggi', image: 'Guns3', itemIds: ['guns1', 'guns2', 'revival'] },
-            { type: 'evolution', id: 'bird_', name: 'Vandalier', image: 'Silf3', itemIds: ['bird1', 'bird2'] },
+            { type: 'evolution', id: 'magicwand_', name: 'Holy Wand', itemIds: ['magicwand', 'cooldown'] },
+            { type: 'evolution', id: 'firewand_', name: 'Hellfire', itemIds: ['firewand', 'might'] },
+            { type: 'evolution', id: 'axe_', name: 'Death Spiral', itemIds: ['axe', 'area'] },
+            { type: 'evolution', id: 'lightning_', name: 'Thunder Loop', itemIds: ['lightning', 'amount'] },
+            { type: 'evolution', id: 'knife_', name: 'Thousand Edge', itemIds: ['knife', 'speed'] },
+            { type: 'evolution', id: 'bible_', name: 'Unholy Vespers', itemIds: ['bible', 'duration'] },
+            { type: 'evolution', id: 'cross_', name: 'Heaven Sword', itemIds: ['cross', 'luck'] },
+            { type: 'evolution', id: 'garlic_', name: 'Soul Eater', itemIds: ['garlic', 'recovery'] },
+            { type: 'evolution', id: 'pentagram_', name: 'Gorgeous Moon', itemIds: ['pentagram', 'growth'] },
+            { type: 'evolution', id: 'runetracer_', name: 'NO FUTURE', itemIds: ['runetracer', 'armor'] },
+            { type: 'evolution', id: 'water_', name: 'La Borra', itemIds: ['water', 'magnet'] },
+            { type: 'evolution', id: 'mana_', name: 'Mannajja', itemIds: ['mana', 'curse'] },
+            { type: 'evolution', id: 'whip_', name: 'Bloody Tear', itemIds: ['whip', 'health'] },
+            { type: 'evolution', id: 'guns_', name: 'Phieraggi', itemIds: ['guns1', 'guns2', 'revival'] },
+            { type: 'evolution', id: 'bird_', name: 'Vandalier', itemIds: ['bird1', 'bird2'] },
             // passives
-            { type: 'passive', id: 'cooldown', name: 'Empty tome', image: 'Book2', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'might', name: 'Spinach', image: 'Leaf', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'area', name: 'Candelabrador', image: 'Candelabra', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'amount', name: 'Duplicator', image: 'Ring', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'speed', name: 'Bracer', image: 'Gauntlet', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'duration', name: 'Spellbinder', image: 'EmblemEye', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
-            { type: 'passive', id: 'luck', name: 'Clover', image: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
-            { type: 'passive', id: 'recovery', name: 'Pummarola', image: 'HeartRuby', impactIds: ['garlic_'] },
-            { type: 'passive', id: 'growth', name: 'Crown', image: 'Crown' },
-            { type: 'passive', id: 'armor', name: 'Armor', image: 'ArmorIron' },
-            { type: 'passive', id: 'magnet', name: 'Attractorb', image: 'OrbGlow' },
-            { type: 'passive', id: 'curse', name: "Skull O'Maniac", image: 'Curse' },
-            { type: 'passive', id: 'health', name: 'Hollow Heart', image: 'HeartBlack' },
-            { type: 'passive', id: 'revival', name: 'Tiragisú', image: 'Tiramisu', impactIds: ['guns_'] },
-            { type: 'passive', id: 'wings', name: 'Wings', image: 'Wing', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
-            { type: 'passive', id: 'greed', name: 'Stone Mask', image: 'Mask' },
+            { type: 'passive', id: 'cooldown', name: 'Empty tome', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'might', name: 'Spinach', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'area', name: 'Candelabrador', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'amount', name: 'Duplicator', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'speed', name: 'Bracer', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
+            { type: 'passive', id: 'duration', name: 'Spellbinder', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
+            { type: 'passive', id: 'luck', name: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
+            { type: 'passive', id: 'recovery', name: 'Pummarola', impactIds: ['garlic_'] },
+            { type: 'passive', id: 'growth', name: 'Crown' },
+            { type: 'passive', id: 'armor', name: 'Armor' },
+            { type: 'passive', id: 'magnet', name: 'Attractorb' },
+            { type: 'passive', id: 'curse', name: "Skull O'Maniac" },
+            { type: 'passive', id: 'health', name: 'Hollow Heart' },
+            { type: 'passive', id: 'revival', name: 'Tiragisú', impactIds: ['guns_'] },
+            { type: 'passive', id: 'wings', name: 'Wings', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
+            { type: 'passive', id: 'greed', name: 'Stone Mask' },
             // arcanas
-            { type: 'arcana', id: 'arcana4', name: 'Awake', image: '04', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
-            { type: 'arcana', id: 'arcana5', name: 'Chaos in the Dark Night', image: '05', impactIds: ['speed'] },
-            { type: 'arcana', id: 'arcana6', name: 'Sarabande of Healing', image: '06', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
-            { type: 'arcana', id: 'arcana16', name: 'Slash', image: '16', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
-            { type: 'arcana', id: 'arcana17', name: 'Lost & Found Painting', image: '17', impactIds: ['duration'] },
-            { type: 'arcana', id: 'arcana19', name: 'Heart of Fire', image: '19', impactIds: ['firewand', 'firewand_'] },
+            { type: 'arcana', id: 'arcana4', name: 'Awake', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
+            { type: 'arcana', id: 'arcana5', name: 'Chaos in the Dark Night', impactIds: ['speed'] },
+            { type: 'arcana', id: 'arcana6', name: 'Sarabande of Healing', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
+            { type: 'arcana', id: 'arcana16', name: 'Slash', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
+            { type: 'arcana', id: 'arcana17', name: 'Lost & Found Painting', impactIds: ['duration'] },
+            { type: 'arcana', id: 'arcana19', name: 'Heart of Fire', impactIds: ['firewand', 'firewand_'] },
           ])
 
           const itemsById = keyById(items)
@@ -650,31 +642,6 @@
             localStorage.setItem('vs-build', JSON.stringify(userConfig))
           })
 
-          watch(
-            () => config.version,
-            () => {
-              getFramesById(`characters`, /(.+)_(.\d+)\.png/).then((framesById) => {
-                for (const character of characters) {
-                  character.frames = framesById[character.image] || []
-                  character.style = character.frames.length ? character.frames[0].style : {}
-                }
-              })
-              getFramesById(`items`, /(.+)\.png/).then((framesById) => {
-                for (const item of items) {
-                  item.frames = framesById[item.image] || []
-                  item.style = item.frames.length ? item.frames[0].style : {}
-                }
-                getFramesById(`randomazzo`, /(.+)\.png/).then((framesById) => {
-                  for (const item of arcanas.value) {
-                    item.frames = framesById[item.image] || []
-                    item.style = item.frames.length ? item.frames[0].style : {}
-                  }
-                })
-              })
-            },
-            { immediate: true }
-          )
-
           function onMouseEnter(object) {
             if (!object) {
               return
@@ -785,23 +752,6 @@
             }
           }
 
-          let animationIndex = 0
-          function startAnimation(character) {
-            animationIndex = 0
-            if (!character.animation && character.frames.length) {
-              animate(character)
-            }
-          }
-          function stopAnimation(character) {
-            clearTimeout(character.animation)
-            character.animation = 0
-          }
-          function animate(character) {
-            animationIndex = animationIndex === character.frames.length - 1 ? 0 : animationIndex + 1
-            character.style = character.frames[animationIndex].style
-            character.animation = setTimeout(animate.bind(this, character), 200)
-          }
-
           function reset() {
             selectedCharacterId.value = ''
             selectedItemIds.length = 0
@@ -838,38 +788,6 @@
             }, {})
           }
 
-          function getFramesById(name, regex) {
-            return fetch(`./assets/${name}_${config.version}.json`)
-              .then((res) => res.json())
-              .then((data) => {
-                const texture = data.textures[0]
-                const framesById = {}
-                for (const frame of texture.frames) {
-                  const [filename, id] = frame.filename.match(regex) || []
-                  if (id) {
-                    const k = 1 / 10
-                    const p = 0.1
-                    const { w, h, x, y } = frame.frame
-                    const mx = w < h ? ((h - w) * k) / 2 : 0
-                    const my = w > h ? ((w - h) * k) / 2 : 0
-                    const style = {
-                      margin: name === 'items' ? `${my}em ${mx}em` : 0,
-                      padding: `${p}em`,
-                      width: `${w * k + p * 2}em`,
-                      height: `${h * k + p * 2}em`,
-                      backgroundImage: `url("./assets/${name}_${config.version}.png")`,
-                      backgroundSize: `${texture.size.w * k}em ${texture.size.h * k}em`,
-                      backgroundPosition: `-${x * k - p}em -${y * k - p}em`,
-                    }
-                    framesById[id] = framesById[id] || []
-                    framesById[id].push({ id, w, h, x, y, style })
-                  }
-                }
-                // console.log(name, Object.keys(framesById))
-                return framesById
-              })
-          }
-
           return {
             config,
             characters,
@@ -881,8 +799,6 @@
             selectedWeapons,
             selectedPassives,
             selectedArcanas,
-            startAnimation,
-            stopAnimation,
             onMouseEnter,
             onMouseLeave,
             selectCharacter,
