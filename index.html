@@ -743,7 +743,11 @@
                 toggleItem(weapon)
               }
             } else {
-              if (isSelectedId(item.id) && !selectedCharacter.value.itemIds.includes(item.id)) {
+              if (isSelectedId(item.id)) {
+                // prevent removing the selected chracter's weapon
+                if (selectedCharacter.value && selectedCharacter.value.itemIds.includes(item.id)) {
+                  return false
+                }
                 removeItemId(item.id)
               } else {
                 if (item.type === 'arcana' && selectedArcanas.value.length > 2) {
