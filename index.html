@@ -216,16 +216,18 @@
         align-items: center;
         justify-content: center;
         margin: 0 auto;
-        font-size: 0.7em;
         font-weight: bold;
         color: #999;
         user-select: none;
+      }
+      .buttons.settings {
+        font-size: 0.7em;
       }
       .buttons .flex .button:nth-child(n + 2) {
         margin-left: 0;
       }
       .button {
-        margin: 0.8em 0.5em 0;
+        margin: 0.5em 0.5em 0;
         cursor: pointer;
         padding: 0.3em 0.5em;
         background-color: rgba(0, 0, 0, 0.3);
@@ -333,6 +335,9 @@
             <div class="button" @click="reset()">RESET</div>
             <div class="button" @click="copy($event)">COPY LINK</div>
             <div class="button" @click="save()">SAVE IMAGE</div>
+            <div class="button" @click="settings = !settings">SETTINGS</div>
+          </div>
+          <div v-if="settings" class="buttons settings">
             <div class="button" @click="config.pixels = !config.pixels">PIXELS: {{config.pixels ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.titles = !config.titles">TITLES: {{config.titles ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
@@ -426,6 +431,8 @@
           const defaultConfig = { impacts: false, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.0' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
+
+          const settings = ref(false)
 
           const characters = reactive([
             // common
@@ -779,6 +786,7 @@
 
           return {
             config,
+            settings,
             characters,
             weapons,
             passives,
