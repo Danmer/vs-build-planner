@@ -647,7 +647,7 @@
           }
 
           for (const weapon of weapons) {
-            weapon.selected = hashIds.includes(weapon.id)
+            weapon.selected = hashIds.includes(weapon.id) || hashIds.includes(weapon.evolutionId)
             weapon.impacts = passives.filter((passive) => passive.impactIds && passive.impactIds.includes(weapon.id))
             weapon.impactIds = weapon.impacts.map((impact) => impact.id)
           }
@@ -659,6 +659,7 @@
           }
 
           for (const arcana of arcanas) {
+            arcana.selected = hashIds.includes(arcana.id)
             arcana.impactIds = arcana.impactIds || []
             arcana.impacts = items.filter((item) => arcana.impactIds.includes(item.id))
           }
@@ -696,8 +697,7 @@
           console.log(window.vs)
 
           watchEffect(() => {
-            location.hash = characters
-              .concat(weapons, passives, arcanas)
+            location.hash = items
               .filter((item) => item.selected)
               .map((item) => item.id)
               .join()
@@ -716,11 +716,21 @@
               if (oldCharacter && oldCharacter.itemIds) {
                 for (const item of oldCharacter.items) {
                   item.selected = false
+                  if (item.weaponIds) {
+                    for (const weapon of item.weapons) {
+                      weapon.selected = false
+                    }
+                  }
                 }
               }
               if (newCharacter && newCharacter.itemIds) {
                 for (const item of newCharacter.items) {
                   item.selected = true
+                  if (item.weaponIds) {
+                    for (const weapon of item.weapons) {
+                      weapon.selected = true
+                    }
+                  }
                 }
               }
             },
