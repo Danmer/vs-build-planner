@@ -155,6 +155,9 @@
       .green {
         background-image: linear-gradient(-45deg, #040, #3c3) !important;
       }
+      .red {
+        background-image: linear-gradient(-45deg, #400, #f33) !important;
+      }
       .yellow {
         background-image: linear-gradient(-45deg, #420, #fc0) !important;
       }
@@ -505,39 +508,129 @@
           ])
 
           const passives = reactive([
-            { id: 'cooldown', name: 'Empty tome', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { id: 'might', name: 'Spinach', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { id: 'area', name: 'Candelabrador', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { id: 'amount', name: 'Duplicator', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
-            { id: 'speed', name: 'Bracer', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
-            { id: 'duration', name: 'Spellbinder', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
-            { id: 'luck', name: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
-            { id: 'recovery', name: 'Pummarola', impactIds: ['garlic_'] },
+            { id: 'cooldown', name: 'Empty tome' },
+            { id: 'might', name: 'Spinach' },
+            { id: 'area', name: 'Candelabrador' },
+            { id: 'amount', name: 'Duplicator' },
+            { id: 'speed', name: 'Bracer' },
+            { id: 'duration', name: 'Spellbinder' },
+            { id: 'luck', name: 'Clover' },
+            { id: 'recovery', name: 'Pummarola' },
             { id: 'growth', name: 'Crown' },
             { id: 'armor', name: 'Armor' },
             { id: 'magnet', name: 'Attractorb' },
             { id: 'curse', name: "Skull O'Maniac" },
             { id: 'health', name: 'Hollow Heart' },
-            { id: 'revival', name: 'Tiragisú', impactIds: ['guns_'] },
-            { id: 'wings', name: 'Wings', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
+            { id: 'revival', name: 'Tiragisú' },
+            { id: 'wings', name: 'Wings' },
             { id: 'greed', name: 'Stone Mask' },
           ])
 
           const arcanas = reactive([
-            { id: 'arcana4', name: 'Awake', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
-            { id: 'arcana5', name: 'Chaos in the Dark Night', impactIds: ['speed'] },
-            { id: 'arcana6', name: 'Sarabande of Healing', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
-            { id: 'arcana16', name: 'Slash', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
-            { id: 'arcana17', name: 'Lost & Found Painting', impactIds: ['duration'] },
-            { id: 'arcana19', name: 'Heart of Fire', impactIds: ['firewand', 'firewand_'] },
+            { id: 'arcana4', name: 'Awake' },
+            { id: 'arcana5', name: 'Chaos in the Dark Night' },
+            { id: 'arcana6', name: 'Sarabande of Healing' },
+            { id: 'arcana16', name: 'Slash' },
+            { id: 'arcana17', name: 'Lost & Found Painting' },
+            { id: 'arcana19', name: 'Heart of Fire' },
           ])
 
           const items = characters.concat(weapons, passives, evolutions, arcanas)
+
           const itemsById = keyById(items)
           const weaponsById = keyById(weapons)
           const passivesById = keyById(passives)
           const evolutionsById = keyById(evolutions)
           const arcanasById = keyById(arcanas)
+
+          const impactsById = computed(() => {
+            const newImpactsById = {
+              antonio: ['+armor', '+health', '+might'],
+              imelda: ['+growth'],
+              pasqualina: ['+speed'],
+              gennaro: ['+health', '+amount'],
+              arca: ['+cooldown'],
+              porta: ['+area'],
+              lama: ['+health', '+speed', '+might', '+curse'],
+              poe: ['+magnet', '-health'],
+              clerici: ['+health', '+recovery'],
+              dommario: ['+speed', '+duration', '-wings'],
+              krochi: ['+revival', '+wings'],
+              christine: ['+cooldown', '+wings', '-might', '-health'],
+              pugnala: ['+wings', '+might'],
+              poppea: ['+wings', '+speed'],
+              mortaccio: ['+wings', '+duration'],
+              cavallo: ['+amount'],
+              ramba: ['+amount'],
+              giovanna: ['+amount'],
+              exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
+              toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
+              reaper: ['+health', '+wings', '+might'],
+              leda: ['+armor', '+might', '+area', '+cooldown', '-wings'],
+              arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+wings'],
+              arcana5: ['+speed'],
+              arcana6: ['+recovery', '+whip_', '+garlic_', '+revival'],
+              arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_'],
+              arcana17: ['+duration'],
+              arcana19: ['+firewand', '+firewand_'],
+              axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              bible: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bible_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bird1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              bird_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              bird2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              bone: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              cart: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              cat: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
+              cherry: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
+              cross: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              cross_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
+              firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              garlic: ['+cooldown', '+might', '+area'],
+              garlic_: ['+cooldown', '+might', '+area', '+recovery'],
+              guns1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
+              guns_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck', '+revival'],
+              guns2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
+              knife: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              knife_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
+              lancet: ['+cooldown', '+duration'],
+              laurel: ['+cooldown'],
+              lightning: ['+cooldown', '+might', '+area', '+amount'],
+              lightning_: ['+cooldown', '+might', '+area', '+amount'],
+              magicwand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              magicwand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              mana: ['+cooldown', '+might', '+area', '+duration'],
+              mana_: ['+cooldown', '+might', '+area', '+duration'],
+              pentagram: ['+cooldown', '+luck'],
+              pentagram_: ['+cooldown'],
+              runetracer: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              runetracer_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              water: ['+cooldown', '+might', '+area', '+amount', '+duration'],
+              water_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              whip: ['+cooldown', '+might', '+area', '+amount'],
+              whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+            }
+            for (const itemId in newImpactsById) {
+              const impactIds = newImpactsById[itemId]
+              for (const impactId of impactIds) {
+                const positive = impactId.includes('+')
+                const id = impactId.replace(/\+|\-/, '')
+                const newImpactId = (positive ? '+' : '-') + itemId
+                newImpactsById[id] = newImpactsById[id] || []
+                if (!newImpactsById[id].includes(newImpactId)) {
+                  newImpactsById[id].push(newImpactId)
+                }
+              }
+            }
+            if (arcanasById.arcana16.selected) {
+              for (const id of ['axe', 'axe_', 'knife', 'whip', 'whip_']) {
+                newImpactsById[id].push('+luck')
+              }
+            }
+            return newImpactsById
+          })
 
           for (const evolution of evolutions) {
             evolution.selected = hashIds.includes(evolution.id)
@@ -670,18 +763,18 @@
                 }
               }
             }
-            if (object.impactIds) {
-              for (const impactId of object.impactIds) {
-                document.querySelectorAll(`[data-id="${impactId}"]`).forEach((element) => {
-                  element.classList.add('green')
+            if (impactsById.value[object.id]) {
+              for (const impact of impactsById.value[object.id]) {
+                document.querySelectorAll(`[data-id="${impact.substring(1)}"]`).forEach((element) => {
+                  element.classList.add(impact[0] === '+' ? 'green' : 'red')
                 })
               }
             }
           }
 
           function onMouseLeave() {
-            document.querySelectorAll(`.yellow, .green`).forEach((element) => {
-              element.classList.remove('yellow', 'green')
+            document.querySelectorAll(`.yellow, .green, .red`).forEach((element) => {
+              element.classList.remove('yellow', 'green', 'red')
             })
           }
 
