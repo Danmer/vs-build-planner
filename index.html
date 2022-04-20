@@ -313,16 +313,15 @@
             </div>
             <div class="flex-1">
               <div class="flex">
-                <div v-for="weapon in selectedWeapons" :data-id="weapon.id" class="slot weapon selected" :class="weapon.type" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+                <div v-for="weapon in selectedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
                   <div class="sprite" :class="`sprite-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (selectedWeapons.length < 7 ? 6 - selectedWeapons.length : 0)" class="slot weapon">
                   <div class="empty">WEAPON</div>
                 </div>
               </div>
-
               <div class="flex">
-                <div v-for="passive in selectedPassives" :data-id="passive.id" class="slot passive selected" :class="passive.type" :title="passive.name" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+                <div v-for="passive in selectedPassives" :data-id="passive.id" class="slot passive selected" :title="passive.name" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
                   <div class="sprite" :class="`sprite-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
@@ -364,15 +363,15 @@
         <!-- Weapons -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: isSelectedId(weapon.id), center: !config.evolutions && !config.titles}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
               <div v-if="weapon.impacts && config.impacts" class="impacts">
                 <div v-for="impact in weapon.impacts" class="sprite" :class="`sprite-${impact.id}`" :title="impact.name"></div>
               </div>
-              <div v-if="weapon.items && config.evolutions" class="evolutions">
-                <div v-for="object in weapon.items" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
+              <div v-if="weapon.evolution && config.evolutions" class="evolutions">
+                <div v-for="object in weapon.evolution.passives" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
@@ -382,12 +381,12 @@
         <!-- Passives -->
         <section style="max-width: 45em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: isSelectedId(passive.id), center: !config.evolutions && !config.titles}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
-              <div v-if="passive.items && config.evolutions" class="weapons">
-                <div v-for="object in passive.items" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
+              <div v-if="passive.evolution && config.evolutions" class="weapons">
+                <div v-for="item in passive.evolution.weapons" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{passive.id}}</div>
             </div>
@@ -397,7 +396,7 @@
         <!-- Arcanas -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: isSelectedId(arcana.id)}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: arcana.selected}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
               <div class="arcana">
                 <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
@@ -424,7 +423,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.32/vue.global.prod.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script>
-      const { createApp, ref, reactive, computed, watch, watchEffect, h } = Vue
+      const { createApp, ref, reactive, computed, watch, watchEffect, nextTick } = Vue
 
       createApp({
         setup() {
@@ -434,193 +433,201 @@
 
           const settings = ref(false)
 
+          const hashIds = location.hash.substring(1).split(',')
+
           const characters = reactive([
-            // common
-            { type: 'common', name: 'Antonio', id: 'antonio', itemIds: ['whip'] },
-            { type: 'common', name: 'Imelda', id: 'imelda', itemIds: ['magicwand'] },
-            { type: 'common', name: 'Pasqualina', id: 'pasqualina', itemIds: ['runetracer'] },
-            { type: 'common', name: 'Gennaro', id: 'gennaro', itemIds: ['knife'] },
-            { type: 'common', name: 'Arca', id: 'arca', itemIds: ['firewand'] },
-            { type: 'common', name: 'Porta', id: 'porta', itemIds: ['lightning'] },
-            { type: 'common', name: 'Lama', id: 'lama', itemIds: ['axe'] },
-            { type: 'common', name: 'Poe', id: 'poe', itemIds: ['garlic'] },
-            { type: 'common', name: 'Clerici', id: 'clerici', itemIds: ['water'] },
-            { type: 'common', name: 'Dommario', id: 'dommario', itemIds: ['bible'] },
-            { type: 'common', name: 'Krochi', id: 'krochi', itemIds: ['cross'] },
-            { type: 'common', name: 'Christine', id: 'christine', itemIds: ['pentagram'] },
-            { type: 'common', name: 'Pugnala', id: 'pugnala', itemIds: ['guns1', 'guns2'] },
-            { type: 'common', name: 'Poppea', id: 'poppea', itemIds: ['mana'] },
-            { type: 'common', name: 'Mortaccio', id: 'mortaccio', itemIds: ['bone'] },
-            { type: 'common', name: 'Cavallo', id: 'cavallo', itemIds: ['cherry'] },
-            { type: 'common', name: 'Ramba', id: 'ramba', itemIds: ['cart'] },
-            { type: 'common', name: 'Giovanna', id: 'giovanna', itemIds: ['cat'] },
-            // secret
-            { type: 'secret', name: 'Exdash', id: 'exdash', itemIds: ['bird2'] },
-            { type: 'secret', name: 'Toastie', id: 'toastie', itemIds: ['bird1'] },
-            { type: 'secret', name: 'Reaper', id: 'reaper', itemIds: ['axe_'] },
-            { type: 'secret', name: 'Leda', id: 'leda', itemIds: ['magicwand_'] },
+            { id: 'antonio', name: 'Antonio', itemIds: ['whip'] },
+            { id: 'imelda', name: 'Imelda', itemIds: ['magicwand'] },
+            { id: 'pasqualina', name: 'Pasqualina', itemIds: ['runetracer'] },
+            { id: 'gennaro', name: 'Gennaro', itemIds: ['knife'] },
+            { id: 'arca', name: 'Arca', itemIds: ['firewand'] },
+            { id: 'porta', name: 'Porta', itemIds: ['lightning'] },
+            { id: 'lama', name: 'Lama', itemIds: ['axe'] },
+            { id: 'poe', name: 'Poe', itemIds: ['garlic'] },
+            { id: 'clerici', name: 'Clerici', itemIds: ['water'] },
+            { id: 'dommario', name: 'Dommario', itemIds: ['bible'] },
+            { id: 'krochi', name: 'Krochi', itemIds: ['cross'] },
+            { id: 'christine', name: 'Christine', itemIds: ['pentagram'] },
+            { id: 'pugnala', name: 'Pugnala', itemIds: ['guns1', 'guns2'] },
+            { id: 'poppea', name: 'Poppea', itemIds: ['mana'] },
+            { id: 'mortaccio', name: 'Mortaccio', itemIds: ['bone'] },
+            { id: 'cavallo', name: 'Cavallo', itemIds: ['cherry'] },
+            { id: 'ramba', name: 'Ramba', itemIds: ['cart'] },
+            { id: 'giovanna', name: 'Giovanna', itemIds: ['cat'] },
+            { id: 'exdash', name: 'Exdash', itemIds: ['bird2'], secret: true },
+            { id: 'toastie', name: 'Toastie', itemIds: ['bird1'], secret: true },
+            { id: 'reaper', name: 'Reaper', itemIds: ['axe_'], secret: true },
+            { id: 'leda', name: 'Leda', itemIds: ['magicwand_'], secret: true },
           ])
 
-          const items = reactive([
-            // weapons
-            { type: 'weapon', id: 'magicwand', name: 'Magic Wand' },
-            { type: 'weapon', id: 'firewand', name: 'Fire Wand' },
-            { type: 'weapon', id: 'axe', name: 'Axe' },
-            { type: 'weapon', id: 'lightning', name: 'Lightning Ring' },
-            { type: 'weapon', id: 'knife', name: 'Knife' },
-            { type: 'weapon', id: 'bible', name: 'King Bible' },
-            { type: 'weapon', id: 'cross', name: 'Cross' },
-            { type: 'weapon', id: 'garlic', name: 'Garlic' },
-            { type: 'weapon', id: 'pentagram', name: 'Pentagram' },
-            { type: 'weapon', id: 'runetracer', name: 'Runetracer' },
-            { type: 'weapon', id: 'water', name: 'Santa Water' },
-            { type: 'weapon', id: 'mana', name: 'Song of Mana' },
-            { type: 'weapon', id: 'whip', name: 'whip' },
-            { type: 'weapon', id: 'guns1', name: 'Phiera Der Tuphello' },
-            { type: 'weapon', id: 'guns2', name: 'Eight The Sparrow' },
-            { type: 'weapon', id: 'bird1', name: 'Peachone' },
-            { type: 'weapon', id: 'bird2', name: 'Ebony Wings' },
-            { type: 'weapon', id: 'lancet', name: 'Clock Lancet' },
-            { type: 'weapon', id: 'laurel', name: 'Laurel' },
-            { type: 'weapon', id: 'bone', name: 'bone' },
-            { type: 'weapon', id: 'cherry', name: 'Cherry Bomb' },
-            { type: 'weapon', id: 'cart', name: 'Carréllo' },
-            { type: 'weapon', id: 'cat', name: 'Gatti Amari' },
-            // evolutions
-            { type: 'evolution', id: 'magicwand_', name: 'Holy Wand', itemIds: ['magicwand', 'cooldown'] },
-            { type: 'evolution', id: 'firewand_', name: 'Hellfire', itemIds: ['firewand', 'might'] },
-            { type: 'evolution', id: 'axe_', name: 'Death Spiral', itemIds: ['axe', 'area'] },
-            { type: 'evolution', id: 'lightning_', name: 'Thunder Loop', itemIds: ['lightning', 'amount'] },
-            { type: 'evolution', id: 'knife_', name: 'Thousand Edge', itemIds: ['knife', 'speed'] },
-            { type: 'evolution', id: 'bible_', name: 'Unholy Vespers', itemIds: ['bible', 'duration'] },
-            { type: 'evolution', id: 'cross_', name: 'Heaven Sword', itemIds: ['cross', 'luck'] },
-            { type: 'evolution', id: 'garlic_', name: 'Soul Eater', itemIds: ['garlic', 'recovery'] },
-            { type: 'evolution', id: 'pentagram_', name: 'Gorgeous Moon', itemIds: ['pentagram', 'growth'] },
-            { type: 'evolution', id: 'runetracer_', name: 'NO FUTURE', itemIds: ['runetracer', 'armor'] },
-            { type: 'evolution', id: 'water_', name: 'La Borra', itemIds: ['water', 'magnet'] },
-            { type: 'evolution', id: 'mana_', name: 'Mannajja', itemIds: ['mana', 'curse'] },
-            { type: 'evolution', id: 'whip_', name: 'Bloody Tear', itemIds: ['whip', 'health'] },
-            { type: 'evolution', id: 'guns_', name: 'Phieraggi', itemIds: ['guns1', 'guns2', 'revival'] },
-            { type: 'evolution', id: 'bird_', name: 'Vandalier', itemIds: ['bird1', 'bird2'] },
-            // passives
-            { type: 'passive', id: 'cooldown', name: 'Empty tome', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'might', name: 'Spinach', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'area', name: 'Candelabrador', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'amount', name: 'Duplicator', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'speed', name: 'Bracer', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
-            { type: 'passive', id: 'duration', name: 'Spellbinder', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
-            { type: 'passive', id: 'luck', name: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
-            { type: 'passive', id: 'recovery', name: 'Pummarola', impactIds: ['garlic_'] },
-            { type: 'passive', id: 'growth', name: 'Crown' },
-            { type: 'passive', id: 'armor', name: 'Armor' },
-            { type: 'passive', id: 'magnet', name: 'Attractorb' },
-            { type: 'passive', id: 'curse', name: "Skull O'Maniac" },
-            { type: 'passive', id: 'health', name: 'Hollow Heart' },
-            { type: 'passive', id: 'revival', name: 'Tiragisú', impactIds: ['guns_'] },
-            { type: 'passive', id: 'wings', name: 'Wings', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
-            { type: 'passive', id: 'greed', name: 'Stone Mask' },
-            // arcanas
-            { type: 'arcana', id: 'arcana4', name: 'Awake', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
-            { type: 'arcana', id: 'arcana5', name: 'Chaos in the Dark Night', impactIds: ['speed'] },
-            { type: 'arcana', id: 'arcana6', name: 'Sarabande of Healing', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
-            { type: 'arcana', id: 'arcana16', name: 'Slash', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
-            { type: 'arcana', id: 'arcana17', name: 'Lost & Found Painting', impactIds: ['duration'] },
-            { type: 'arcana', id: 'arcana19', name: 'Heart of Fire', impactIds: ['firewand', 'firewand_'] },
+          const weapons = reactive([
+            { id: 'magicwand', name: 'Magic Wand' },
+            { id: 'firewand', name: 'Fire Wand' },
+            { id: 'axe', name: 'Axe' },
+            { id: 'lightning', name: 'Lightning Ring' },
+            { id: 'knife', name: 'Knife' },
+            { id: 'bible', name: 'King Bible' },
+            { id: 'cross', name: 'Cross' },
+            { id: 'garlic', name: 'Garlic' },
+            { id: 'pentagram', name: 'Pentagram' },
+            { id: 'runetracer', name: 'Runetracer' },
+            { id: 'water', name: 'Santa Water' },
+            { id: 'mana', name: 'Song of Mana' },
+            { id: 'whip', name: 'whip' },
+            { id: 'guns1', name: 'Phiera Der Tuphello' },
+            { id: 'guns2', name: 'Eight The Sparrow' },
+            { id: 'bird1', name: 'Peachone' },
+            { id: 'bird2', name: 'Ebony Wings' },
+            { id: 'lancet', name: 'Clock Lancet' },
+            { id: 'laurel', name: 'Laurel' },
+            { id: 'bone', name: 'bone' },
+            { id: 'cherry', name: 'Cherry Bomb' },
+            { id: 'cart', name: 'Carréllo' },
+            { id: 'cat', name: 'Gatti Amari' },
           ])
 
+          const evolutions = reactive([
+            { id: 'magicwand_', name: 'Holy Wand', itemIds: ['magicwand', 'cooldown'] },
+            { id: 'firewand_', name: 'Hellfire', itemIds: ['firewand', 'might'] },
+            { id: 'axe_', name: 'Death Spiral', itemIds: ['axe', 'area'] },
+            { id: 'lightning_', name: 'Thunder Loop', itemIds: ['lightning', 'amount'] },
+            { id: 'knife_', name: 'Thousand Edge', itemIds: ['knife', 'speed'] },
+            { id: 'bible_', name: 'Unholy Vespers', itemIds: ['bible', 'duration'] },
+            { id: 'cross_', name: 'Heaven Sword', itemIds: ['cross', 'luck'] },
+            { id: 'garlic_', name: 'Soul Eater', itemIds: ['garlic', 'recovery'] },
+            { id: 'pentagram_', name: 'Gorgeous Moon', itemIds: ['pentagram', 'growth'] },
+            { id: 'runetracer_', name: 'NO FUTURE', itemIds: ['runetracer', 'armor'] },
+            { id: 'water_', name: 'La Borra', itemIds: ['water', 'magnet'] },
+            { id: 'mana_', name: 'Mannajja', itemIds: ['mana', 'curse'] },
+            { id: 'whip_', name: 'Bloody Tear', itemIds: ['whip', 'health'] },
+            { id: 'guns_', name: 'Phieraggi', itemIds: ['guns1', 'guns2', 'revival'] },
+            { id: 'bird_', name: 'Vandalier', itemIds: ['bird1', 'bird2'] },
+          ])
+
+          const passives = reactive([
+            { id: 'cooldown', name: 'Empty tome', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'pentagram', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'lancet', 'laurel', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'pentagram_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { id: 'might', name: 'Spinach', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { id: 'area', name: 'Candelabrador', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'garlic', 'runetracer', 'water', 'mana', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'garlic_', 'runetracer_', 'water_', 'mana_', 'whip_', 'guns_', 'bird_'] },
+            { id: 'amount', name: 'Duplicator', impactIds: ['magicwand', 'firewand', 'axe', 'lightning', 'knife', 'bible', 'cross', 'runetracer', 'water', 'whip', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'lightning_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'whip_', 'guns_', 'bird_'] },
+            { id: 'speed', name: 'Bracer', impactIds: ['magicwand', 'firewand', 'axe', 'knife', 'bible', 'cross', 'runetracer', 'guns1', 'guns2', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'cart', 'magicwand_', 'firewand_', 'axe_', 'knife_', 'bible_', 'cross_', 'runetracer_', 'water_', 'guns_', 'bird_'] },
+            { id: 'duration', name: 'Spellbinder', impactIds: ['bible', 'runetracer', 'water', 'mana', 'bird1', 'bird2', 'bone', 'cherry', 'cat', 'lancet', 'bible_', 'runetracer_', 'water_', 'mana_', 'bird_'] },
+            { id: 'luck', name: 'Clover', impactIds: ['knife', 'pentagram', 'guns1', 'guns2', 'cherry', 'cat', 'knife_', 'cross_', 'whip_', 'guns_'] },
+            { id: 'recovery', name: 'Pummarola', impactIds: ['garlic_'] },
+            { id: 'growth', name: 'Crown' },
+            { id: 'armor', name: 'Armor' },
+            { id: 'magnet', name: 'Attractorb' },
+            { id: 'curse', name: "Skull O'Maniac" },
+            { id: 'health', name: 'Hollow Heart' },
+            { id: 'revival', name: 'Tiragisú', impactIds: ['guns_'] },
+            { id: 'wings', name: 'Wings', impactIds: ['bird1', 'bird2', 'water_', 'bird_'] },
+            { id: 'greed', name: 'Stone Mask' },
+          ])
+
+          const arcanas = reactive([
+            { id: 'arcana4', name: 'Awake', impactIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'wings'] },
+            { id: 'arcana5', name: 'Chaos in the Dark Night', impactIds: ['speed'] },
+            { id: 'arcana6', name: 'Sarabande of Healing', impactIds: ['recovery', 'whip_', 'garlic_', 'revival'] },
+            { id: 'arcana16', name: 'Slash', impactIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_'] },
+            { id: 'arcana17', name: 'Lost & Found Painting', impactIds: ['duration'] },
+            { id: 'arcana19', name: 'Heart of Fire', impactIds: ['firewand', 'firewand_'] },
+          ])
+
+          const items = characters.concat(weapons, passives, evolutions, arcanas)
           const itemsById = keyById(items)
-          const charactersById = keyById(characters)
+          const weaponsById = keyById(weapons)
+          const passivesById = keyById(passives)
+          const evolutionsById = keyById(evolutions)
+          const arcanasById = keyById(arcanas)
 
-          for (const item of items) {
-            item.itemIds = item.itemIds || []
-            // evolution
-            const evolution = items.find((item2) => item2.type === 'evolution' && item2.itemIds.includes(item.id))
-            if (evolution) {
-              evolution[item.type + 'Ids'] = evolution[item.type + 'Ids'] || []
-              evolution[item.type + 's'] = evolution[item.type + 's'] || []
-              evolution[item.type + 'Ids'].push(item.id)
-              evolution[item.type + 's'].push(item)
+          for (const evolution of evolutions) {
+            evolution.selected = hashIds.includes(evolution.id)
+            evolution.itemIds = evolution.itemIds || []
+            evolution.items = evolution.itemIds.map((itemId) => itemsById[itemId])
+            evolution.weaponIds = evolution.itemIds.filter((itemId) => weaponsById[itemId])
+            evolution.weapons = evolution.weaponIds.map((itemId) => weaponsById[itemId])
+            evolution.passiveIds = evolution.itemIds.filter((itemId) => passivesById[itemId])
+            evolution.passives = evolution.passiveIds.map((itemId) => passivesById[itemId])
+            for (const item of evolution.items) {
               item.evolutionId = evolution.id
               item.evolution = evolution
-              item.itemIds = evolution ? evolution.itemIds.filter((itemId) => itemId !== item.id) : []
             }
-            if (!item.impactIds) {
-              item.impactIds = items.filter((item2) => item2.impactIds && item2.impactIds.includes(item.id)).map((item2) => item2.id)
-            }
-            // impacts
-            item.impacts = item.impactIds.map((id) => itemsById[id])
-            // items
-            item.items = item.itemIds.map((id) => itemsById[id])
+          }
+
+          for (const weapon of weapons) {
+            weapon.selected = hashIds.includes(weapon.id)
+            weapon.impacts = passives.filter((passive) => passive.impactIds && passive.impactIds.includes(weapon.id))
+            weapon.impactIds = weapon.impacts.map((impact) => impact.id)
+          }
+
+          for (const passive of passives) {
+            passive.selected = hashIds.includes(passive.id)
+            passive.impactIds = passive.impactIds || []
+            passive.impacts = passive.impactIds.map((impactId) => weapons.find((weapon) => weapon.id === impactId))
+          }
+
+          for (const arcana of arcanas) {
+            arcana.impactIds = arcana.impactIds || []
+            arcana.impacts = items.filter((item) => arcana.impactIds.includes(item.id))
           }
 
           for (const character of characters) {
-            if (character.itemIds) {
-              character.items = items.filter((item) => character.itemIds.includes(item.id))
-            }
+            character.itemIds = character.itemIds || []
+            character.items = items.filter((item) => character.itemIds.includes(item.id))
           }
 
-          window.vs = { config, items, characters, itemsById, charactersById }
-          console.log({ config, items, characters, itemsById, charactersById })
+          const preselectedCharacter = characters.find((character) => hashIds.includes(character.id))
+          if (preselectedCharacter) {
+            preselectedCharacter.selected = true
+          }
 
-          const hashIds = location.hash.substring(1).split(',')
-
-          const selectedCharacterId = ref(hashIds.find((id) => charactersById[id]))
-          const selectedItemIds = reactive(hashIds.filter((id) => itemsById[id]))
-
-          const weapons = computed(() => items.filter((item) => item.type === 'weapon'))
-          const evolutions = computed(() => items.filter((item) => item.type === 'evolution'))
-          const passives = computed(() => items.filter((item) => item.type === 'passive'))
-          const arcanas = computed(() => items.filter((item) => item.type === 'arcana'))
-
-          const selectedCharacter = computed(() => characters.find((character) => character.id === selectedCharacterId.value))
-          const selectedItems = computed(() => selectedItemIds.map((itemId) => itemsById[itemId]))
-          const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive'))
-          const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
-          const selectedWeapons = computed(() => {
-            const weaponIds = []
-            for (const item of selectedItems.value) {
-              if (item.type === 'evolution' && selectedCharacter.value.itemIds.includes(item.id)) {
-                weaponIds.push(item.id)
-              }
-              if (item.type === 'weapon') {
-                if (item.evolution && item.evolution.itemIds.every((itemId) => selectedItemIds.includes(itemId)) && !selectedItemIds.includes(item.evolutionId)) {
-                  if (!weaponIds.includes(item.evolutionId)) {
-                    weaponIds.push(item.evolutionId)
+          const selectedCharacter = computed(() => characters.find((character) => character.selected) || { id: '', itemIds: [], items: [] })
+          const selectedWeapons = computed(() =>
+            weapons.concat(evolutions).reduce((result, weapon) => {
+              if (weapon.selected) {
+                const maybeEvolution = weapon.evolved ? weapon.evolution : weapon
+                if (!result.find((item) => item.id === maybeEvolution.id)) {
+                  if (weapon.fixed) {
+                    result.unshift(maybeEvolution)
+                  } else {
+                    result.push(maybeEvolution)
                   }
-                } else {
-                  weaponIds.push(item.id)
                 }
               }
-            }
-            return weaponIds.map((weaponId) => itemsById[weaponId])
-          })
+              return result
+            }, [])
+          )
+          const selectedPassives = computed(() => passives.filter((passive) => passive.selected))
+          const selectedArcanas = computed(() => arcanas.filter((arcana) => arcana.selected))
+
+          window.vs = { config, items, characters, weapons, passives, evolutions }
+          console.log(window.vs)
 
           watchEffect(() => {
-            location.hash = [selectedCharacterId.value].concat(selectedItemIds).join()
+            location.hash = characters
+              .concat(weapons, passives, arcanas)
+              .filter((item) => item.selected)
+              .map((item) => item.id)
+              .join()
+            for (const evolution of evolutions) {
+              evolution.fixed = selectedCharacter.value.itemIds.includes(evolution.id)
+            }
+            for (const weapon of weapons) {
+              weapon.evolved = weapon.evolution && (weapon.evolution.items.every((item) => item.selected) || selectedCharacter.value.itemIds.includes(weapon.evolution.id))
+              weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || (weapon.evolution && weapon.evolution.fixed)
+            }
           })
 
           watch(
             selectedCharacter,
             (newCharacter, oldCharacter) => {
-              if (oldCharacter) {
-                if (oldCharacter && oldCharacter.itemIds) {
-                  for (const itemId of oldCharacter.itemIds) {
-                    removeItemId(itemId)
-                  }
+              if (oldCharacter && oldCharacter.itemIds) {
+                for (const item of oldCharacter.items) {
+                  item.selected = false
                 }
               }
-              if (newCharacter) {
+              if (newCharacter && newCharacter.itemIds) {
                 for (const item of newCharacter.items) {
-                  if (item.type === 'evolution') {
-                    for (const weaponId of item.weaponIds) {
-                      removeItemId(weaponId)
-                    }
-                  } else {
-                    removeItemId(item.id)
-                  }
-                  if (!selectedItems.value.find((item2) => item2.type === 'evolution' && item2.itemIds.includes(item.id))) {
-                    prependItemId(item.id)
-                  }
+                  item.selected = true
                 }
               }
             },
@@ -643,119 +650,84 @@
               return
             }
             if (object.itemIds) {
-              for (const itemId of object.itemIds) {
-                document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
+              for (const item of object.items) {
+                document.querySelectorAll(`[data-id="${item.id}"]`).forEach((element) => {
                   element.classList.add('yellow')
                 })
+                if (item.evolved) {
+                  document.querySelectorAll(`[data-id="${item.evolutionId}"]`).forEach((element) => {
+                    element.classList.add('yellow')
+                  })
+                }
+              }
+            }
+            if (object.evolution) {
+              for (const itemId of object.evolution.itemIds.concat(object.evolutionId)) {
+                if (object.id !== itemId) {
+                  document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
+                    element.classList.add('yellow')
+                  })
+                }
               }
             }
             if (object.impactIds) {
-              for (const passiveId of object.impactIds) {
-                document.querySelectorAll(`[data-id="${passiveId}"]`).forEach((element) => {
+              for (const impactId of object.impactIds) {
+                document.querySelectorAll(`[data-id="${impactId}"]`).forEach((element) => {
                   element.classList.add('green')
                 })
               }
             }
-            if (object.type === 'passive') {
-              for (const item of items) {
-                if (item.impactIds && item.impactIds.includes(object.id)) {
-                  document.querySelectorAll(`[data-id="${item.id}"]`).forEach((element) => {
-                    element.classList.add('green')
-                  })
-                }
-              }
-            }
           }
 
-          function onMouseLeave(object) {
-            if (!object) {
-              return
-            }
-            if (object.itemIds) {
-              for (const itemId of object.itemIds) {
-                document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
-                  element.classList.remove('yellow')
-                })
-              }
-            }
-            if (object.impactIds) {
-              for (const passiveId of object.impactIds) {
-                document.querySelectorAll(`[data-id="${passiveId}"]`).forEach((element) => {
-                  element.classList.remove('green')
-                })
-              }
-            }
-            if (object.type === 'passive') {
-              for (const item of items) {
-                if (item.impactIds && item.impactIds.includes(object.id)) {
-                  document.querySelectorAll(`[data-id="${item.id}"]`).forEach((element) => {
-                    element.classList.remove('green')
-                  })
-                }
-              }
-            }
+          function onMouseLeave() {
+            document.querySelectorAll(`.yellow, .green`).forEach((element) => {
+              element.classList.remove('yellow', 'green')
+            })
           }
 
           function selectCharacter(newCharacter) {
-            selectedCharacterId.value = newCharacter.id
+            if (selectedCharacter.value.selected) {
+              selectedCharacter.value.selected = false
+              onMouseLeave()
+            }
+            newCharacter.selected = true
+            nextTick(() => {
+              onMouseEnter(newCharacter)
+            })
           }
 
           function toggleItem(item) {
-            if (item.type === 'evolution') {
+            if (item.weaponIds) {
               for (const weapon of item.weapons) {
                 toggleItem(weapon)
               }
             } else {
-              if (isSelectedId(item.id)) {
+              if (item.selected) {
                 // prevent removing the selected chracter's weapon
-                if (selectedCharacter.value && selectedCharacter.value.itemIds.includes(item.id)) {
-                  return false
+                if (!item.fixed) {
+                  item.selected = false
+                  onMouseLeave()
                 }
-                removeItemId(item.id)
               } else {
                 if (item.type === 'arcana' && selectedArcanas.value.length > 2) {
                   return
                 }
-                appendItemId(item.id)
+                item.selected = true
+                nextTick(() => {
+                  onMouseEnter(item)
+                })
               }
             }
           }
 
-          function isSelectedId(itemId) {
-            return selectedItems.value.find((selectedItem) => selectedItem.id === itemId || (selectedItem.type === 'evolution' && selectedItem.items.find((item) => item.type === 'weapon' && item.id === itemId)))
-          }
-
-          function appendItemId(newItemId) {
-            // console.log("appendItemId", newItemId);
-            if (!selectedItemIds.includes(newItemId)) {
-              selectedItemIds.push(newItemId)
-            }
-          }
-
-          function prependItemId(newItemId) {
-            // console.log("prependItemId", newItemId);
-            if (!selectedItemIds.includes(newItemId)) {
-              selectedItemIds.unshift(newItemId)
-            }
-          }
-
-          function removeItemId(itemId) {
-            // console.log("removeItemId", itemId);
-            const itemIndex = selectedItemIds.indexOf(itemId)
-            if (itemIndex !== -1) {
-              onMouseLeave(selectedItems.value[itemIndex])
-              selectedItemIds.splice(itemIndex, 1)
-            }
-          }
-
           function reset() {
-            selectedCharacterId.value = ''
-            selectedItemIds.length = 0
+            for (const item of items) {
+              item.selected = false
+            }
           }
 
           function save() {
             domtoimage.toPng(document.querySelector('.slots')).then((dataUrl) => {
-              console.log({ dataUrl })
               var link = document.createElement('a')
               link.download = `vs-build_${new Date().toISOString().substring(0, 19).replaceAll(':', '-')}.png`
               link.href = dataUrl
@@ -800,7 +772,6 @@
             onMouseLeave,
             selectCharacter,
             toggleItem,
-            isSelectedId,
             save,
             copy,
             reset,
