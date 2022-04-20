@@ -92,7 +92,7 @@
         /* background-image: linear-gradient(-45deg, #400, #f66);
         border-color: #f99 !important; */
         background: #333 linear-gradient(-45deg, #333, #bbb) no-repeat;
-        transform: scale(1.3);
+        transform: scale(1.4);
         z-index: 2;
         cursor: pointer;
       }
@@ -145,7 +145,7 @@
         border-color: #3cf !important; */
         border: 0.15em solid #ddc;
         background: #333 linear-gradient(-45deg, #333, #ccb) no-repeat;
-        transform: scale(1.3);
+        transform: scale(1.4);
         z-index: 2;
       }
       .object.selected {
@@ -161,7 +161,6 @@
       .yellow {
         background-image: linear-gradient(-45deg, #420, #fc0) !important;
       }
-
       .object.character,
       .object.passive,
       .object.weapon {
@@ -177,7 +176,6 @@
         height: 6em;
         overflow: hidden;
       }
-
       .object > .title {
         position: absolute;
         top: 0.1em;
@@ -201,12 +199,29 @@
         font-size: 0.9em;
       }
       .object > .impacts {
-        display: flex;
-        margin-top: 0.25em;
-        font-size: 0.5em;
+        position: absolute;
+        bottom: 0.2em;
+        right: 0.2em;
       }
-      .object > .impacts > div {
-        margin: 0 -0.2em !important;
+      .object > .impacts > .impact {
+        content: ' ';
+        width: 0.4em;
+        height: 0.4em;
+        border-radius: 0.2em;
+        border: 0.05em solid #333;
+        background-color: #666;
+      }
+      .object > .impacts > .impact:hover {
+        border-color: #fff;
+      }
+      .positive {
+        background-color: #3c3 !important;
+      }
+      .negative {
+        background-color: #f33 !important;
+      }
+      .hidden {
+        display: none;
       }
       .empty {
         color: #999;
@@ -342,6 +357,7 @@
           <div v-if="settings" class="buttons settings">
             <div class="button" @click="config.pixels = !config.pixels">PIXELS: {{config.pixels ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.titles = !config.titles">TITLES: {{config.titles ? 'ON' : 'OFF'}}</div>
+            <div class="button" @click="config.impacts = !config.impacts">IMPACTS: {{config.impacts ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
             <div class="flex">
               <div class="button" @click="config.size -= 0.1">SIZE -</div>
@@ -370,11 +386,13 @@
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
-              <div v-if="weapon.impacts && config.impacts" class="impacts">
-                <div v-for="impact in weapon.impacts" class="sprite" :class="`sprite-${impact.id}`" :title="impact.name"></div>
+              <div v-if="config.impacts" class="impacts">
+                <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
               <div v-if="weapon.evolution && config.evolutions" class="evolutions">
-                <div v-for="object in weapon.evolution.passives" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
+                <template v-for="object in weapon.evolution.items">
+                  <div v-if="object.id !== weapon.id" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
+                </template>
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
@@ -387,6 +405,10 @@
             <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
+              </div>
+              <div v-if="config.impacts" class="impacts">
+                <div v-for="weapon in selectedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
+                <div v-if="selectedCharacter.id" class="impact" :class="impactsById[selectedCharacter.id] && (impactsById[selectedCharacter.id].includes('-' + passive.id) ? 'negative' : impactsById[selectedCharacter.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="selectedCharacter.id"></div>
               </div>
               <div v-if="passive.evolution && config.evolutions" class="weapons">
                 <div v-for="item in passive.evolution.weapons" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
@@ -430,7 +452,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: false, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.0' }
+          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.0' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
 
@@ -629,6 +651,9 @@
                 newImpactsById[id].push('+luck')
               }
             }
+            for (const itemId in newImpactsById) {
+              newImpactsById[itemId].sort((id1, id2) => (itemsById[id1.substring(1)].selected && !itemsById[id2.substring(1)].selected ? 1 : -1))
+            }
             return newImpactsById
           })
 
@@ -648,20 +673,14 @@
 
           for (const weapon of weapons) {
             weapon.selected = hashIds.includes(weapon.id) || hashIds.includes(weapon.evolutionId)
-            weapon.impacts = passives.filter((passive) => passive.impactIds && passive.impactIds.includes(weapon.id))
-            weapon.impactIds = weapon.impacts.map((impact) => impact.id)
           }
 
           for (const passive of passives) {
             passive.selected = hashIds.includes(passive.id)
-            passive.impactIds = passive.impactIds || []
-            passive.impacts = passive.impactIds.map((impactId) => weapons.find((weapon) => weapon.id === impactId))
           }
 
           for (const arcana of arcanas) {
             arcana.selected = hashIds.includes(arcana.id)
-            arcana.impactIds = arcana.impactIds || []
-            arcana.impacts = items.filter((item) => arcana.impactIds.includes(item.id))
           }
 
           for (const character of characters) {
@@ -693,7 +712,7 @@
           const selectedPassives = computed(() => passives.filter((passive) => passive.selected))
           const selectedArcanas = computed(() => arcanas.filter((arcana) => arcana.selected))
 
-          window.vs = { config, items, characters, weapons, passives, evolutions }
+          window.vs = { config, itemsById }
           console.log(window.vs)
 
           watchEffect(() => {
@@ -867,6 +886,8 @@
             passives,
             evolutions,
             arcanas,
+            itemsById,
+            impactsById,
             selectedCharacter,
             selectedWeapons,
             selectedPassives,
