@@ -331,10 +331,10 @@
             </div>
             <div class="flex-1">
               <div class="flex">
-                <div v-for="weapon in selectedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+                <div v-for="weapon in evolvedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
                   <div class="sprite" :class="`sprite-${weapon.id}`"></div>
                 </div>
-                <div v-for="i in (selectedWeapons.length < 7 ? 6 - selectedWeapons.length : 0)" class="slot weapon">
+                <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
                   <div class="empty">WEAPON</div>
                 </div>
               </div>
@@ -458,8 +458,6 @@
 
           const settings = ref(false)
 
-          const hashIds = location.hash.substring(1).split(',')
-
           const characters = reactive([
             { id: 'antonio', name: 'Antonio', itemIds: ['whip'] },
             { id: 'imelda', name: 'Imelda', itemIds: ['magicwand'] },
@@ -557,13 +555,25 @@
             { id: 'arcana19', name: 'Heart of Fire' },
           ])
 
-          const items = characters.concat(weapons, passives, evolutions, arcanas)
+          const items = characters.concat(
+            weapons.map((weapon) => Object.assign(weapon, { type: 'weapon' })),
+            passives.map((passive) => Object.assign(passive, { type: 'passive' })),
+            evolutions.map((evolution) => Object.assign(evolution, { type: 'evolution' })),
+            arcanas.map((arcana) => Object.assign(arcana, { type: 'arcana' }))
+          )
 
           const itemsById = keyById(items)
           const weaponsById = keyById(weapons)
           const passivesById = keyById(passives)
           const evolutionsById = keyById(evolutions)
           const arcanasById = keyById(arcanas)
+
+          const hashIds = location.hash.substring(1).split(',')
+          let selectedIndex = hashIds.length
+          for (const item of items) {
+            const index = hashIds.indexOf(item.id)
+            item.selected = index === -1 ? 0 : index + 1
+          }
 
           const impactsById = computed(() => {
             const newImpactsById = {
@@ -658,7 +668,6 @@
           })
 
           for (const evolution of evolutions) {
-            evolution.selected = hashIds.includes(evolution.id)
             evolution.itemIds = evolution.itemIds || []
             evolution.items = evolution.itemIds.map((itemId) => itemsById[itemId])
             evolution.weaponIds = evolution.itemIds.filter((itemId) => weaponsById[itemId])
@@ -671,61 +680,36 @@
             }
           }
 
-          for (const weapon of weapons) {
-            weapon.selected = hashIds.includes(weapon.id) || hashIds.includes(weapon.evolutionId)
-          }
-
-          for (const passive of passives) {
-            passive.selected = hashIds.includes(passive.id)
-          }
-
-          for (const arcana of arcanas) {
-            arcana.selected = hashIds.includes(arcana.id)
-          }
-
           for (const character of characters) {
             character.itemIds = character.itemIds || []
-            character.items = items.filter((item) => character.itemIds.includes(item.id))
-          }
-
-          const preselectedCharacter = characters.find((character) => hashIds.includes(character.id))
-          if (preselectedCharacter) {
-            preselectedCharacter.selected = true
+            character.items = character.itemIds.map((itemId) => itemsById[itemId])
           }
 
           const selectedCharacter = computed(() => characters.find((character) => character.selected) || { id: '', itemIds: [], items: [] })
-          const selectedWeapons = computed(() =>
-            weapons.concat(evolutions).reduce((result, weapon) => {
-              if (weapon.selected) {
-                const maybeEvolution = weapon.evolved ? weapon.evolution : weapon
-                if (!result.find((item) => item.id === maybeEvolution.id)) {
-                  if (weapon.fixed) {
-                    result.unshift(maybeEvolution)
-                  } else {
-                    result.push(maybeEvolution)
-                  }
-                }
+          const selectedWeapons = computed(() => weapons.filter((weapon) => weapon.selected).sort((a, b) => (a.fixed && !b.fixed ? -1 : !a.fixed && b.fixed ? 1 : a.selected - b.selected)))
+          const selectedPassives = computed(() => passives.filter((passive) => passive.selected).sort((a, b) => a.selected - b.selected))
+          const selectedArcanas = computed(() => arcanas.filter((arcana) => arcana.selected).sort((a, b) => a.selected - b.selected))
+          const evolvedWeapons = computed(() =>
+            selectedWeapons.value.reduce((result, weapon) => {
+              const maybeEvolution = weapon.evolved ? weapon.evolution : weapon
+              if (!result.find((item) => item.id === maybeEvolution.id)) {
+                result.push(maybeEvolution)
               }
               return result
             }, [])
           )
-          const selectedPassives = computed(() => passives.filter((passive) => passive.selected))
-          const selectedArcanas = computed(() => arcanas.filter((arcana) => arcana.selected))
 
           window.vs = { config, itemsById }
           console.log(window.vs)
 
           watchEffect(() => {
-            location.hash = items
-              .filter((item) => item.selected)
+            location.hash = new Array()
+              .concat(selectedCharacter.value, selectedWeapons.value, selectedPassives.value, selectedArcanas.value)
               .map((item) => item.id)
               .join()
-            for (const evolution of evolutions) {
-              evolution.fixed = selectedCharacter.value.itemIds.includes(evolution.id)
-            }
             for (const weapon of weapons) {
               weapon.evolved = weapon.evolution && (weapon.evolution.items.every((item) => item.selected) || selectedCharacter.value.itemIds.includes(weapon.evolution.id))
-              weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || (weapon.evolution && weapon.evolution.fixed)
+              weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || (weapon.evolutionId && selectedCharacter.value.itemIds.includes(weapon.evolutionId))
             }
           })
 
@@ -734,20 +718,20 @@
             (newCharacter, oldCharacter) => {
               if (oldCharacter && oldCharacter.itemIds) {
                 for (const item of oldCharacter.items) {
-                  item.selected = false
+                  item.selected = 0
                   if (item.weaponIds) {
                     for (const weapon of item.weapons) {
-                      weapon.selected = false
+                      weapon.selected = 0
                     }
                   }
                 }
               }
               if (newCharacter && newCharacter.itemIds) {
                 for (const item of newCharacter.items) {
-                  item.selected = true
+                  item.selected = selectedIndex++
                   if (item.weaponIds) {
                     for (const weapon of item.weapons) {
-                      weapon.selected = true
+                      weapon.selected = selectedIndex++
                     }
                   }
                 }
@@ -809,17 +793,17 @@
 
           function selectCharacter(newCharacter) {
             if (selectedCharacter.value.selected) {
-              selectedCharacter.value.selected = false
+              selectedCharacter.value.selected = 0
               onMouseLeave()
             }
-            newCharacter.selected = true
+            newCharacter.selected = selectedIndex++
             nextTick(() => {
               onMouseEnter(newCharacter)
             })
           }
 
           function toggleItem(item) {
-            if (item.weaponIds) {
+            if (item.type === 'evolution') {
               for (const weapon of item.weapons) {
                 toggleItem(weapon)
               }
@@ -827,14 +811,14 @@
               if (item.selected) {
                 // prevent removing the selected chracter's weapon
                 if (!item.fixed) {
-                  item.selected = false
+                  item.selected = 0
                   onMouseLeave()
                 }
               } else {
                 if (item.type === 'arcana' && selectedArcanas.value.length > 2) {
                   return
                 }
-                item.selected = true
+                item.selected = selectedIndex++
                 nextTick(() => {
                   onMouseEnter(item)
                 })
@@ -844,7 +828,7 @@
 
           function reset() {
             for (const item of items) {
-              item.selected = false
+              item.selected = 0
             }
           }
 
@@ -892,6 +876,7 @@
             selectedWeapons,
             selectedPassives,
             selectedArcanas,
+            evolvedWeapons,
             onMouseEnter,
             onMouseLeave,
             selectCharacter,
