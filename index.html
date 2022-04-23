@@ -107,15 +107,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 4em;
-        height: 5em;
+        width: 1.667em;
+        height: 1.667em;
         overflow: hidden;
       }
       .slot:nth-child(n + 7) {
         opacity: 0.5;
       }
       .slot.arcana > div {
-        font-size: 0.85em;
+        font-size: 0.3em;
         flex-shrink: 0;
       }
       .objects {
@@ -163,7 +163,8 @@
       }
       .object.character,
       .object.passive,
-      .object.weapon {
+      .object.weapon,
+      .object.arcana {
         align-items: flex-start;
         justify-content: flex-end;
       }
@@ -171,10 +172,6 @@
       .object.evolution {
         align-items: center;
         justify-content: center;
-      }
-      .object.arcana {
-        height: 6em;
-        overflow: hidden;
       }
       .object > .title {
         position: absolute;
@@ -185,6 +182,12 @@
       .object > .character {
         position: absolute;
         font-size: 1em;
+      }
+      .object > .arcana {
+        font-size: 0.6em;
+      }
+      .object > .arcana > .sprite {
+        border-radius: 0.3em;
       }
       .object > .passive,
       .object > .weapon,
@@ -202,6 +205,16 @@
         position: absolute;
         bottom: 0.2em;
         right: 0.2em;
+      }
+      .object > .roman {
+        position: absolute;
+        bottom: 0.2em;
+        right: 0.2em;
+        padding: 0.1em 0.3em;
+        background-color: #222;
+        border-radius: 0.3em;
+        box-shadow: 0 0 1px #000;
+        font-size: 0.9em;
       }
       .object > .impacts > .impact {
         content: ' ';
@@ -318,9 +331,12 @@
             <span>Build Planner ({{config.version}})</span>
           </h1>
           <div class="slots">
-            <div class="flex">
+            <div>
               <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
+              </div>
+              <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
+                <div class="empty">ARCANA</div>
               </div>
             </div>
             <div v-if="selectedCharacter" class="character slot" :title="selectedCharacter.name">
@@ -382,7 +398,7 @@
         <!-- Weapons -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
@@ -402,7 +418,7 @@
         <!-- Passives -->
         <section style="max-width: 45em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
@@ -421,10 +437,12 @@
         <!-- Arcanas -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana center" :class="{selected: arcana.selected}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
               <div class="arcana">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
               </div>
+              <div v-if="config.titles" class="title">{{arcana.id}}</div>
+              <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
             </div>
           </div>
         </section>
@@ -683,6 +701,17 @@
           for (const character of characters) {
             character.itemIds = character.itemIds || []
             character.items = character.itemIds.map((itemId) => itemsById[itemId])
+          }
+
+          for (const arcana of arcanas) {
+            const roman = { X: 10, IX: 9, V: 5, IV: 4, I: 1 }
+            let num = +arcana.id.substr(6)
+            arcana.roman = ''
+            for (let i of Object.keys(roman)) {
+              let q = Math.floor(num / roman[i])
+              num -= q * roman[i]
+              arcana.roman += i.repeat(q)
+            }
           }
 
           const selectedCharacter = computed(() => characters.find((character) => character.selected) || { id: '', itemIds: [], items: [] })

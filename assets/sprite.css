@@ -1,7 +1,7 @@
 .sprite {
     background-image: url("sprite.png");
     background-repeat: no-repeat;
-    background-size: 188.2em 8.2em;
+    background-size: 187em 5.6em;
 }
 
 .sprite-amount {
@@ -23,475 +23,475 @@
 }
 
 .sprite-arcana16 {
-    width: 5.6em;
-    height: 8em;
+    width: 5.4em;
+    height: 5.4em;
     background-position: -7.4em -0.1em;
 }
 
 .sprite-arcana17 {
-    width: 5.6em;
-    height: 8em;
-    background-position: -13.2em -0.1em;
+    width: 5.4em;
+    height: 5.4em;
+    background-position: -13em -0.1em;
 }
 
 .sprite-arcana19 {
-    width: 5.6em;
-    height: 8em;
-    background-position: -19em -0.1em;
+    width: 5.4em;
+    height: 5.4em;
+    background-position: -18.6em -0.1em;
 }
 
 .sprite-arcana4 {
-    width: 5.6em;
-    height: 8em;
-    background-position: -24.8em -0.1em;
+    width: 5.4em;
+    height: 5.4em;
+    background-position: -24.2em -0.1em;
 }
 
 .sprite-arcana5 {
-    width: 5.6em;
-    height: 8em;
-    background-position: -30.6em -0.1em;
+    width: 5.4em;
+    height: 5.4em;
+    background-position: -29.8em -0.1em;
 }
 
 .sprite-arcana6 {
-    width: 5.6em;
-    height: 8em;
-    background-position: -36.4em -0.1em;
+    width: 5.4em;
+    height: 5.4em;
+    background-position: -35.4em -0.1em;
 }
 
 .sprite-area {
     width: 1.3em;
     height: 1.5em;
-    background-position: -42.2em -0.1em;
+    background-position: -41em -0.1em;
 }
 
 .sprite-armor {
     width: 1.4em;
     height: 1.4em;
-    background-position: -43.7em 0.1em;
+    background-position: -42.5em 0.1em;
 }
 
 .sprite-axe {
     width: 1.6em;
     height: 1.6em;
-    background-position: -45.3em -0.1em;
+    background-position: -44.1em -0.1em;
 }
 
 .sprite-axe_ {
     width: 1.4em;
     height: 1.4em;
-    background-position: -47.1em -0.1em;
+    background-position: -45.9em -0.1em;
 }
 
 .sprite-bible {
     width: 1em;
     height: 1.5em;
-    background-position: -48.7em -0.1em;
+    background-position: -47.5em -0.1em;
 }
 
 .sprite-bible_ {
     width: 1em;
     height: 1.5em;
-    background-position: -49.9em -0.1em;
+    background-position: -48.7em -0.1em;
 }
 
 .sprite-bird1 {
     width: 1.6em;
     height: 1.6em;
-    background-position: -51.1em 0.05em;
+    background-position: -49.9em 0.05em;
 }
 
 .sprite-bird2 {
     width: 1.6em;
     height: 1.6em;
-    background-position: -52.9em 0.05em;
+    background-position: -51.7em 0.05em;
 }
 
 .sprite-bird_ {
     width: 1.6em;
     height: 1.6em;
-    background-position: -54.7em 0.05em;
+    background-position: -53.5em 0.05em;
 }
 
 .sprite-bone {
     width: 1.4em;
     height: 1.4em;
-    background-position: -56.5em 0.25em;
+    background-position: -55.3em 0.25em;
 }
 
 .sprite-cart {
     width: 1.6em;
     height: 1.6em;
-    background-position: -58.1em -0.05em;
+    background-position: -56.9em -0.05em;
 }
 
 .sprite-cat {
     width: 1.5em;
     height: 1.5em;
-    background-position: -59.9em 0.05em;
+    background-position: -58.7em 0.05em;
 }
 
 .sprite-cavallo {
     width: 2.8em;
     height: 3.2em;
-    background-position: -61.6em -0.1em;
+    background-position: -60.4em -0.1em;
 }
 
 .sprite-cherry {
     width: 1.4em;
     height: 1.4em;
-    background-position: -64.6em -0.1em;
+    background-position: -63.4em -0.1em;
 }
 
 .sprite-christine {
     width: 2.1em;
     height: 3.3em;
-    background-position: -66.2em -0.1em;
+    background-position: -65em -0.1em;
 }
 
 .sprite-clerici {
     width: 2.6em;
     height: 3.1em;
-    background-position: -68.5em -0.1em;
+    background-position: -67.3em -0.1em;
 }
 
 .sprite-cooldown {
     width: 1.4em;
     height: 1.4em;
-    background-position: -71.3em -0.1em;
+    background-position: -70.1em -0.1em;
 }
 
 .sprite-cross {
     width: 1.5em;
     height: 1.5em;
-    background-position: -72.9em -0.05em;
+    background-position: -71.7em -0.05em;
 }
 
 .sprite-cross_ {
     width: 1.5em;
     height: 1.5em;
-    background-position: -74.6em -0.1em;
+    background-position: -73.4em -0.1em;
 }
 
 .sprite-curse {
     width: 1.3em;
     height: 1.4em;
-    background-position: -76.3em -0.1em;
+    background-position: -75.1em -0.1em;
 }
 
 .sprite-dommario {
     width: 2.5em;
     height: 3em;
-    background-position: -77.8em -0.1em;
+    background-position: -76.6em -0.1em;
 }
 
 .sprite-duration {
     width: 1.2em;
     height: 1.3em;
-    background-position: -80.5em -0.1em;
+    background-position: -79.3em -0.1em;
 }
 
 .sprite-exdash {
     width: 3em;
     height: 3em;
-    background-position: -81.9em 0;
+    background-position: -80.7em 0;
 }
 
 .sprite-firewand {
     width: 1.4em;
     height: 1.4em;
-    background-position: -85.1em -0.1em;
+    background-position: -83.9em -0.1em;
 }
 
 .sprite-firewand_ {
     width: 1.4em;
     height: 1.4em;
-    background-position: -86.7em -0.1em;
+    background-position: -85.5em -0.1em;
 }
 
 .sprite-garlic {
     width: 1.1em;
     height: 1.1em;
-    background-position: -88.3em -0.1em;
+    background-position: -87.1em -0.1em;
 }
 
 .sprite-garlic_ {
     width: 1.2em;
     height: 1.3em;
-    background-position: -89.6em -0.1em;
+    background-position: -88.4em -0.1em;
 }
 
 .sprite-gennaro {
     width: 2.8em;
     height: 3.2em;
-    background-position: -91em -0.1em;
+    background-position: -89.8em -0.1em;
 }
 
 .sprite-giovanna {
     width: 3em;
     height: 3.1em;
-    background-position: -94em -0.1em;
+    background-position: -92.8em -0.1em;
 }
 
 .sprite-greed {
     width: 1em;
     height: 1em;
-    background-position: -97.2em 0;
+    background-position: -96em 0;
 }
 
 .sprite-growth {
     width: 1.3em;
     height: 1.5em;
-    background-position: -98.4em -0.1em;
+    background-position: -97.2em -0.1em;
 }
 
 .sprite-guns1 {
     width: 1.6em;
     height: 1.6em;
-    background-position: -99.9em -0.1em;
+    background-position: -98.7em -0.1em;
 }
 
 .sprite-guns2 {
     width: 1.6em;
     height: 1.6em;
-    background-position: -101.7em -0.1em;
+    background-position: -100.5em -0.1em;
 }
 
 .sprite-guns_ {
     width: 1.6em;
     height: 1.6em;
-    background-position: -103.5em -0.1em;
+    background-position: -102.3em -0.1em;
 }
 
 .sprite-health {
     width: 1.6em;
     height: 1.6em;
-    background-position: -105.3em 0.05em;
+    background-position: -104.1em 0.05em;
 }
 
 .sprite-imelda {
     width: 3.1em;
     height: 3.2em;
-    background-position: -107.1em -0.1em;
+    background-position: -105.9em -0.1em;
 }
 
 .sprite-knife {
     width: 1.6em;
     height: 1.6em;
-    background-position: -110.4em 0.45em;
+    background-position: -109.2em 0.45em;
 }
 
 .sprite-knife_ {
     width: 1.6em;
     height: 1.6em;
-    background-position: -112.2em 0.05em;
+    background-position: -111em 0.05em;
 }
 
 .sprite-krochi {
     width: 2.8em;
     height: 3.2em;
-    background-position: -114em -0.1em;
+    background-position: -112.8em -0.1em;
 }
 
 .sprite-lama {
     width: 2.9em;
     height: 3.2em;
-    background-position: -117em -0.1em;
+    background-position: -115.8em -0.1em;
 }
 
 .sprite-lancet {
     width: 1.3em;
     height: 1.4em;
-    background-position: -120.1em -0.1em;
+    background-position: -118.9em -0.1em;
 }
 
 .sprite-laurel {
     width: 1.5em;
     height: 1.5em;
-    background-position: -121.6em -0.1em;
+    background-position: -120.4em -0.1em;
 }
 
 .sprite-leda {
     width: 4.9em;
     height: 4.9em;
-    background-position: -123.3em 0.05em;
+    background-position: -122.1em 0.05em;
 }
 
 .sprite-lightning {
     width: 1.4em;
     height: 1.4em;
-    background-position: -128.4em -0.1em;
+    background-position: -127.2em -0.1em;
 }
 
 .sprite-lightning_ {
     width: 1.4em;
     height: 1.4em;
-    background-position: -130em -0.1em;
+    background-position: -128.8em -0.1em;
 }
 
 .sprite-luck {
     width: 1.6em;
     height: 1.6em;
-    background-position: -131.6em -0.1em;
+    background-position: -130.4em -0.1em;
 }
 
 .sprite-magicwand {
     width: 1.4em;
     height: 1.4em;
-    background-position: -133.4em -0.1em;
+    background-position: -132.2em -0.1em;
 }
 
 .sprite-magicwand_ {
     width: 1.5em;
     height: 1.5em;
-    background-position: -135em -0.1em;
+    background-position: -133.8em -0.1em;
 }
 
 .sprite-magnet {
     width: 1.2em;
     height: 1.2em;
-    background-position: -136.7em -0.1em;
+    background-position: -135.5em -0.1em;
 }
 
 .sprite-mana {
     width: 1.6em;
     height: 1.6em;
-    background-position: -138.1em -0.1em;
+    background-position: -136.9em -0.1em;
 }
 
 .sprite-mana_ {
     width: 1.6em;
     height: 1.6em;
-    background-position: -139.9em -0.1em;
+    background-position: -138.7em -0.1em;
 }
 
 .sprite-might {
     width: 1em;
     height: 1.4em;
-    background-position: -141.7em -0.1em;
+    background-position: -140.5em -0.1em;
 }
 
 .sprite-mortaccio {
     width: 2.6em;
     height: 3.5em;
-    background-position: -142.9em -0.1em;
+    background-position: -141.7em -0.1em;
 }
 
 .sprite-pasqualina {
     width: 2.8em;
     height: 3.2em;
-    background-position: -145.7em -0.1em;
+    background-position: -144.5em -0.1em;
 }
 
 .sprite-pentagram {
     width: 1.4em;
     height: 1.4em;
-    background-position: -148.7em -0.1em;
+    background-position: -147.5em -0.1em;
 }
 
 .sprite-pentagram_ {
     width: 1.4em;
     height: 1.4em;
-    background-position: -150.3em -0.1em;
+    background-position: -149.1em -0.1em;
 }
 
 .sprite-poe {
     width: 2.5em;
     height: 2.8em;
-    background-position: -151.9em -0.1em;
+    background-position: -150.7em -0.1em;
 }
 
 .sprite-poppea {
     width: 2.2em;
     height: 3.1em;
-    background-position: -154.6em -0.1em;
+    background-position: -153.4em -0.1em;
 }
 
 .sprite-porta {
     width: 2.3em;
     height: 3.2em;
-    background-position: -157em -0.1em;
+    background-position: -155.8em -0.1em;
 }
 
 .sprite-pugnala {
     width: 2.5em;
     height: 3.8em;
-    background-position: -159.5em -0.1em;
+    background-position: -158.3em -0.1em;
 }
 
 .sprite-ramba {
     width: 2.5em;
     height: 3.3em;
-    background-position: -162.2em -0.1em;
+    background-position: -161em -0.1em;
 }
 
 .sprite-reaper {
     width: 4.1em;
     height: 4.7em;
-    background-position: -164.9em -0.1em;
+    background-position: -163.7em -0.1em;
 }
 
 .sprite-recovery {
     width: 1.2em;
     height: 1.2em;
-    background-position: -169.2em 0;
+    background-position: -168em 0;
 }
 
 .sprite-revival {
     width: 1.4em;
     height: 1.5em;
-    background-position: -170.6em -0.1em;
+    background-position: -169.4em -0.1em;
 }
 
 .sprite-runetracer {
     width: 1.1em;
     height: 1.1em;
-    background-position: -172.2em -0.1em;
+    background-position: -171em -0.1em;
 }
 
 .sprite-runetracer_ {
     width: 1.5em;
     height: 1.5em;
-    background-position: -173.5em -0.1em;
+    background-position: -172.3em -0.1em;
 }
 
 .sprite-speed {
     width: 1.6em;
     height: 1.6em;
-    background-position: -175.2em -0.1em;
+    background-position: -174em -0.1em;
 }
 
 .sprite-toastie {
     width: 3em;
     height: 3em;
-    background-position: -177em 0;
+    background-position: -175.8em 0;
 }
 
 .sprite-water {
     width: 1.3em;
     height: 1.6em;
-    background-position: -180.2em -0.1em;
+    background-position: -179em -0.1em;
 }
 
 .sprite-water_ {
     width: 1.4em;
     height: 1.6em;
-    background-position: -181.7em -0.1em;
+    background-position: -180.5em -0.1em;
 }
 
 .sprite-whip {
     width: 1.5em;
     height: 1.5em;
-    background-position: -183.3em -0.05em;
+    background-position: -182.1em -0.05em;
 }
 
 .sprite-whip_ {
     width: 1.5em;
     height: 1.5em;
-    background-position: -185em -0.1em;
+    background-position: -183.8em -0.1em;
 }
 
 .sprite-wings {
     width: 1.4em;
     height: 1.4em;
-    background-position: -186.7em -0.1em;
+    background-position: -185.5em -0.1em;
 }
