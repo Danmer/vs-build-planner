@@ -173,6 +173,9 @@
         align-items: center;
         justify-content: center;
       }
+      .object.stage {
+        width: 10em;
+      }
       .object > .title {
         position: absolute;
         top: 0.1em;
@@ -186,8 +189,9 @@
       .object > .arcana {
         font-size: 0.6em;
       }
-      .object > .arcana > .sprite {
-        border-radius: 0.3em;
+      .object > .stage {
+        font-size: 0.8em;
+        margin-bottom: 2.8em;
       }
       .object > .passive,
       .object > .weapon,
@@ -201,10 +205,27 @@
         top: 0.2em;
         font-size: 0.9em;
       }
+      .object > .arcana > .sprite {
+        border-radius: 0.3em;
+      }
+      .object > .stage > .sprite {
+        opacity: 0.3;
+      }
       .object > .impacts {
         position: absolute;
         bottom: 0.2em;
         right: 0.2em;
+      }
+      .object > .items {
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+        bottom: 0.2em;
+        left: 0.2em;
+        font-size: 1.2em;
+      }
+      .object > .items > .sprite {
+        margin-right: 0.2em;
       }
       .object > .roman {
         position: absolute;
@@ -439,10 +460,25 @@
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
               <div class="arcana">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{arcana.id}}</div>
               <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stages -->
+        <section style="max-width: 55em">
+          <div class="objects">
+            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected}" @click="selectStage(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave(stage)">
+              <div class="stage">
+                <div class="sprite" :class="`sprite-${stage.id}`" :title="stage.name"></div>
+              </div>
+              <div class="items">
+                <div v-for="item in stage.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              </div>
+              <div v-if="config.titles" class="title">{{stage.id}}</div>
             </div>
           </div>
         </section>
@@ -573,11 +609,19 @@
             { id: 'arcana19', name: 'Heart of Fire' },
           ])
 
+          const stages = reactive([
+            { id: 'forest', name: 'Mad Forest', itemIds: ['might', 'luck', 'health', 'recovery', 'curse'] },
+            { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed'] },
+            { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor'] },
+            { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration'] },
+          ])
+
           const items = characters.concat(
             weapons.map((weapon) => Object.assign(weapon, { type: 'weapon' })),
             passives.map((passive) => Object.assign(passive, { type: 'passive' })),
             evolutions.map((evolution) => Object.assign(evolution, { type: 'evolution' })),
-            arcanas.map((arcana) => Object.assign(arcana, { type: 'arcana' }))
+            arcanas.map((arcana) => Object.assign(arcana, { type: 'arcana' })),
+            stages.map((stage) => Object.assign(stage, { type: 'stage' }))
           )
 
           const itemsById = keyById(items)
@@ -585,6 +629,7 @@
           const passivesById = keyById(passives)
           const evolutionsById = keyById(evolutions)
           const arcanasById = keyById(arcanas)
+          const stagesById = keyById(stages)
 
           const hashIds = location.hash.substring(1).split(',')
           let selectedIndex = hashIds.length
@@ -685,9 +730,12 @@
             return newImpactsById
           })
 
+          for (const item of items) {
+            item.itemIds = item.itemIds || []
+            item.items = item.itemIds.map((itemId) => itemsById[itemId])
+          }
+
           for (const evolution of evolutions) {
-            evolution.itemIds = evolution.itemIds || []
-            evolution.items = evolution.itemIds.map((itemId) => itemsById[itemId])
             evolution.weaponIds = evolution.itemIds.filter((itemId) => weaponsById[itemId])
             evolution.weapons = evolution.weaponIds.map((itemId) => weaponsById[itemId])
             evolution.passiveIds = evolution.itemIds.filter((itemId) => passivesById[itemId])
@@ -696,11 +744,6 @@
               item.evolutionId = evolution.id
               item.evolution = evolution
             }
-          }
-
-          for (const character of characters) {
-            character.itemIds = character.itemIds || []
-            character.items = character.itemIds.map((itemId) => itemsById[itemId])
           }
 
           for (const arcana of arcanas) {
@@ -855,6 +898,14 @@
             }
           }
 
+          function selectStage(stage) {
+            for (const item of stage.items) {
+              if (!item.selected) {
+                item.selected = selectedIndex++
+              }
+            }
+          }
+
           function reset() {
             for (const item of items) {
               item.selected = 0
@@ -899,6 +950,7 @@
             passives,
             evolutions,
             arcanas,
+            stages,
             itemsById,
             impactsById,
             selectedCharacter,
@@ -910,6 +962,7 @@
             onMouseLeave,
             selectCharacter,
             toggleItem,
+            selectStage,
             save,
             copy,
             reset,
