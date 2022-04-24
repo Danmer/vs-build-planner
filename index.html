@@ -329,6 +329,9 @@
         .slots > .flex-1 > .flex {
           flex-direction: column;
         }
+        .slots > .arcanas {
+          display: flex;
+        }
         h1 {
           flex-direction: column;
         }
@@ -352,7 +355,7 @@
             <span>Build Planner ({{config.version}})</span>
           </h1>
           <div class="slots">
-            <div>
+            <div class="arcanas">
               <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
                 <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
               </div>
