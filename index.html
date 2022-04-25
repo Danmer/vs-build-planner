@@ -407,7 +407,7 @@
         </header>
 
         <!-- Characters -->
-        <section style="max-width: 60em">
+        <section style="max-width: 65em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
@@ -509,7 +509,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.0' }
+          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.1' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
 
@@ -534,6 +534,7 @@
             { id: 'cavallo', name: 'Cavallo', itemIds: ['cherry'] },
             { id: 'ramba', name: 'Ramba', itemIds: ['cart'] },
             { id: 'giovanna', name: 'Giovanna', itemIds: ['cat'] },
+            { id: 'osole', name: `O'Sole`, itemIds: ['flowers'] },
             { id: 'exdash', name: 'Exdash', itemIds: ['bird2'], secret: true },
             { id: 'toastie', name: 'Toastie', itemIds: ['bird1'], secret: true },
             { id: 'reaper', name: 'Reaper', itemIds: ['axe_'], secret: true },
@@ -564,6 +565,7 @@
             { id: 'cherry', name: 'Cherry Bomb' },
             { id: 'cart', name: 'Carréllo' },
             { id: 'cat', name: 'Gatti Amari' },
+            { id: 'flowers', name: 'Celestial Dusting' },
           ])
 
           const evolutions = reactive([
@@ -607,6 +609,8 @@
             { id: 'arcana4', name: 'Awake' },
             { id: 'arcana5', name: 'Chaos in the Dark Night' },
             { id: 'arcana6', name: 'Sarabande of Healing' },
+            { id: 'arcana7', name: 'Iron Blue Will' },
+            { id: 'arcana11', name: 'Walts of Pearls' },
             { id: 'arcana16', name: 'Slash' },
             { id: 'arcana17', name: 'Lost & Found Painting' },
             { id: 'arcana19', name: 'Heart of Fire' },
@@ -661,13 +665,16 @@
               cavallo: ['+amount'],
               ramba: ['+amount'],
               giovanna: ['+amount'],
+              osole: ['+amount'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+wings'],
               arcana5: ['+speed'],
-              arcana6: ['+recovery', '+whip_', '+garlic_', '+revival'],
+              arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
+              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
+              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_'],
               arcana17: ['+duration'],
               arcana19: ['+firewand', '+firewand_'],
@@ -686,6 +693,7 @@
               cross_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              flowers: ['+cooldown', '+might', '+area', '+amount', '+duration', '+speed', '+wings'],
               garlic: ['+cooldown', '+might', '+area'],
               garlic_: ['+cooldown', '+might', '+area', '+recovery'],
               guns1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
