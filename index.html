@@ -390,8 +390,9 @@
           </div>
           <div class="buttons">
             <div class="button" @click="reset()">RESET</div>
-            <div class="button" @click="copy($event)">COPY LINK</div>
-            <div class="button" @click="save()">SAVE IMAGE</div>
+            <div class="button" @click="copyLink($event)">COPY LINK</div>
+            <div class="button" @click="copyImage()">COPY IMAGE</div>
+            <div class="button" @click="saveImage()">SAVE IMAGE</div>
             <div class="button" @click="settings = !settings">SETTINGS</div>
           </div>
           <div v-if="settings" class="buttons settings">
@@ -923,7 +924,7 @@
             }
           }
 
-          function save() {
+          function saveImage() {
             domtoimage.toPng(document.querySelector('.slots')).then((dataUrl) => {
               var link = document.createElement('a')
               link.download = `vs-build_${new Date().toISOString().substring(0, 19).replaceAll(':', '-')}.png`
@@ -933,7 +934,13 @@
             })
           }
 
-          function copy(event) {
+          function copyImage() {
+            domtoimage.toBlob(document.querySelector('.slots')).then((dataBlob) => {
+              navigator.clipboard.write([new ClipboardItem({ 'image/png': dataBlob })])
+            })
+          }
+
+          function copyLink(event) {
             const text = location.href
             navigator.clipboard.writeText(text).then(() => {
               const target = event.target
@@ -974,8 +981,9 @@
             selectCharacter,
             toggleItem,
             selectStage,
-            save,
-            copy,
+            saveImage,
+            copyImage,
+            copyLink,
             reset,
           }
         },
