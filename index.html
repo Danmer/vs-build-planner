@@ -391,7 +391,7 @@
           <div class="buttons">
             <div class="button" @click="reset()">RESET</div>
             <div class="button" @click="copyLink($event)">COPY LINK</div>
-            <div class="button" @click="copyImage()">COPY IMAGE</div>
+            <div class="button" @click="copyImage($event)">COPY IMAGE</div>
             <div class="button" @click="saveImage()">SAVE IMAGE</div>
             <div class="button" @click="settings = !settings">SETTINGS</div>
           </div>
@@ -934,9 +934,17 @@
             })
           }
 
-          function copyImage() {
+          function copyImage(event) {
             domtoimage.toBlob(document.querySelector('.slots')).then((dataBlob) => {
-              navigator.clipboard.write([new ClipboardItem({ 'image/png': dataBlob })])
+              navigator.clipboard.write([new ClipboardItem({ 'image/png': dataBlob })]).then(() => {
+                const target = event.target
+                if (target) {
+                  target.style.color = '#3c3'
+                  setTimeout(() => {
+                    target.style.color = ''
+                  }, 200)
+                }
+              })
             })
           }
 
