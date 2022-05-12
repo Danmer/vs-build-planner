@@ -771,14 +771,7 @@
           }
 
           for (const arcana of arcanas) {
-            const roman = { X: 10, IX: 9, V: 5, IV: 4, I: 1 }
-            let num = +arcana.id.substr(6)
-            arcana.roman = ''
-            for (let i of Object.keys(roman)) {
-              let q = Math.floor(num / roman[i])
-              num -= q * roman[i]
-              arcana.roman += i.repeat(q)
-            }
+            arcana.roman = toRoman(+arcana.id.substring(6))
           }
 
           const selectedCharacter = computed(() => characters.find((character) => character.selected) || { id: '', itemIds: [], items: [] })
@@ -978,6 +971,17 @@
               object[item.id] = item
               return object
             }, {})
+          }
+
+          function toRoman(number) {
+            const roman = { X: 10, IX: 9, V: 5, IV: 4, I: 1 }
+            let result = ''
+            for (let i of Object.keys(roman)) {
+              let q = Math.floor(number / roman[i])
+              number -= q * roman[i]
+              result += i.repeat(q)
+            }
+            return result
           }
 
           return {
