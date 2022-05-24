@@ -460,7 +460,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section style="max-width: 55em">
+        <section style="max-width: 75em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
               <div class="arcana">
@@ -510,7 +510,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.5.2' }
+          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.6.1' }
           const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
           const config = reactive(Object.assign({}, defaultConfig, userConfig))
 
@@ -616,6 +616,8 @@
             { id: 'arcana6', name: 'Sarabande of Healing' },
             { id: 'arcana7', name: 'Iron Blue Will' },
             { id: 'arcana11', name: 'Walts of Pearls' },
+            { id: 'arcana12', name: 'Out of Bounds' },
+            { id: 'arcana14', name: 'Jail of Crystal' },
             { id: 'arcana15', name: 'Disco of Gold' },
             { id: 'arcana16', name: 'Slash' },
             { id: 'arcana17', name: 'Lost & Found Painting' },
@@ -683,11 +685,13 @@
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
               arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
               arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
-              arcana15: ['+greed'],
+              arcana12: ['+lancet'],
+              arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+guns2'],
+              arcana15: ['+cat_', '+greed'],
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_'],
               arcana17: ['+duration'],
               arcana18: ['+area'],
-              arcana19: ['+firewand', '+firewand_'],
+              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_'],
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               bible: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
