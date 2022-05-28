@@ -408,7 +408,7 @@
         </header>
 
         <!-- Characters -->
-        <section style="max-width: 65em">
+        <section style="max-width: 80em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
@@ -537,10 +537,13 @@
             { id: 'giovanna', name: 'Giovanna', itemIds: ['cat'] },
             { id: 'osole', name: 'O`Sole', itemIds: ['flowers'] },
             { id: 'concetta', name: 'Concetta', itemIds: ['pinion'] },
+            { id: 'gallo', name: 'Gallo', itemIds: ['lancet'] },
+            { id: 'divano', name: 'Divano', itemIds: ['laurel'] },
             { id: 'exdash', name: 'Exdash', itemIds: ['bird2'], secret: true },
             { id: 'toastie', name: 'Toastie', itemIds: ['bird1'], secret: true },
-            { id: 'reaper', name: 'Reaper', itemIds: ['axe_'], secret: true },
+            { id: 'marrabbio', name: 'Marrabbio', itemIds: ['knife_'], secret: true },
             { id: 'leda', name: 'Leda', itemIds: ['magicwand_'], secret: true },
+            { id: 'reaper', name: 'Reaper', itemIds: ['axe_'], secret: true },
           ])
 
           const weapons = reactive([
@@ -676,8 +679,11 @@
               giovanna: ['+wings', '+speed'],
               osole: ['+amount'],
               concetta: ['+wings', '+curse', '+area'],
+              gallo: ['+growth', '+duration', '+cooldown', '-greed'],
+              divano: ['+armor', '+recovery', '+luck', '-greed'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
+              marrabbio: ['+health', '+might', '+wings', '+curse', '-speed', '-greed'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
