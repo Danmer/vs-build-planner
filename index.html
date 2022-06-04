@@ -391,6 +391,7 @@
           <div class="buttons">
             <div class="button" @click="reset()">RESET</div>
             <div class="button" @click="copyLink($event)">COPY LINK</div>
+            <div class="button" @click="copyEmojis($event)">COPY EMOJIS</div>
             <div class="button" @click="copyImage($event)">COPY IMAGE</div>
             <div class="button" @click="saveImage()">SAVE IMAGE</div>
             <div class="button" @click="settings = !settings">SETTINGS</div>
@@ -517,121 +518,121 @@
           const settings = ref(false)
 
           const characters = reactive([
-            { id: 'antonio', name: 'Antonio', itemIds: ['whip'] },
-            { id: 'imelda', name: 'Imelda', itemIds: ['magicwand'] },
-            { id: 'pasqualina', name: 'Pasqualina', itemIds: ['runetracer'] },
-            { id: 'gennaro', name: 'Gennaro', itemIds: ['knife'] },
-            { id: 'arca', name: 'Arca', itemIds: ['firewand'] },
-            { id: 'porta', name: 'Porta', itemIds: ['lightning'] },
-            { id: 'lama', name: 'Lama', itemIds: ['axe'] },
-            { id: 'poe', name: 'Poe', itemIds: ['garlic'] },
-            { id: 'clerici', name: 'Clerici', itemIds: ['water'] },
-            { id: 'dommario', name: 'Dommario', itemIds: ['bible'] },
-            { id: 'krochi', name: 'Krochi', itemIds: ['cross'] },
-            { id: 'christine', name: 'Christine', itemIds: ['pentagram'] },
-            { id: 'pugnala', name: 'Pugnala', itemIds: ['guns1', 'guns2'] },
-            { id: 'poppea', name: 'Poppea', itemIds: ['mana'] },
-            { id: 'mortaccio', name: 'Mortaccio', itemIds: ['bone'] },
-            { id: 'cavallo', name: 'Cavallo', itemIds: ['cherry'] },
-            { id: 'ramba', name: 'Ramba', itemIds: ['cart'] },
-            { id: 'giovanna', name: 'Giovanna', itemIds: ['cat'] },
-            { id: 'osole', name: 'O`Sole', itemIds: ['flowers'] },
-            { id: 'concetta', name: 'Concetta', itemIds: ['pinion'] },
-            { id: 'gallo', name: 'Gallo', itemIds: ['lancet'] },
-            { id: 'divano', name: 'Divano', itemIds: ['laurel'] },
-            { id: 'exdash', name: 'Exdash', itemIds: ['bird2'], secret: true },
-            { id: 'toastie', name: 'Toastie', itemIds: ['bird1'], secret: true },
-            { id: 'marrabbio', name: 'Marrabbio', itemIds: ['knife_'], secret: true },
-            { id: 'leda', name: 'Leda', itemIds: ['magicwand_'], secret: true },
-            { id: 'reaper', name: 'Red Death', itemIds: ['axe_'], secret: true },
+            { id: 'antonio', name: 'Antonio', emoji: ':charAntonioVS:', itemIds: ['whip'] },
+            { id: 'imelda', name: 'Imelda', emoji: ':charImeldaVS:', itemIds: ['magicwand'] },
+            { id: 'pasqualina', name: 'Pasqualina', emoji: ':charPasqualinaVS:', itemIds: ['runetracer'] },
+            { id: 'gennaro', name: 'Gennaro', emoji: ':charGennaroVS:', itemIds: ['knife'] },
+            { id: 'arca', name: 'Arca', emoji: ':charArcaVS:', itemIds: ['firewand'] },
+            { id: 'porta', name: 'Porta', emoji: ':charPortaVS:', itemIds: ['lightning'] },
+            { id: 'lama', name: 'Lama', emoji: ':charLamaVS:', itemIds: ['axe'] },
+            { id: 'poe', name: 'Poe', emoji: ':charPoeVS:', itemIds: ['garlic'] },
+            { id: 'clerici', name: 'Clerici', emoji: ':charClericiVS:', itemIds: ['water'] },
+            { id: 'dommario', name: 'Dommario', emoji: ':charDommarioVS:', itemIds: ['bible'] },
+            { id: 'krochi', name: 'Krochi', emoji: ':charKrochiVS:', itemIds: ['cross'] },
+            { id: 'christine', name: 'Christine', emoji: ':charChristineVS:', itemIds: ['pentagram'] },
+            { id: 'pugnala', name: 'Pugnala', emoji: ':charPugnalaVS:', itemIds: ['guns1', 'guns2'] },
+            { id: 'poppea', name: 'Poppea', emoji: ':charPoppeaVS:', itemIds: ['mana'] },
+            { id: 'mortaccio', name: 'Mortaccio', emoji: ':charMortaccioVS:', itemIds: ['bone'] },
+            { id: 'cavallo', name: 'Cavallo', emoji: ':charYattacavalloVS:', itemIds: ['cherry'] },
+            { id: 'ramba', name: 'Ramba', emoji: ':charBiancaVS:', itemIds: ['cart'] },
+            { id: 'giovanna', name: 'Giovanna', emoji: ':charGiovannaVS:', itemIds: ['cat'] },
+            { id: 'osole', name: 'O`Sole', emoji: ':charOsolemeeo2VS:', itemIds: ['flowers'] },
+            { id: 'concetta', name: 'Concetta', emoji: ':charConcettaVS:', itemIds: ['pinion'] },
+            { id: 'gallo', name: 'Gallo', emoji: ':charIguanaVS:', itemIds: ['lancet'] },
+            { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
+            { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], secret: true },
+            { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], secret: true },
+            { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonVS:', itemIds: ['knife_'], secret: true },
+            { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], secret: true },
+            { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], secret: true },
           ])
 
           const weapons = reactive([
-            { id: 'magicwand', name: 'Magic Wand' },
-            { id: 'firewand', name: 'Fire Wand' },
-            { id: 'axe', name: 'Axe' },
-            { id: 'lightning', name: 'Lightning Ring' },
-            { id: 'knife', name: 'Knife' },
-            { id: 'bible', name: 'King Bible' },
-            { id: 'cross', name: 'Cross' },
-            { id: 'garlic', name: 'Garlic' },
-            { id: 'pentagram', name: 'Pentagram' },
-            { id: 'runetracer', name: 'Runetracer' },
-            { id: 'water', name: 'Santa Water' },
-            { id: 'mana', name: 'Song Of Mana' },
-            { id: 'whip', name: 'Whip' },
-            { id: 'guns1', name: 'Phiera Der Tuphello' },
-            { id: 'guns2', name: 'Eight The Sparrow' },
-            { id: 'bird1', name: 'Peachone' },
-            { id: 'bird2', name: 'Ebony Wings' },
-            { id: 'lancet', name: 'Clock Lancet' },
-            { id: 'laurel', name: 'Laurel' },
-            { id: 'bone', name: 'Bone' },
-            { id: 'cherry', name: 'Cherry Bomb' },
-            { id: 'cart', name: 'Carréllo' },
-            { id: 'flowers', name: 'Celestial Dusting' },
-            { id: 'cat', name: 'Gatti Amari' },
-            { id: 'pinion', name: 'Shadow Pinion' },
+            { id: 'magicwand', name: 'Magic Wand', emoji: ':magicwandVS:' },
+            { id: 'firewand', name: 'Fire Wand', emoji: ':firewandVS:' },
+            { id: 'axe', name: 'Axe', emoji: ':axeVS:' },
+            { id: 'lightning', name: 'Lightning Ring', emoji: ':lightningringVS:' },
+            { id: 'knife', name: 'Knife', emoji: ':knifeVS:' },
+            { id: 'bible', name: 'King Bible', emoji: ':kingbibleVS:' },
+            { id: 'cross', name: 'Cross', emoji: ':crossVS:' },
+            { id: 'garlic', name: 'Garlic', emoji: ':garlicVS:' },
+            { id: 'pentagram', name: 'Pentagram', emoji: ':pentagramVS:' },
+            { id: 'runetracer', name: 'Runetracer', emoji: ':runetracerVS:' },
+            { id: 'water', name: 'Santa Water', emoji: ':santawaterVS:' },
+            { id: 'mana', name: 'Song Of Mana', emoji: ':manaVS:' },
+            { id: 'whip', name: 'Whip', emoji: ':whipVS:' },
+            { id: 'guns1', name: 'Phiera Der Tuphello', emoji: ':phieraVS:' },
+            { id: 'guns2', name: 'Eight The Sparrow', emoji: ':sparrowVS:' },
+            { id: 'bird1', name: 'Peachone', emoji: ':peachoneVS:' },
+            { id: 'bird2', name: 'Ebony Wings', emoji: ':ebonywingsVS:' },
+            { id: 'lancet', name: 'Clock Lancet', emoji: ':lancetVS:' },
+            { id: 'laurel', name: 'Laurel', emoji: ':laurelVS:' },
+            { id: 'bone', name: 'Bone', emoji: ':boneVS:' },
+            { id: 'cherry', name: 'Cherry Bomb', emoji: ':cherrybombVS:' },
+            { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:' },
+            { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:' },
+            { id: 'cat', name: 'Gatti Amari', emoji: ':catVS:' },
+            { id: 'pinion', name: 'Shadow Pinion', emoji: ':shadowpinionVS:' },
           ])
 
           const evolutions = reactive([
-            { id: 'magicwand_', name: 'Holy Wand', itemIds: ['magicwand', 'cooldown'] },
-            { id: 'firewand_', name: 'Hellfire', itemIds: ['firewand', 'might'] },
-            { id: 'axe_', name: 'Death Spiral', itemIds: ['axe', 'area'] },
-            { id: 'lightning_', name: 'Thunder Loop', itemIds: ['lightning', 'amount'] },
-            { id: 'knife_', name: 'Thousand Edge', itemIds: ['knife', 'speed'] },
-            { id: 'bible_', name: 'Unholy Vespers', itemIds: ['bible', 'duration'] },
-            { id: 'cross_', name: 'Heaven Sword', itemIds: ['cross', 'luck'] },
-            { id: 'garlic_', name: 'Soul Eater', itemIds: ['garlic', 'recovery'] },
-            { id: 'pentagram_', name: 'Gorgeous Moon', itemIds: ['pentagram', 'growth'] },
-            { id: 'runetracer_', name: 'NO FUTURE', itemIds: ['runetracer', 'armor'] },
-            { id: 'water_', name: 'La Borra', itemIds: ['water', 'magnet'] },
-            { id: 'mana_', name: 'Mannajja', itemIds: ['mana', 'curse'] },
-            { id: 'whip_', name: 'Bloody Tear', itemIds: ['whip', 'health'] },
-            { id: 'guns_', name: 'Phieraggi', itemIds: ['guns1', 'guns2', 'revival'] },
-            { id: 'bird_', name: 'Vandalier', itemIds: ['bird1', 'bird2'] },
-            { id: 'cat_', name: 'Vicious Hunger', itemIds: ['cat', 'greed'] },
-            { id: 'pinion_', name: 'Valkyrie Turner', itemIds: ['pinion', 'wings'] },
-            { id: 'lancet_', name: 'Infinite Corridor', itemIds: ['lancet', 'ring1', 'ring2'] },
-            { id: 'laurel_', name: 'Crimson Shroud', itemIds: ['laurel', 'sign1', 'sign2'] },
+            { id: 'magicwand_', name: 'Holy Wand', emoji: ':holywandVS:', itemIds: ['magicwand', 'cooldown'] },
+            { id: 'firewand_', name: 'Hellfire', emoji: ':hellfireVS:', itemIds: ['firewand', 'might'] },
+            { id: 'axe_', name: 'Death Spiral', emoji: ':deathspiralVS:', itemIds: ['axe', 'area'] },
+            { id: 'lightning_', name: 'Thunder Loop', emoji: ':thunderloopVS:', itemIds: ['lightning', 'amount'] },
+            { id: 'knife_', name: 'Thousand Edge', emoji: ':thousandedgeVS:', itemIds: ['knife', 'speed'] },
+            { id: 'bible_', name: 'Unholy Vespers', emoji: ':unholyvespersVS:', itemIds: ['bible', 'duration'] },
+            { id: 'cross_', name: 'Heaven Sword', emoji: ':heavenswordVS:', itemIds: ['cross', 'luck'] },
+            { id: 'garlic_', name: 'Soul Eater', emoji: ':souleaterVS:', itemIds: ['garlic', 'recovery'] },
+            { id: 'pentagram_', name: 'Gorgeous Moon', emoji: ':gorgeousmoonVS:', itemIds: ['pentagram', 'growth'] },
+            { id: 'runetracer_', name: 'NO FUTURE', emoji: ':NOFUTUREVS:', itemIds: ['runetracer', 'armor'] },
+            { id: 'water_', name: 'La Borra', emoji: ':laborraVS:', itemIds: ['water', 'magnet'] },
+            { id: 'mana_', name: 'Mannajja', emoji: ':mannajjaVS:', itemIds: ['mana', 'curse'] },
+            { id: 'whip_', name: 'Bloody Tear', emoji: ':bloodytearVS:', itemIds: ['whip', 'health'] },
+            { id: 'guns_', name: 'Phieraggi', emoji: ':phieraggiVS:', itemIds: ['guns1', 'guns2', 'revival'] },
+            { id: 'bird_', name: 'Vandalier', emoji: ':vandalierVS:', itemIds: ['bird1', 'bird2'] },
+            { id: 'cat_', name: 'Vicious Hunger', emoji: ':cateyeVS:', itemIds: ['cat', 'greed'] },
+            { id: 'pinion_', name: 'Valkyrie Turner', emoji: ':valkyrieVS:', itemIds: ['pinion', 'wings'] },
+            { id: 'lancet_', name: 'Infinite Corridor', emoji: ':portalVS:', itemIds: ['lancet', 'ring1', 'ring2'] },
+            { id: 'laurel_', name: 'Crimson Shroud', emoji: ':cloakVS:', itemIds: ['laurel', 'sign1', 'sign2'] },
           ])
 
           const passives = reactive([
-            { id: 'cooldown', name: 'Empty Tome' },
-            { id: 'might', name: 'Spinach' },
-            { id: 'area', name: 'Candelabrador' },
-            { id: 'amount', name: 'Duplicator' },
-            { id: 'speed', name: 'Bracer' },
-            { id: 'duration', name: 'Spellbinder' },
-            { id: 'luck', name: 'Clover' },
-            { id: 'recovery', name: 'Pummarola' },
-            { id: 'growth', name: 'Crown' },
-            { id: 'armor', name: 'Armor' },
-            { id: 'magnet', name: 'Attractorb' },
-            { id: 'curse', name: 'Skull O`Maniac' },
-            { id: 'health', name: 'Hollow Heart' },
-            { id: 'revival', name: 'Tiragisú' },
-            { id: 'wings', name: 'Wings' },
-            { id: 'greed', name: 'Stone Mask' },
-            { id: 'ring1', name: 'Gold Ring', special: true },
-            { id: 'ring2', name: 'Silver Ring', special: true },
-            { id: 'sign1', name: 'Metaglio Left', special: true },
-            { id: 'sign2', name: 'Metaglio Right', special: true },
+            { id: 'cooldown', name: 'Empty Tome', emoji: ':emptytomeVS:' },
+            { id: 'might', name: 'Spinach', emoji: ':spinachVS:' },
+            { id: 'area', name: 'Candelabrador', emoji: ':candelabradorVS:' },
+            { id: 'amount', name: 'Duplicator', emoji: ':duplicatorVS:' },
+            { id: 'speed', name: 'Bracer', emoji: ':bracerVS:' },
+            { id: 'duration', name: 'Spellbinder', emoji: ':spellbinderVS:' },
+            { id: 'luck', name: 'Clover', emoji: ':cloverVS:' },
+            { id: 'recovery', name: 'Pummarola', emoji: ':pummarolaVS:' },
+            { id: 'growth', name: 'Crown', emoji: ':crownVS:' },
+            { id: 'armor', name: 'Armor', emoji: ':armorVS:' },
+            { id: 'magnet', name: 'Attractorb', emoji: ':attractorbVS:' },
+            { id: 'curse', name: 'Skull O`Maniac', emoji: ':curseVS:' },
+            { id: 'health', name: 'Hollow Heart', emoji: ':hollowheartVS:' },
+            { id: 'revival', name: 'Tiragisú', emoji: ':tiragisuVS:' },
+            { id: 'wings', name: 'Wings', emoji: ':wingsVS:' },
+            { id: 'greed', name: 'Stone Mask', emoji: ':maskVS:' },
+            { id: 'ring1', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
+            { id: 'ring2', name: 'Silver Ring', emoji: ':silverringVS:', special: true },
+            { id: 'sign1', name: 'Metaglio Left', emoji: ':metaglioleftVS:', special: true },
+            { id: 'sign2', name: 'Metaglio Right', emoji: ':metagliorightVS:', special: true },
           ])
 
           const arcanas = reactive([
-            { id: 'arcana4', name: 'Awake' },
-            { id: 'arcana5', name: 'Chaos in the Dark Night' },
-            { id: 'arcana6', name: 'Sarabande of Healing' },
-            { id: 'arcana7', name: 'Iron Blue Will' },
-            { id: 'arcana11', name: 'Waltz of Pearls' },
-            { id: 'arcana12', name: 'Out of Bounds' },
-            { id: 'arcana14', name: 'Jail of Crystal' },
-            { id: 'arcana15', name: 'Disco of Gold' },
-            { id: 'arcana16', name: 'Slash' },
-            { id: 'arcana17', name: 'Lost & Found Painting' },
-            { id: 'arcana18', name: 'Boogaloo of Illusions' },
-            { id: 'arcana19', name: 'Heart of Fire' },
+            { id: 'arcana4', name: 'Awake', emoji: ':4VS:' },
+            { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:' },
+            { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:' },
+            { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:' },
+            { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:' },
+            { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIoutofbounds:' },
+            { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVjailofcrystal:' },
+            { id: 'arcana15', name: 'Disco of Gold', emoji: ':XIVdiscoofgold:' },
+            { id: 'arcana16', name: 'Slash', emoji: ':16VS:' },
+            { id: 'arcana17', name: 'Lost & Found Painting', emoji: ':17VS:' },
+            { id: 'arcana18', name: 'Boogaloo of Illusions', emoji: ':XVIIIboogaloofillusions:' },
+            { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:' },
           ])
 
           const stages = reactive([
@@ -991,6 +992,28 @@
             })
           }
 
+          function copyEmojis(event) {
+            let text = `Build: <${location.href}>`
+            if (selectedCharacter.value.id || selectedArcanas.value.length) {
+              text += `\n${selectedCharacter.value.emoji}${selectedCharacter.value.emoji ? ' ' : ''}${selectedArcanas.value.map((item) => item.emoji).join(' ')}`
+            }
+            if (evolvedWeapons.value.length) {
+              text += `\n${evolvedWeapons.value.map((item) => item.emoji).join(' ')}`
+            }
+            if (selectedPassives.value.length) {
+              text += `\n${selectedPassives.value.map((item) => item.emoji).join(' ')}`
+            }
+            navigator.clipboard.writeText(text).then(() => {
+              const target = event.target
+              if (target) {
+                target.style.color = '#3c3'
+                setTimeout(() => {
+                  target.style.color = ''
+                }, 200)
+              }
+            })
+          }
+
           function keyById(items) {
             return items.reduce((object, item) => {
               object[item.id] = item
@@ -1033,6 +1056,7 @@
             saveImage,
             copyImage,
             copyLink,
+            copyEmojis,
             reset,
           }
         },
