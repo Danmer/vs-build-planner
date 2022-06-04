@@ -441,7 +441,7 @@
         </section>
 
         <!-- Passives -->
-        <section style="max-width: 45em">
+        <section style="max-width: 55em">
           <div class="objects">
             <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
               <div class="passive" :title="passive.name">
@@ -592,6 +592,8 @@
             { id: 'bird_', name: 'Vandalier', itemIds: ['bird1', 'bird2'] },
             { id: 'cat_', name: 'Vicious Hunger', itemIds: ['cat', 'greed'] },
             { id: 'pinion_', name: 'Valkyrie Turner', itemIds: ['pinion', 'wings'] },
+            { id: 'lancet_', name: 'Infinite Corridor', itemIds: ['lancet', 'ring1', 'ring2'] },
+            { id: 'laurel_', name: 'Crimson Shroud', itemIds: ['laurel', 'sign1', 'sign2'] },
           ])
 
           const passives = reactive([
@@ -611,6 +613,10 @@
             { id: 'revival', name: 'Tiragisú' },
             { id: 'wings', name: 'Wings' },
             { id: 'greed', name: 'Stone Mask' },
+            { id: 'ring1', name: 'Gold Ring', special: true },
+            { id: 'ring2', name: 'Silver Ring', special: true },
+            { id: 'sign1', name: 'Metaglio Left', special: true },
+            { id: 'sign2', name: 'Metaglio Right', special: true },
           ])
 
           const arcanas = reactive([
@@ -629,10 +635,10 @@
           ])
 
           const stages = reactive([
-            { id: 'forest', name: 'Mad Forest', itemIds: ['might', 'luck', 'health', 'recovery', 'curse'] },
-            { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed'] },
-            { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor'] },
-            { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration'] },
+            { id: 'forest', name: 'Mad Forest', itemIds: ['might', 'luck', 'health', 'recovery', 'curse', 'ring1', 'ring2', 'sign1', 'sign2'] },
+            { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed', 'ring1', 'ring2', 'sign1', 'sign2'] },
+            { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor', 'ring1', 'ring2', 'sign1', 'sign2'] },
+            { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration', 'ring1', 'ring2', 'sign1', 'sign2'] },
           ])
 
           const items = characters.concat(
@@ -724,6 +730,8 @@
               knife_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               lancet: ['+cooldown', '+duration'],
               laurel: ['+cooldown'],
+              lancet_: ['+cooldown', '+duration'],
+              laurel_: ['+cooldown', '+area', '+might', '+armor'],
               lightning: ['+cooldown', '+might', '+area', '+amount'],
               lightning_: ['+cooldown', '+might', '+area', '+amount'],
               magicwand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
@@ -743,6 +751,13 @@
             }
             for (const itemId in newImpactsById) {
               const impactIds = newImpactsById[itemId]
+              const item = itemsById[itemId]
+              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
+                impactIds.push('+ring2')
+              }
+              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
+                impactIds.push('+sign2')
+              }
               for (const impactId of impactIds) {
                 const positive = impactId.includes('+')
                 const id = impactId.replace(/\+|\-/, '')
