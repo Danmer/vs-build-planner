@@ -511,9 +511,7 @@
 
       createApp({
         setup() {
-          const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.6.1' }
-          const userConfig = JSON.parse(localStorage.getItem('vs-build') || '{}')
-          const config = reactive(Object.assign({}, defaultConfig, userConfig))
+          const config = useConfig()
 
           const settings = ref(false)
 
@@ -1030,6 +1028,33 @@
               result += i.repeat(q)
             }
             return result
+          }
+
+          function useConfig(storageKey = 'vs-build') {
+            const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.6.1' }
+
+            const userConfig = loadUserConfig()
+
+            const config = reactive({ ...defaultConfig, ...userConfig })
+
+            watch(config, saveUserConfig)
+
+            function loadUserConfig() {
+              return JSON.parse(localStorage.getItem(storageKey) || '{}')
+            }
+
+            function saveUserConfig() {
+              for (const param in config) {
+                if (config[param] === defaultConfig[param]) {
+                  delete userConfig[param]
+                } else {
+                  userConfig[param] = config[param]
+                }
+              }
+              localStorage.setItem(storageKey, JSON.stringify(userConfig))
+            }
+
+            return config
           }
 
           return {
