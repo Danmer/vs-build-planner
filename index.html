@@ -356,14 +356,14 @@
           </h1>
           <div class="slots">
             <div class="arcanas">
-              <div v-for="arcana in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
                 <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
               </div>
               <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
                 <div class="empty">ARCANA</div>
               </div>
             </div>
-            <div v-if="selectedCharacter" class="character slot" :title="selectedCharacter.name">
+            <div v-if="selectedCharacter" class="character slot" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseleave="hideImpacts()">
               <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
             </div>
             <div v-else class="character slot">
@@ -371,7 +371,7 @@
             </div>
             <div class="flex-1">
               <div class="flex">
-                <div v-for="weapon in evolvedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
                   <div class="sprite" :class="`sprite-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
@@ -379,7 +379,7 @@
                 </div>
               </div>
               <div class="flex">
-                <div v-for="passive in selectedPassives" :data-id="passive.id" class="slot passive selected" :title="passive.name" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive selected" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
                   <div class="sprite" :class="`sprite-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
@@ -411,10 +411,10 @@
         <!-- Characters -->
         <section style="max-width: 80em">
           <div class="objects">
-            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter && selectedCharacter.id === character.id}" @click="selectCharacter(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
+            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
               <div class="weapons">
-                <div v-for="item in character.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+                <div v-for="itemId in character.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
               </div>
               <div v-if="config.titles" class="title">{{character.id}}</div>
             </div>
@@ -424,17 +424,15 @@
         <!-- Weapons -->
         <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave(weapon)">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
-              <div v-if="weapon.evolution && config.evolutions" class="evolutions">
-                <template v-for="object in weapon.evolution.items">
-                  <div v-if="object.id !== weapon.id" class="sprite" :class="`sprite-${object.id}`" :title="object.name"></div>
-                </template>
+              <div v-if="config.evolutions" class="evolutions">
+                <div v-for="itemId in weapon.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
@@ -444,16 +442,16 @@
         <!-- Passives -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave(passive)">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
               <div v-if="config.impacts" class="impacts">
-                <div v-for="weapon in selectedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
+                <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
                 <div v-if="selectedCharacter.id" class="impact" :class="impactsById[selectedCharacter.id] && (impactsById[selectedCharacter.id].includes('-' + passive.id) ? 'negative' : impactsById[selectedCharacter.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="selectedCharacter.id"></div>
               </div>
-              <div v-if="passive.evolution && config.evolutions" class="weapons">
-                <div v-for="item in passive.evolution.weapons" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              <div v-if="config.evolutions" class="evolutions">
+                <div v-for="itemId in passive.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
               </div>
               <div v-if="config.titles" class="title">{{passive.id}}</div>
             </div>
@@ -463,7 +461,7 @@
         <!-- Arcanas -->
         <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave(arcana)">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
               <div class="arcana">
                 <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
@@ -476,7 +474,7 @@
         <!-- Stages -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected}" @click="selectStage(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave(stage)">
+            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
               <div class="stage">
                 <div class="sprite" :class="`sprite-${stage.id}`" :title="stage.name"></div>
               </div>
@@ -516,6 +514,8 @@
           const config = useConfig()
 
           const settings = ref(false)
+
+          const selectedIds = reactive(new Set(location.hash.length > 1 ? location.hash.substring(1).split(',') : []))
 
           const characters = reactive([
             { id: 'antonio', name: 'Antonio', emoji: ':charAntonioVS:', itemIds: ['whip'] },
@@ -636,32 +636,44 @@
           ])
 
           const stages = reactive([
-            { id: 'forest', name: 'Mad Forest', itemIds: ['might', 'luck', 'health', 'recovery', 'curse', 'ring1', 'ring2', 'sign1', 'sign2'] },
-            { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed', 'ring1', 'ring2', 'sign1', 'sign2'] },
-            { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor', 'ring1', 'ring2', 'sign1', 'sign2'] },
-            { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration', 'ring1', 'ring2', 'sign1', 'sign2'] },
+            { id: 'forest', name: 'Mad Forest', itemIds: ['might', 'luck', 'health', 'recovery', 'curse'] },
+            { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed'] },
+            { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor'] },
+            { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration'] },
           ])
 
-          const items = characters.concat(
-            weapons.map((weapon) => Object.assign(weapon, { type: 'weapon' })),
-            passives.map((passive) => Object.assign(passive, { type: 'passive' })),
-            evolutions.map((evolution) => Object.assign(evolution, { type: 'evolution' })),
-            arcanas.map((arcana) => Object.assign(arcana, { type: 'arcana' })),
-            stages.map((stage) => Object.assign(stage, { type: 'stage' }))
-          )
+          // List of all objects
+          const items = [...characters, ...weapons, ...evolutions, ...passives, ...arcanas, ...stages]
+          const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
-          const itemsById = keyById(items)
-          const weaponsById = keyById(weapons)
-          const passivesById = keyById(passives)
-          const evolutionsById = keyById(evolutions)
-          const arcanasById = keyById(arcanas)
-          const stagesById = keyById(stages)
+          keyById(items)
 
-          const hashIds = location.hash.substring(1).split(',')
-          let selectedIndex = hashIds.length
-          for (const item of items) {
-            const index = hashIds.indexOf(item.id)
-            item.selected = index === -1 ? 0 : index + 1
+          // Extra fields
+          for (const character of characters) {
+            character.type = 'character'
+          }
+          for (const weapon of weapons) {
+            weapon.type = 'weapon'
+          }
+          for (const passive of passives) {
+            passive.type = 'passive'
+          }
+          for (const evolution of evolutions) {
+            evolution.type = 'evolution'
+            evolution.weaponIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'weapon')
+            evolution.passiveIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'passive')
+            for (const itemId of evolution.itemIds) {
+              itemsById[itemId].evolutionId = evolution.id
+              itemsById[itemId].itemIds = evolution.itemIds.filter((id) => id !== itemId)
+            }
+          }
+          for (const arcana of arcanas) {
+            arcana.type = 'arcana'
+            arcana.roman = toRoman(+arcana.id.substring(6))
+          }
+          for (const stage of stages) {
+            stage.type = 'stage'
+            stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
           }
 
           const impactsById = computed(() => {
@@ -750,145 +762,117 @@
               whip: ['+cooldown', '+might', '+area', '+amount'],
               whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
             }
+
             for (const itemId in newImpactsById) {
               const impactIds = newImpactsById[itemId]
               const item = itemsById[itemId]
+              // add dynamic impacts with conditions
               if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
                 impactIds.push('+ring2')
               }
               if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
                 impactIds.push('+sign2')
               }
+              if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'whip', 'whip_'].includes(itemId)) {
+                impactIds.push('+luck')
+              }
+              // add weapon impacts to passive
               for (const impactId of impactIds) {
-                const positive = impactId.includes('+')
-                const id = impactId.replace(/\+|\-/, '')
-                const newImpactId = (positive ? '+' : '-') + itemId
+                const id = impactId.substring(1)
                 newImpactsById[id] = newImpactsById[id] || []
-                if (!newImpactsById[id].includes(newImpactId)) {
-                  newImpactsById[id].push(newImpactId)
-                }
+                newImpactsById[id].push(impactId.substring(0, 1) + itemId)
               }
             }
-            if (arcanasById.arcana16.selected) {
-              for (const id of ['axe', 'axe_', 'knife', 'whip', 'whip_']) {
-                newImpactsById[id].push('+luck')
-              }
-            }
+
+            // sort impacts (selected - down, others - up)
             for (const itemId in newImpactsById) {
-              newImpactsById[itemId].sort((id1, id2) => (itemsById[id1.substring(1)].selected && !itemsById[id2.substring(1)].selected ? 1 : -1))
+              newImpactsById[itemId].sort((id1, id2) => (selectedIds.has(id1.substring(1)) && !selectedIds.has(id2.substring(1)) ? 1 : -1))
             }
+
             return newImpactsById
           })
 
-          for (const item of items) {
-            item.itemIds = item.itemIds || []
-            item.items = item.itemIds.map((itemId) => itemsById[itemId])
-          }
+          const selectedItems = computed(() => Array.from(selectedIds).map((itemId) => itemsById[itemId]))
+          const selectedCharacter = computed(() => selectedItems.value.find((item) => item.type === 'character') || { id: '', emoji: '', itemIds: [], items: [] })
+          const selectedWeapons = computed(() => selectedItems.value.filter((item) => item.type === 'weapon').sort((a, b) => (a.fixed && !b.fixed ? -1 : 0)))
+          const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive'))
+          const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
+          const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? itemsById[weapon.evolutionId] : weapon)))))
 
-          for (const evolution of evolutions) {
-            evolution.weaponIds = evolution.itemIds.filter((itemId) => weaponsById[itemId])
-            evolution.weapons = evolution.weaponIds.map((itemId) => weaponsById[itemId])
-            evolution.passiveIds = evolution.itemIds.filter((itemId) => passivesById[itemId])
-            evolution.passives = evolution.passiveIds.map((itemId) => passivesById[itemId])
-            for (const item of evolution.items) {
-              item.evolutionId = evolution.id
-              item.evolution = evolution
-            }
-          }
-
-          for (const arcana of arcanas) {
-            arcana.roman = toRoman(+arcana.id.substring(6))
-          }
-
-          const selectedCharacter = computed(() => characters.find((character) => character.selected) || { id: '', itemIds: [], items: [] })
-          const selectedWeapons = computed(() => weapons.filter((weapon) => weapon.selected).sort((a, b) => (a.fixed && !b.fixed ? -1 : !a.fixed && b.fixed ? 1 : a.selected - b.selected)))
-          const selectedPassives = computed(() => passives.filter((passive) => passive.selected).sort((a, b) => a.selected - b.selected))
-          const selectedArcanas = computed(() => arcanas.filter((arcana) => arcana.selected).sort((a, b) => a.selected - b.selected))
-          const evolvedWeapons = computed(() =>
-            selectedWeapons.value.reduce((result, weapon) => {
-              const maybeEvolution = weapon.evolved ? weapon.evolution : weapon
-              if (!result.find((item) => item.id === maybeEvolution.id)) {
-                result.push(maybeEvolution)
+          watch(
+            selectedIds,
+            () => {
+              const idsArray = Array.from(selectedIds)
+              for (const item of items) {
+                if (item.type === 'evolution') {
+                  // selected if all items are selected or selected character has this evolution
+                  item.selected = item.itemIds.every((itemId) => selectedIds.has(itemId)) || selectedCharacter.value.itemIds.includes(item.id)
+                } else {
+                  // selected if id is in the list
+                  item.selected = idsArray.includes(item.id)
+                }
+                if (item.type === 'weapon') {
+                  // fix character's weapon to make it first and prevent it from deleting
+                  item.fixed = selectedCharacter.value.itemIds.includes(item.id) || selectedCharacter.value.itemIds.includes(item.evolutionId)
+                  // mark evolved weapon if all required items are selected
+                  item.evolved = item.evolutionId && (item.itemIds.every((itemId) => selectedIds.has(itemId)) || selectedCharacter.value.itemIds.includes(item.evolutionId))
+                }
               }
-              return result
-            }, [])
+              updateHash()
+            },
+            { immediate: true }
           )
-
-          window.vs = { config, itemsById }
-          console.log(window.vs)
-
-          watchEffect(() => {
-            location.hash = new Array()
-              .concat(selectedCharacter.value, selectedWeapons.value, selectedPassives.value, selectedArcanas.value)
-              .map((item) => item.id)
-              .join()
-            for (const weapon of weapons) {
-              weapon.evolved = weapon.evolution && (weapon.evolution.items.every((item) => item.selected) || selectedCharacter.value.itemIds.includes(weapon.evolution.id))
-              weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || (weapon.evolutionId && selectedCharacter.value.itemIds.includes(weapon.evolutionId))
-            }
-          })
 
           watch(
             selectedCharacter,
             (newCharacter, oldCharacter) => {
-              if (oldCharacter && oldCharacter.itemIds) {
-                for (const item of oldCharacter.items) {
-                  item.selected = 0
-                  if (item.weaponIds) {
-                    for (const weapon of item.weapons) {
-                      weapon.selected = 0
-                    }
-                  }
+              // delete items of the previous character
+              if (oldCharacter) {
+                for (const itemId of oldCharacter.itemIds) {
+                  unselectetId(itemId)
                 }
               }
-              if (newCharacter && newCharacter.itemIds) {
-                for (const item of newCharacter.items) {
-                  item.selected = selectedIndex++
-                  if (item.weaponIds) {
-                    for (const weapon of item.weapons) {
-                      weapon.selected = selectedIndex++
-                    }
-                  }
-                }
+              // add items of the new character
+              for (const itemId of newCharacter.itemIds) {
+                selectId(itemId)
               }
             },
             { immediate: true }
           )
 
-          watch(config, () => {
-            for (const param in config) {
-              if (config[param] === defaultConfig[param]) {
-                delete userConfig[param]
-              } else {
-                userConfig[param] = config[param]
+          window.config = config
+          window.itemsById = itemsById
+
+          window.addEventListener('hashchange', updateSelectedIds)
+
+          function updateSelectedIds() {
+            selectedIds.clear()
+            for (const id of location.hash.substring(1).split(',')) {
+              if (id) {
+                selectedIds.add(id)
               }
             }
-            localStorage.setItem('vs-build', JSON.stringify(userConfig))
-          })
+          }
 
-          function onMouseEnter(object) {
+          function updateHash() {
+            const newHash = (selectedCharacter.value.id ? [selectedCharacter.value] : [])
+              .concat(selectedWeapons.value, selectedPassives.value, selectedArcanas.value)
+              .map((item) => item.id)
+              .join()
+            if ('#' + newHash !== location.hash) {
+              location.hash = newHash
+            }
+          }
+
+          function showImpacts(object) {
             if (!object) {
               return
             }
             if (object.itemIds) {
-              for (const item of object.items) {
-                document.querySelectorAll(`[data-id="${item.id}"]`).forEach((element) => {
+              for (const itemId of object.itemIds.concat(object.evolutionId)) {
+                document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
                   element.classList.add('yellow')
                 })
-                if (item.evolved) {
-                  document.querySelectorAll(`[data-id="${item.evolutionId}"]`).forEach((element) => {
-                    element.classList.add('yellow')
-                  })
-                }
-              }
-            }
-            if (object.evolution) {
-              for (const itemId of object.evolution.itemIds.concat(object.evolutionId)) {
-                if (object.id !== itemId) {
-                  document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
-                    element.classList.add('yellow')
-                  })
-                }
               }
             }
             if (impactsById.value[object.id]) {
@@ -900,59 +884,76 @@
             }
           }
 
-          function onMouseLeave() {
+          function hideImpacts() {
             document.querySelectorAll(`.yellow, .green, .red`).forEach((element) => {
               element.classList.remove('yellow', 'green', 'red')
             })
           }
 
-          function selectCharacter(newCharacter) {
-            if (selectedCharacter.value.selected) {
-              selectedCharacter.value.selected = 0
-              onMouseLeave()
-            }
-            newCharacter.selected = selectedIndex++
-            nextTick(() => {
-              onMouseEnter(newCharacter)
-            })
-          }
-
-          function toggleItem(item) {
+          function unselectetId(itemId) {
+            const item = itemsById[itemId]
             if (item.type === 'evolution') {
-              for (const weapon of item.weapons) {
-                toggleItem(weapon)
+              for (const weaponId of item.weaponIds) {
+                unselectetId(weaponId)
               }
             } else {
-              if (item.selected) {
-                // prevent removing the selected chracter's weapon
-                if (!item.fixed) {
-                  item.selected = 0
-                  onMouseLeave()
-                }
-              } else {
-                if (item.type === 'arcana' && selectedArcanas.value.length > 2) {
-                  return
-                }
-                item.selected = selectedIndex++
-                nextTick(() => {
-                  onMouseEnter(item)
-                })
+              if (!item.fixed) {
+                selectedIds.delete(item.id)
               }
             }
           }
 
-          function selectStage(stage) {
-            for (const item of stage.items) {
-              if (!item.selected) {
-                item.selected = selectedIndex++
-              }
+          function selectId(itemId) {
+            const item = itemsById[itemId]
+            switch (item.type) {
+              case 'character':
+                if (selectedCharacter.value.id) {
+                  selectedIds.delete(selectedCharacter.value.id)
+                }
+                selectedIds.add(item.id)
+                break
+              case 'evolution':
+                const itemids = selectedCharacter.value.itemIds.includes(item.id) ? item.weaponIds : item.itemIds
+                for (const itemId of itemids) {
+                  selectedIds.add(itemId)
+                }
+                break
+              case 'arcana':
+                if (selectedArcanas.value.length < 3) {
+                  selectedIds.add(item.id)
+                }
+                break
+              case 'stage':
+                for (const itemId of item.itemIds) {
+                  selectId(itemId)
+                }
+                break
+              default:
+                selectedIds.add(item.id)
+            }
+          }
+
+          // manual toggle
+          function toggleItem(item) {
+            if (item.selected) {
+              unselectetId(item.id)
+            } else {
+              selectId(item.id)
+              showImpacts(item)
+            }
+          }
+
+          // manual delete
+          function deleteItem(item, nextItem) {
+            unselectetId(item.id)
+            if (nextItem) {
+              hideImpacts()
+              showImpacts(nextItem)
             }
           }
 
           function reset(event) {
-            for (const item of items) {
-              item.selected = 0
-            }
+            selectedIds.clear()
             highlightElement(event.target, '#3c3')
           }
 
@@ -960,12 +961,12 @@
             domtoimage
               .toPng(document.querySelector('.slots'))
               .then((dataUrl) => {
-              var link = document.createElement('a')
-              link.download = `vs-build_${new Date().toISOString().substring(0, 19).replaceAll(':', '-')}.png`
-              link.href = dataUrl
-              link.click()
+                var link = document.createElement('a')
+                link.download = `vs-build_${new Date().toISOString().substring(0, 19).replaceAll(':', '-')}.png`
+                link.href = dataUrl
+                link.click()
                 highlightElement(event.target, '#3c3')
-            })
+              })
               .catch(() => highlightElement(event.target, '#c33'))
           }
 
@@ -1073,11 +1074,10 @@
             selectedPassives,
             selectedArcanas,
             evolvedWeapons,
-            onMouseEnter,
-            onMouseLeave,
-            selectCharacter,
+            showImpacts,
+            hideImpacts,
             toggleItem,
-            selectStage,
+            deleteItem,
             saveImage,
             copyImage,
             copyLink,
