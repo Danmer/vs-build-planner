@@ -164,12 +164,12 @@
       .object.character,
       .object.passive,
       .object.weapon,
+      .object.evolution,
       .object.arcana {
         align-items: flex-start;
         justify-content: flex-end;
       }
-      .object.center,
-      .object.evolution {
+      .object.center {
         align-items: center;
         justify-content: center;
       }
@@ -352,7 +352,7 @@
           <h1>
             <span>Vampire Survivors</span>
             <span class="lg">&nbsp;—&nbsp;</span>
-            <span>Build Planner ({{config.version}})</span>
+            <span>Build Planner (0.6.1)</span>
           </h1>
           <div class="slots">
             <div class="arcanas">
@@ -397,10 +397,11 @@
             <div class="button" @click="settings = !settings">SETTINGS</div>
           </div>
           <div v-if="settings" class="buttons settings">
+            <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
+            <div class="button" @click="config.combinations = !config.combinations">COMBINATIONS: {{config.combinations ? 'ON' : 'OFF'}}</div>
+            <div class="button" @click="config.impacts = !config.impacts">IMPACTS: {{config.impacts ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.pixels = !config.pixels">PIXELS: {{config.pixels ? 'ON' : 'OFF'}}</div>
             <div class="button" @click="config.titles = !config.titles">TITLES: {{config.titles ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.impacts = !config.impacts">IMPACTS: {{config.impacts ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
             <div class="flex">
               <div class="button" @click="config.size -= 0.1">SIZE -</div>
               <div class="button" @click="config.size += 0.1">SIZE +</div>
@@ -424,14 +425,14 @@
         <!-- Weapons -->
         <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
-              <div v-if="config.evolutions" class="evolutions">
+              <div v-if="config.combinations" class="evolutions">
                 <div v-for="itemId in weapon.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
@@ -439,10 +440,28 @@
           </div>
         </section>
 
+        <!-- Evolutions -->
+        <section v-if="config.evolutions" style="max-width: 55em">
+          <div class="objects">
+            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
+              <div class="evolution">
+                <div class="sprite" :class="`sprite-${evolution.id}`" :title="evolution.name"></div>
+              </div>
+              <div v-if="config.impacts" class="impacts">
+                <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+              </div>
+              <div v-if="config.combinations" class="evolutions">
+                <div v-for="itemId in evolution.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
+              </div>
+              <div v-if="config.titles" class="title">{{evolution.id}} {{evolution.selected}}</div>
+            </div>
+          </div>
+        </section>
+
         <!-- Passives -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.evolutions && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
@@ -450,7 +469,7 @@
                 <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
                 <div v-if="selectedCharacter.id" class="impact" :class="impactsById[selectedCharacter.id] && (impactsById[selectedCharacter.id].includes('-' + passive.id) ? 'negative' : impactsById[selectedCharacter.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="selectedCharacter.id"></div>
               </div>
-              <div v-if="config.evolutions" class="evolutions">
+              <div v-if="config.combinations" class="evolutions">
                 <div v-for="itemId in passive.itemIds" class="sprite" :class="`sprite-${itemId}`" :title="itemsById[itemId].name"></div>
               </div>
               <div v-if="config.titles" class="title">{{passive.id}}</div>
@@ -1032,11 +1051,15 @@
           }
 
           function useConfig(storageKey = 'vs-build') {
-            const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: true, size: 1, version: '0.6.1' }
+            const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: false, combinations: true, size: 1, version: 2 }
 
             const userConfig = loadUserConfig()
 
-            const config = reactive({ ...defaultConfig, ...userConfig })
+            if (userConfig.version !== defaultConfig.version) {
+              Object.assign(userConfig, defaultConfig)
+            }
+
+            const config = reactive({ ...defaultConfig, ...(userConfig.version === defaultConfig.version ? userConfig : {}) })
 
             watch(config, saveUserConfig)
 
@@ -1046,7 +1069,7 @@
 
             function saveUserConfig() {
               for (const param in config) {
-                if (config[param] === defaultConfig[param]) {
+                if (config[param] === defaultConfig[param] && param !== 'version') {
                   delete userConfig[param]
                 } else {
                   userConfig[param] = config[param]
