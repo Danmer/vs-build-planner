@@ -166,6 +166,11 @@
         background-color: #3c3;
         background-image: linear-gradient(-45deg, #222, transparent) !important;
       }
+      .red-green {
+        animation: red-green 2s linear infinite;
+        background-color: #f33;
+        background-image: linear-gradient(-45deg, #222, transparent) !important;
+      }
       .object.character,
       .object.passive,
       .object.weapon,
@@ -351,7 +356,7 @@
         0% {
           background-color: #3c3;
         }
-        50% {
+        40% {
           background-color: #f33;
         }
         80% {
@@ -359,6 +364,20 @@
         }
         100% {
           background-color: #3c3;
+        }
+      }
+      @keyframes red-green {
+        0% {
+          background-color: #f33;
+        }
+        40% {
+          background-color: #3c3;
+        }
+        80% {
+          background-color: #f33;
+        }
+        100% {
+          background-color: #f33;
         }
       }
     </style>
@@ -929,15 +948,15 @@
             if (impactsById.value[object.id]) {
               for (const impact of impactsById.value[object.id]) {
                 document.querySelectorAll(`[data-id="${impact.substring(1)}"]`).forEach((element) => {
-                  element.classList.add(impact[0] === '+' ? 'green' : impact[0] === '-' ? 'red' : impact[0] === '~' ? 'green-red' : 0)
+                  element.classList.add(impact[0] === '+' ? 'green' : impact[0] === '-' ? 'red' : impact[0] === '~' ? 'green-red' : impact[0] === '!' ? 'red-green' : 0)
                 })
               }
             }
           }
 
           function hideImpacts() {
-            document.querySelectorAll(`.yellow, .green, .red, .green-red`).forEach((element) => {
-              element.classList.remove('yellow', 'green', 'red', 'green-red')
+            document.querySelectorAll(`.yellow, .green, .red, .green-red, .red-green`).forEach((element) => {
+              element.classList.remove('yellow', 'green', 'red', 'green-red', 'red-green')
             })
           }
 
