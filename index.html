@@ -990,7 +990,9 @@
               unselectetId(item.id)
             } else {
               selectId(item.id)
+              nextTick(() => {
               showImpacts(item)
+              })
             }
           }
 
@@ -1000,6 +1002,8 @@
             if (nextItem) {
               hideImpacts()
               showImpacts(nextItem)
+            } else {
+              hideImpacts()
             }
           }
 
