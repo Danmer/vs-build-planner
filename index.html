@@ -390,7 +390,7 @@
           <h1>
             <span>Vampire Survivors</span>
             <span class="lg">&nbsp;—&nbsp;</span>
-            <span>Build Planner (0.6.1)</span>
+            <span>Build Planner (0.7.2)</span>
           </h1>
           <div class="slots">
             <div class="arcanas">
@@ -448,7 +448,7 @@
         </header>
 
         <!-- Characters -->
-        <section style="max-width: 80em">
+        <section style="max-width: 85em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
@@ -497,7 +497,7 @@
         </section>
 
         <!-- Passives -->
-        <section style="max-width: 55em">
+        <section style="max-width: 60em">
           <div class="objects">
             <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
               <div class="passive" :title="passive.name">
@@ -516,7 +516,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section style="max-width: 75em">
+        <section style="max-width: 80em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
               <div class="arcana">
@@ -529,7 +529,7 @@
         </section>
 
         <!-- Stages -->
-        <section style="max-width: 55em">
+        <section style="max-width: 65em">
           <div class="objects">
             <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
               <div class="stage">
@@ -597,9 +597,12 @@
             { id: 'concetta', name: 'Concetta', emoji: ':charConcettaVS:', itemIds: ['pinion'] },
             { id: 'gallo', name: 'Gallo', emoji: ':charIguanaVS:', itemIds: ['lancet'] },
             { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
+            { id: 'assunta', name: 'Zi`Assunta', emoji: ':question:', itemIds: ['vento'] },
             { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], secret: true },
             { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], secret: true },
+            { id: 'smith', name: 'Smith IV', emoji: ':question:', itemIds: ['bird_'], secret: true },
             { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonVS:', itemIds: ['knife_'], secret: true },
+            { id: 'minnah', name: 'Minnah', emoji: ':question:', itemIds: ['whip_'], secret: true },
             { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], secret: true },
             { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], secret: true },
           ])
@@ -622,6 +625,7 @@
             { id: 'guns2', name: 'Eight The Sparrow', emoji: ':sparrowVS:' },
             { id: 'bird1', name: 'Peachone', emoji: ':peachoneVS:' },
             { id: 'bird2', name: 'Ebony Wings', emoji: ':ebonywingsVS:' },
+            { id: 'vento', name: 'Vento Sacro', emoji: ':question:' },
             { id: 'lancet', name: 'Clock Lancet', emoji: ':lancetVS:' },
             { id: 'laurel', name: 'Laurel', emoji: ':laurelVS:' },
             { id: 'bone', name: 'Bone', emoji: ':boneVS:' },
@@ -650,6 +654,7 @@
             { id: 'bird_', name: 'Vandalier', emoji: ':vandalierVS:', itemIds: ['bird1', 'bird2'] },
             { id: 'cat_', name: 'Vicious Hunger', emoji: ':cateyeVS:', itemIds: ['cat', 'greed'] },
             { id: 'pinion_', name: 'Valkyrie Turner', emoji: ':valkyrieVS:', itemIds: ['pinion', 'wings'] },
+            { id: 'vento_', name: 'Fuwalafuwaloo', emoji: ':question:', itemIds: ['vento', 'whip_'] },
             { id: 'lancet_', name: 'Infinite Corridor', emoji: ':portalVS:', itemIds: ['lancet', 'ring1', 'ring2'] },
             { id: 'laurel_', name: 'Crimson Shroud', emoji: ':cloakVS:', itemIds: ['laurel', 'sign1', 'sign2'] },
           ])
@@ -671,6 +676,7 @@
             { id: 'revival', name: 'Tiragisú', emoji: ':tiragisuVS:' },
             { id: 'wings', name: 'Wings', emoji: ':wingsVS:' },
             { id: 'greed', name: 'Stone Mask', emoji: ':maskVS:' },
+            { id: 'torrona', name: 'Torrona`s Box', emoji: ':question:' },
             { id: 'ring1', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
             { id: 'ring2', name: 'Silver Ring', emoji: ':silverringVS:', special: true },
             { id: 'sign1', name: 'Metaglio Left', emoji: ':metaglioleftVS:', special: true },
@@ -682,6 +688,8 @@
             { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:' },
             { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:' },
             { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:' },
+            { id: 'arcana8', name: 'Mad Groove', emoji: ':question:' },
+            { id: 'arcana10', name: 'Beginning', emoji: ':question:' },
             { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:' },
             { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIoutofbounds:' },
             { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVjailofcrystal:' },
@@ -697,6 +705,7 @@
             { id: 'library', name: 'Inlaid Library', itemIds: ['cooldown', 'greed'] },
             { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor'] },
             { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration'] },
+            { id: 'capella', name: 'Cappella Magna', itemIds: ['growth', 'revival', 'amount'] },
           ])
 
           // List of all objects
@@ -769,15 +778,20 @@
               concetta: ['+wings', '+curse', '+area'],
               gallo: ['+growth', '+duration', '+cooldown', '-greed'],
               divano: ['+armor', '+recovery', '+luck', '-greed'],
+              assunta: ['+might', '+speed', '+duration', '+area'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
+              smith: ['+wings', '+luck', '-cooldown', '-might', '-area', '-speed', '-duration'],
               marrabbio: ['+health', '+might', '+wings', '+curse', '-speed', '-greed'],
+              minnah: ['+health', '+luck', '+recovery', '-might', '~duration', '~area', '~cooldown', '!might', '!speed'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
               arcana5: ['~speed'],
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
               arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
+              arcana8: [],
+              arcana10: ['+amount'],
               arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
               arcana12: ['+lancet'],
               arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+guns2'],
@@ -826,10 +840,17 @@
               pinion_: ['+cooldown', '+might', '+area', '+duration', '+amount', '+wings'],
               runetracer: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               runetracer_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              vento: ['+cooldown', '+might', '+area', '+speed', '+amount', '+luck', '+speed'],
+              vento_: ['+cooldown', '+might', '+area', '+speed', '+amount', '+luck', '+speed'],
               water: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               water_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               whip: ['+cooldown', '+might', '+area', '+amount'],
               whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+              torrona: ['+might', '+speed', '+duration', '+area', '+curse'],
+              ring1: ['+curse'],
+              ring2: ['+duration', '+area'],
+              sign1: ['+curse'],
+              sign2: ['+recovery', '+health'],
             }
 
             for (const itemId in newImpactsById) {
@@ -842,14 +863,20 @@
               if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
                 impactIds.push('+sign2')
               }
+              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
+                impactIds.push('+torrona')
+              }
               if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'whip', 'whip_'].includes(itemId)) {
                 impactIds.push('+luck')
               }
               // add weapon impacts to passive
               for (const impactId of impactIds) {
                 const id = impactId.substring(1)
+                const newImpactId = impactId[0] + itemId
                 newImpactsById[id] = newImpactsById[id] || []
-                newImpactsById[id].push(impactId.substring(0, 1) + itemId)
+                if (!newImpactsById[id].includes(newImpactId)) {
+                  newImpactsById[id].push(newImpactId)
+                }
               }
             }
 
@@ -873,17 +900,17 @@
             () => {
               const idsArray = Array.from(selectedIds)
               for (const item of items) {
-                  item.selected = idsArray.includes(item.id)
-                }
+                item.selected = idsArray.includes(item.id)
+              }
               for (const evolution of evolutions) {
                 evolution.selected = evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(evolution.id)
               }
               for (const weapon of weapons) {
-                  // fix character's weapon to make it first and prevent it from deleting
+                // fix character's weapon to make it first and prevent it from deleting
                 weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || selectedCharacter.value.itemIds.includes(weapon.evolutionId)
                 // evolved if all required items are selected
                 weapon.evolved = weapon.evolutionId && (weapon.evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(weapon.evolutionId))
-                }
+              }
               for (const evolution of evolutions) {
                 // evolved if all required items are selected or evolved
                 evolution.evolved = evolution.evolutionId && (evolution.evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(evolution.evolutionId))
@@ -1010,7 +1037,7 @@
             } else {
               selectId(item.id)
               nextTick(() => {
-              showImpacts(item)
+                showImpacts(item)
               })
             }
           }
