@@ -597,12 +597,12 @@
             { id: 'concetta', name: 'Concetta', emoji: ':charConcettaVS:', itemIds: ['pinion'] },
             { id: 'gallo', name: 'Gallo', emoji: ':charIguanaVS:', itemIds: ['lancet'] },
             { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
-            { id: 'assunta', name: 'Zi`Assunta', emoji: ':question:', itemIds: ['vento'] },
+            { id: 'assunta', name: 'Zi`Assunta', emoji: ':animZiAssuntaVS:', itemIds: ['vento'] },
             { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], secret: true },
             { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], secret: true },
-            { id: 'smith', name: 'Smith IV', emoji: ':question:', itemIds: ['bird_'], secret: true },
+            { id: 'smith', name: 'Smith IV', emoji: ':animSmithVS:', itemIds: ['bird_'], secret: true },
             { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonVS:', itemIds: ['knife_'], secret: true },
-            { id: 'minnah', name: 'Minnah', emoji: ':question:', itemIds: ['whip_'], secret: true },
+            { id: 'minnah', name: 'Minnah', emoji: ':animMinnahVS:', itemIds: ['whip_'], secret: true },
             { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], secret: true },
             { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], secret: true },
           ])
@@ -625,7 +625,7 @@
             { id: 'guns2', name: 'Eight The Sparrow', emoji: ':sparrowVS:' },
             { id: 'bird1', name: 'Peachone', emoji: ':peachoneVS:' },
             { id: 'bird2', name: 'Ebony Wings', emoji: ':ebonywingsVS:' },
-            { id: 'vento', name: 'Vento Sacro', emoji: ':question:' },
+            { id: 'vento', name: 'Vento Sacro', emoji: ':ventosacroVS:' },
             { id: 'lancet', name: 'Clock Lancet', emoji: ':lancetVS:' },
             { id: 'laurel', name: 'Laurel', emoji: ':laurelVS:' },
             { id: 'bone', name: 'Bone', emoji: ':boneVS:' },
@@ -654,7 +654,7 @@
             { id: 'bird_', name: 'Vandalier', emoji: ':vandalierVS:', itemIds: ['bird1', 'bird2'] },
             { id: 'cat_', name: 'Vicious Hunger', emoji: ':cateyeVS:', itemIds: ['cat', 'greed'] },
             { id: 'pinion_', name: 'Valkyrie Turner', emoji: ':valkyrieVS:', itemIds: ['pinion', 'wings'] },
-            { id: 'vento_', name: 'Fuwalafuwaloo', emoji: ':question:', itemIds: ['vento', 'whip_'] },
+            { id: 'vento_', name: 'Fuwalafuwaloo', emoji: ':fuwalafuwalooVS:', itemIds: ['vento', 'whip_'] },
             { id: 'lancet_', name: 'Infinite Corridor', emoji: ':portalVS:', itemIds: ['lancet', 'ring1', 'ring2'] },
             { id: 'laurel_', name: 'Crimson Shroud', emoji: ':cloakVS:', itemIds: ['laurel', 'sign1', 'sign2'] },
           ])
@@ -676,7 +676,7 @@
             { id: 'revival', name: 'Tiragisú', emoji: ':tiragisuVS:' },
             { id: 'wings', name: 'Wings', emoji: ':wingsVS:' },
             { id: 'greed', name: 'Stone Mask', emoji: ':maskVS:' },
-            { id: 'torrona', name: 'Torrona`s Box', emoji: ':question:' },
+            { id: 'torrona', name: 'Torrona`s Box', emoji: ':torronasboxVS:' },
             { id: 'ring1', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
             { id: 'ring2', name: 'Silver Ring', emoji: ':silverringVS:', special: true },
             { id: 'sign1', name: 'Metaglio Left', emoji: ':metaglioleftVS:', special: true },
@@ -688,8 +688,8 @@
             { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:' },
             { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:' },
             { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:' },
-            { id: 'arcana8', name: 'Mad Groove', emoji: ':question:' },
-            { id: 'arcana10', name: 'Beginning', emoji: ':question:' },
+            { id: 'arcana8', name: 'Mad Groove', emoji: ':VIIImadgrooveVS:' },
+            { id: 'arcana10', name: 'Beginning', emoji: ':XbeginningVS:' },
             { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:' },
             { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIoutofbounds:' },
             { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVjailofcrystal:' },
@@ -869,6 +869,7 @@
               if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'whip', 'whip_'].includes(itemId)) {
                 impactIds.push('+luck')
               }
+              // TODO: minnah does not benefit from dynamic arcanas: (V), (XVIII), (XVII)
               // add weapon impacts to passive
               for (const impactId of impactIds) {
                 const id = impactId.substring(1)
