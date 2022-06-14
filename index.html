@@ -158,6 +158,9 @@
         transition: transform 0.1s;
         box-shadow: 1px 1px 5px #000;
       }
+      .object.special {
+        background: #333 linear-gradient(-45deg, #222, #779) no-repeat;
+      }
       .object:hover {
         /* background-image: linear-gradient(-45deg, #024, #06f);
         border-color: #3cf !important; */
@@ -505,7 +508,7 @@
         <!-- Characters -->
         <section style="max-width: 85em">
           <div class="objects">
-            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
+            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
               <div class="weapons">
                 <div v-for="item in character.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
@@ -518,7 +521,7 @@
         <!-- Weapons -->
         <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
               <div class="weapon">
                 <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
               </div>
@@ -536,7 +539,7 @@
         <!-- Evolutions -->
         <section v-if="config.evolutions" style="max-width: 55em">
           <div class="objects">
-            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
+            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
               <div class="evolution">
                 <div class="sprite" :class="`sprite-${evolution.id}`" :title="evolution.name"></div>
               </div>
@@ -554,7 +557,7 @@
         <!-- Passives -->
         <section style="max-width: 60em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
               <div class="passive" :title="passive.name">
                 <div class="sprite" :class="`sprite-${passive.id}`"></div>
               </div>
@@ -573,7 +576,7 @@
         <!-- Arcanas -->
         <section style="max-width: 80em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
               <div class="arcana">
                 <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
               </div>
@@ -586,7 +589,7 @@
         <!-- Stages -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
+            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
               <div class="stage">
                 <div class="sprite" :class="`sprite-${stage.id}`" :title="stage.name"></div>
               </div>
@@ -653,13 +656,13 @@
             { id: 'gallo', name: 'Gallo', emoji: ':charIguanaVS:', itemIds: ['lancet'] },
             { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
             { id: 'assunta', name: 'Zi`Assunta', emoji: ':animZiAssuntaVS:', itemIds: ['vento'] },
-            { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], secret: true },
-            { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], secret: true },
-            { id: 'smith', name: 'Smith IV', emoji: ':animSmithVS:', itemIds: ['bird_'], secret: true },
-            { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonVS:', itemIds: ['knife_'], secret: true },
-            { id: 'minnah', name: 'Minnah', emoji: ':animMinnahVS:', itemIds: ['whip_'], secret: true },
-            { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], secret: true },
-            { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], secret: true },
+            { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], special: true },
+            { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], special: true },
+            { id: 'smith', name: 'Smith IV', emoji: ':animSmithVS:', itemIds: ['bird_'], special: true },
+            { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonVS:', itemIds: ['knife_'], special: true },
+            { id: 'minnah', name: 'Minnah', emoji: ':animMinnahVS:', itemIds: ['whip_'], special: true },
+            { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], special: true },
+            { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], special: true },
           ])
 
           const weapons = reactive([
@@ -680,15 +683,15 @@
             { id: 'guns2', name: 'Eight The Sparrow', emoji: ':sparrowVS:' },
             { id: 'bird1', name: 'Peachone', emoji: ':peachoneVS:' },
             { id: 'bird2', name: 'Ebony Wings', emoji: ':ebonywingsVS:' },
+            { id: 'cat', name: 'Gatti Amari', emoji: ':catVS:' },
+            { id: 'pinion', name: 'Shadow Pinion', emoji: ':shadowpinionVS:' },
             { id: 'vento', name: 'Vento Sacro', emoji: ':ventosacroVS:' },
             { id: 'lancet', name: 'Clock Lancet', emoji: ':lancetVS:' },
             { id: 'laurel', name: 'Laurel', emoji: ':laurelVS:' },
-            { id: 'bone', name: 'Bone', emoji: ':boneVS:' },
-            { id: 'cherry', name: 'Cherry Bomb', emoji: ':cherrybombVS:' },
-            { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:' },
-            { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:' },
-            { id: 'cat', name: 'Gatti Amari', emoji: ':catVS:' },
-            { id: 'pinion', name: 'Shadow Pinion', emoji: ':shadowpinionVS:' },
+            { id: 'bone', name: 'Bone', emoji: ':boneVS:', special: true },
+            { id: 'cherry', name: 'Cherry Bomb', emoji: ':cherrybombVS:', special: true },
+            { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:', special: true },
+            { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:', special: true },
           ])
 
           const evolutions = reactive([
