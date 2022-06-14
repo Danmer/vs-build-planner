@@ -70,9 +70,15 @@
         flex-direction: column;
         align-items: center;
       }
-      .slots {
+      .slots-1 {
         display: flex;
         /* border: 0.1em solid #888; */
+      }
+      .slots-2 {
+        display: flex;
+      }
+      .slots-2 > .flex-1 {
+        display: flex;
       }
       .slot {
         position: relative;
@@ -111,7 +117,19 @@
         height: 1.667em;
         overflow: hidden;
       }
-      .slot:nth-child(n + 7) {
+      .slot.stage {
+        width: 6.667em;
+        height: 2.5em;
+        border-width: 0.05rem;
+        overflow: hidden;
+        display: flex;
+      }
+      .slot.stage > div {
+        position: absolute;
+        font-size: 0.5em;
+        margin-bottom: 3.5em;
+      }
+      .slots-1 .slot:nth-child(n + 7) {
         opacity: 0.5;
       }
       .slot.arcana > div {
@@ -330,17 +348,35 @@
       }
       @media (max-width: 50em) {
         .slots {
+          display: flex;
+        }
+        .slots-1 {
           flex-direction: column;
           align-items: center;
         }
-        .slots > .flex-1 {
+        .slots-1 > .flex-1 {
           display: flex;
         }
-        .slots > .flex-1 > .flex {
+        .slots-1 > .flex-1 > .flex {
           flex-direction: column;
         }
-        .slots > .arcanas {
+        .slots-1 > .arcanas {
           display: flex;
+        }
+        .slots-2 {
+          flex-direction: column;
+          width: 5em;
+        }
+        .slots-2 > .flex-1 > .flex {
+          flex-direction: column;
+        }
+        .slots-2 .stage {
+          margin-top: 4.166em;
+          width: 5em;
+          height: 2.5em;
+        }
+        .slots-2 .passive {
+          width: 2.5em;
         }
         h1 {
           flex-direction: column;
@@ -393,35 +429,54 @@
             <span>Build Planner (0.7.2)</span>
           </h1>
           <div class="slots">
-            <div class="arcanas">
-              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana selected" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
-              </div>
-              <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
-                <div class="empty">ARCANA</div>
-              </div>
-            </div>
-            <div v-if="selectedCharacter" class="character slot" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseleave="hideImpacts()">
-              <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
-            </div>
-            <div v-else class="character slot">
-              <div class="empty">CHARACTER</div>
-            </div>
-            <div class="flex-1">
-              <div class="flex">
-                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon selected" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${weapon.id}`"></div>
+            <div class="slots-1">
+              <div class="arcanas">
+                <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
+                  <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
                 </div>
-                <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
-                  <div class="empty">WEAPON</div>
+                <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
+                  <div class="empty">ARCANA</div>
                 </div>
               </div>
-              <div class="flex">
-                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive selected" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+              <div v-if="selectedCharacter.id" class="character slot" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseleave="hideImpacts()">
+                <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
+              </div>
+              <div v-else class="character slot">
+                <div class="empty">CHARACTER</div>
+              </div>
+              <div class="flex-1">
+                <div class="flex">
+                  <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+                    <div class="sprite" :class="`sprite-${weapon.id}`"></div>
+                  </div>
+                  <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
+                    <div class="empty">WEAPON</div>
+                  </div>
                 </div>
-                <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
-                  <div class="empty">PASSIVE</div>
+                <div class="flex">
+                  <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                  </div>
+                  <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
+                    <div class="empty">PASSIVE</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slots-2" v-if="selectedStage.id">
+              <div class="stage slot" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="hideImpacts()">
+                <div class="sprite" :class="`sprite-${selectedStage.id}`"></div>
+              </div>
+              <div class="flex-1">
+                <div class="flex">
+                  <div v-for="(passive, $index) in selectedStage.items.slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                  </div>
+                </div>
+                <div class="flex">
+                  <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -883,16 +938,21 @@
 
             // sort impacts (selected - down, others - up)
             for (const itemId in newImpactsById) {
-              newImpactsById[itemId].sort((id1, id2) => (selectedIds.has(id1.substring(1)) && !selectedIds.has(id2.substring(1)) ? 1 : -1))
+              newImpactsById[itemId].sort((id1, id2) => (itemsById[id1.substring(1)].selected && !itemsById[id2.substring(1)].selected ? 1 : -1))
             }
 
             return newImpactsById
           })
 
-          const selectedItems = computed(() => Array.from(selectedIds).map((itemId) => itemsById[itemId]))
-          const selectedCharacter = computed(() => selectedItems.value.find((item) => item.type === 'character') || { id: '', emoji: '', itemIds: [], items: [] })
+          const selectedItems = computed(() =>
+            Array.from(selectedIds)
+              .filter((itemId) => itemId)
+              .map((itemId) => itemsById[itemId])
+          )
+          const selectedCharacter = computed(() => selectedItems.value.find((item) => item.type === 'character') || { id: '', emoji: '', itemIds: [] })
+          const selectedStage = computed(() => selectedItems.value.find((item) => item.type === 'stage') || { id: '', emoji: '', itemIds: [] })
           const selectedWeapons = computed(() => selectedItems.value.filter((item) => item.type === 'weapon').sort((a, b) => (a.fixed && !b.fixed ? -1 : 0)))
-          const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive'))
+          const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive' && !selectedStage.value.itemIds.includes(item.id)))
           const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
           const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? (weapon.evolution.evolved ? weapon.evolution.evolution : weapon.evolution) : weapon)))))
 
@@ -901,14 +961,13 @@
             () => {
               const idsArray = Array.from(selectedIds)
               for (const item of items) {
-                item.selected = idsArray.includes(item.id)
+                item.selected = idsArray.includes(item.id) || selectedStage.value.itemIds.includes(item.id)
+                item.fixed = selectedCharacter.value.itemIds.includes(item.id) || selectedCharacter.value.itemIds.includes(item.evolutionId)
               }
               for (const evolution of evolutions) {
                 evolution.selected = evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(evolution.id)
               }
               for (const weapon of weapons) {
-                // fix character's weapon to make it first and prevent it from deleting
-                weapon.fixed = selectedCharacter.value.itemIds.includes(weapon.id) || selectedCharacter.value.itemIds.includes(weapon.evolutionId)
                 // evolved if all required items are selected
                 weapon.evolved = weapon.evolutionId && (weapon.evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(weapon.evolutionId))
               }
@@ -954,7 +1013,7 @@
 
           function updateHash() {
             const newHash = (selectedCharacter.value.id ? [selectedCharacter.value] : [])
-              .concat(selectedWeapons.value, selectedPassives.value, selectedArcanas.value)
+              .concat(selectedWeapons.value, selectedPassives.value, selectedArcanas.value, selectedStage.value)
               .map((item) => item.id)
               .join()
             if ('#' + newHash !== location.hash) {
@@ -1022,6 +1081,10 @@
                 }
                 break
               case 'stage':
+                if (selectedStage.value.id) {
+                  selectedIds.delete(selectedStage.value.id)
+                }
+                selectedIds.add(item.id)
                 for (const itemId of item.itemIds) {
                   selectId(itemId)
                 }
@@ -1098,7 +1161,10 @@
               text += `\n${evolvedWeapons.value.map((item) => item.emoji).join(' ')}`
             }
             if (selectedPassives.value.length) {
-              text += `\n${selectedPassives.value.map((item) => item.emoji).join(' ')}`
+              text += `\n${selectedPassives.value
+                .concat(selectedStage.value.items)
+                .map((item) => item.emoji)
+                .join(' ')}`
             }
             navigator.clipboard
               .writeText(text)
@@ -1175,6 +1241,7 @@
             stages,
             itemsById,
             impactsById,
+            selectedStage,
             selectedCharacter,
             selectedWeapons,
             selectedPassives,
