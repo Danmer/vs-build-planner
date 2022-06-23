@@ -401,7 +401,7 @@
             <span>Vampire Survivors</span>
             <span class="hidden-visible">&nbsp;—&nbsp;</span>
             <span>Build Planner</span>
-            <span class="hidden-visible">&nbsp;(0.7.2)</span>
+            <span class="hidden-visible">&nbsp;(0.7.3)</span>
           </h1>
         </header>
 
@@ -480,7 +480,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 75em">
+        <section style="max-width: 80em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
@@ -493,7 +493,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 65em">
+        <section style="max-width: 70em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
               <div class="weapon">
@@ -630,6 +630,7 @@
             { id: 'gallo', name: 'Gallo', emoji: ':charIguanaVS:', itemIds: ['lancet'] },
             { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
             { id: 'assunta', name: 'Zi`Assunta', emoji: ':animZiAssuntaVS:', itemIds: ['vento'] },
+            { id: 'ambrojoe', name: 'Ambrojoe', emoji: ':question:', itemIds: ['furniture'] },
             { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], special: true },
             { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], special: true },
             { id: 'smith', name: 'Smith IV', emoji: ':animSmithVS:', itemIds: ['bird_'], special: true },
@@ -651,12 +652,12 @@
             { id: 'pentagram', name: 'Pentagram', emoji: ':pentagramVS:' },
             { id: 'runetracer', name: 'Runetracer', emoji: ':runetracerVS:' },
             { id: 'water', name: 'Santa Water', emoji: ':santawaterVS:' },
-            { id: 'mana', name: 'Song Of Mana', emoji: ':manaVS:' },
             { id: 'whip', name: 'Whip', emoji: ':whipVS:' },
             { id: 'guns1', name: 'Phiera Der Tuphello', emoji: ':phieraVS:' },
             { id: 'guns2', name: 'Eight The Sparrow', emoji: ':sparrowVS:' },
             { id: 'bird1', name: 'Peachone', emoji: ':peachoneVS:' },
             { id: 'bird2', name: 'Ebony Wings', emoji: ':ebonywingsVS:' },
+            { id: 'mana', name: 'Song Of Mana', emoji: ':manaVS:' },
             { id: 'cat', name: 'Gatti Amari', emoji: ':catVS:' },
             { id: 'pinion', name: 'Shadow Pinion', emoji: ':shadowpinionVS:' },
             { id: 'vento', name: 'Vento Sacro', emoji: ':ventosacroVS:' },
@@ -666,6 +667,7 @@
             { id: 'cherry', name: 'Cherry Bomb', emoji: ':cherrybombVS:', special: true },
             { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:', special: true },
             { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:', special: true },
+            { id: 'furniture', name: 'La Robba', emoji: ':question:', special: true },
           ])
 
           const evolutions = reactive([
@@ -716,6 +718,7 @@
           ])
 
           const arcanas = reactive([
+            { id: 'arcana3', name: 'Tragic Princess', emoji: ':question:' },
             { id: 'arcana4', name: 'Awake', emoji: ':4VS:' },
             { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:' },
             { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:' },
@@ -730,6 +733,7 @@
             { id: 'arcana17', name: 'Lost & Found Painting', emoji: ':17VS:' },
             { id: 'arcana18', name: 'Boogaloo of Illusions', emoji: ':XVIIIboogaloofillusions:' },
             { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:' },
+            { id: 'arcana20', name: 'Silent Old Sanctuary', emoji: ':question:' },
           ])
 
           const stages = reactive([
@@ -815,6 +819,7 @@
               gallo: ['+growth', '+duration', '+cooldown', '-greed'],
               divano: ['+armor', '+recovery', '+luck', '-greed'],
               assunta: ['+might', '+speed', '+duration', '+area'],
+              ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
               smith: ['+wings', '+luck', '-cooldown', '-might', '-area', '-speed', '-duration'],
@@ -822,6 +827,7 @@
               minnah: ['+health', '+luck', '+recovery', '-might', '~duration', '~area', '~cooldown', '!might', '!speed'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
+              arcana3: ['+cooldown'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
               arcana5: ['~speed'],
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
@@ -836,6 +842,7 @@
               arcana17: ['~duration'],
               arcana18: ['~area'],
               arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_'],
+              arcana20: [],
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               bible: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
@@ -853,6 +860,7 @@
               firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               flowers: ['+cooldown', '+might', '+area', '+amount', '+duration', '+speed', '+wings'],
+              furniture: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               garlic: ['+cooldown', '+might', '+area'],
               garlic_: ['+cooldown', '+might', '+area', '+recovery'],
               guns1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
@@ -904,6 +912,15 @@
               }
               if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'whip', 'whip_'].includes(itemId)) {
                 impactIds.push('+luck')
+              }
+              if ((item.type === 'weapon' || item.type === 'evolution') && impactIds.includes('+cooldown')) {
+                impactIds.push('+arcana3')
+              }
+              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
+                impactIds.push('+arcana20')
+              }
+              if (item.id === 'arcana20' && evolvedWeapons.value.length < 6) {
+                impactIds.push('+cooldown', '+might')
               }
               // TODO: minnah does not benefit from dynamic arcanas: (V), (XVIII), (XVII)
               // add weapon impacts to passive
