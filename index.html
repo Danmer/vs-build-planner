@@ -27,34 +27,29 @@
         box-sizing: border-box;
       }
       html {
-        font-family: 'Courier New', Courier, monospace;
+        font-family: sans-serif;
         line-height: 1;
+        background: #333 radial-gradient(#600, #100) no-repeat fixed;
+        color: #fff;
+        text-align: center;
         -webkit-text-size-adjust: 100%;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
       body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         margin: 0;
-        min-height: 100vh;
-        background: #333 linear-gradient(-45deg, #000, #422) no-repeat;
-        color: #eee;
-        white-space: nowrap;
-        text-align: center;
-      }
-      h1 {
-        display: flex;
-        justify-content: center;
-        margin: 0 0 0.5em;
-        white-space: normal;
+        overflow-x: hidden;
       }
       header {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 1em;
+        margin: 1em 1em 0.5em;
+      }
+      h1 {
+        margin: 0;
+        font-weight: 800;
+        font-size: 1.6em;
       }
       section {
         margin: 0.5em;
@@ -62,79 +57,82 @@
       .pixels {
         image-rendering: pixelated;
       }
-      .flex {
+      .flex-row {
         display: flex;
+        flex-direction: row;
+      }
+      .flex-col-row {
+        display: flex;
+        flex-direction: row;
+      }
+      .flex-row-col {
+        display: flex;
+        flex-direction: column;
       }
       .app {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        min-height: 100vh;
       }
-      .slots-1 {
-        display: flex;
-        /* border: 0.1em solid #888; */
-      }
-      .slots-2 {
-        display: flex;
-      }
-      .slots-2 > .flex-1 {
-        display: flex;
-      }
+      .object,
       .slot {
         position: relative;
-        flex-shrink: 0;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 2.5em;
-        height: 2.5em;
-        border: 0.05rem solid #aa9;
-        background: #333 linear-gradient(-45deg, #222, #998) no-repeat;
+        flex-direction: column;
+        width: 4.5em;
+        height: 4.5em;
+        overflow: hidden;
+        padding: 0.2em;
+        border: 0.05em outset #999;
+        background: #987 linear-gradient(-45deg, rgba(0, 0, 0, 0.6), transparent) no-repeat;
+        cursor: pointer;
+        transition: background-color 0.1s, transform 0.1s;
         box-shadow: 1px 1px 5px #000;
-        transition: transform 0.1s;
-        font-size: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      .slot:not(.character):hover {
-        /* background-image: linear-gradient(-45deg, #400, #f66);
-        border-color: #f99 !important; */
-        background: #333 linear-gradient(-45deg, #333, #bbb) no-repeat;
+      .slot:hover,
+      .object:hover {
         transform: scale(1.4);
         z-index: 2;
-        cursor: pointer;
+      }
+      .slots {
+        font-size: 0.9em;
       }
       .slot.character {
-        /* width: 20vw;
-        height: 20vw; */
-        width: 5em;
-        height: 5em;
-        border-width: 0.05rem;
+        width: 9em;
+        height: 9em;
       }
       .slot.arcana {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 1.667em;
-        height: 1.667em;
         overflow: hidden;
+        width: 3em;
+        height: 3em;
       }
       .slot.stage {
-        width: 6.667em;
-        height: 2.5em;
-        border-width: 0.05rem;
+        width: 12em;
+        height: 4.5em;
         overflow: hidden;
         display: flex;
       }
-      .slot.stage > div {
-        position: absolute;
-        font-size: 0.5em;
-        margin-bottom: 3.5em;
-      }
-      .slots-1 .slot:nth-child(n + 7) {
+      .slot:nth-child(n + 7) {
         opacity: 0.5;
       }
-      .slot.arcana > div {
-        font-size: 0.3em;
+      .slot.arcana .sprite {
         flex-shrink: 0;
+        font-size: 0.66667em;
+      }
+      .slot.character .sprite,
+      .slot.weapon .sprite,
+      .slot.passive .sprite {
+        font-size: 1.7em;
+      }
+      .slot.stage .sprite {
+        position: absolute;
+        font-size: 0.9em;
+        margin-bottom: 3.5em;
       }
       .objects {
         display: flex;
@@ -142,55 +140,34 @@
         justify-content: center;
       }
       .object {
-        position: relative;
         margin: 0.2em;
-        padding: 0.4em;
-        display: flex;
-        flex-direction: column;
-        flex-shrink: 0;
-        width: 5em;
-        height: 5em;
-        overflow: hidden;
         border-radius: 0.2em;
-        border: 0.15em solid #aa9;
-        background: #333 linear-gradient(-45deg, #222, #998) no-repeat;
-        cursor: pointer;
-        transition: transform 0.1s;
-        box-shadow: 1px 1px 5px #000;
       }
       .object.special {
-        background: #333 linear-gradient(-45deg, #222, #779) no-repeat;
-      }
-      .object:hover {
-        /* background-image: linear-gradient(-45deg, #024, #06f);
-        border-color: #3cf !important; */
-        border: 0.15em solid #ddc;
-        background: #333 linear-gradient(-45deg, #333, #ccb) no-repeat;
-        transform: scale(1.4);
-        z-index: 2;
+        background-color: #779;
       }
       .object.selected {
-        background-image: linear-gradient(-45deg, #024, #36f);
-        border-color: #39f;
+        background-color: #36f;
+        border-color: #39f !important;
       }
       .green {
-        background-image: linear-gradient(-45deg, #222, #3c3) !important;
+        background-color: #3c3 !important;
+        border-color: #090;
       }
       .red {
-        background-image: linear-gradient(-45deg, #222, #f33) !important;
+        background-color: #f33 !important;
+        border-color: #900;
       }
       .yellow {
-        background-image: linear-gradient(-45deg, #222, #fc0) !important;
+        background-color: #fc0 !important;
       }
       .green-red {
         animation: green-red 2s linear infinite;
-        background-color: #3c3;
-        background-image: linear-gradient(-45deg, #222, transparent) !important;
+        background-color: #3c3 !important;
       }
       .red-green {
         animation: red-green 2s linear infinite;
-        background-color: #f33;
-        background-image: linear-gradient(-45deg, #222, transparent) !important;
+        background-color: #f33 !important;
       }
       .object.character,
       .object.passive,
@@ -204,13 +181,17 @@
         align-items: center;
         justify-content: center;
       }
+      .object.arcana {
+        width: 4em;
+      }
       .object.stage {
         width: 12em;
+        height: 5em;
       }
       .object > .title {
         position: absolute;
-        top: 0.1em;
-        left: 0.1em;
+        top: 0.2em;
+        left: 0.2em;
         font-size: 0.7em;
       }
       .object > .character {
@@ -234,7 +215,7 @@
         position: absolute;
         right: 0.2em;
         top: 0.2em;
-        font-size: 0.9em;
+        font-size: 0.8em;
       }
       .object > .arcana > .sprite {
         border-radius: 0.3em;
@@ -269,11 +250,9 @@
         font-size: 0.9em;
       }
       .object > .impacts > .impact {
-        content: ' ';
-        width: 0.4em;
-        height: 0.4em;
-        border-radius: 0.2em;
-        border: 0.05em solid #333;
+        width: 0.2em;
+        height: 0.3em;
+        border-bottom: 1px solid #333;
         background-color: #666;
       }
       .object > .impacts > .impact:hover {
@@ -290,49 +269,67 @@
       }
       .empty {
         color: #999;
-        font-size: 0.3em;
+        font-size: 0.6em;
         font-weight: bold;
       }
+
+      /* Buttons */
+
       .buttons {
         display: flex;
         flex-wrap: wrap;
-        align-items: center;
         justify-content: center;
-        margin: 0 auto;
-        font-weight: bold;
+        margin: 0.5em;
         color: #999;
+        font-weight: 800;
+        font-size: 0.7em;
+        text-align: center;
         user-select: none;
       }
-      .buttons.settings {
-        font-size: 0.7em;
-      }
-      .buttons .flex .button:nth-child(n + 2) {
-        margin-left: 0;
+      .settings {
+        margin-top: -0.5em;
+        font-size: 0.6em;
       }
       .button {
-        margin: 0.5em 0.5em 0;
-        cursor: pointer;
-        padding: 0.3em 0.5em;
+        margin: 0.4em;
+        padding: 0.7em;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: 0.3em;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
       }
       .button:hover {
         background-color: rgba(0, 0, 0, 0.5);
         color: #fff;
+        transition: all 0s;
       }
+      .button .disabled {
+        color: #c66;
+      }
+      .button .enabled {
+        color: #6c6;
+      }
+      .button .modifier {
+        color: #6cc;
+      }
+
+      /* Footer */
+
       footer {
-        margin: 1em 0;
+        margin: 2em 0;
         color: #999;
+        font-size: 0.8em;
+        text-align: center;
       }
       .socials {
+        margin-bottom: 1em;
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-bottom: 0.3em;
       }
       .social {
         margin-left: 0.3em;
-        opacity: 0.5;
+        opacity: 0.8;
+        line-height: 0;
       }
       .social:hover {
         opacity: 1;
@@ -349,46 +346,20 @@
         color: #ccc;
         cursor: pointer;
       }
+
       @media (max-width: 50em) {
-        .slots {
-          display: flex;
-        }
-        .slots-1 {
-          flex-direction: column;
-          align-items: center;
-        }
-        .slots-1 > .flex-1 {
-          display: flex;
-        }
-        .slots-1 > .flex-1 > .flex {
+        .flex-col-row {
           flex-direction: column;
         }
-        .slots-1 > .arcanas {
-          display: flex;
+        .flex-row-col {
+          flex-direction: row;
         }
-        .slots-2 {
-          flex-direction: column;
-          width: 5em;
+        .slot.stage {
+          margin-top: 7.5em;
+          width: 9em;
         }
-        .slots-2 > .flex-1 > .flex {
-          flex-direction: column;
-        }
-        .slots-2 .stage {
-          margin-top: 4.166em;
-          width: 5em;
-          height: 2.5em;
-        }
-        .slots-2 .passive {
-          width: 2.5em;
-        }
-        h1 {
-          flex-direction: column;
-        }
-        .lg {
+        .hidden-visible {
           display: none;
-        }
-        .buttons {
-          max-width: 20em;
         }
       }
       @keyframes green-red {
@@ -424,89 +395,92 @@
   <body>
     <div id="app">
       <main class="app" :class="{pixels: config.pixels}" :style="{fontSize: `${config.size}em`}">
-        <!-- Build -->
+        <!-- Header -->
         <header>
-          <h1>
+          <h1 class="flex-col-row">
             <span>Vampire Survivors</span>
-            <span class="lg">&nbsp;—&nbsp;</span>
-            <span>Build Planner (0.7.2)</span>
+            <span class="hidden-visible">&nbsp;—&nbsp;</span>
+            <span>Build Planner</span>
+            <span class="hidden-visible">&nbsp;(0.7.2)</span>
           </h1>
-          <div class="slots">
-            <div class="slots-1">
-              <div class="arcanas">
-                <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
-                </div>
-                <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
-                  <div class="empty">ARCANA</div>
-                </div>
-              </div>
-              <div v-if="selectedCharacter.id" class="character slot" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseleave="hideImpacts()">
-                <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
-              </div>
-              <div v-else class="character slot">
-                <div class="empty">CHARACTER</div>
-              </div>
-              <div class="flex-1">
-                <div class="flex">
-                  <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
-                    <div class="sprite" :class="`sprite-${weapon.id}`"></div>
-                  </div>
-                  <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
-                    <div class="empty">WEAPON</div>
-                  </div>
-                </div>
-                <div class="flex">
-                  <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
-                  </div>
-                  <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
-                    <div class="empty">PASSIVE</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="slots-2" v-if="selectedStage.id">
-              <div class="stage slot" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="hideImpacts()">
-                <div class="sprite" :class="`sprite-${selectedStage.id}`"></div>
-              </div>
-              <div class="flex-1">
-                <div class="flex">
-                  <div v-for="(passive, $index) in selectedStage.items.slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
-                  </div>
-                </div>
-                <div class="flex">
-                  <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                    <div class="sprite" :class="`sprite-${passive.id}`"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="buttons">
-            <div class="button" @click="reset($event)">RESET</div>
-            <div class="button" @click="copyLink($event)">COPY LINK</div>
-            <div class="button" @click="copyEmojis($event)">COPY EMOJIS</div>
-            <div class="button" @click="copyImage($event)">COPY IMAGE</div>
-            <div class="button" @click="saveImage($event)">SAVE IMAGE</div>
-            <div class="button" @click="settings = !settings">SETTINGS</div>
-          </div>
-          <div v-if="settings" class="buttons settings">
-            <div class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: {{config.evolutions ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.combinations = !config.combinations">COMBINATIONS: {{config.combinations ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.impacts = !config.impacts">IMPACTS: {{config.impacts ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.pixels = !config.pixels">PIXELS: {{config.pixels ? 'ON' : 'OFF'}}</div>
-            <div class="button" @click="config.titles = !config.titles">TITLES: {{config.titles ? 'ON' : 'OFF'}}</div>
-            <div class="flex">
-              <div class="button" @click="config.size -= 0.1">SIZE -</div>
-              <div class="button" @click="config.size += 0.1">SIZE +</div>
-            </div>
-          </div>
         </header>
 
+        <!-- Slots -->
+        <section class="slots flex-row-col">
+          <div class="flex-col-row">
+            <div class="arcanas flex-row-col">
+              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
+                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
+              </div>
+              <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
+                <small class="empty">ARCANA</small>
+              </div>
+            </div>
+            <div v-if="selectedCharacter.id" class="slot character" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseenter="showImpacts(selectedCharacter)" @mouseleave="hideImpacts()">
+              <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
+            </div>
+            <div v-else class="slot character">
+              <small class="empty">CHARACTER</small>
+            </div>
+            <div class="flex-row-col">
+              <div class="flex-col-row">
+                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+                  <div class="sprite" :class="`sprite-${weapon.id}`"></div>
+                </div>
+                <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
+                  <small class="empty">WEAPON</small>
+                </div>
+              </div>
+              <div class="flex-col-row">
+                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                </div>
+                <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
+                  <small class="empty">PASSIVE</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex-col-row" v-if="selectedStage.id">
+            <div class="slot stage" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="hideImpacts()">
+              <div class="sprite" :class="`sprite-${selectedStage.id}`" :title="selectedStage.name"></div>
+            </div>
+            <div class="flex-row">
+              <div class="flex-col-row">
+                <div v-for="(passive, $index) in selectedStage.items.slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                </div>
+              </div>
+              <div class="flex-col-row">
+                <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Buttons-->
+        <div class="buttons">
+          <span class="button" @click="reset($event)">RESET</span>
+          <span class="button" @click="copyLink($event)">COPY LINK</span>
+          <span class="button" @click="copyEmojis($event)">COPY EMOJIS</span>
+          <span class="button" @click="copyImage($event)">COPY IMAGE</span>
+          <span class="button" @click="saveImage($event)">SAVE IMAGE</span>
+          <span class="button" @click="settings = !settings">SETTINGS</span>
+        </div>
+        <div v-if="settings" class="buttons settings">
+          <span class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: <span :class="(config.evolutions ? 'enabled' : 'disabled')">{{config.evolutions ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.combinations = !config.combinations">COMBINATIONS: <span :class="(config.combinations ? 'enabled' : 'disabled')">{{config.combinations ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.impacts = !config.impacts">IMPACTS: <span :class="(config.impacts ? 'enabled' : 'disabled')">{{config.impacts ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.titles = !config.titles">TITLES: <span :class="(config.titles ? 'enabled' : 'disabled')">{{config.titles ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.pixels = !config.pixels">PIXELS: <span :class="(config.pixels ? 'enabled' : 'disabled')">{{config.pixels ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.size -= 0.1">SIZE <span class="modifier">-</span></span>
+          <span class="button" style="margin-left: 0" @click="config.size += 0.1">SIZE <span class="modifier">+</span></span>
+        </div>
+
         <!-- Characters -->
-        <section style="max-width: 85em">
+        <section style="max-width: 75em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
               <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
@@ -519,7 +493,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 75em">
+        <section style="max-width: 65em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
               <div class="weapon">
@@ -537,7 +511,7 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 55em">
+        <section v-if="config.evolutions" style="max-width: 50em">
           <div class="objects">
             <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
               <div class="evolution">
@@ -555,7 +529,7 @@
         </section>
 
         <!-- Passives -->
-        <section style="max-width: 60em">
+        <section style="max-width: 55em">
           <div class="objects">
             <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
               <div class="passive" :title="passive.name">
