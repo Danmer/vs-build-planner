@@ -21,7 +21,7 @@
     <meta property="twitter:description" content="Vampire Survivors - Build Planner" />
     <meta property="twitter:image" content="https://danmer.github.io/vs-build-planner/img/preview.jpg" />
     <!-- Styles -->
-    <link rel="stylesheet" href="./assets/sprite.css" />
+    <link rel="stylesheet" href="./icons.css" />
     <style>
       * {
         box-sizing: border-box;
@@ -76,6 +76,9 @@
         justify-content: center;
         min-height: 100vh;
       }
+
+      /* Objects and slots */
+
       .object,
       .slot {
         position: relative;
@@ -84,7 +87,6 @@
         width: 4.5em;
         height: 4.5em;
         overflow: hidden;
-        padding: 0.2em;
         border: 0.05em outset #999;
         background: #987 linear-gradient(-45deg, rgba(0, 0, 0, 0.6), transparent) no-repeat;
         cursor: pointer;
@@ -98,57 +100,6 @@
       .object:hover {
         transform: scale(1.4);
         z-index: 2;
-      }
-      .slots {
-        font-size: 0.9em;
-      }
-      .slot.character {
-        width: 9em;
-        height: 9em;
-      }
-      .slot.arcana {
-        overflow: hidden;
-        width: 3em;
-        height: 3em;
-      }
-      .slot.stage {
-        width: 12em;
-        height: 4.5em;
-        overflow: hidden;
-        display: flex;
-      }
-      .slot:nth-child(n + 7) {
-        opacity: 0.5;
-      }
-      .slot.arcana .sprite {
-        flex-shrink: 0;
-        font-size: 0.66667em;
-      }
-      .slot.character .sprite,
-      .slot.weapon .sprite,
-      .slot.passive .sprite {
-        font-size: 1.7em;
-      }
-      .slot.stage .sprite {
-        position: absolute;
-        font-size: 0.9em;
-        margin-bottom: 3.5em;
-      }
-      .objects {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .object {
-        margin: 0.2em;
-        border-radius: 0.2em;
-      }
-      .object.special {
-        background-color: #779;
-      }
-      .object.selected {
-        background-color: #36f;
-        border-color: #39f !important;
       }
       .green {
         background-color: #3c3 !important;
@@ -169,95 +120,6 @@
         animation: red-green 2s linear infinite;
         background-color: #f33 !important;
       }
-      .object.character,
-      .object.passive,
-      .object.weapon,
-      .object.evolution,
-      .object.arcana {
-        align-items: flex-start;
-        justify-content: flex-end;
-      }
-      .object.center {
-        align-items: center;
-        justify-content: center;
-      }
-      .object.arcana {
-        width: 4em;
-      }
-      .object.stage {
-        width: 12em;
-        height: 5em;
-      }
-      .object > .title {
-        position: absolute;
-        top: 0.2em;
-        left: 0.2em;
-        font-size: 0.7em;
-      }
-      .object > .character {
-        position: absolute;
-        font-size: 1em;
-      }
-      .object > .arcana {
-        font-size: 0.6em;
-      }
-      .object > .stage {
-        font-size: 0.8em;
-        margin-bottom: 2.8em;
-      }
-      .object > .passive,
-      .object > .weapon,
-      .object > .evolution {
-        font-size: 2em;
-      }
-      .object > .weapons,
-      .object > .evolutions {
-        position: absolute;
-        right: 0.2em;
-        top: 0.2em;
-        font-size: 0.8em;
-      }
-      .object > .arcana > .sprite {
-        border-radius: 0.3em;
-      }
-      .object > .stage > .sprite {
-        opacity: 0.3;
-      }
-      .object > .impacts {
-        position: absolute;
-        bottom: 0.2em;
-        right: 0.2em;
-      }
-      .object > .items {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-center;
-        position: absolute;
-        bottom: 0.2em;
-        left: 0.2em;
-      }
-      .object > .items > .sprite {
-        margin-right: 0.3em;
-      }
-      .object > .roman {
-        position: absolute;
-        bottom: 0.2em;
-        right: 0.2em;
-        padding: 0.1em 0.3em;
-        background-color: #222;
-        border-radius: 0.3em;
-        box-shadow: 0 0 1px #000;
-        font-size: 0.9em;
-      }
-      .object > .impacts > .impact {
-        width: 0.2em;
-        height: 0.3em;
-        border-bottom: 1px solid #333;
-        background-color: #666;
-      }
-      .object > .impacts > .impact:hover {
-        border-color: #fff;
-      }
       .positive {
         background-color: #3c3 !important;
       }
@@ -271,6 +133,174 @@
         color: #999;
         font-size: 0.6em;
         font-weight: bold;
+      }
+
+      /* Slots */
+
+      .slots {
+        font-size: 0.9em;
+      }
+      .slot.character {
+        width: 9em;
+        height: 9em;
+      }
+      .slot.arcana {
+        overflow: hidden;
+        width: 3em;
+        height: 3em;
+      }
+      .slot.stage {
+        width: 12em;
+        height: 4.5em;
+        overflow: hidden;
+        display: flex;
+      }
+      .slot.selected:nth-child(n + 7) {
+        opacity: 0.5;
+      }
+      .slot .icon {
+        position: absolute;
+        width: 2.5em;
+        height: 2.5em;
+        background-position: center;
+      }
+      .slot.character > .icon {
+        width: 100%;
+        height: 100%;
+        font-size: 1.5em;
+      }
+      .slot.weapon > .icon,
+      .slot.passive > .icon {
+        background-size: contain;
+      }
+      .slot.arcana > .icon,
+      .slot.stage > .icon {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+      }
+
+      /* Objects */
+
+      .objects {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .object {
+        margin: 0.2em;
+        border-radius: 0.2em;
+      }
+      .object.special {
+        background-color: #779;
+      }
+      .object.selected {
+        background-color: #36f;
+        border-color: #39f !important;
+      }
+      .object.center > .icon {
+        position: initial;
+        background-position: center center;
+      }
+      .object.arcana {
+        width: 4em;
+      }
+      .object.stage {
+        width: 12em;
+        height: 5em;
+      }
+
+      /* Objects in objects */
+
+      .object > .title {
+        position: absolute;
+        top: 0.2em;
+        left: 0.2em;
+        font-size: 0.7em;
+      }
+      .object > .roman {
+        position: absolute;
+        top: 0.2em;
+        left: 0.2em;
+        padding: 0.2em;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 0.3em;
+        font-size: 0.9em;
+      }
+      .object > .character {
+        position: absolute;
+      }
+      .object > .icon {
+        position: absolute;
+        left: 0.3em;
+        bottom: 0.3em;
+      }
+      .object.character > .icon {
+        width: 5em;
+        height: 5em;
+        background-position: bottom left;
+      }
+      .object.weapon > .icon,
+      .object.evolution > .icon,
+      .object.passive > .icon {
+        width: 3em;
+        height: 3em;
+      }
+      .object.arcana > .icon,
+      .object.stage > .icon {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+      }
+      .object > .items {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+        align-content: end;
+        padding: 0.1em;
+        height: 100%;
+        width: 100%;
+      }
+      .object.arcana .items {
+        justify-content: flex-end;
+        background-image: linear-gradient(110deg, transparent, rgba(30, 20, 10, 0.5));
+      }
+      .object.stage .items {
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+        background-image: linear-gradient(to bottom, transparent, rgba(30, 20, 10, 0.5));
+      }
+      .object.arcana.selected > .items {
+        background-color: rgba(30, 30, 250, 0.5);
+      }
+      .object.stage.selected > .items {
+        background-color: rgba(30, 30, 250, 0.5);
+      }
+      .object > .items > .icon {
+        margin: 0.1em;
+        width: 1.1em;
+        height: 1.1em;
+        background-position: right center;
+      }
+      .object.stage > .items > .icon {
+        background-position: center center;
+      }
+      .object > .impacts {
+        position: absolute;
+        bottom: 0.2em;
+        right: 0.2em;
+      }
+      .object > .impacts > .impact {
+        width: 0.2em;
+        height: 0.3em;
+        border-bottom: 1px solid #333;
+        background-color: #666;
+      }
+      .object > .impacts > .impact:hover {
+        border-color: #fff;
       }
 
       /* Buttons */
@@ -410,30 +440,30 @@
           <div class="flex-col-row">
             <div class="arcanas flex-row-col">
               <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
+                <div class="icon" :class="`icon-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
               </div>
               <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
                 <small class="empty">ARCANA</small>
               </div>
             </div>
             <div v-if="selectedCharacter.id" class="slot character" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseenter="showImpacts(selectedCharacter)" @mouseleave="hideImpacts()">
-              <div class="sprite" :class="`sprite-${selectedCharacter.id}`"></div>
+              <div class="icon" :class="`icon-${selectedCharacter.id}`"></div>
             </div>
             <div v-else class="slot character">
               <small class="empty">CHARACTER</small>
             </div>
             <div class="flex-row-col">
               <div class="flex-col-row">
-                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${weapon.id}`"></div>
+                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot selected weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+                  <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
                   <small class="empty">WEAPON</small>
                 </div>
               </div>
               <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot selected passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                  <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
                   <small class="empty">PASSIVE</small>
@@ -443,17 +473,17 @@
           </div>
           <div class="flex-col-row" v-if="selectedStage.id">
             <div class="slot stage" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="hideImpacts()">
-              <div class="sprite" :class="`sprite-${selectedStage.id}`" :title="selectedStage.name"></div>
+              <div class="icon" :class="`icon-${selectedStage.id}`" :title="selectedStage.name"></div>
             </div>
             <div class="flex-row">
               <div class="flex-col-row">
                 <div v-for="(passive, $index) in selectedStage.items.slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                  <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
               <div class="flex-col-row">
                 <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-                  <div class="sprite" :class="`sprite-${passive.id}`"></div>
+                  <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
             </div>
@@ -483,9 +513,9 @@
         <section style="max-width: 80em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
-              <div class="character sprite" :class="`sprite-${character.id}`" :title="character.name"></div>
-              <div class="weapons">
-                <div v-for="item in character.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              <div class="icon" :class="`icon-${character.id}`" :title="character.name"></div>
+              <div class="items">
+                <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{character.id}}</div>
             </div>
@@ -496,14 +526,12 @@
         <section style="max-width: 70em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
-              <div class="weapon">
-                <div class="sprite" :class="`sprite-${weapon.id}`" :title="weapon.name"></div>
-              </div>
+              <div class="icon" :class="`icon-${weapon.id}`" :title="weapon.name"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
-              <div v-if="config.combinations" class="evolutions">
-                <div v-for="item in weapon.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              <div v-if="config.combinations" class="items">
+                <div v-for="item in weapon.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
@@ -514,14 +542,12 @@
         <section v-if="config.evolutions" style="max-width: 50em">
           <div class="objects">
             <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
-              <div class="evolution">
-                <div class="sprite" :class="`sprite-${evolution.id}`" :title="evolution.name"></div>
-              </div>
+              <div class="icon" :class="`icon-${evolution.id}`" :title="evolution.name"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
-              <div v-if="config.combinations" class="evolutions">
-                <div v-for="item in evolution.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              <div v-if="config.combinations" class="items">
+                <div v-for="item in evolution.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{evolution.id}}</div>
             </div>
@@ -532,15 +558,13 @@
         <section style="max-width: 55em">
           <div class="objects">
             <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
-              <div class="passive" :title="passive.name">
-                <div class="sprite" :class="`sprite-${passive.id}`"></div>
-              </div>
+              <div class="icon" :class="`icon-${passive.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
                 <div v-if="selectedCharacter.id" class="impact" :class="impactsById[selectedCharacter.id] && (impactsById[selectedCharacter.id].includes('-' + passive.id) ? 'negative' : impactsById[selectedCharacter.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="selectedCharacter.id"></div>
               </div>
-              <div v-if="config.combinations" class="evolutions">
-                <div v-for="item in passive.items" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+              <div v-if="config.combinations" class="items">
+                <div v-for="item in passive.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{passive.id}}</div>
             </div>
@@ -551,10 +575,8 @@
         <section style="max-width: 80em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
-              <div class="arcana">
-                <div class="sprite" :class="`sprite-${arcana.id}`" :title="arcana.name"></div>
-              </div>
-              <div v-if="config.titles" class="title">{{arcana.id}}</div>
+              <div class="icon" :class="`icon-${arcana.id}`" :title="arcana.name"></div>
+              <div class="items"></div>
               <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
             </div>
           </div>
@@ -564,13 +586,11 @@
         <section style="max-width: 65em">
           <div class="objects">
             <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
-              <div class="stage">
-                <div class="sprite" :class="`sprite-${stage.id}`" :title="stage.name"></div>
-              </div>
+              <div class="icon" :class="`icon-${stage.id}`" :title="stage.name"></div>
               <div class="items">
-                <div v-for="item in stage.items.slice(0, -4)" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+                <div v-for="item in stage.items.slice(0, -4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
                 <div style="width: 100%"></div>
-                <div v-for="item in stage.items.slice(-4)" class="sprite" :class="`sprite-${item.id}`" :title="item.name"></div>
+                <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{stage.id}}</div>
             </div>
@@ -579,7 +599,7 @@
 
         <!-- Footer -->
         <footer>
-          <small class="socials">
+          <div class="socials">
             <span>Vampire Survivors:</span>
             <a class="social" href="https://store.steampowered.com/app/1794680/Vampire_Survivors/" target="_blank"><img src="./img/steam.svg" alt="" /></a>
             <a class="social" href="https://twitter.com/poncle_vampire" target="_blank"><img src="./img/twitter.svg" alt="" /></a>
@@ -587,8 +607,8 @@
             <a class="social" href="https://www.tiktok.com/@vampire_survivors" target="_blank"><img src="./img/tiktok.svg" alt="" /></a>
             <a class="social" href="https://discord.com/invite/vampire-survivors" target="_blank"><img src="./img/discord.svg" alt="" /></a>
             <a class="social" href="https://www.reddit.com/r/VampireSurvivors/" target="_blank"><img src="./img/reddit.svg" alt="" /></a>
-          </small>
-          <small>Website is made by <a class="author" href="mailto:danmer.ekb@gmail.com">Danmer</a>, 2022</small>
+          </div>
+          <div>Website is made by <a class="author" href="mailto:danmer.ekb@gmail.com">Danmer</a>, 2022</div>
         </footer>
       </main>
     </div>
