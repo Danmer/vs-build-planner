@@ -60,6 +60,7 @@
       .flex-row {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
       }
       .flex-col-row {
         display: flex;
@@ -83,7 +84,9 @@
       .slot {
         position: relative;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
         width: 4.5em;
         height: 4.5em;
         overflow: hidden;
@@ -92,9 +95,6 @@
         cursor: pointer;
         transition: background-color 0.1s, transform 0.1s;
         box-shadow: 1px 1px 5px #000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
       .slot:hover,
       .object:hover {
@@ -150,10 +150,11 @@
         height: 3em;
       }
       .slot.stage {
+        display: flex;
+        flex-shrink: 0;
         width: 12em;
         height: 4.5em;
         overflow: hidden;
-        display: flex;
       }
       .slot.selected:nth-child(n + 7) {
         opacity: 0.5;
@@ -386,7 +387,8 @@
         }
         .slot.stage {
           margin-top: 7.5em;
-          width: 9em;
+          min-width: 9em;
+          width: 100%;
         }
         .hidden-visible {
           display: none;
@@ -436,7 +438,7 @@
         </header>
 
         <!-- Slots -->
-        <section class="slots flex-row-col">
+        <section class="slots flex-row-col" style="max-width: 60em">
           <div class="flex-col-row">
             <div class="arcanas flex-row-col">
               <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
@@ -477,7 +479,12 @@
             </div>
             <div class="flex-row">
               <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedStage.items.slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                <div v-for="(passive, $index) in selectedStage.items.slice(0, 12).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                  <div class="icon" :class="`icon-${passive.id}`"></div>
+                </div>
+              </div>
+              <div class="flex-col-row">
+                <div v-for="(passive, $index) in selectedStage.items.slice(8, 20).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
@@ -588,9 +595,9 @@
             <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
               <div class="icon" :class="`icon-${stage.id}`" :title="stage.name"></div>
               <div class="items">
-                <div v-for="item in stage.items.slice(0, -4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
-                <div style="width: 100%"></div>
                 <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
+                <div style="width: 100%"></div>
+                <div v-for="item in stage.items.slice(0, -4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
               </div>
               <div v-if="config.titles" class="title">{{stage.id}}</div>
             </div>
@@ -765,7 +772,7 @@
             { id: 'acres', name: 'Green Acres', itemIds: [], special: true },
             { id: 'bonezone', name: 'The Bone Zone', itemIds: [], special: true },
             { id: 'molise', name: 'Il Molise', itemIds: [], special: true },
-            { id: 'moongolow', name: 'Moongolow', itemIds: [], special: true },
+            { id: 'moongolow', name: 'Moongolow', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
           ])
 
           // List of all objects
