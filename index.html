@@ -238,6 +238,7 @@
         bottom: 0.3em;
       }
       .object.character > .icon {
+        bottom: 0.1em;
         width: 5em;
         height: 5em;
         background-position: bottom left;
@@ -439,14 +440,14 @@
         <section class="slots flex-row-col" style="max-width: 60em">
           <div class="flex-col-row">
             <div class="arcanas flex-row-col">
-              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
+              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
                 <div class="icon" :class="`icon-${arcana.id}`" :title="arcana.name + ` (${arcana.roman})`"></div>
               </div>
               <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
                 <small class="empty">ARCANA</small>
               </div>
             </div>
-            <div v-if="selectedCharacter.id" class="slot character" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseenter="showImpacts(selectedCharacter)" @mouseleave="hideImpacts()">
+            <div v-if="selectedCharacter.id" class="slot character" :data-id="selectedCharacter.id" :title="selectedCharacter.name" @click="deleteItem(selectedCharacter)" @mouseenter="onMouseEnter(selectedCharacter)" @mouseleave="onMouseLeave(selectedCharacter)">
               <div class="icon" :class="`icon-${selectedCharacter.id}`"></div>
             </div>
             <div v-else class="slot character">
@@ -454,7 +455,7 @@
             </div>
             <div class="flex-row-col">
               <div class="flex-col-row weapons">
-                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
@@ -462,7 +463,7 @@
                 </div>
               </div>
               <div class="flex-col-row passives">
-                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
@@ -472,22 +473,22 @@
             </div>
           </div>
           <div class="flex-col-row" v-if="selectedStage.id">
-            <div class="slot stage" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="hideImpacts()">
+            <div class="slot stage" :title="selectedStage.name" @click="deleteItem(selectedStage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${selectedStage.id}`" :title="selectedStage.name"></div>
             </div>
             <div class="flex-row">
               <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedStage.items.slice(0, 12).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                <div v-for="(passive, $index) in selectedStage.items.slice(0, 12).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
               <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedStage.items.slice(8, 20).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                <div v-for="(passive, $index) in selectedStage.items.slice(8, 20).slice(0, -4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
               <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+                <div v-for="(passive, $index) in selectedStage.items.slice(-4)" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
@@ -517,7 +518,7 @@
         <!-- Characters -->
         <section style="max-width: 80em">
           <div class="objects">
-            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="showImpacts(character)" @mouseleave="hideImpacts()">
+            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`" :title="character.name"></div>
               <div class="items">
                 <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
@@ -530,7 +531,7 @@
         <!-- Weapons -->
         <section style="max-width: 70em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`" :title="weapon.name"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -546,7 +547,7 @@
         <!-- Evolutions -->
         <section v-if="config.evolutions" style="max-width: 50em">
           <div class="objects">
-            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="showImpacts(evolution)" @mouseleave="hideImpacts()">
+            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`" :title="evolution.name"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)].selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -562,7 +563,7 @@
         <!-- Passives -->
         <section style="max-width: 55em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, center: !config.combinations && !config.titles && !config.impacts}" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${passive.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.id"></div>
@@ -579,7 +580,7 @@
         <!-- Arcanas -->
         <section style="max-width: 80em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`" :title="arcana.name"></div>
               <div class="items">
                 <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
@@ -592,7 +593,7 @@
         <!-- Stages -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special}" @click="toggleItem(stage)" @mouseenter="showImpacts(stage)" @mouseleave="hideImpacts()">
+            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special}" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${stage.id}`" :title="stage.name"></div>
               <div class="items">
                 <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
@@ -608,12 +609,12 @@
         <footer>
           <div class="socials">
             <span>Vampire Survivors:</span>
-            <a class="social" href="https://store.steampowered.com/app/1794680/Vampire_Survivors/" target="_blank"><img src="./img/steam.svg" alt="" /></a>
-            <a class="social" href="https://twitter.com/poncle_vampire" target="_blank"><img src="./img/twitter.svg" alt="" /></a>
-            <a class="social" href="https://www.instagram.com/vampire_survivors/" target="_blank"><img src="./img/instagram.svg" alt="" /></a>
-            <a class="social" href="https://www.tiktok.com/@vampire_survivors" target="_blank"><img src="./img/tiktok.svg" alt="" /></a>
-            <a class="social" href="https://discord.com/invite/vampire-survivors" target="_blank"><img src="./img/discord.svg" alt="" /></a>
-            <a class="social" href="https://www.reddit.com/r/VampireSurvivors/" target="_blank"><img src="./img/reddit.svg" alt="" /></a>
+            <a class="social" href="https://store.steampowered.com/app/1794680/Vampire_Survivors/" target="_blank"><img src="./img/logos/steam.svg" alt="" /></a>
+            <a class="social" href="https://twitter.com/poncle_vampire" target="_blank"><img src="./img/logos/twitter.svg" alt="" /></a>
+            <a class="social" href="https://www.instagram.com/vampire_survivors/" target="_blank"><img src="./img/logos/instagram.svg" alt="" /></a>
+            <a class="social" href="https://www.tiktok.com/@vampire_survivors" target="_blank"><img src="./img/logos/tiktok.svg" alt="" /></a>
+            <a class="social" href="https://discord.com/invite/vampire-survivors" target="_blank"><img src="./img/logos/discord.svg" alt="" /></a>
+            <a class="social" href="https://www.reddit.com/r/VampireSurvivors/" target="_blank"><img src="./img/logos/reddit.svg" alt="" /></a>
           </div>
           <div>Website is made by <a class="author" href="mailto:danmer.ekb@gmail.com">Danmer</a>, 2022</div>
         </footer>
@@ -632,6 +633,8 @@
           const settings = ref(false)
 
           const selectedIds = reactive(new Set(location.hash.length > 1 ? location.hash.substring(1).split(',') : []))
+
+          let hoveredObject = { id: '' }
 
           const characters = reactive([
             { id: 'antonio', name: 'Antonio', emoji: ':charAntonioVS:', itemIds: ['whip'] },
@@ -1088,7 +1091,7 @@
 
           function showImpacts(object) {
             if (!object) {
-              return
+              return false
             }
             if (object.type !== 'arcana' && object.itemIds) {
               for (const itemId of object.itemIds.concat(object.evolutionId)) {
@@ -1110,6 +1113,31 @@
             document.querySelectorAll(`.yellow, .green, .red, .green-red, .red-green`).forEach((element) => {
               element.classList.remove('yellow', 'green', 'red', 'green-red', 'red-green')
             })
+          }
+
+          function onMouseEnter(object) {
+            hoveredObject = object
+            if (object.type === 'character') {
+              const iconElement = document.querySelector(`.objects [data-id="${object.id}"] > .icon`)
+              if (iconElement) {
+                const image = new Image()
+                image.onload = () => {
+                  if (object.id === hoveredObject.id) {
+                    iconElement.style.backgroundImage = `url("./img/characters/${object.id}.gif")`
+                  }
+                }
+                image.src = `./img/characters/${object.id}.gif`
+              }
+            }
+            showImpacts(object)
+          }
+
+          function onMouseLeave(object) {
+            hoveredObject = { id: '' }
+            if (object && object.type === 'character') {
+              document.querySelector(`.objects [data-id="${object.id}"] > .icon`).style.backgroundImage = ''
+            }
+            hideImpacts()
           }
 
           function unselectetId(itemId) {
@@ -1312,8 +1340,8 @@
             selectedPassives,
             selectedArcanas,
             evolvedWeapons,
-            showImpacts,
-            hideImpacts,
+            onMouseEnter,
+            onMouseLeave,
             toggleItem,
             deleteItem,
             saveImage,
