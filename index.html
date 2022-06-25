@@ -204,7 +204,7 @@
         background-position: center center;
       }
       .object.arcana {
-        width: 4em;
+        height: 5em;
       }
       .object.stage {
         width: 12em;
@@ -265,10 +265,7 @@
         height: 100%;
         width: 100%;
       }
-      .object.arcana .items {
-        justify-content: flex-end;
-        background-image: linear-gradient(110deg, transparent, rgba(30, 20, 10, 0.5));
-      }
+      .object.arcana .items,
       .object.stage .items {
         flex-direction: row;
         flex-wrap: wrap-reverse;
@@ -583,7 +580,9 @@
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" @click="toggleItem(arcana)" @mouseenter="showImpacts(arcana)" @mouseleave="hideImpacts()">
               <div class="icon" :class="`icon-${arcana.id}`" :title="arcana.name"></div>
-              <div class="items"></div>
+              <div class="items">
+                <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.name"></div>
+              </div>
               <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
             </div>
           </div>
@@ -747,21 +746,21 @@
 
           const arcanas = reactive([
             { id: 'arcana3', name: 'Tragic Princess', emoji: ':question:' },
-            { id: 'arcana4', name: 'Awake', emoji: ':4VS:' },
-            { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:' },
-            { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:' },
-            { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:' },
-            { id: 'arcana8', name: 'Mad Groove', emoji: ':VIIImadgrooveVS:' },
-            { id: 'arcana10', name: 'Beginning', emoji: ':XbeginningVS:' },
-            { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:' },
-            { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIoutofbounds:' },
-            { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVjailofcrystal:' },
-            { id: 'arcana15', name: 'Disco of Gold', emoji: ':XIVdiscoofgold:' },
-            { id: 'arcana16', name: 'Slash', emoji: ':16VS:' },
-            { id: 'arcana17', name: 'Lost & Found Painting', emoji: ':17VS:' },
-            { id: 'arcana18', name: 'Boogaloo of Illusions', emoji: ':XVIIIboogaloofillusions:' },
-            { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:' },
-            { id: 'arcana20', name: 'Silent Old Sanctuary', emoji: ':question:' },
+            { id: 'arcana4', name: 'Awake', emoji: ':4VS:', itemIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'speed'] },
+            { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:', itemIds: ['speed'] },
+            { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:', itemIds: ['recovery', 'chicken', 'whip_', 'garlic_', 'flowers', 'vento_', 'revival'] },
+            { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:', itemIds: ['knife', 'knife_', 'axe', 'axe_', 'guns1', 'guns2', 'cart'] },
+            { id: 'arcana8', name: 'Mad Groove', emoji: ':VIIImadgrooveVS:', itemIds: [] },
+            { id: 'arcana10', name: 'Beginning', emoji: ':XbeginningVS:', itemIds: ['amount', 'bone', 'cherry', 'cart', 'flowers'] },
+            { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:', itemIds: ['magicwand', 'magicwand_', 'firewand', 'firewand_', 'cross', 'cross_', 'cart'] },
+            { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIoutofbounds:', itemIds: ['lancet', 'orologion'] },
+            { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVjailofcrystal:', itemIds: ['magicwand', 'magicwand_', 'runetracer', 'runetracer_', 'guns2'] },
+            { id: 'arcana15', name: 'Disco of Gold', emoji: ':XIVdiscoofgold:', itemIds: ['cat_', 'coin', 'coinbag', 'richcoinbag', 'bigcoinbag', 'gildedclover'] },
+            { id: 'arcana16', name: 'Slash', emoji: ':16VS:', itemIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'cross_', 'vento', 'vento_'] },
+            { id: 'arcana17', name: 'Lost & Found Painting', emoji: ':17VS:', itemIds: ['duration'] },
+            { id: 'arcana18', name: 'Boogaloo of Illusions', emoji: ':XVIIIboogaloofillusions:', itemIds: ['area'] },
+            { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:', itemIds: ['firewand', 'firewand_', 'guns1', 'pinion_', 'brazier'] },
+            { id: 'arcana20', name: 'Silent Old Sanctuary', emoji: ':question:', itemIds: ['reroll', 'skip', 'banish'] },
           ])
 
           const stages = reactive([
@@ -776,8 +775,46 @@
             { id: 'moongolow', name: 'Moongolow', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
           ])
 
+          const powerups = reactive([
+            { id: 'reroll', name: 'Reroll', emoji: ':rerollVS: ' },
+            { id: 'skip', name: 'Skip', emoji: ':skipVS:' },
+            { id: 'banish', name: 'Banish', emoji: ':banishVS:' },
+          ])
+
+          const pickups = [
+            { id: 'bigcoinbag', name: 'Big Coin Bag' },
+            { id: 'coinbag', name: 'Coin Bag' },
+            { id: 'experience', name: 'Experience Gem' },
+            { id: 'chicken', name: 'Floor Chicken' },
+            { id: 'gildedclover', name: 'Gilded Clover' },
+            { id: 'glassvizard', name: 'Glass Vizard' },
+            { id: 'coin', name: 'Gold Coin' },
+            { id: 'egg', name: 'Golden Egg' },
+            { id: 'littleclover', name: 'Little Clover' },
+            { id: 'littleheart', name: 'Little Heart' },
+            { id: 'banger', name: 'Magic Banger' },
+            { id: 'map', name: 'Milky Way Map' },
+            { id: 'fritta', name: 'Nduja Fritta' },
+            { id: 'orologion', name: 'Orologion' },
+            { id: 'randomazzo', name: 'Randomazzo' },
+            { id: 'richcoinbag', name: 'Rich Coin Bag' },
+            { id: 'rosary', name: 'Rosary' },
+            { id: 'tears', name: 'Sorceress` Tears' },
+            { id: 'chest', name: 'Treasure Chest' },
+            { id: 'vacuum', name: 'Vacuum' },
+            { id: 'yellowsign', name: 'Yellow Sign' },
+          ]
+
+          const destructibles = [
+            { id: 'lampost', name: 'Lampost' },
+            { id: 'wagon', name: 'Cart' },
+            { id: 'brazier', name: 'Brazier' },
+            { id: 'brazier2', name: 'Brazier2' },
+            { id: 'candelabrone', name: 'Candelabrone' },
+          ]
+
           // List of all objects
-          const items = [...characters, ...weapons, ...passives, ...evolutions, ...arcanas, ...stages]
+          const items = [...characters, ...weapons, ...passives, ...evolutions, ...arcanas, ...stages, ...powerups, ...pickups, ...destructibles]
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
           keyById(items)
@@ -1052,7 +1089,7 @@
             if (!object) {
               return
             }
-            if (object.itemIds) {
+            if (object.type !== 'arcana' && object.itemIds) {
               for (const itemId of object.itemIds.concat(object.evolutionId)) {
                 document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
                   element.classList.add('yellow')
