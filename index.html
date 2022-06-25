@@ -101,30 +101,37 @@
         transform: scale(1.4);
         z-index: 2;
       }
+      .special {
+        background-color: #779;
+      }
+      .selected {
+        background-color: #36f;
+        border-color: #39f;
+      }
       .green {
-        background-color: #3c3 !important;
+        background-color: #3c3;
         border-color: #090;
       }
       .red {
-        background-color: #f33 !important;
+        background-color: #f33;
         border-color: #900;
       }
       .yellow {
-        background-color: #fc0 !important;
+        background-color: #fc0;
       }
       .green-red {
         animation: green-red 2s linear infinite;
-        background-color: #3c3 !important;
+        background-color: #3c3;
       }
       .red-green {
         animation: red-green 2s linear infinite;
-        background-color: #f33 !important;
+        background-color: #f33;
       }
       .positive {
-        background-color: #3c3 !important;
+        background-color: #3c3;
       }
       .negative {
-        background-color: #f33 !important;
+        background-color: #f33;
       }
       .hidden {
         display: none;
@@ -156,7 +163,8 @@
         height: 4.5em;
         overflow: hidden;
       }
-      .slot.selected:nth-child(n + 7) {
+      .weapons .slot:nth-child(n + 7),
+      .passives .slot:nth-child(n + 7) {
         opacity: 0.5;
       }
       .slot .icon {
@@ -191,13 +199,6 @@
       .object {
         margin: 0.2em;
         border-radius: 0.2em;
-      }
-      .object.special {
-        background-color: #779;
-      }
-      .object.selected {
-        background-color: #36f;
-        border-color: #39f !important;
       }
       .object.center > .icon {
         position: initial;
@@ -452,16 +453,16 @@
               <small class="empty">CHARACTER</small>
             </div>
             <div class="flex-row-col">
-              <div class="flex-col-row">
-                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot selected weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
+              <div class="flex-col-row weapons">
+                <div v-for="(weapon, $index) in evolvedWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.name" @click="deleteItem(weapon, evolvedWeapons[$index+1])" @mouseenter="showImpacts(weapon)" @mouseleave="hideImpacts()">
                   <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
                   <small class="empty">WEAPON</small>
                 </div>
               </div>
-              <div class="flex-col-row">
-                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot selected passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
+              <div class="flex-col-row passives">
+                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.name" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="showImpacts(passive)" @mouseleave="hideImpacts()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
                 <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
