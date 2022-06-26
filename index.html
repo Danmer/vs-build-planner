@@ -90,7 +90,7 @@
         width: 4.5em;
         height: 4.5em;
         overflow: hidden;
-        border: 0.05em outset #999;
+        border: 0.05em outset rgba(100, 100, 100, 0.7);
         background: #987 linear-gradient(-45deg, rgba(0, 0, 0, 0.6), transparent) no-repeat;
         cursor: pointer;
         transition: background-color 0.1s, transform 0.1s;
@@ -106,26 +106,23 @@
       }
       .selected {
         background-color: #36f;
-        border-color: #39f;
       }
       .green {
         background-color: #3c3;
-        border-color: #090;
       }
       .red {
         background-color: #f33;
-        border-color: #900;
       }
       .yellow {
         background-color: #fc0;
       }
       .green-red {
-        animation: green-red 2s linear infinite;
         background-color: #3c3;
+        animation: green-red 2s linear infinite;
       }
       .red-green {
-        animation: red-green 2s linear infinite;
         background-color: #f33;
+        animation: red-green 2s linear infinite;
       }
       .positive {
         background-color: #3c3;
@@ -292,15 +289,12 @@
         position: absolute;
         bottom: 0.2em;
         right: 0.2em;
+        background-color: #666;
       }
-      .object > .impacts > .impact {
+      .impact {
         width: 0.2em;
         height: 0.3em;
         border-bottom: 1px solid #333;
-        background-color: #666;
-      }
-      .object > .impacts > .impact:hover {
-        border-color: #fff;
       }
 
       /* Buttons */
@@ -929,7 +923,7 @@
               cross_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
-              flowers: ['+cooldown', '+might', '+area', '+amount', '+duration', '+speed', '+wings'],
+              flowers: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               furniture: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               garlic: ['+cooldown', '+might', '+area'],
               garlic_: ['+cooldown', '+might', '+area', '+recovery'],
@@ -954,8 +948,8 @@
               pinion_: ['+cooldown', '+might', '+area', '+duration', '+amount', '+wings'],
               runetracer: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               runetracer_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
-              vento: ['+cooldown', '+might', '+area', '+speed', '+amount', '+luck', '+speed'],
-              vento_: ['+cooldown', '+might', '+area', '+speed', '+amount', '+luck', '+speed'],
+              vento: ['+cooldown', '+might', '+area', '+amount', '+speed', '+wings', '+luck'],
+              vento_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+wings', '+luck'],
               water: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               water_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               whip: ['+cooldown', '+might', '+area', '+amount'],
