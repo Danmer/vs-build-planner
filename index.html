@@ -1077,6 +1077,7 @@
             const newHash = (selectedCharacter.value.id ? [selectedCharacter.value] : [])
               .concat(selectedWeapons.value, selectedPassives.value, selectedArcanas.value, selectedStage.value)
               .map((item) => item.id)
+              .filter((id) => id)
               .join()
             if ('#' + newHash !== location.hash) {
               location.hash = newHash
