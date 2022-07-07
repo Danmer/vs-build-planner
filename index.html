@@ -510,7 +510,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 80em">
+        <section style="max-width: 85em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
@@ -572,7 +572,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section style="max-width: 80em">
+        <section>
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
@@ -948,8 +948,8 @@
             hoveredId = object.id
             // character's gif animation
             if (object.type === 'character') {
-              const iconElement = document.querySelector(`.objects [data-id="${object.id}"] > .icon`)
-              if (iconElement) {
+              const iconElements = document.querySelectorAll(`[data-id="${object.id}"] > .icon`)
+              for (const iconElement of iconElements) {
                 const image = new Image()
                 image.onload = () => {
                   if (object.id === hoveredId) {
@@ -965,7 +965,10 @@
           function onMouseLeave(object) {
             hoveredId = ''
             if (object && object.type === 'character') {
-              document.querySelector(`.objects [data-id="${object.id}"] > .icon`).style.backgroundImage = ''
+              const iconElements = document.querySelectorAll(`[data-id="${object.id}"] > .icon`)
+              for (const iconElement of iconElements) {
+                iconElement.style.backgroundImage = ''
+              }
             }
             hideImpacts()
           }
@@ -1103,7 +1106,7 @@
               number -= q * roman[i]
               result += i.repeat(q)
             }
-            return result
+            return result || 'O'
           }
 
           function highlightElement(target, color = '#3c3') {

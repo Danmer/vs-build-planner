@@ -143,9 +143,6 @@ window.vs = {
       ],
       "surname": "Provola",
       "description": "Gains +1% Might every level.",
-      "exWeapons": [
-        "GUNS2"
-      ],
       "onEveryLevelUp": {
         "power": 0.01
       },
@@ -403,6 +400,22 @@ window.vs = {
       "price": 666
     },
     {
+      "id": "gains",
+      "name": "Gains",
+      "emoji": ":dragonshrimpVS:",
+      "itemIds": [
+        "cross_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Boros",
+      "description": "Gains +2% Growth every level.",
+      "onEveryLevelUp": {
+        "growth": 0.02
+      },
+      "price": 666
+    },
+    {
       "id": "leda",
       "name": "Leda",
       "emoji": ":charLedaVS:",
@@ -444,7 +457,7 @@ window.vs = {
       "name": "Fire Wand",
       "emoji": ":firewandVS:",
       "description": "Fires at a random enemy, deals heavy damage.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "rarity": 80,
       "tips": "Ignores: duration."
     },
@@ -487,7 +500,7 @@ window.vs = {
       "name": "King Bible",
       "emoji": ":kingbibleVS:",
       "description": "Orbits around the character.",
-      "poolLimit": 25,
+      "poolLimit": 50,
       "hitsWalls": false,
       "rarity": 80,
       "tips": "Best with: speed, duration, area."
@@ -497,7 +510,7 @@ window.vs = {
       "name": "Cross",
       "emoji": ":crossVS:",
       "description": "Aims at nearest enemy, has boomerang effect.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "hitsWalls": false,
       "rarity": 80,
       "tips": "Ignores: duration."
@@ -549,7 +562,7 @@ window.vs = {
       "name": "Whip",
       "emoji": ":whipVS:",
       "description": "Attacks horizontally, passes through enemies.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "critChance": 0.2,
       "critMul": 2,
       "hitsWalls": false,
@@ -607,7 +620,7 @@ window.vs = {
       "name": "Song Of Mana",
       "emoji": ":manaVS:",
       "description": "Attacks vertically, passes through enemies.",
-      "poolLimit": 10,
+      "poolLimit": 15,
       "hitsWalls": false,
       "rarity": 50,
       "tips": "Ignores: amount, speed."
@@ -673,7 +686,7 @@ window.vs = {
       "emoji": ":boneVS:",
       "special": true,
       "description": "Throws a bouncing projectile.",
-      "poolLimit": 25,
+      "poolLimit": 50,
       "rarity": 1,
       "tips": "Best with: duration, speed."
     },
@@ -683,7 +696,7 @@ window.vs = {
       "emoji": ":cherrybombVS:",
       "special": true,
       "description": "Throws a bouncing projectile. Explodes, sometimes.",
-      "poolLimit": 25,
+      "poolLimit": 50,
       "rarity": 1,
       "tips": "Best with: luck."
     },
@@ -693,7 +706,7 @@ window.vs = {
       "emoji": ":carrelloVS:",
       "special": true,
       "description": "Throws a bouncing projectile. Number of bounces affected by Amount.",
-      "poolLimit": 30,
+      "poolLimit": 50,
       "hitsWalls": true,
       "rarity": 1,
       "tips": "Ignores: duration."
@@ -745,7 +758,7 @@ window.vs = {
         "might"
       ],
       "description": "Evolved Fire Wand. Passes through enemies.",
-      "poolLimit": 10,
+      "poolLimit": 20,
       "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires: Spinach."
@@ -759,7 +772,7 @@ window.vs = {
         "area"
       ],
       "description": "Evolved Axe. Passes through enemies.",
-      "poolLimit": 25,
+      "poolLimit": 50,
       "critChance": 0.3,
       "critMul": 2,
       "hitsWalls": false,
@@ -775,7 +788,7 @@ window.vs = {
         "amount"
       ],
       "description": "Evolved Lightning Ring. Projectiles strike twice.",
-      "poolLimit": 50,
+      "poolLimit": 70,
       "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires: Duplicator."
@@ -805,7 +818,7 @@ window.vs = {
         "duration"
       ],
       "description": "Evolved King Bible. Never ends.",
-      "poolLimit": 25,
+      "poolLimit": 50,
       "hitsWalls": false,
       "knockback": 4,
       "rarity": 1,
@@ -820,7 +833,7 @@ window.vs = {
         "luck"
       ],
       "description": "Evolved Cross. Can deal critical damage.",
-      "poolLimit": 10,
+      "poolLimit": 20,
       "critChance": 0.1,
       "critMul": 2.5,
       "hitsWalls": false,
@@ -894,7 +907,7 @@ window.vs = {
         "curse"
       ],
       "description": "Evolved Song of Mana. Might slow enemies down.",
-      "poolLimit": 10,
+      "poolLimit": 15,
       "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires: Skull O`Maniac"
@@ -908,7 +921,7 @@ window.vs = {
         "health"
       ],
       "description": "Evolved Whip. Can deal critical damage and absorb HP.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "critChance": 0.1,
       "critMul": 2,
       "hitsWalls": false,
@@ -924,7 +937,7 @@ window.vs = {
         "greed"
       ],
       "description": "Evolved Gatti Amari. Might turn anything into gold.",
-      "poolLimit": 30,
+      "poolLimit": 60,
       "hitsWalls": true,
       "knockback": 0.1,
       "rarity": 1,
@@ -970,6 +983,7 @@ window.vs = {
         "sign2"
       ],
       "description": "Evolved Laurel. Caps incoming damage at 10. Retaliates when losing charges.",
+      "poolLimit": 50,
       "knockback": 20,
       "rarity": 1,
       "tips": "Requires: Metaglio Left, Metaglio Right."
@@ -984,7 +998,7 @@ window.vs = {
       ],
       "special": true,
       "description": "Union of Ebony Wings and Peachone.",
-      "poolLimit": 80,
+      "poolLimit": 100,
       "hitsWalls": false,
       "knockback": 2,
       "rarity": 1,
@@ -1105,10 +1119,10 @@ window.vs = {
       "id": "armor",
       "name": "Armor",
       "emoji": ":armorVS:",
-      "description": "Reduces incoming damage by 1 per rank (max -3)",
+      "description": "Reduces incoming damage by 1. Increases retaliatory damage by 10%.",
       "isPowerUp": true,
-      "rarity": 100,
-      "price": 600
+      "price": 600,
+      "rarity": 100
     },
     {
       "id": "magnet",
@@ -1210,17 +1224,7 @@ window.vs = {
       "emoji": ":emptytomeVS:",
       "description": "Uses weapons 2.5% faster per rank (max 5%).",
       "isPowerUp": true,
-      "price": 900,
-      "levels": [
-        {
-          "level": 1,
-          "cooldown": -0.025
-        },
-        {
-          "level": 2,
-          "cooldown": -0.025
-        }
-      ]
+      "price": 900
     },
     {
       "id": "might",
@@ -1228,29 +1232,7 @@ window.vs = {
       "emoji": ":spinachVS:",
       "description": "Raises inflicted damage by 5% per rank (max +25%).",
       "isPowerUp": true,
-      "price": 200,
-      "levels": [
-        {
-          "level": 1,
-          "power": 0.05
-        },
-        {
-          "level": 2,
-          "power": 0.05
-        },
-        {
-          "level": 3,
-          "power": 0.05
-        },
-        {
-          "level": 4,
-          "power": 0.05
-        },
-        {
-          "level": 5,
-          "power": 0.05
-        }
-      ]
+      "price": 200
     },
     {
       "id": "area",
@@ -1258,17 +1240,7 @@ window.vs = {
       "emoji": ":candelabradorVS:",
       "description": "Augments area of attacks by 5% per rank (max +10%).",
       "isPowerUp": true,
-      "price": 300,
-      "levels": [
-        {
-          "level": 1,
-          "area": 0.05
-        },
-        {
-          "level": 2,
-          "area": 0.05
-        }
-      ]
+      "price": 300
     },
     {
       "id": "amount",
@@ -1276,13 +1248,7 @@ window.vs = {
       "emoji": ":duplicatorVS:",
       "description": "Fires 1 more projectile (all weapons).",
       "isPowerUp": true,
-      "price": 5000,
-      "levels": [
-        {
-          "level": 1,
-          "amount": 1
-        }
-      ]
+      "price": 5000
     },
     {
       "id": "speed",
@@ -1290,17 +1256,7 @@ window.vs = {
       "emoji": ":bracerVS:",
       "description": "Projectiles move 10% faster per rank (max 20%).",
       "isPowerUp": true,
-      "price": 300,
-      "levels": [
-        {
-          "level": 1,
-          "speed": 0.1
-        },
-        {
-          "level": 2,
-          "speed": 0.1
-        }
-      ]
+      "price": 300
     },
     {
       "id": "duration",
@@ -1308,17 +1264,7 @@ window.vs = {
       "emoji": ":spellbinderVS:",
       "description": "Effects from weapons last 15% longer per rank (max +30%).",
       "isPowerUp": true,
-      "price": 300,
-      "levels": [
-        {
-          "level": 1,
-          "duration": 0.15
-        },
-        {
-          "level": 2,
-          "duration": 0.15
-        }
-      ]
+      "price": 300
     },
     {
       "id": "luck",
@@ -1326,21 +1272,7 @@ window.vs = {
       "emoji": ":cloverVS:",
       "description": "Chance to get lucky goes up by 10% per rank (max +30%).",
       "isPowerUp": true,
-      "price": 600,
-      "levels": [
-        {
-          "level": 1,
-          "luck": 0.1
-        },
-        {
-          "level": 2,
-          "luck": 0.1
-        },
-        {
-          "level": 3,
-          "luck": 0.1
-        }
-      ]
+      "price": 600
     },
     {
       "id": "recovery",
@@ -1348,29 +1280,7 @@ window.vs = {
       "emoji": ":pummarolaVS:",
       "description": "Recovers 0.1 HP per rank (max 0.5) per second.",
       "isPowerUp": true,
-      "price": 200,
-      "levels": [
-        {
-          "level": 1,
-          "regen": 0.1
-        },
-        {
-          "level": 2,
-          "regen": 0.1
-        },
-        {
-          "level": 3,
-          "regen": 0.1
-        },
-        {
-          "level": 4,
-          "regen": 0.1
-        },
-        {
-          "level": 5,
-          "regen": 0.1
-        }
-      ]
+      "price": 200
     },
     {
       "id": "growth",
@@ -1378,52 +1288,16 @@ window.vs = {
       "emoji": ":crownVS:",
       "description": "Gains 3% more experience per rank (max 15%).",
       "isPowerUp": true,
-      "price": 900,
-      "levels": [
-        {
-          "level": 1,
-          "growth": 0.03
-        },
-        {
-          "level": 2,
-          "growth": 0.03
-        },
-        {
-          "level": 3,
-          "growth": 0.03
-        },
-        {
-          "level": 4,
-          "growth": 0.03
-        },
-        {
-          "level": 5,
-          "growth": 0.03
-        }
-      ]
+      "price": 900
     },
     {
       "id": "armor",
       "name": "Armor",
       "emoji": ":armorVS:",
-      "description": "Reduces incoming damage by 1 per rank (max -3)",
+      "description": "Reduces incoming damage by 1. Increases retaliatory damage by 10%.",
       "isPowerUp": true,
-      "rarity": 100,
-      "levels": [
-        {
-          "level": 1,
-          "armor": 1
-        },
-        {
-          "level": 2,
-          "armor": 1
-        },
-        {
-          "level": 3,
-          "armor": 1
-        }
-      ],
-      "price": 600
+      "price": 600,
+      "rarity": 100
     },
     {
       "id": "magnet",
@@ -1431,17 +1305,7 @@ window.vs = {
       "emoji": ":attractorbVS:",
       "description": "Items pickup range +25% per rank (max +50%).",
       "isPowerUp": true,
-      "price": 300,
-      "levels": [
-        {
-          "level": 1,
-          "magnet": 0.25
-        },
-        {
-          "level": 2,
-          "magnet": 0.25
-        }
-      ]
+      "price": 300
     },
     {
       "id": "curse",
@@ -1449,29 +1313,7 @@ window.vs = {
       "emoji": ":curseVS:",
       "description": "Increases enemy speed, health, quantity, and frequency by 10% per rank (max +50%).",
       "isPowerUp": true,
-      "price": 1666,
-      "levels": [
-        {
-          "level": 1,
-          "curse": 0.1
-        },
-        {
-          "level": 2,
-          "curse": 0.1
-        },
-        {
-          "level": 3,
-          "curse": 0.1
-        },
-        {
-          "level": 4,
-          "curse": 0.1
-        },
-        {
-          "level": 5,
-          "curse": 0.1
-        }
-      ]
+      "price": 1666
     },
     {
       "id": "health",
@@ -1479,21 +1321,7 @@ window.vs = {
       "emoji": ":hollowheartVS:",
       "description": "Augments max health by 20% per rank (max +60%)",
       "isPowerUp": true,
-      "price": 200,
-      "levels": [
-        {
-          "level": 1,
-          "maxHp": 0.1
-        },
-        {
-          "level": 2,
-          "maxHp": 0.1
-        },
-        {
-          "level": 3,
-          "maxHp": 0.1
-        }
-      ]
+      "price": 200
     },
     {
       "id": "revival",
@@ -1501,13 +1329,7 @@ window.vs = {
       "emoji": ":tiragisuVS:",
       "description": "Revives once with 50% health.",
       "isPowerUp": true,
-      "price": 10000,
-      "levels": [
-        {
-          "level": 1,
-          "revivals": 1
-        }
-      ]
+      "price": 10000
     },
     {
       "id": "wings",
@@ -1515,17 +1337,7 @@ window.vs = {
       "emoji": ":wingsVS:",
       "description": "Character moves 5% faster per rank (max 10%).",
       "isPowerUp": true,
-      "price": 300,
-      "levels": [
-        {
-          "level": 1,
-          "moveSpeed": 0.05
-        },
-        {
-          "level": 2,
-          "moveSpeed": 0.05
-        }
-      ]
+      "price": 300
     },
     {
       "id": "greed",
@@ -1533,29 +1345,7 @@ window.vs = {
       "emoji": ":maskVS:",
       "description": "Gains 10% more coins per rank (max +50%).",
       "isPowerUp": true,
-      "price": 200,
-      "levels": [
-        {
-          "level": 1,
-          "greed": 0.1
-        },
-        {
-          "level": 2,
-          "greed": 0.1
-        },
-        {
-          "level": 3,
-          "greed": 0.1
-        },
-        {
-          "level": 4,
-          "greed": 0.1
-        },
-        {
-          "level": 5,
-          "greed": 0.1
-        }
-      ]
+      "price": 200
     },
     {
       "id": "omni",
@@ -1564,44 +1354,7 @@ window.vs = {
       "special": true,
       "description": "Increases Might, Projectile Speed, Duration, and Area by 2% per rank (max +10%).",
       "isPowerUp": true,
-      "price": 1000,
-      "levels": [
-        {
-          "level": 1,
-          "power": 0.02,
-          "area": 0.02,
-          "speed": 0.02,
-          "duration": 0.02
-        },
-        {
-          "level": 2,
-          "power": 0.02,
-          "area": 0.02,
-          "speed": 0.02,
-          "duration": 0.02
-        },
-        {
-          "level": 3,
-          "power": 0.02,
-          "area": 0.02,
-          "speed": 0.02,
-          "duration": 0.02
-        },
-        {
-          "level": 4,
-          "power": 0.02,
-          "area": 0.02,
-          "speed": 0.02,
-          "duration": 0.02
-        },
-        {
-          "level": 5,
-          "power": 0.02,
-          "area": 0.02,
-          "speed": 0.02,
-          "duration": 0.02
-        }
-      ]
+      "price": 1000
     },
     {
       "id": "reroll",
@@ -1610,29 +1363,7 @@ window.vs = {
       "special": true,
       "description": "Once per rank, allows to get different choices when leveling up.",
       "isPowerUp": true,
-      "price": 1000,
-      "levels": [
-        {
-          "level": 1,
-          "rerolls": 1
-        },
-        {
-          "level": 2,
-          "rerolls": 1
-        },
-        {
-          "level": 3,
-          "rerolls": 1
-        },
-        {
-          "level": 4,
-          "rerolls": 1
-        },
-        {
-          "level": 5,
-          "rerolls": 1
-        }
-      ]
+      "price": 1000
     },
     {
       "id": "skip",
@@ -1641,29 +1372,7 @@ window.vs = {
       "special": true,
       "description": "Twice per rank, allows to skip level up choices and get Experience instead.",
       "isPowerUp": true,
-      "price": 100,
-      "levels": [
-        {
-          "level": 1,
-          "skips": 2
-        },
-        {
-          "level": 2,
-          "skips": 2
-        },
-        {
-          "level": 3,
-          "skips": 2
-        },
-        {
-          "level": 4,
-          "skips": 2
-        },
-        {
-          "level": 5,
-          "skips": 2
-        }
-      ]
+      "price": 100
     },
     {
       "id": "banish",
@@ -1672,32 +1381,21 @@ window.vs = {
       "special": true,
       "description": "Once per rank, allows to remove an item from level up choices, for the rest of the run.",
       "isPowerUp": true,
-      "price": 100,
-      "levels": [
-        {
-          "level": 1,
-          "banish": 1
-        },
-        {
-          "level": 2,
-          "banish": 1
-        },
-        {
-          "level": 3,
-          "banish": 1
-        },
-        {
-          "level": 4,
-          "banish": 1
-        },
-        {
-          "level": 5,
-          "banish": 1
-        }
-      ]
+      "price": 100
     }
   ],
   "arcanas": [
+    {
+      "id": "arcana0",
+      "name": "Game Killer",
+      "emoji": ":question:",
+      "itemIds": [
+        "experience",
+        "chest"
+      ],
+      "description": "Halts XP gain. XP gems turn into exploding projectiles. All Treasures contain at least 3 items.",
+      "major": true
+    },
     {
       "id": "arcana3",
       "name": "III - Tragic Princess",
@@ -1843,6 +1541,7 @@ window.vs = {
       "itemIds": [
         "cat_",
         "greed",
+        "chest",
         "coin",
         "coinbag",
         "richcoinbag",
@@ -2148,35 +1847,45 @@ window.vs = {
     {
       "id": "lampost",
       "name": "Lampost",
-      "destructibleType": "LAMPOST",
+      "destructibleType": [
+        "283"
+      ],
       "maxHp": 1,
       "frameName": "Lampost"
     },
     {
       "id": "wagon",
       "name": "Cart",
-      "destructibleType": "2059",
+      "destructibleType": [
+        "CART"
+      ],
       "maxHp": 4,
       "frameName": "Cart"
     },
     {
       "id": "brazier",
       "name": "Brazier",
-      "destructibleType": "BRAZIER",
+      "destructibleType": [
+        "BRAZIER"
+      ],
       "maxHp": 1,
       "frameName": "Brazier"
     },
     {
       "id": "brazier2",
       "name": "Brazier2",
-      "destructibleType": "725",
+      "destructibleType": [
+        "3574"
+      ],
       "maxHp": 1,
       "frameName": "Brazier2"
     },
     {
       "id": "candelabrone",
       "name": "Candelabrone",
-      "destructibleType": "1772",
+      "destructibleType": [
+        "CANDLE"
+      ],
       "maxHp": 1,
       "frameName": "Candelabrone"
     }
