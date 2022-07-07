@@ -116,13 +116,13 @@
       .yellow {
         background-color: #fc0;
       }
-      .green-red {
+      .greenred {
         background-color: #3c3;
-        animation: green-red 2s linear infinite;
+        animation: greenred 2s linear infinite;
       }
-      .red-green {
+      .redgreen {
         background-color: #f33;
-        animation: red-green 2s linear infinite;
+        animation: redgreen 2s linear infinite;
       }
       .positive {
         background-color: #3c3;
@@ -387,7 +387,7 @@
           display: none;
         }
       }
-      @keyframes green-red {
+      @keyframes greenred {
         0% {
           background-color: #3c3;
         }
@@ -401,7 +401,7 @@
           background-color: #3c3;
         }
       }
-      @keyframes red-green {
+      @keyframes redgreen {
         0% {
           background-color: #f33;
         }
@@ -627,9 +627,9 @@
 
           const settings = ref(false)
 
-          const selectedIds = reactive(new Set(location.hash.length > 1 ? location.hash.substring(1).split(',') : []))
+          const selectedIds = reactive(new Set(getHashIds()))
 
-          let hoveredObject = { id: '' }
+          let hoveredId = ''
 
           // data from data.js
           const { characters, weapons, evolutions, powerups, passives, arcanas, stages, pickups, structures } = window.vs
@@ -847,11 +847,14 @@
             () => {
               const idsArray = Array.from(selectedIds)
               for (const item of items) {
+                // selected if it's manually selected or it's a character's item
                 item.selected = idsArray.includes(item.id) || selectedStage.value.itemIds.includes(item.id)
+                // protected from deleting if it's a character's item
                 item.fixed = selectedCharacter.value.itemIds.includes(item.id) || selectedCharacter.value.itemIds.includes(item.evolutionId)
               }
               for (const evolution of evolutions) {
-                evolution.selected = evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(evolution.id)
+                // selected if all required items are selected or if it's a character's item
+                evolution.selected = evolution.itemIds.every((id) => idsArray.includes(id)) || selectedCharacter.value.itemIds.includes(evolution.id)
               }
               for (const weapon of weapons) {
                 // evolved if all required items are selected
@@ -872,7 +875,7 @@
               // delete items of the previous character
               if (oldCharacter) {
                 for (const itemId of oldCharacter.itemIds) {
-                  unselectetId(itemId)
+                  unselectId(itemId)
                 }
               }
               // add items of the new character
@@ -888,12 +891,17 @@
 
           window.addEventListener('hashchange', updateSelectedIds)
 
+          function getHashIds() {
+            return location.hash
+              .substring(1)
+              .split(',')
+              .filter((id) => id)
+          }
+
           function updateSelectedIds() {
             selectedIds.clear()
-            for (const id of location.hash.substring(1).split(',')) {
-              if (id) {
-                selectedIds.add(id)
-              }
+            for (const id of getHashIds()) {
+              selectedIds.add(id)
             }
           }
 
@@ -922,26 +930,27 @@
             if (impactsById.value[object.id]) {
               for (const impact of impactsById.value[object.id]) {
                 document.querySelectorAll(`[data-id="${impact.substring(1)}"]`).forEach((element) => {
-                  element.classList.add(impact[0] === '+' ? 'green' : impact[0] === '-' ? 'red' : impact[0] === '~' ? 'green-red' : impact[0] === '!' ? 'red-green' : 0)
+                  element.classList.add(impact[0] === '+' ? 'green' : impact[0] === '-' ? 'red' : impact[0] === '~' ? 'greenred' : impact[0] === '!' ? 'redgreen' : 0)
                 })
               }
             }
           }
 
           function hideImpacts() {
-            document.querySelectorAll(`.yellow, .green, .red, .green-red, .red-green`).forEach((element) => {
-              element.classList.remove('yellow', 'green', 'red', 'green-red', 'red-green')
+            document.querySelectorAll(`.yellow, .green, .red, .greenred, .redgreen`).forEach((element) => {
+              element.classList.remove('yellow', 'green', 'red', 'greenred', 'redgreen')
             })
           }
 
           function onMouseEnter(object) {
-            hoveredObject = object
+            hoveredId = object.id
+            // character's gif animation
             if (object.type === 'character') {
               const iconElement = document.querySelector(`.objects [data-id="${object.id}"] > .icon`)
               if (iconElement) {
                 const image = new Image()
                 image.onload = () => {
-                  if (object.id === hoveredObject.id) {
+                  if (object.id === hoveredId) {
                     iconElement.style.backgroundImage = `url("./img/characters/${object.id}.gif")`
                   }
                 }
@@ -952,18 +961,18 @@
           }
 
           function onMouseLeave(object) {
-            hoveredObject = { id: '' }
+            hoveredId = ''
             if (object && object.type === 'character') {
               document.querySelector(`.objects [data-id="${object.id}"] > .icon`).style.backgroundImage = ''
             }
             hideImpacts()
           }
 
-          function unselectetId(itemId) {
+          function unselectId(itemId) {
             const item = itemsById[itemId]
             if (item.type === 'evolution') {
               for (const weaponId of item.weaponIds.concat(item.evolutionIds)) {
-                unselectetId(weaponId)
+                unselectId(weaponId)
               }
             } else {
               if (!item.fixed) {
@@ -1009,7 +1018,7 @@
           // manual toggle
           function toggleItem(item) {
             if (item.selected) {
-              unselectetId(item.id)
+              unselectId(item.id)
             } else {
               selectId(item.id)
               nextTick(() => {
@@ -1020,7 +1029,7 @@
 
           // manual delete
           function deleteItem(item, nextItem) {
-            unselectetId(item.id)
+            unselectId(item.id)
             if (nextItem) {
               hideImpacts()
               showImpacts(nextItem)
