@@ -736,8 +736,8 @@
             { id: 'wings', name: 'Wings', emoji: ':wingsVS:' },
             { id: 'greed', name: 'Stone Mask', emoji: ':maskVS:' },
             { id: 'torrona', name: 'Torrona`s Box', emoji: ':torronasboxVS:' },
-            { id: 'ring1', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
-            { id: 'ring2', name: 'Silver Ring', emoji: ':silverringVS:', special: true },
+            { id: 'ring1', name: 'Silver Ring', emoji: ':silverringVS:', special: true },
+            { id: 'ring2', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
             { id: 'sign1', name: 'Metaglio Left', emoji: ':metaglioleftVS:', special: true },
             { id: 'sign2', name: 'Metaglio Right', emoji: ':metagliorightVS:', special: true },
           ])
@@ -815,8 +815,6 @@
           const items = [...characters, ...weapons, ...passives, ...evolutions, ...arcanas, ...stages, ...powerups, ...pickups, ...destructibles]
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
-          keyById(items)
-
           // Extra fields
           for (const character of characters) {
             character.type = 'character'
@@ -863,7 +861,7 @@
               imelda: ['+growth'],
               pasqualina: ['+speed'],
               gennaro: ['+health', '+amount'],
-              arca: ['+cooldown'],
+              arca: ['+cooldown', '+might'],
               porta: ['+area'],
               lama: ['+health', '+wings', '+might', '+curse'],
               poe: ['+magnet', '-health'],
@@ -881,13 +879,13 @@
               concetta: ['+wings', '+curse', '+area'],
               gallo: ['+growth', '+duration', '+cooldown', '-greed'],
               divano: ['+armor', '+recovery', '+luck', '-greed'],
-              assunta: ['+might', '+speed', '+duration', '+area'],
+              assunta: ['+might', '+speed', '+duration', '+area', '+wings', '+curse'],
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
-              toastie: ['+wings', '+luck', '-health', '-might', '-area', '-speed', '-duration', '-cooldown'],
-              smith: ['+wings', '+luck', '-cooldown', '-might', '-area', '-speed', '-duration'],
+              toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],
+              smith: ['+wings', '+luck', '+recovery', '-health', '~cooldown', '~might', '~area', '~speed', '~duration'],
               marrabbio: ['+health', '+might', '+wings', '+curse', '-speed', '-greed'],
-              minnah: ['+health', '+luck', '+recovery', '-might', '~duration', '~area', '~cooldown', '!might', '!speed'],
+              minnah: ['+health', '+luck', '+recovery', '-might', '~duration', '~area', '!cooldown', '!might', '!speed'],
               peppino: ['+health', '+armor', '+magnet', '-wings', '-area'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
@@ -955,32 +953,35 @@
               whip: ['+cooldown', '+might', '+area', '+amount'],
               whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
               torrona: ['+might', '+speed', '+duration', '+area', '+curse'],
-              ring1: ['+curse'],
-              ring2: ['+duration', '+area'],
-              sign1: ['+curse'],
-              sign2: ['+recovery', '+health'],
+              ring1: ['+duration', '+area'],
+              ring2: ['+curse'],
+              sign1: ['+recovery', '+health'],
+              sign2: ['+curse'],
             }
 
             for (const itemId in newImpactsById) {
               const impactIds = newImpactsById[itemId]
               const item = itemsById[itemId]
               // add dynamic impacts with conditions
-              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
+                impactIds.push('+ring1')
+              }
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && impactIds.includes('+curse')) {
                 impactIds.push('+ring2')
               }
-              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
-                impactIds.push('+sign2')
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
+                impactIds.push('+sign1')
               }
-              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
                 impactIds.push('+torrona')
               }
-              if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'whip', 'whip_'].includes(itemId)) {
+              if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'knife_', 'whip', 'whip_', 'vento', 'vento_'].includes(itemId)) {
                 impactIds.push('+luck')
               }
-              if ((item.type === 'weapon' || item.type === 'evolution') && impactIds.includes('+cooldown')) {
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && impactIds.includes('+cooldown')) {
                 impactIds.push('+arcana3')
               }
-              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
                 impactIds.push('+arcana20')
               }
               if (item.id === 'arcana20' && evolvedWeapons.value.length < 6) {
@@ -1258,13 +1259,6 @@
               .writeText(text)
               .then(() => highlightElement(event.target, '#3c3'))
               .catch(() => highlightElement(event.target, '#c33'))
-          }
-
-          function keyById(items) {
-            return items.reduce((object, item) => {
-              object[item.id] = item
-              return object
-            }, {})
           }
 
           function toRoman(number) {
