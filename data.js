@@ -2193,29 +2193,12 @@ window.vs = {
         "curse"
       ],
       "description": "The Castle is a lie, but there`s still free roast chicken here, so it`s all good.",
-      "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
-        "EnemySpeed": 1,
-        "GoldMultiplier": 1,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
-      },
+      "mods": {},
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.75,
         "GoldMultiplier": 1.5,
-        "LuckBonus": 0,
         "PlayerPxSpeed": 1.75,
-        "ProjectileSpeed": 1.25,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "ProjectileSpeed": 1.25
       }
     },
     {
@@ -2227,28 +2210,15 @@ window.vs = {
       ],
       "description": "This quiet, long library is the ideal place where to rest, meditate, and forage for roast chicken. But what`s a stone mask doing here?",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.25,
-        "GoldMultiplier": 1,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 1.5,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2262,28 +2232,16 @@ window.vs = {
       ],
       "description": "The magic map hidden in here might finally lead us to a vampire, or at least to more roast chicken.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.25,
         "GoldMultiplier": 1.2,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 1.7,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2295,28 +2253,16 @@ window.vs = {
       ],
       "description": "This tower hides great magical artifacts and historically accurate monsters.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.25,
         "GoldMultiplier": 1.3,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 1.8,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2329,28 +2275,16 @@ window.vs = {
       ],
       "description": "Have we gone too far? Could have just camped in the forest with all that chicken, but noooo, we had to go chase some random vampire instead.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.4,
         "GoldMultiplier": 1.4,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.4,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.4
       },
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 2,
         "GoldMultiplier": 1.9,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 2,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "tips": "",
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2360,26 +2294,17 @@ window.vs = {
       "special": true,
       "description": "A place not made for mortals. Fate changes every minute.",
       "mods": {
-        "ClockSpeed": 1,
         "EnemyHealth": 1.5,
         "EnemySpeed": 1.25,
-        "GoldMultiplier": 1,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "ClockSpeed": 1,
         "EnemyHealth": 1.5,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 1.5,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2389,26 +2314,15 @@ window.vs = {
       "special": true,
       "description": "Come over here and say your unholy vespers.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.25,
         "GoldMultiplier": 1.5,
-        "LuckBonus": 0,
-        "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
-        "TimeLimit": 1800,
-        "XPBonus": 1
+        "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 2,
-        "LuckBonus": 0,
         "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 1800,
-        "XPBonus": 1
+        "ProjectileSpeed": 1.15
       }
     },
     {
@@ -2418,19 +2332,12 @@ window.vs = {
       "special": true,
       "description": "There exists places that don`t exist. Come to relax and enjoy life. See you in the country.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.25,
-        "GoldMultiplier": 1,
-        "LuckBonus": 0,
         "PlayerPxSpeed": 1.25,
-        "ProjectileSpeed": 1,
         "TimeLimit": 900,
-        "tips": "Enemies don`t move",
-        "XPBonus": 1
+        "tips": "Enemies don`t move"
       },
       "hyper": {
-        "ClockSpeed": 1,
         "EnemyHealth": 1.6,
         "EnemySpeed": 1.9,
         "GoldMultiplier": 1.5,
@@ -2438,8 +2345,7 @@ window.vs = {
         "PlayerPxSpeed": 1.9,
         "ProjectileSpeed": 1.15,
         "TimeLimit": 900,
-        "tips": "Enemies don`t move",
-        "XPBonus": 1
+        "tips": "Enemies don`t move"
       }
     },
     {
@@ -2466,19 +2372,12 @@ window.vs = {
       "special": true,
       "description": "When the moon is red and bright, the remnants of a town swallowed by the sea come back to the surface, bringing mysteries and riches.",
       "mods": {
-        "ClockSpeed": 1,
-        "EnemyHealth": 1,
         "EnemySpeed": 1.35,
-        "GoldMultiplier": 1,
-        "LuckBonus": 0,
         "PlayerPxSpeed": 1.35,
-        "ProjectileSpeed": 1,
         "TimeLimit": 900,
-        "tips": "Extra stage items",
-        "XPBonus": 1
+        "tips": "Extra stage items"
       },
       "hyper": {
-        "ClockSpeed": 1,
         "EnemyHealth": 1.6,
         "EnemySpeed": 2,
         "GoldMultiplier": 1.5,
@@ -2486,8 +2385,7 @@ window.vs = {
         "PlayerPxSpeed": 2,
         "ProjectileSpeed": 1.15,
         "TimeLimit": 900,
-        "tips": "Extra stage items",
-        "XPBonus": 1
+        "tips": "Extra stage items"
       }
     }
   ]
