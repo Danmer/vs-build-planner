@@ -641,7 +641,7 @@
           // Extra fields
           for (const character of characters) {
             character.type = 'character'
-            character.fullName = `${character.prefix ? character.prefix + ' ' : ''}${character.name}${character.prefix ? ' ' + character.surname : ''}`
+            character.fullName = `${character.prefix ? character.prefix + ' ' : ''}${character.name}${character.surname ? ' ' + character.surname : ''}`
           }
           for (const weapon of weapons) {
             weapon.type = 'weapon'
