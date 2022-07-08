@@ -714,13 +714,13 @@
               peppino: ['+health', '+armor', '+magnet', '-wings', '-area'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
-              arcana3: ['+cooldown'],
+              arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
               arcana5: ['~speed'],
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
               arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
               arcana8: [],
-              arcana10: ['+amount'],
+              arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers'],
               arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
               arcana12: ['+lancet'],
               arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+guns2'],
@@ -802,9 +802,6 @@
               }
               if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'knife_', 'whip', 'whip_', 'vento', 'vento_'].includes(itemId)) {
                 impactIds.push('+luck')
-              }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && impactIds.includes('+cooldown')) {
-                impactIds.push('+arcana3')
               }
               if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
                 impactIds.push('+arcana20')
