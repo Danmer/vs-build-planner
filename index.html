@@ -846,14 +846,14 @@
             () => {
               const idsArray = Array.from(selectedIds)
               for (const item of items) {
-                // selected if it's manually selected or it's a character's item
+                // selected if it's manually selected or it's a stage's item
                 item.selected = idsArray.includes(item.id) || selectedStage.value.itemIds.includes(item.id)
                 // protected from deleting if it's a character's item
                 item.fixed = selectedCharacter.value.itemIds.includes(item.id) || selectedCharacter.value.itemIds.includes(item.evolutionId)
               }
               for (const evolution of evolutions) {
                 // selected if all required items are selected or if it's a character's item
-                evolution.selected = evolution.itemIds.every((id) => idsArray.includes(id)) || selectedCharacter.value.itemIds.includes(evolution.id)
+                evolution.selected = evolution.items.every((item) => item.selected) || selectedCharacter.value.itemIds.includes(evolution.id)
               }
               for (const weapon of weapons) {
                 // evolved if all required items are selected
