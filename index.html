@@ -849,7 +849,7 @@
                 // selected if it's manually selected or it's a stage's item
                 item.selected = idsArray.includes(item.id) || selectedStage.value.itemIds.includes(item.id)
                 // protected from deleting if it's a character's item
-                item.fixed = selectedCharacter.value.itemIds.includes(item.id) || selectedCharacter.value.itemIds.includes(item.evolutionId)
+                item.fixed = selectedCharacter.value.itemIds.includes(item.id) || (item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId))
               }
               for (const evolution of evolutions) {
                 // selected if all required items are selected or if it's a character's item
