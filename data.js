@@ -292,6 +292,20 @@ window.vs = {
       "price": 500
     },
     {
+      "id": "gyorunton",
+      "name": "Gyorunton",
+      "emoji": ":charGyoruntonVS:",
+      "itemIds": [
+        "bracelet"
+      ],
+      "surname": "",
+      "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
+      "onEveryLevelUp": {
+        "curse": 0.01
+      },
+      "price": 5000
+    },
+    {
       "id": "exdash",
       "name": "Exdash",
       "emoji": ":charExdashVS:",
@@ -733,6 +747,17 @@ window.vs = {
       "knockback": 0.1,
       "rarity": 1,
       "tips": "Best with: duration, speed."
+    },
+    {
+      "id": "bracelet",
+      "name": "Bracelet",
+      "emoji": ":braceletVS:",
+      "special": true,
+      "description": "Fires three projectiles at a random enemy.",
+      "poolLimit": 80,
+      "hitsWalls": false,
+      "rarity": 40,
+      "tips": ""
     }
   ],
   "evolutions": [
@@ -1039,6 +1064,34 @@ window.vs = {
       "hitsWalls": false,
       "knockback": 0.2,
       "rarity": 1,
+      "tips": ""
+    },
+    {
+      "id": "bracelet_",
+      "name": "Bi-Bracelet",
+      "emoji": ":bibraceletVS:",
+      "itemIds": [
+        "bracelet"
+      ],
+      "special": true,
+      "description": "Fires three projectiles at a random enemy.",
+      "poolLimit": 80,
+      "hitsWalls": false,
+      "rarity": 20,
+      "tips": ""
+    },
+    {
+      "id": "bracelet__",
+      "name": "Tri-Bracelet",
+      "emoji": ":tribraceletVS:",
+      "itemIds": [
+        "bracelet_"
+      ],
+      "special": true,
+      "description": "Fires three projectiles at a random enemy.",
+      "poolLimit": 80,
+      "hitsWalls": false,
+      "rarity": 20,
       "tips": ""
     }
   ],
@@ -1388,12 +1441,27 @@ window.vs = {
     {
       "id": "arcana0",
       "name": "Game Killer",
-      "emoji": ":question:",
+      "emoji": ":0GameKillerVS:",
       "itemIds": [
         "experience",
         "chest"
       ],
       "description": "Halts XP gain. XP gems turn into exploding projectiles. All Treasures contain at least 3 items.",
+      "major": true
+    },
+    {
+      "id": "arcana1",
+      "name": "I - Gemini",
+      "emoji": ":question:",
+      "itemIds": [
+        "bird1",
+        "bird2",
+        "bird_",
+        "guns1",
+        "guns2",
+        "guns_"
+      ],
+      "description": "Listed weapons come with a counterpart.",
       "major": true
     },
     {
@@ -1541,12 +1609,12 @@ window.vs = {
       "itemIds": [
         "cat_",
         "greed",
-        "chest",
         "coin",
         "coinbag",
         "richcoinbag",
         "bigcoinbag",
-        "gildedclover"
+        "gildedclover",
+        "chest"
       ],
       "description": "Picking up coin bags from the floor triggers Gold Fever. Obtaining gold restores as many HP.",
       "major": true
@@ -1847,45 +1915,30 @@ window.vs = {
     {
       "id": "lampost",
       "name": "Lampost",
-      "destructibleType": [
-        "283"
-      ],
       "maxHp": 1,
       "frameName": "Lampost"
     },
     {
       "id": "wagon",
       "name": "Cart",
-      "destructibleType": [
-        "CART"
-      ],
       "maxHp": 4,
       "frameName": "Cart"
     },
     {
       "id": "brazier",
       "name": "Brazier",
-      "destructibleType": [
-        "BRAZIER"
-      ],
       "maxHp": 1,
       "frameName": "Brazier"
     },
     {
       "id": "brazier2",
       "name": "Brazier2",
-      "destructibleType": [
-        "3574"
-      ],
       "maxHp": 1,
       "frameName": "Brazier2"
     },
     {
       "id": "candelabrone",
       "name": "Candelabrone",
-      "destructibleType": [
-        "CANDLE"
-      ],
       "maxHp": 1,
       "frameName": "Candelabrone"
     }
@@ -2000,62 +2053,19 @@ window.vs = {
       "id": "acres",
       "name": "Green Acres",
       "itemIds": [],
-      "special": true,
-      "description": "A place not made for mortals. Fate changes every minute.",
-      "mods": {
-        "EnemyHealth": 1.5,
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemyHealth": 1.5,
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15
-      }
+      "special": true
     },
     {
       "id": "bonezone",
       "name": "The Bone Zone",
       "itemIds": [],
-      "special": true,
-      "description": "Come over here and say your unholy vespers.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 2,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15
-      }
+      "special": true
     },
     {
       "id": "molise",
       "name": "Il Molise",
       "itemIds": [],
-      "special": true,
-      "description": "There exists places that don`t exist. Come to relax and enjoy life. See you in the country.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25,
-        "TimeLimit": 900,
-        "tips": "Enemies don`t move"
-      },
-      "hyper": {
-        "EnemyHealth": 1.6,
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.5,
-        "LuckBonus": 0.2,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 900,
-        "tips": "Enemies don`t move"
-      }
+      "special": true
     },
     {
       "id": "moongolow",
@@ -2095,6 +2105,46 @@ window.vs = {
         "ProjectileSpeed": 1.15,
         "TimeLimit": 900,
         "tips": "Extra stage items"
+      }
+    },
+    {
+      "id": "bosses",
+      "name": "Boss Rash",
+      "itemIds": [
+        "cooldown",
+        "might",
+        "area",
+        "amount",
+        "speed",
+        "duration",
+        "luck",
+        "recovery",
+        "growth",
+        "armor",
+        "magnet",
+        "curse",
+        "health",
+        "revival",
+        "wings",
+        "greed",
+        "torrona"
+      ],
+      "special": true,
+      "description": "\"Distinguished guests, the moment we`ve all be itching for is finally here! Let`s watch the Survivors attempt this challenge of recycled assets!\"",
+      "mods": {
+        "EnemyHealth": 1.5,
+        "EnemySpeed": 1.25,
+        "PlayerPxSpeed": 1.25,
+        "TimeLimit": 900
+      },
+      "hyper": {
+        "EnemyHealth": 1.5,
+        "EnemySpeed": 1.9,
+        "GoldMultiplier": 1.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 1.9,
+        "ProjectileSpeed": 1.15,
+        "TimeLimit": 900
       }
     }
   ]

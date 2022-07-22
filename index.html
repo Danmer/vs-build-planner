@@ -205,7 +205,7 @@
         height: 5em;
       }
       .object.stage {
-        width: 12em;
+        width: 12.5em;
         height: 5em;
       }
 
@@ -426,7 +426,7 @@
             <span>Vampire Survivors</span>
             <span class="hidden-visible">&nbsp;—&nbsp;</span>
             <span>Build Planner</span>
-            <span class="hidden-visible">&nbsp;(0.8.0)</span>
+            <span class="hidden-visible">&nbsp;(0.9.0)</span>
           </h1>
         </header>
 
@@ -539,7 +539,7 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 50em">
+        <section v-if="config.evolutions" style="max-width: 55em">
           <div class="objects">
             <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
@@ -572,7 +572,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section>
+        <section style="max-width: 45em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
@@ -706,6 +706,7 @@
               divano: ['+armor', '+recovery', '+luck', '-greed'],
               assunta: ['+might', '+speed', '+duration', '+area', '+wings', '+curse'],
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
+              gyorunton: ['+might', '+health', '+revival', '+curse'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],
               smith: ['+wings', '+luck', '+recovery', '-health', '~cooldown', '~might', '~area', '~speed', '~duration'],
@@ -715,6 +716,7 @@
               gains: ['+growth'],
               reaper: ['+health', '+wings', '+might'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
               arcana5: ['~speed'],
@@ -738,6 +740,9 @@
               bird1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               bird_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               bird2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              bracelet: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bracelet_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bracelet__: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bone: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               cart: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               cat: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
