@@ -723,9 +723,9 @@
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
               arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
               arcana8: [],
-              arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers'],
+              arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture'],
               arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
-              arcana12: ['+lancet'],
+              arcana12: ['+lancet', '+lancet_'],
               arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+guns2'],
               arcana15: ['+cat_', '+greed'],
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_', '+vento', '+vento_'],
@@ -737,9 +737,9 @@
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               bible: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bible_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
-              bird1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
-              bird_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
-              bird2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              bird1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bird_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bird2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bracelet: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bracelet_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bracelet__: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
@@ -752,19 +752,19 @@
               cross_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
-              flowers: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
+              flowers: ['+cooldown', '+might', '+area', '+amount', '+duration', '+wings'],
               furniture: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               garlic: ['+cooldown', '+might', '+area'],
               garlic_: ['+cooldown', '+might', '+area', '+recovery'],
-              guns1: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
-              guns_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck', '+revival'],
-              guns2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
+              guns1: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              guns_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+revival'],
+              guns2: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               knife: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               knife_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               lancet: ['+cooldown', '+duration'],
               laurel: ['+cooldown'],
               lancet_: ['+cooldown', '+duration'],
-              laurel_: ['+cooldown', '+area', '+might', '+armor'],
+              laurel_: ['+cooldown', '+area', '+might', '+armor', '+amount', '+curse'],
               lightning: ['+cooldown', '+might', '+area', '+amount'],
               lightning_: ['+cooldown', '+might', '+area', '+amount'],
               magicwand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
@@ -809,11 +809,11 @@
               if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'knife_', 'whip', 'whip_', 'vento', 'vento_'].includes(itemId)) {
                 impactIds.push('+luck')
               }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
-                impactIds.push('+arcana20')
-              }
               if (item.id === 'arcana20' && evolvedWeapons.value.length < 6) {
                 impactIds.push('+cooldown', '+might')
+              }
+              if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
+                impactIds.push('+arcana20')
               }
               // TODO: minnah does not benefit from dynamic arcanas: (V), (XVIII), (XVII)
               // add weapon impacts to passive

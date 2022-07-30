@@ -1556,7 +1556,8 @@ window.vs = {
         "bone",
         "cherry",
         "cart",
-        "flowers"
+        "flowers",
+        "furniture"
       ],
       "description": "Listed weapons get +1 Amount. The character`s main weapon and its evolution gain +3 Amount instead.",
       "major": true
@@ -1583,6 +1584,7 @@ window.vs = {
       "emoji": ":XIIoutofbounds:",
       "itemIds": [
         "lancet",
+        "lancet_",
         "orologion"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
@@ -2126,8 +2128,7 @@ window.vs = {
         "health",
         "revival",
         "wings",
-        "greed",
-        "torrona"
+        "greed"
       ],
       "special": true,
       "description": "\"Distinguished guests, the moment we`ve all be itching for is finally here! Let`s watch the Survivors attempt this challenge of recycled assets!\"",
