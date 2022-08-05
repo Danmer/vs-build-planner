@@ -454,6 +454,8 @@
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
                   <small class="empty">WEAPON</small>
+                <div v-for="(weapon, $index) in counterpartsWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.title" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+                  <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
               </div>
               <div class="flex-col-row passives">
@@ -632,10 +634,10 @@
           let hoveredId = ''
 
           // data from data.js
-          const { characters, weapons, evolutions, powerups, passives, arcanas, stages, pickups, structures } = window.vs
+          const { characters, weapons, evolutions, counterparts, powerups, passives, arcanas, stages, pickups, structures } = window.vs
 
           // List of all objects
-          const items = [...powerups, ...passives, ...weapons, ...evolutions, ...arcanas, ...characters, ...stages, ...pickups, ...structures]
+          const items = [...powerups, ...passives, ...weapons, ...evolutions, ...counterparts, ...arcanas, ...characters, ...stages, ...pickups, ...structures]
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
           // Extra fields
@@ -645,6 +647,9 @@
           }
           for (const weapon of weapons) {
             weapon.type = 'weapon'
+          }
+          for (const counterpart of counterparts) {
+            counterpart.type = 'counterpart'
           }
           for (const passive of passives) {
             passive.type = 'passive'
@@ -790,6 +795,11 @@
               ring2: ['+curse'],
               sign1: ['+recovery', '+health'],
               sign2: ['+curse'],
+              bird3: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              bird4: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              guns3: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              guns4: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              cat2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
             }
 
             for (const itemId in newImpactsById) {
@@ -848,6 +858,7 @@
           const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive' && !selectedStage.value.itemIds.includes(item.id)))
           const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
           const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? (weapon.evolution.evolved ? weapon.evolution.evolution : weapon.evolution) : weapon)))))
+          const counterpartsWeapons = computed(() => (selectedIds.has('arcana1') ? [].concat(itemsById.guns1.selected ? itemsById.guns3 : [], itemsById.guns2.selected ? itemsById.guns4 : [], itemsById.bird1.selected ? itemsById.bird3 : [], itemsById.bird2.selected ? itemsById.bird4 : [], itemsById.cat.selected ? itemsById.cat2 : []) : []))
 
           watch(
             selectedIds,
@@ -1171,6 +1182,7 @@
             selectedPassives,
             selectedArcanas,
             evolvedWeapons,
+            counterpartsWeapons,
             onMouseEnter,
             onMouseLeave,
             toggleItem,

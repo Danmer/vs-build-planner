@@ -1138,6 +1138,65 @@ window.vs = {
       "tips": ""
     }
   ],
+  "counterparts": [
+    {
+      "id": "bird3",
+      "name": "Cygnus",
+      "itemsIds": ["bird1", "bird_"],
+      "description": "Bombards in a circling zone.",
+      "poolLimit": 60,
+      "hitsWalls": false,
+      "knockback": 2,
+      "rarity": 50,
+      "tips": "Best with: cooldown, duration."
+    },
+    {
+      "id": "bird4",
+      "name": "Zhar Ptytsia",
+      "itemsIds": ["bird2", "bird_"],
+      "description": "Bombards in a circling zone.",
+      "poolLimit": 60,
+      "hitsWalls": false,
+      "knockback": 2,
+      "rarity": 50,
+      "tips": "Best with: cooldown, duration."
+    },
+    {
+      "id": "guns3",
+      "name": "Red Muscle",
+      "itemsIds": ["guns1", "guns_"],
+      "description": "Fires quickly in four fixed directions.",
+      "poolLimit": 100,
+      "critChance": 0.1,
+      "critMul": 2,
+      "knockback": 0.1,
+      "rarity": 50,
+      "tips": "Ignores: duration."
+    },
+    {
+      "id": "guns4",
+      "name": "Twice Upon a Time",
+      "itemsIds": ["guns2", "guns_"],
+      "description": "Fires quickly in four fixed directions.",
+      "poolLimit": 100,
+      "critChance": 0.1,
+      "critMul": 2,
+      "knockback": 0.1,
+      "rarity": 50,
+      "tips": "Ignores: duration."
+    },
+    {
+      "id": "cat2",
+      "name": "Flock Destroyer",
+      "itemsIds": ["cat", "cat_"],
+      "description": "Summons capricious projectiles. Might interact with pickups.",
+      "poolLimit": 30,
+      "hitsWalls": true,
+      "knockback": 0.1,
+      "rarity": 50,
+      "tips": "Best with: luck, floor chicken."
+    }
+  ],
   "passives": [
     {
       "id": "cooldown",
