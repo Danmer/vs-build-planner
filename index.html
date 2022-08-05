@@ -138,6 +138,9 @@
         font-size: 0.6em;
         font-weight: bold;
       }
+      .locked {
+        font-size: 1.6em;
+      }
 
       /* Slots */
 
@@ -453,7 +456,9 @@
                   <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
-                  <small class="empty">WEAPON</small>
+                  <small v-if="itemsById.arcana20.selected && (i > needExtraWeaponSlots)" class="locked">❌</small>
+                  <small v-else class="empty">WEAPON</small>
+                </div>
                 <div v-for="(weapon, $index) in counterpartsWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.title" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
@@ -860,6 +865,8 @@
           const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? (weapon.evolution.evolved ? weapon.evolution.evolution : weapon.evolution) : weapon)))))
           const counterpartsWeapons = computed(() => (selectedIds.has('arcana1') ? [].concat(itemsById.guns1.selected ? itemsById.guns3 : [], itemsById.guns2.selected ? itemsById.guns4 : [], itemsById.bird1.selected ? itemsById.bird3 : [], itemsById.bird2.selected ? itemsById.bird4 : [], itemsById.cat.selected ? itemsById.cat2 : []) : []))
 
+          const needExtraWeaponSlots = computed(() => evolvedWeapons.value.reduce((result, weapon) => (weapon.type === 'evolution' && weapon.special && weapon.weaponIds.length > 1 ? weapon.weaponIds.length - 1 : 0), 0))
+
           watch(
             selectedIds,
             () => {
@@ -1183,6 +1190,7 @@
             selectedArcanas,
             evolvedWeapons,
             counterpartsWeapons,
+            needExtraWeaponSlots,
             onMouseEnter,
             onMouseLeave,
             toggleItem,
