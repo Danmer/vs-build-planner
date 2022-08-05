@@ -205,7 +205,7 @@
         height: 5em;
       }
       .object.stage {
-        width: 12.5em;
+        width: 12em;
         height: 5em;
       }
 
@@ -426,7 +426,7 @@
             <span>Vampire Survivors</span>
             <span class="hidden-visible">&nbsp;—&nbsp;</span>
             <span>Build Planner</span>
-            <span class="hidden-visible">&nbsp;(0.9.0)</span>
+            <span class="hidden-visible">&nbsp;(0.10.0)</span>
           </h1>
         </header>
 
@@ -510,7 +510,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 85em">
+        <section style="max-width: 90em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
@@ -523,7 +523,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 70em">
+        <section style="max-width: 75em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
@@ -572,7 +572,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section style="max-width: 45em">
+        <section style="max-width: 50em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
@@ -706,7 +706,6 @@
               divano: ['+armor', '+recovery', '+luck', '-greed'],
               assunta: ['+might', '+speed', '+duration', '+area', '+wings', '+curse'],
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
-              gyorunton: ['+might', '+health', '+revival', '+curse'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],
               smith: ['+wings', '+luck', '+recovery', '-health', '~cooldown', '~might', '~area', '~speed', '~duration'],
@@ -714,9 +713,12 @@
               minnah: ['+health', '+luck', '+recovery', '-might', '~duration', '~area', '!cooldown', '!might', '!speed'],
               peppino: ['+health', '+armor', '+magnet', '-wings', '-area'],
               gains: ['+growth'],
-              reaper: ['+health', '+wings', '+might'],
+              gyorunton: ['+might', '+health', '+revival', '+curse'],
+              cosmo: ['-health', '+recovery', '+wings', '+luck', '+revival'],
+              trouser: ['+wings', '+greed'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
-              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_'],
+              reaper: ['+health', '+wings', '+might'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
               arcana5: ['~speed'],

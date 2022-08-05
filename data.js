@@ -292,20 +292,6 @@ window.vs = {
       "price": 500
     },
     {
-      "id": "gyorunton",
-      "name": "Gyorunton",
-      "emoji": ":charGyoruntonVS:",
-      "itemIds": [
-        "bracelet"
-      ],
-      "surname": "",
-      "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
-      "onEveryLevelUp": {
-        "curse": 0.01
-      },
-      "price": 5000
-    },
-    {
       "id": "exdash",
       "name": "Exdash",
       "emoji": ":charExdashVS:",
@@ -428,6 +414,53 @@ window.vs = {
         "growth": 0.02
       },
       "price": 666
+    },
+    {
+      "id": "gyorunton",
+      "name": "Gyorunton",
+      "emoji": ":charGyoruntonVS:",
+      "itemIds": [
+        "bracelet"
+      ],
+      "surname": "",
+      "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
+      "onEveryLevelUp": {
+        "curse": 0.01
+      },
+      "price": 5000
+    },
+    {
+      "id": "cosmo",
+      "name": "Cosmo",
+      "emoji": ":question:",
+      "itemIds": [
+        "bird1",
+        "bird2"
+      ],
+      "prefix": "",
+      "surname": "Pavone",
+      "description": "Gains +1 Recovery and +1% Luck every level. Gains +1 Revival every 100 levels. Has hidden weapons.",
+      "onEveryLevelUp": {
+        "regen": 1,
+        "luck": 0.01,
+        "revivals": 0.01
+      },
+      "price": 666
+    },
+    {
+      "id": "trouser",
+      "name": "Trouser",
+      "emoji": ":BigTrouserVS: ",
+      "itemIds": [
+        "candybox"
+      ],
+      "prefix": "Big",
+      "surname": "",
+      "description": "Gains +1% Greed every level. Gold Fever lasts longer.",
+      "onEveryLevelUp": {
+        "greed": 0.01
+      },
+      "price": 5000
     },
     {
       "id": "leda",
@@ -758,6 +791,16 @@ window.vs = {
       "hitsWalls": false,
       "rarity": 40,
       "tips": ""
+    },
+    {
+      "id": "candybox",
+      "name": "Candybox",
+      "emoji": ":question:",
+      "special": true,
+      "description": "Allows you to choose any unlocked base weapon.",
+      "poolLimit": 0,
+      "rarity": 2,
+      "tips": "Appearance in level up options affected by Luck."
     }
   ],
   "evolutions": [
@@ -1459,9 +1502,29 @@ window.vs = {
         "bird_",
         "guns1",
         "guns2",
-        "guns_"
+        "guns_",
+        "cat",
+        "cat_",
+        "fritta"
       ],
       "description": "Listed weapons come with a counterpart.",
+      "major": true
+    },
+    {
+      "id": "arcana2",
+      "name": "II - Twilight Requiem",
+      "emoji": ":question:",
+      "itemIds": [
+        "bible",
+        "bible_",
+        "bird1",
+        "bird2",
+        "runetracer",
+        "pinion",
+        "bone",
+        "flowers"
+      ],
+      "description": "Listed weapon projectiles generate explosions when they expire.",
       "major": true
     },
     {
@@ -1504,7 +1567,7 @@ window.vs = {
       "itemIds": [
         "speed"
       ],
-      "description": "Overall projectile Speed continuously changes between -50% and +200% over 10 seconds.",
+      "description": "Overall projectile Speed continuously changes between -50% and +50% over 10 seconds. The character starts gaining +1% projectile Speed every level.",
       "major": true
     },
     {
@@ -1646,7 +1709,7 @@ window.vs = {
       "itemIds": [
         "duration"
       ],
-      "description": "Overall Duration continuously changes between -50% and +200% over 10 seconds.",
+      "description": "Overall Duration continuously changes between -50% and +50% over 10 seconds. The character starts gaining +1% Duration every level.",
       "major": true
     },
     {
@@ -1656,7 +1719,7 @@ window.vs = {
       "itemIds": [
         "area"
       ],
-      "description": "Overall Area continuously changes between -25% and +50% over 10 seconds.",
+      "description": "Overall Area continuously changes between -25% and +25% over 10 seconds. The character starts gaining +1% Area every level.",
       "major": true
     },
     {
