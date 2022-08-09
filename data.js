@@ -337,6 +337,32 @@ window.vs = {
       "price": 7777
     },
     {
+      "id": "leda",
+      "name": "Leda",
+      "emoji": ":charLedaVS:",
+      "itemIds": [
+        "magicwand_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "",
+      "price": 666
+    },
+    {
+      "id": "reaper",
+      "name": "Red Death",
+      "emoji": ":charReddeathVS:",
+      "itemIds": [
+        "axe_"
+      ],
+      "special": true,
+      "prefix": "Mask of the",
+      "surname": "",
+      "description": "A blasphemous mockery.",
+      "price": 666
+    },
+    {
       "id": "marrabbio",
       "name": "Marrabbio",
       "emoji": ":charBoonVS:",
@@ -422,6 +448,7 @@ window.vs = {
       "itemIds": [
         "bracelet"
       ],
+      "special": true,
       "surname": "",
       "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
       "onEveryLevelUp": {
@@ -437,6 +464,7 @@ window.vs = {
         "bird1",
         "bird2"
       ],
+      "special": true,
       "prefix": "",
       "surname": "Pavone",
       "description": "Gains +1 Recovery and +1% Luck every level. Gains +1 Revival every 100 levels. Has hidden weapons.",
@@ -454,6 +482,7 @@ window.vs = {
       "itemIds": [
         "candybox"
       ],
+      "special": true,
       "prefix": "Big",
       "surname": "",
       "description": "Gains +1% Greed every level. Gold Fever lasts longer.",
@@ -461,32 +490,6 @@ window.vs = {
         "greed": 0.01
       },
       "price": 5000
-    },
-    {
-      "id": "leda",
-      "name": "Leda",
-      "emoji": ":charLedaVS:",
-      "itemIds": [
-        "magicwand_"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "",
-      "description": "",
-      "price": 666
-    },
-    {
-      "id": "reaper",
-      "name": "Red Death",
-      "emoji": ":charReddeathVS:",
-      "itemIds": [
-        "axe_"
-      ],
-      "special": true,
-      "prefix": "Mask of the",
-      "surname": "",
-      "description": "A blasphemous mockery.",
-      "price": 666
     }
   ],
   "weapons": [
@@ -795,7 +798,7 @@ window.vs = {
     {
       "id": "candybox",
       "name": "Candybox",
-      "emoji": ":question:",
+      "emoji": ":candyboxVS:",
       "special": true,
       "description": "Allows you to choose any unlocked base weapon.",
       "poolLimit": 0,
@@ -1142,7 +1145,7 @@ window.vs = {
     {
       "id": "bird3",
       "name": "Cygnus",
-      "itemsIds": ["bird1", "bird_"],
+      "itemsIds": [],
       "description": "Bombards in a circling zone.",
       "poolLimit": 60,
       "hitsWalls": false,
@@ -1153,7 +1156,7 @@ window.vs = {
     {
       "id": "bird4",
       "name": "Zhar Ptytsia",
-      "itemsIds": ["bird2", "bird_"],
+      "itemsIds": [],
       "description": "Bombards in a circling zone.",
       "poolLimit": 60,
       "hitsWalls": false,
@@ -1164,7 +1167,7 @@ window.vs = {
     {
       "id": "guns3",
       "name": "Red Muscle",
-      "itemsIds": ["guns1", "guns_"],
+      "itemsIds": [],
       "description": "Fires quickly in four fixed directions.",
       "poolLimit": 100,
       "critChance": 0.1,
@@ -1176,7 +1179,7 @@ window.vs = {
     {
       "id": "guns4",
       "name": "Twice Upon a Time",
-      "itemsIds": ["guns2", "guns_"],
+      "itemsIds": [],
       "description": "Fires quickly in four fixed directions.",
       "poolLimit": 100,
       "critChance": 0.1,
@@ -1188,7 +1191,7 @@ window.vs = {
     {
       "id": "cat2",
       "name": "Flock Destroyer",
-      "itemsIds": ["cat", "cat_"],
+      "itemsIds": [],
       "description": "Summons capricious projectiles. Might interact with pickups.",
       "poolLimit": 30,
       "hitsWalls": true,
@@ -1710,6 +1713,19 @@ window.vs = {
         "orologion"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
+      "major": true
+    },
+    {
+      "id": "arcana13",
+      "name": "XIII - Wicked Season",
+      "emoji": ":XIIIWickedSeasonVS:",
+      "itemIds": [
+        "growth",
+        "luck",
+        "greed",
+        "curse"
+      ],
+      "description": "Overall Growth, Luck, Greed, and Curse are doubled at fixed intervals. The characters starts gaining +1% Growth, Luck, Greed, and Curse every 2 levels.",
       "major": true
     },
     {
