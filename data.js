@@ -292,6 +292,22 @@ window.vs = {
       "price": 500
     },
     {
+      "id": "sigma",
+      "name": "Sigma",
+      "emoji": ":charQueenSigmaVS:",
+      "itemIds": [
+        "sword"
+      ],
+      "prefix": "Queen",
+      "surname": "",
+      "description": "She owns everything.",
+      "onEveryLevelUp": {
+        "power": 0.01,
+        "growth": 0.01
+      },
+      "price": 0
+    },
+    {
       "id": "exdash",
       "name": "Exdash",
       "emoji": ":charExdashVS:",
@@ -731,6 +747,18 @@ window.vs = {
       "tips": "Best with: cooldown only."
     },
     {
+      "id": "sword",
+      "name": "Victory Sword",
+      "emoji": ":victoryswordVS:",
+      "description": "Strikes with a combo attack at the nearest enemy. Retaliates.",
+      "poolLimit": 100,
+      "critChance": 0.1,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 30,
+      "tips": "Ignores: speed, duration."
+    },
+    {
       "id": "bone",
       "name": "Bone",
       "emoji": ":boneVS:",
@@ -1042,7 +1070,7 @@ window.vs = {
       "hitsWalls": false,
       "knockback": 0,
       "rarity": 1,
-      "tips": "Requires: Gold Ring, Silver Ring."
+      "tips": "Requires Max: Gold Ring, Silver Ring."
     },
     {
       "id": "laurel_",
@@ -1057,7 +1085,22 @@ window.vs = {
       "poolLimit": 50,
       "knockback": 20,
       "rarity": 1,
-      "tips": "Requires: Metaglio Left, Metaglio Right."
+      "tips": "Requires Max: Metaglio Left, Metaglio Right."
+    },
+    {
+      "id": "sword_",
+      "name": "Sole Solution",
+      "emoji": ":solesolutionVS:",
+      "itemIds": [
+        "sword",
+        "torrona"
+      ],
+      "description": "Gift of Victory Sword. The more enemies are defeated, the stronger it grows.",
+      "poolLimit": 100,
+      "hitsWalls": false,
+      "knockback": 0,
+      "rarity": 1,
+      "tips": "Requires Max: Victory Sword, Torrona`s Box."
     },
     {
       "id": "bird_",
@@ -1673,6 +1716,25 @@ window.vs = {
       "major": true
     },
     {
+      "id": "arcana9",
+      "name": "IX - Divine Bloodline",
+      "emoji": ":IXDivineBloodlinesVS:",
+      "itemIds": [
+        "cross",
+        "bible",
+        "garlic",
+        "water",
+        "lightning",
+        "mana",
+        "vento",
+        "sword",
+        "armor",
+        "health"
+      ],
+      "description": "Armor also affects listed weapons` damage and reflects enemy damage. Character gains bonus damage depending on missing Health. Defeating enemies with retaliatory damage gives +0.5 Max Health.",
+      "major": true
+    },
+    {
       "id": "arcana10",
       "name": "X - Beginning",
       "emoji": ":XbeginningVS:",
@@ -1772,9 +1834,10 @@ window.vs = {
         "whip_",
         "axe",
         "axe_",
-        "cross_",
         "vento",
-        "vento_"
+        "vento_",
+        "cross_",
+        "sword"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true

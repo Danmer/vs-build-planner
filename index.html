@@ -429,7 +429,7 @@
             <span>Vampire Survivors</span>
             <span class="hidden-visible">&nbsp;—&nbsp;</span>
             <span>Build Planner</span>
-            <span class="hidden-visible">&nbsp;(0.10.0)</span>
+            <span class="hidden-visible">&nbsp;(0.11.0)</span>
           </h1>
         </header>
 
@@ -437,7 +437,17 @@
         <section class="slots flex-row-col" style="max-width: 60em">
           <div class="flex-col-row">
             <div class="arcanas flex-row-col">
-              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+              <div v-for="(arcana, $index) in selectedArcanas.slice(6, 9)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${arcana.id}`"></div>
+              </div>
+            </div>
+            <div class="arcanas flex-row-col">
+              <div v-for="(arcana, $index) in selectedArcanas.slice(3, 6)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${arcana.id}`"></div>
+              </div>
+            </div>
+            <div class="arcanas flex-row-col">
+              <div v-for="(arcana, $index) in selectedArcanas.slice(0, 3)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
                 <div class="icon" :class="`icon-${arcana.id}`"></div>
               </div>
               <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
@@ -517,7 +527,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 90em">
+        <section style="max-width: 95em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
@@ -546,7 +556,7 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 55em">
+        <section v-if="config.evolutions" style="max-width: 60em">
           <div class="objects">
             <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
@@ -579,7 +589,7 @@
         </section>
 
         <!-- Arcanas -->
-        <section style="max-width: 50em">
+        <section style="max-width: 55em">
           <div class="objects">
             <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
@@ -692,6 +702,7 @@
 
           const impactsById = computed(() => {
             const newImpactsById = {
+              // characters
               antonio: ['+armor', '+health', '+might'],
               imelda: ['+growth'],
               pasqualina: ['+speed'],
@@ -716,6 +727,7 @@
               divano: ['+armor', '+recovery', '+luck', '-greed'],
               assunta: ['+might', '+speed', '+duration', '+area', '+wings', '+curse'],
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
+              sigma: ['+health', '+recovery', '+armor', '+wings', '+might', '+duration', '+amount', '+cooldown', '+luck', '+growth', '+curse', '+magnet', '+revival'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],
               smith: ['+wings', '+luck', '+recovery', '-health', '~cooldown', '~might', '~area', '~speed', '~duration'],
@@ -728,6 +740,7 @@
               trouser: ['+wings', '+greed'],
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
               reaper: ['+health', '+wings', '+might'],
+              // arcanas
               arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed'],
@@ -735,17 +748,19 @@
               arcana6: ['+recovery', '+whip_', '+garlic_', '+revival', '+flowers'],
               arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart'],
               arcana8: [],
+              arcana9: ['+cross', '+bible', '+garlic', '+water', '+lightning', '+mana', '+vento', '+sword', '+armor', '+health'],
               arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture'],
               arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
               arcana12: ['+lancet', '+lancet_'],
               arcana13: ['+growth', '+luck', '+greed', '+curse'],
               arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+guns2', '+guns4', '+bird3'],
               arcana15: ['+cat_', '+greed'],
-              arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_', '+vento', '+vento_'],
+              arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_', '+vento', '+vento_', '+sword'],
               arcana17: ['~duration'],
               arcana18: ['~area'],
               arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+guns3', '+bird4'],
               arcana20: [],
+              // weapons
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               bible: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
@@ -790,17 +805,21 @@
               pinion_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               runetracer: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               runetracer_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              sword: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+              sword_: ['+might'],
               vento: ['+cooldown', '+might', '+area', '+amount', '+speed', '+wings', '+luck'],
               vento_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+wings', '+luck'],
               water: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               water_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               whip: ['+cooldown', '+might', '+area', '+amount'],
               whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+              // passives
               torrona: ['+might', '+speed', '+duration', '+area', '+curse'],
               ring1: ['+duration', '+area'],
               ring2: ['+curse'],
               sign1: ['+recovery', '+health'],
               sign2: ['+curse'],
+              // counterparts
               bird3: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               bird4: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               guns3: ['+cooldown', '+might', '+area', '+amount', '+speed'],
@@ -824,7 +843,10 @@
               if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
                 impactIds.push('+torrona')
               }
-              if (selectedIds.has('arcana16') && ['axe', 'axe_', 'knife', 'knife_', 'whip', 'whip_', 'vento', 'vento_'].includes(itemId)) {
+              if (selectedIds.has('arcana9') && ['cross', 'bible', 'garlic', 'water', 'lightning', 'mana', 'vento', 'sword'].includes(itemId)) {
+                impactIds.push('+armor', '+health')
+              }
+              if (selectedIds.has('arcana16') && ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword'].includes(itemId)) {
                 impactIds.push('+luck')
               }
               if (item.id === 'arcana20' && evolvedWeapons.value.length < 6) {
@@ -1026,7 +1048,8 @@
                 }
                 break
               case 'arcana':
-                if (selectedArcanas.value.length < 3) {
+                const maxArcanas = selectedCharacter.value.id === 'sigma' ? 7 : 3
+                if (selectedArcanas.value.length < maxArcanas) {
                   selectedIds.add(item.id)
                 }
                 break
