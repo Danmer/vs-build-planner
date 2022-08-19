@@ -922,6 +922,11 @@
             (newCharacter, oldCharacter) => {
               // delete items of the previous character
               if (oldCharacter) {
+                if (oldCharacter.id === 'sigma') {
+                  for (const arcana of selectedArcanas.value.slice(3)) {
+                    unselectId(arcana.id)
+                  }
+                }
                 for (const itemId of oldCharacter.itemIds) {
                   unselectId(itemId)
                 }
