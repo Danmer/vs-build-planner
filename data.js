@@ -1737,7 +1737,9 @@ window.vs = {
         "magicwand_",
         "runetracer",
         "runetracer_",
-        "guns2"
+        "guns2",
+        "guns4",
+        "bird3"
       ],
       "description": "Listed weapon projectiles have a chance to freeze enemies.",
       "major": true
@@ -1806,6 +1808,8 @@ window.vs = {
         "firewand_",
         "guns1",
         "pinion_",
+        "guns3",
+        "bird4",
         "brazier"
       ],
       "description": "Listed weapon projectiles explode on impact. Light sources explode. Character explodes when damaged.",
