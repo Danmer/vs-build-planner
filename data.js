@@ -494,7 +494,7 @@ window.vs = {
     {
       "id": "trouser",
       "name": "Trouser",
-      "emoji": ":BigTrouserVS: ",
+      "emoji": ":BigTrouserVS:",
       "itemIds": [
         "candybox"
       ],
@@ -505,6 +505,17 @@ window.vs = {
       "onEveryLevelUp": {
         "greed": 0.01
       },
+      "price": 5000
+    },
+    {
+      "id": "random",
+      "name": "Random",
+      "emoji": ":animRandomVS:",
+      "itemIds": [],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Random.",
       "price": 5000
     }
   ],
@@ -686,7 +697,7 @@ window.vs = {
       "name": "Song Of Mana",
       "emoji": ":manaVS:",
       "description": "Attacks vertically, passes through enemies.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "hitsWalls": false,
       "rarity": 50,
       "tips": "Ignores: amount, speed."
@@ -1006,7 +1017,7 @@ window.vs = {
         "curse"
       ],
       "description": "Evolved Song of Mana. Might slow enemies down.",
-      "poolLimit": 15,
+      "poolLimit": 30,
       "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires: Skull O`Maniac"
@@ -1182,6 +1193,19 @@ window.vs = {
       "hitsWalls": false,
       "rarity": 20,
       "tips": ""
+    },
+    {
+      "id": "candybox_",
+      "name": "Super Candybox II Turbo",
+      "emoji": ":supercandyboxIIturboVS:",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "description": "Gift of Candybox. Allows to choose among a selection of advanced weapons.",
+      "poolLimit": 0,
+      "rarity": 0.1,
+      "tips": "Requires: Candybox."
     }
   ],
   "counterparts": [
@@ -1888,6 +1912,23 @@ window.vs = {
         "banish"
       ],
       "description": "Gives +3 Reroll, Skip, and Banish. Gives +20% Might and -8% Cooldown for each active weapon slot left empty.",
+      "major": true
+    },
+    {
+      "id": "arcana21",
+      "name": "XXI - Blood Astronomia",
+      "emoji": ":XXIBloodAstronomiaVS:",
+      "itemIds": [
+        "garlic",
+        "garlic_",
+        "pentagram",
+        "pentagram_",
+        "mana",
+        "mana_",
+        "lancet",
+        "laurel"
+      ],
+      "description": "Listed weapons also emit special damaging zones affected by Amount and Magnet. Enemies within Magnet range take damage based on Amount.",
       "major": true
     }
   ],
