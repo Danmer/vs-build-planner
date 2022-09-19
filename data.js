@@ -176,7 +176,7 @@ window.vs = {
     {
       "id": "cavallo",
       "name": "Cavallo",
-      "emoji": ":charYattacavalloVS:",
+      "emoji": ":charYattaCavalloVS",
       "itemIds": [
         "cherry"
       ],
@@ -188,7 +188,7 @@ window.vs = {
     {
       "id": "ramba",
       "name": "Ramba",
-      "emoji": ":charBiancaVS:",
+      "emoji": ":charBiancaRambaVS:",
       "itemIds": [
         "cart"
       ],
@@ -200,7 +200,7 @@ window.vs = {
     {
       "id": "osole",
       "name": "O`Sole",
-      "emoji": ":charOsolemeeo2VS:",
+      "emoji": ":charOSoleMeeo2VS:",
       "itemIds": [
         "flowers"
       ],
@@ -240,7 +240,7 @@ window.vs = {
     {
       "id": "gallo",
       "name": "Gallo",
-      "emoji": ":charIguanaVS:",
+      "emoji": ":charIguanaGalloVS:",
       "itemIds": [
         "lancet"
       ],
@@ -381,7 +381,7 @@ window.vs = {
     {
       "id": "marrabbio",
       "name": "Marrabbio",
-      "emoji": ":charBoonVS:",
+      "emoji": ":charBoonMarrabbioVS:",
       "itemIds": [
         "knife_"
       ],
@@ -444,7 +444,7 @@ window.vs = {
     {
       "id": "gains",
       "name": "Gains",
-      "emoji": ":dragonshrimpVS:",
+      "emoji": ":charGainsBorosVS:",
       "itemIds": [
         "cross_"
       ],
@@ -475,7 +475,7 @@ window.vs = {
     {
       "id": "cosmo",
       "name": "Cosmo",
-      "emoji": ":question:",
+      "emoji": ":animCosmoPavoneVS:",
       "itemIds": [
         "bird1",
         "bird2"
@@ -511,7 +511,9 @@ window.vs = {
       "id": "random",
       "name": "Random",
       "emoji": ":animRandomVS:",
-      "itemIds": [],
+      "itemIds": [
+        ""
+      ],
       "special": true,
       "prefix": "",
       "surname": "",
@@ -1041,7 +1043,7 @@ window.vs = {
     {
       "id": "cat_",
       "name": "Vicious Hunger",
-      "emoji": ":cateyeVS:",
+      "emoji": ":vicioushungerVS:",
       "itemIds": [
         "cat",
         "greed"
@@ -1070,7 +1072,7 @@ window.vs = {
     {
       "id": "lancet_",
       "name": "Infinite Corridor",
-      "emoji": ":portalVS:",
+      "emoji": ":infinitecorridorVS:",
       "itemIds": [
         "lancet",
         "ring1",
@@ -1624,7 +1626,7 @@ window.vs = {
     {
       "id": "arcana1",
       "name": "I - Gemini",
-      "emoji": ":question:",
+      "emoji": ":IGeminiVS:",
       "itemIds": [
         "bird1",
         "bird2",
@@ -1642,7 +1644,7 @@ window.vs = {
     {
       "id": "arcana2",
       "name": "II - Twilight Requiem",
-      "emoji": ":question:",
+      "emoji": ":IITwilightRequiemVS:",
       "itemIds": [
         "bible",
         "bible_",
@@ -1734,7 +1736,7 @@ window.vs = {
     {
       "id": "arcana8",
       "name": "VIII - Mad Groove",
-      "emoji": ":VIIImadgrooveVS:",
+      "emoji": ":VIIIMadGrooveVS:",
       "itemIds": [],
       "description": "Every 2 minutes attracts all standard stage items, pickups, and light sources towards the character.",
       "major": true
@@ -1761,7 +1763,7 @@ window.vs = {
     {
       "id": "arcana10",
       "name": "X - Beginning",
-      "emoji": ":XbeginningVS:",
+      "emoji": ":XBeginningVS:",
       "itemIds": [
         "amount",
         "bone",
@@ -1792,7 +1794,7 @@ window.vs = {
     {
       "id": "arcana12",
       "name": "XII - Out of Bounds",
-      "emoji": ":XIIoutofbounds:",
+      "emoji": ":XIIOutOfBounds:",
       "itemIds": [
         "lancet",
         "lancet_",
@@ -1817,7 +1819,7 @@ window.vs = {
     {
       "id": "arcana14",
       "name": "XIV - Jail of Crystal",
-      "emoji": ":XIVjailofcrystal:",
+      "emoji": ":XIVJailOfCrystal:",
       "itemIds": [
         "magicwand",
         "magicwand_",
@@ -1833,7 +1835,7 @@ window.vs = {
     {
       "id": "arcana15",
       "name": "XV - Disco of Gold",
-      "emoji": ":XIVdiscoofgold:",
+      "emoji": ":XVDiscoOfGoldVS:",
       "itemIds": [
         "cat_",
         "greed",
@@ -1879,7 +1881,7 @@ window.vs = {
     {
       "id": "arcana18",
       "name": "XVIII - Boogaloo of Illusions",
-      "emoji": ":XVIIIboogaloofillusions:",
+      "emoji": ":XVIIIBoogalOofIllusions:",
       "itemIds": [
         "area"
       ],
