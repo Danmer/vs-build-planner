@@ -511,9 +511,7 @@ window.vs = {
       "id": "random",
       "name": "Random",
       "emoji": ":animRandomVS:",
-      "itemIds": [
-        ""
-      ],
+      "itemIds": [],
       "special": true,
       "prefix": "",
       "surname": "",
