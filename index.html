@@ -429,7 +429,7 @@
             <span>Vampire Survivors</span>
             <span class="hidden-visible">&nbsp;—&nbsp;</span>
             <span>Build Planner</span>
-            <span class="hidden-visible">&nbsp;(0.11.3)</span>
+            <span class="hidden-visible">&nbsp;(1.0)</span>
           </h1>
         </header>
 
@@ -527,7 +527,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 95em">
+        <section style="max-width: 100em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
@@ -540,7 +540,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 75em">
+        <section style="max-width: 80em">
           <div class="objects">
             <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
@@ -741,6 +741,7 @@
               leda: ['+armor', '+might', '+area', '+cooldown', '-wings', '-greed'],
               reaper: ['+health', '+wings', '+might'],
               random: [],
+              avatar: ['+health', '+might', '+luck', '+magnet', '+revival', '+curse', '+wings', '+cooldown'], // '+reroll'
               // arcanas
               arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
@@ -759,7 +760,7 @@
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+cross_', '+vento', '+vento_', '+sword'],
               arcana17: ['~duration'],
               arcana18: ['~area'],
-              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+guns3', '+bird4'],
+              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+guns3', '+bird4', '+jubilee'],
               arcana20: [],
               arcana21: ['+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel'],
               // weapons
@@ -784,6 +785,8 @@
               cross_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+luck'],
               firewand: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               firewand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              flame: ['+cooldown', '+might', '+area', '+speed', '+duration'], // ?
+              flame_: ['+cooldown', '+might', '+area', '+speed', '+duration'], // ?
               flowers: ['+cooldown', '+might', '+area', '+amount', '+duration', '+wings'],
               furniture: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               garlic: ['+cooldown', '+might', '+area'],

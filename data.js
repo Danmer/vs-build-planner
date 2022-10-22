@@ -517,6 +517,25 @@ window.vs = {
       "surname": "",
       "description": "Random.",
       "price": 5000
+    },
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "emoji": ":question:",
+      "itemIds": [
+        "flame"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Infernas",
+      "description": "Starts with extra Arcana XIX - Heart Of Fire. Grows stronger with every level, but also loses control.",
+      "onEveryLevelUp": {
+        "curse": 0.005,
+        "power": 0.005,
+        "moveSpeed": 0.02,
+        "cooldown": -0.0025
+      },
+      "price": 666
     }
   ],
   "weapons": [
@@ -768,6 +787,28 @@ window.vs = {
       "hitsWalls": false,
       "rarity": 30,
       "tips": "Ignores: speed, duration."
+    },
+    {
+      "id": "flame",
+      "name": "Flames of Misspell",
+      "emoji": ":question",
+      "description": "Emits cones of flames.",
+      "poolLimit": 100,
+      "rarity": 30,
+      "tips": ""
+    },
+    {
+      "id": "jubilee",
+      "name": "Greatest Jubilee",
+      "emoji": ":question",
+      "description": "Has a chance to summon light sources.",
+      "poolLimit": 100,
+      "critChance": 0.05,
+      "critMul": 2,
+      "hitsWalls": false,
+      "knockback": 0.1,
+      "rarity": 20,
+      "tips": "Best with: Luck."
     },
     {
       "id": "bone",
@@ -1111,7 +1152,20 @@ window.vs = {
       "hitsWalls": false,
       "knockback": 0,
       "rarity": 1,
-      "tips": "Requires Max: Victory Sword, Torrona`s Box."
+      "tips": "Requires Max: Torrona`s Box."
+    },
+    {
+      "id": "flame_",
+      "name": "Ashes of Muspell",
+      "emoji": ":question:",
+      "itemIds": [
+        "flame",
+        "torrona"
+      ],
+      "description": "Evolved Flames of Misspell. The more enemies are defeated, the stronger it grows.",
+      "poolLimit": 200,
+      "rarity": 1,
+      "tips": "Requires Max: Torrona`s Box."
     },
     {
       "id": "bird_",
@@ -1586,7 +1640,7 @@ window.vs = {
       "name": "Reroll",
       "emoji": ":rerollVS:",
       "special": true,
-      "description": "Once per rank, allows to get different choices when leveling up.",
+      "description": "Twice per rank, allows to get different choices when leveling up.",
       "isPowerUp": true,
       "price": 1000
     },
@@ -1604,7 +1658,7 @@ window.vs = {
       "name": "Banish",
       "emoji": ":banishVS:",
       "special": true,
-      "description": "Once per rank, allows to remove an item from level up choices, for the rest of the run.",
+      "description": "Twice per rank, allows to remove an item from level up choices, for the rest of the run.",
       "isPowerUp": true,
       "price": 100
     }
@@ -1895,6 +1949,7 @@ window.vs = {
         "firewand_",
         "guns1",
         "pinion_",
+        "jubilee",
         "guns3",
         "bird4",
         "brazier"
@@ -2205,10 +2260,10 @@ window.vs = {
       "description": "The Castle is a lie, but there`s still free roast chicken here, so it`s all good.",
       "mods": {},
       "hyper": {
-        "EnemySpeed": 1.75,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.75,
-        "ProjectileSpeed": 1.25
+        "EnemySpeed": 0.75,
+        "GoldMultiplier": 0.5,
+        "PlayerPxSpeed": 0.75,
+        "ProjectileSpeed": 0.25
       }
     },
     {
@@ -2224,11 +2279,11 @@ window.vs = {
         "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.5,
+        "EnemySpeed": 0.65,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15
+        "PlayerPxSpeed": 0.65,
+        "ProjectileSpeed": 0.15
       }
     },
     {
@@ -2247,11 +2302,11 @@ window.vs = {
         "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.7,
+        "EnemySpeed": 0.65,
+        "GoldMultiplier": 0.7,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15
+        "PlayerPxSpeed": 0.65,
+        "ProjectileSpeed": 0.15
       }
     },
     {
@@ -2268,11 +2323,11 @@ window.vs = {
         "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.8,
+        "EnemySpeed": 0.65,
+        "GoldMultiplier": 0.8,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15
+        "PlayerPxSpeed": 0.65,
+        "ProjectileSpeed": 0.15
       }
     },
     {
@@ -2290,30 +2345,67 @@ window.vs = {
         "PlayerPxSpeed": 1.4
       },
       "hyper": {
-        "EnemySpeed": 2,
-        "GoldMultiplier": 1.9,
+        "EnemySpeed": 0.5,
+        "GoldMultiplier": 0.9,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 2,
-        "ProjectileSpeed": 1.15
+        "PlayerPxSpeed": 0.5,
+        "ProjectileSpeed": 0.15
       }
     },
     {
       "id": "acres",
       "name": "Green Acres",
       "itemIds": [],
-      "special": true
+      "special": true,
+      "description": "A place not made for mortals. Fate changes every minute.",
+      "mods": {
+        "EnemySpeed": 1.25,
+        "PlayerPxSpeed": 1.25
+      },
+      "hyper": {
+        "EnemySpeed": 0.9,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 0.9,
+        "ProjectileSpeed": 0.15
+      }
     },
     {
       "id": "bonezone",
       "name": "The Bone Zone",
       "itemIds": [],
-      "special": true
+      "special": true,
+      "description": "Come over here and say your unholy vespers.",
+      "mods": {
+        "EnemySpeed": 1.25,
+        "GoldMultiplier": 1.5,
+        "PlayerPxSpeed": 1.25
+      },
+      "hyper": {
+        "EnemySpeed": 0.9,
+        "PlayerPxSpeed": 0.9,
+        "ProjectileSpeed": 0.15
+      }
     },
     {
       "id": "molise",
       "name": "Il Molise",
       "itemIds": [],
-      "special": true
+      "special": true,
+      "description": "There exists places that don`t exist. Come to relax and enjoy life. See you in the country.",
+      "mods": {
+        "EnemySpeed": 1.25,
+        "PlayerPxSpeed": 1.25,
+        "TimeLimit": 900
+      },
+      "hyper": {
+        "EnemySpeed": 0.9,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.2,
+        "PlayerPxSpeed": 0.9,
+        "ProjectileSpeed": 0.15,
+        "TimeLimit": 900
+      }
     },
     {
       "id": "moongolow",
@@ -2341,18 +2433,13 @@ window.vs = {
       "mods": {
         "EnemySpeed": 1.35,
         "PlayerPxSpeed": 1.35,
-        "TimeLimit": 900,
-        "tips": "Extra stage items"
+        "TimeLimit": 900
       },
       "hyper": {
-        "EnemyHealth": 1.6,
-        "EnemySpeed": 2,
-        "GoldMultiplier": 1.5,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.2,
-        "PlayerPxSpeed": 2,
-        "ProjectileSpeed": 1.15,
-        "TimeLimit": 900,
-        "tips": "Extra stage items"
+        "ProjectileSpeed": 0.15,
+        "TimeLimit": 900
       }
     },
     {
@@ -2379,18 +2466,16 @@ window.vs = {
       "special": true,
       "description": "\"Distinguished guests, the moment we`ve all be itching for is finally here! Let`s watch the Survivors attempt this challenge of recycled assets!\"",
       "mods": {
-        "EnemyHealth": 1.5,
         "EnemySpeed": 1.25,
         "PlayerPxSpeed": 1.25,
         "TimeLimit": 900
       },
       "hyper": {
-        "EnemyHealth": 1.5,
-        "EnemySpeed": 1.9,
-        "GoldMultiplier": 1.5,
+        "EnemySpeed": 0.9,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 1.9,
-        "ProjectileSpeed": 1.15,
+        "PlayerPxSpeed": 0.9,
+        "ProjectileSpeed": 0.15,
         "TimeLimit": 900
       }
     }
