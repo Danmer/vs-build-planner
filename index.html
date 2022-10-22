@@ -561,7 +561,7 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 60em">
+        <section v-if="config.evolutions" style="max-width: 65em">
           <div class="objects">
             <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
