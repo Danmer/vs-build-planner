@@ -901,7 +901,7 @@
           const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive' && !selectedStage.value.itemIds.includes(item.id)))
           const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
           const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? (weapon.evolution.evolved ? weapon.evolution.evolution : weapon.evolution) : weapon)))))
-          const counterpartsWeapons = computed(() => (selectedIds.has('arcana1') ? [].concat(itemsById.guns1.selected ? itemsById.guns3 : [], itemsById.guns2.selected ? itemsById.guns4 : [], itemsById.bird1.selected ? itemsById.bird3 : [], itemsById.bird2.selected ? itemsById.bird4 : [], itemsById.cat.selected ? itemsById.cat2 : []) : []))
+          const counterpartsWeapons = computed(() => (itemsById.cosmo.selected ? [itemsById.bird1, itemsById.bird2] : []).concat(selectedIds.has('arcana1') ? [].concat(itemsById.guns1.selected ? itemsById.guns3 : [], itemsById.guns2.selected ? itemsById.guns4 : [], itemsById.bird1.selected ? itemsById.bird3 : [], itemsById.bird2.selected ? itemsById.bird4 : [], itemsById.cat.selected ? itemsById.cat2 : []) : []))
 
           const needExtraWeaponSlots = computed(() => evolvedWeapons.value.reduce((result, weapon) => (weapon.type === 'evolution' && weapon.special && weapon.weaponIds.length > 1 ? weapon.weaponIds.length - 1 : 0), 0))
 
@@ -945,6 +945,10 @@
                 for (const itemId of oldCharacter.itemIds) {
                   unselectId(itemId)
                 }
+              }
+              // do not add cosmo's weapons (they are counterparts)
+              if (newCharacter.id === 'cosmo') {
+                return
               }
               // add items of the new character
               for (const itemId of newCharacter.itemIds) {
