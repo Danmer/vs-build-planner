@@ -683,16 +683,20 @@
             evolution.evolutionIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'evolution')
             evolution.passiveIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'passive')
             for (const itemId of evolution.itemIds) {
-              itemsById[itemId].evolutionId = evolution.id
-              itemsById[itemId].itemIds = itemsById[itemId].itemIds || evolution.itemIds.filter((id) => id !== itemId)
-            }
-            // find level 2 evolutions containing the same items
-            const evolution2 = evolutions.find((evo) => evo.itemIds.includes(evolution.id))
-            if (evolution2) {
-              for (const itemId of evolution2.itemIds) {
-                evolution.evolutionId = evolution2.id
+              const item = itemsById[itemId]
+              item.evolutionId = evolution.id
+              // add combinations to passives
+              if (item.type === 'passive') {
+                item.itemIds = (item.itemIds || []).concat(evolution.itemIds.filter((id) => id !== itemId))
               }
             }
+            // find level 2 evolutions containing the same items
+            // const evolution2 = evolutions.find((evo) => evo.itemIds.includes(evolution.id))
+            // if (evolution2) {
+            //   for (const itemId of evolution2.itemIds) {
+            //     evolution.evolutionId = evolution2.id
+            //   }
+            // }
           }
           for (const arcana of arcanas) {
             arcana.type = 'arcana'
