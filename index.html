@@ -884,7 +884,7 @@
 
             // sort impacts (selected - down, others - up)
             for (const itemId in newImpactsById) {
-              newImpactsById[itemId].sort((id1, id2) => (itemsById[id1.substring(1)].selected && !itemsById[id2.substring(1)].selected ? 1 : -1))
+              newImpactsById[itemId].sort((id1, id2) => (selectedIds.has(id1.substring(1)) && !selectedIds.has(id2.substring(1)) ? 1 : -1))
             }
 
             return newImpactsById
@@ -900,8 +900,49 @@
           const selectedWeapons = computed(() => selectedItems.value.filter((item) => item.type === 'weapon').sort((a, b) => (a.fixed && !b.fixed ? -1 : 0)))
           const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive' && !selectedStage.value.itemIds.includes(item.id)))
           const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
-          const evolvedWeapons = computed(() => Array.from(new Set(selectedWeapons.value.map((weapon) => (weapon.evolved ? (weapon.evolution.evolved ? weapon.evolution.evolution : weapon.evolution) : weapon)))))
-          const counterpartsWeapons = computed(() => (selectedCharacter.value.id === 'cosmo' ? [itemsById.bird1, itemsById.bird2] : []).concat(selectedIds.has('arcana1') ? [].concat(itemsById.guns1.selected ? itemsById.guns3 : [], itemsById.guns2.selected ? itemsById.guns4 : [], itemsById.bird1.selected ? itemsById.bird3 : [], itemsById.bird2.selected ? itemsById.bird4 : [], itemsById.cat.selected ? itemsById.cat2 : []) : []))
+
+          const evolvedWeapons = computed(() => {
+            const evolvedWeapons = selectedWeapons.value.map((weapon) => {
+              if (!weapon.evolved) {
+                return weapon
+              }
+              // level 2 evolution
+              if (weapon.evolution.evolved) {
+                return weapon.evolution.evolution
+              }
+              // level 1 evolution
+              return weapon.evolution
+            })
+            const uniqWeapons = new Set(evolvedWeapons)
+            return Array.from(uniqWeapons)
+          })
+
+          const counterpartsWeapons = computed(() => {
+            const counterparts = []
+            // cosmo's started weapons
+            if (selectedCharacter.value.id === 'cosmo') {
+              counterparts.push(itemsById.bird1, itemsById.bird2)
+            }
+            // arcana1's counterparts
+            if (selectedIds.has('arcana1')) {
+              if (selectedIds.has('guns1')) {
+                counterparts.push(itemsById.guns3)
+              }
+              if (selectedIds.has('guns2')) {
+                counterparts.push(itemsById.guns4)
+              }
+              if (selectedIds.has('bird1') || selectedCharacter.value.id === 'cosmo') {
+                counterparts.push(itemsById.bird3)
+              }
+              if (selectedIds.has('bird2') || selectedCharacter.value.id === 'cosmo') {
+                counterparts.push(itemsById.bird4)
+              }
+              if (selectedIds.has('cat')) {
+                counterparts.push(itemsById.cat2)
+              }
+            }
+            return counterparts
+          })
 
           // how many extra open slots do we need for evolutions/unions if arcana 20 is selected?
           const needExtraWeaponSlots = computed(() => evolvedWeapons.value.some((weapon) => weapon.type === 'evolution' && weapon.special && weapon.weaponIds.length - 1))
@@ -1045,9 +1086,9 @@
           }
 
           function isItemFixed(item) {
-            const isCharactersWeapon = selectedCharacter.value.id === 'cosmo' ? false : selectedCharacter.value.itemIds.includes(item.id)
-            const isInCharactersEvolution = item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId)
-            return isCharactersWeapon || isInCharactersEvolution
+            const isCharacterWeapon = selectedCharacter.value.id === 'cosmo' ? false : selectedCharacter.value.itemIds.includes(item.id)
+            const isInCharacterEvolution = item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId)
+            return isCharacterWeapon || isInCharacterEvolution
           }
 
           function unselectId(itemId) {
