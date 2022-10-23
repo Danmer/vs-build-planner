@@ -903,7 +903,8 @@
 
           const evolvedWeapons = computed(() => {
             const evolvedWeapons = selectedWeapons.value.map((weapon) => {
-              if (!weapon.evolved) {
+              // sword's evolution is a counterpart, so ignore it
+              if (!weapon.evolved || weapon.id === 'sword') {
                 return weapon
               }
               // level 2 evolution
@@ -922,6 +923,10 @@
             // cosmo's started weapons
             if (selectedCharacter.value.id === 'cosmo') {
               counterparts.push(itemsById.bird1, itemsById.bird2)
+            }
+            // sword's evolution
+            if (itemsById.sword.evolved) {
+              counterparts.push(itemsById.sword_)
             }
             // arcana1's counterparts
             if (selectedIds.has('arcana1')) {
