@@ -889,7 +889,7 @@
 
             // sort impacts (selected - down, others - up)
             for (const itemId in newImpactsById) {
-              newImpactsById[itemId].sort((id1, id2) => (selectedIds.has(id1.substring(1)) && !selectedIds.has(id2.substring(1)) ? 1 : -1))
+              newImpactsById[itemId].sort((id1, id2) => (itemsById[id1.substring(1)].selected ? 1 : -1))
             }
 
             return newImpactsById
