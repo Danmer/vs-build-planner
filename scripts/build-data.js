@@ -231,6 +231,7 @@ const stages = [
   { id: 'acres', name: 'Green Acres', itemIds: [], special: true },
   { id: 'bonezone', name: 'The Bone Zone', itemIds: [], special: true },
   { id: 'molise', name: 'Il Molise', itemIds: [], special: true },
+  { id: 'bridge', name: 'Tiny Bridge', itemIds: ['wings', 'vento', 'magnet', 'lightning'], special: true },
   { id: 'moongolow', name: 'Moongolow', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
   { id: 'bosses', name: 'Boss Rash', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
 ]

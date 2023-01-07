@@ -2756,6 +2756,32 @@ window.vs = {
       }
     },
     {
+      "id": "bridge",
+      "name": "Tiny Bridge",
+      "itemIds": [
+        "wings",
+        "vento",
+        "magnet",
+        "lightning"
+      ],
+      "special": true,
+      "description": "Two opposing factions abruptly stopped fighting over this little bridge. No doubt the source of this cessation will turn out to be harmless.",
+      "mods": {
+        "EnemySpeed": 1.25,
+        "GoldMultiplier": 1.3,
+        "PlayerPxSpeed": 1.25,
+        "TimeLimit": 1200
+      },
+      "hyper": {
+        "EnemySpeed": 0.65,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 0.65,
+        "ProjectileSpeed": 0.15,
+        "TimeLimit": 1200
+      }
+    },
+    {
       "id": "moongolow",
       "name": "Moongolow",
       "itemIds": [

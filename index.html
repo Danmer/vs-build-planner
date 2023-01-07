@@ -711,7 +711,9 @@
           }
           for (const stage of stages) {
             stage.type = 'stage'
-            stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
+            if (stage.id !== 'bridge') {
+              stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
+            }
           }
           for (const item of items) {
             item.items = item.itemIds ? item.itemIds.map((itemId) => itemsById[itemId]) : []
