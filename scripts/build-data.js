@@ -7,8 +7,9 @@ const { execSync } = require('child_process')
 console.log('building...')
 
 // src must contain main.bundle.js from Vampire Survivors/resources/app/.webpack/renderer
-// and all used files from Vampire Survivors\resources\app\.webpack\renderer\assets\img:
+// and all used files from Vampire Survivors\resources\app\.webpack\renderer\assets\img and from DLC: Vampire Survivors\2230760\scripts\data
 // characters.json, characters.png, enemies.json, enemies.png, enemies2.json, enemies2.png, enemies3.json, enemies3.png, enemiesM.json, enemiesM.png, items.json, items.png, randomazzo.json, randomazzo.png, UI.json, UI.png
+// moonspell.json, moonspell.png, moonspellChars.json, moonspellChars.png, characterData_Moonspell.json, weaponData_Moonspell.json, stageData_Moonspell.json
 const src = `${__dirname}/src`
 // dst will contain data.js and icons.css
 const dst = `${__dirname}/dst`
@@ -40,23 +41,34 @@ const characters = [
   { id: 'concetta', name: 'Concetta', emoji: ':charConcettaVS:', itemIds: ['pinion'] },
   { id: 'gallo', name: 'Gallo', emoji: ':charIguanaGalloVS:', itemIds: ['lancet'] },
   { id: 'divano', name: 'Divano', emoji: ':charDivanoVS:', itemIds: ['laurel'] },
-  { id: 'assunta', name: 'Zi`Assunta', emoji: ':animZiAssuntaVS:', itemIds: ['vento'] },
+  { id: 'assunta', name: 'Zi`Assunta', emoji: ':charZiAssuntaVS:', itemIds: ['vento'] },
   { id: 'ambrojoe', name: 'Ambrojoe', emoji: ':charSirAmbrojoeVS:', itemIds: ['furniture'] },
   { id: 'sigma', name: 'Sigma', emoji: ':charQueenSigmaVS:', itemIds: ['sword'] },
+
+  { id: 'miang', name: 'Miang', emoji: ':charMiangVS:', itemIds: ['wind'], dlc: true },
+  { id: 'menya', name: 'Menya', emoji: ':charMenyaVS:', itemIds: ['seasons'], dlc: true },
+  { id: 'syuuto', name: 'Syuuto', emoji: ':charSyuutoVS:', itemIds: ['night'], dlc: true },
+  { id: 'megamenya', name: 'Menya', emoji: ':charMegaloMenyaVS:', itemIds: ['bocce'], dlc: true },
+  { id: 'megasyuuto', name: 'Syuuto', emoji: ':charMegaloSyuutoVS:', itemIds: ['muramasa'], dlc: true },
+  { id: 'onna', name: 'Babi-Onna', emoji: ':charBabiOnnaVS:', itemIds: ['mirage'], dlc: true },
+  { id: 'tony', name: "Gab'Et-Oni", emoji: ':charGavEtOniVS:', itemIds: ['bolle'], dlc: true },
+  { id: 'mccoy', name: 'McCoy-Oni', emoji: ':charMccoyVS:', itemIds: ['bocce'], dlc: true },
+  { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: [], dlc: true },
+
   { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], special: true },
   { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], special: true },
-  { id: 'smith', name: 'Smith', emoji: ':animSmithVS:', itemIds: ['bird_'], special: true },
+  { id: 'smith', name: 'Smith', emoji: ':charSmithVS:', itemIds: ['bird_'], special: true },
   { id: 'leda', name: 'Leda', emoji: ':charLedaVS:', itemIds: ['magicwand_'], special: true },
   { id: 'reaper', name: 'Red Death', emoji: ':charReddeathVS:', itemIds: ['axe_'], special: true },
   { id: 'marrabbio', name: 'Marrabbio', emoji: ':charBoonMarrabbioVS:', itemIds: ['knife_'], special: true },
-  { id: 'minnah', name: 'Minnah', emoji: ':animMinnahVS:', itemIds: ['whip_'], special: true },
+  { id: 'minnah', name: 'Minnah', emoji: ':charMinnahVS:', itemIds: ['whip_'], special: true },
   { id: 'peppino', name: 'Peppino', emoji: ':charPeppinoVS:', itemIds: ['garlic_'], special: true },
   { id: 'gains', name: 'Gains', emoji: ':charGainsBorosVS:', itemIds: ['cross_'], special: true },
   { id: 'gyorunton', name: 'Gyorunton', emoji: ':charGyoruntonVS:', itemIds: ['bracelet'], special: true },
   { id: 'cosmo', name: 'Cosmo', emoji: ':animCosmoPavoneVS:', itemIds: ['bird1', 'bird2'], special: true },
   { id: 'trouser', name: 'Trouser', emoji: ':BigTrouserVS:', itemIds: ['candybox'], special: true },
-  { id: 'random', name: 'Random', emoji: ':animRandomVS:', itemIds: [], special: true },
-  { id: 'avatar', name: 'Avatar', emoji: ':question:', itemIds: ['flame'], special: true },
+  { id: 'random', name: 'Random', emoji: ':charRandomVS:', itemIds: [], special: true },
+  { id: 'avatar', name: 'Avatar', emoji: ':charAvatarInfernasVS:', itemIds: ['flame'], special: true },
 ]
 
 const weapons = [
@@ -83,15 +95,22 @@ const weapons = [
   { id: 'lancet', name: 'Clock Lancet', emoji: ':lancetVS:' },
   { id: 'laurel', name: 'Laurel', emoji: ':laurelVS:' },
   { id: 'sword', name: 'Victory Sword', emoji: ':victoryswordVS:' },
-  { id: 'flame', name: 'Flames of Misspell', emoji: ':question' },
-  { id: 'jubilee', name: 'Greatest Jubilee', emoji: ':question' },
+  { id: 'flame', name: 'Flames of Misspell', emoji: ':flamesofmisspellVS:' },
+  { id: 'jubilee', name: 'Greatest Jubilee', emoji: ':greatestjubileeVS:' },
+  { id: 'bracelet', name: 'Bracelet', emoji: ':braceletVS:' },
   { id: 'bone', name: 'Bone', emoji: ':boneVS:', special: true },
   { id: 'cherry', name: 'Cherry Bomb', emoji: ':cherrybombVS:', special: true },
   { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:', special: true },
   { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:', special: true },
   { id: 'furniture', name: 'La Robba', emoji: ':larobbaVS:', special: true },
-  { id: 'bracelet', name: 'Bracelet', emoji: ':braceletVS:', special: true },
   { id: 'candybox', name: 'Candybox', emoji: ':candyboxVS:', special: true },
+  { id: 'wind', name: 'Silver Wind', emoji: ':SilverWindVS:', dlc: true },
+  { id: 'seasons', name: 'Four Seasons', emoji: ':FourSeasonsVS:', dlc: true },
+  { id: 'night', name: 'Summon Night', emoji: ':SummonNightVS:', dlc: true },
+  { id: 'mirage', name: 'Mirage Robe', emoji: ':MirageRobeVS:', dlc: true },
+  { id: 'muramasa', name: 'Night Sword', emoji: ':NightSwordVS:', dlc: true },
+  { id: 'bolle', name: 'Mille Bolle Blu', emoji: ':MilleBolleBluVS:', dlc: true },
+  { id: 'bocce', name: '108 Bocce', emoji: ':108BocceVS:', dlc: true, special: true },
 ]
 
 const evolutions = [
@@ -110,16 +129,24 @@ const evolutions = [
   { id: 'whip_', name: 'Bloody Tear', emoji: ':bloodytearVS:', itemIds: ['whip', 'health'] },
   { id: 'cat_', name: 'Vicious Hunger', emoji: ':vicioushungerVS:', itemIds: ['cat', 'greed'] },
   { id: 'pinion_', name: 'Valkyrie Turner', emoji: ':valkyrieVS:', itemIds: ['pinion', 'wings'] },
+  { id: 'sword_', name: 'Sole Solution', emoji: ':solesolutionVS:', itemIds: ['sword', 'torrona'] },
+  { id: 'flame_', name: 'Ashes of Muspell', emoji: ':ashesofmuspellVS:', itemIds: ['flame', 'torrona'] },
   { id: 'lancet_', name: 'Infinite Corridor', emoji: ':infinitecorridorVS:', itemIds: ['lancet', 'ring1', 'ring2'] },
   { id: 'laurel_', name: 'Crimson Shroud', emoji: ':cloakVS:', itemIds: ['laurel', 'sign1', 'sign2'] },
-  { id: 'sword_', name: 'Sole Solution', emoji: ':solesolutionVS:', itemIds: ['sword', 'torrona'] },
-  { id: 'flame_', name: 'Ashes of Muspell', emoji: ':question:', itemIds: ['flame', 'torrona'] },
+
   { id: 'bird_', name: 'Vandalier', emoji: ':vandalierVS:', itemIds: ['bird1', 'bird2'], special: true },
   { id: 'guns_', name: 'Phieraggi', emoji: ':phieraggiVS:', itemIds: ['guns1', 'guns2', 'revival'], special: true },
   { id: 'vento_', name: 'Fuwalafuwaloo', emoji: ':fuwalafuwalooVS:', itemIds: ['vento', 'whip_'], special: true },
   { id: 'bracelet_', name: 'Bi-Bracelet', emoji: ':bibraceletVS:', itemIds: ['bracelet'], special: true },
   { id: 'bracelet__', name: 'Tri-Bracelet', emoji: ':tribraceletVS:', itemIds: ['bracelet_'], special: true },
   { id: 'candybox_', name: 'Super Candybox II Turbo', emoji: ':supercandyboxIIturboVS:', itemIds: ['candybox'], special: true },
+
+  { id: 'wind_', name: 'Festive Winds', itemIds: ['wind', 'recovery'], emoji: ':FestiveWindsVS:', dlc: true },
+  { id: 'muramasa_', name: 'Muramasa', itemIds: ['muramasa', 'greed'], emoji: ':MuraMasaVS:', dlc: true },
+  { id: 'seasons_', name: 'Godai Shuffle', itemIds: ['seasons', 'might', 'area'], emoji: ':GodaiShuffleVS:', dlc: true },
+  { id: 'night_', name: "Night's Reach", itemIds: ['night', 'amount'], emoji: ':EchoNightVS:', dlc: true },
+  { id: 'mirage_', name: "J'Odore", itemIds: ['mirage', 'magnet'], emoji: ':JOdoreVS:', dlc: true },
+  { id: 'bolle_', name: 'Boo Roo Boolle', itemIds: ['bolle', 'duration'], emoji: ':BooRooBoolleVS:', dlc: true },
 ]
 
 const passives = [
@@ -172,26 +199,26 @@ const powerups = [
 const arcanas = [
   { id: 'arcana0', name: 'Game Killer', emoji: ':0GameKillerVS:', itemIds: ['experience', 'chest'] },
   { id: 'arcana1', name: 'Gemini', emoji: ':IGeminiVS:', itemIds: ['bird1', 'bird2', 'bird_', 'guns1', 'guns2', 'guns_', 'cat', 'cat_', 'fritta'] },
-  { id: 'arcana2', name: 'Twilight Requiem', emoji: ':IITwilightRequiemVS:', itemIds: ['bible', 'bible_', 'bird1', 'bird2', 'runetracer', 'pinion', 'bone', 'flowers'] },
+  { id: 'arcana2', name: 'Twilight Requiem', emoji: ':IITwilightRequiemVS:', itemIds: ['bible', 'bible_', 'lightning', 'lightning_', 'bird1', 'bird2', 'runetracer', 'pinion', 'bone', 'flowers', 'bracelet_', 'wind', 'wind_'] },
   { id: 'arcana3', name: 'Tragic Princess', emoji: ':IIITragicPrincess:', itemIds: ['cooldown', 'garlic', 'garlic_', 'water', 'water_', 'lightning', 'lightning_', 'cart'] },
   { id: 'arcana4', name: 'Awake', emoji: ':4VS:', itemIds: ['revival', 'health', 'armor', 'might', 'area', 'duration', 'speed'] },
   { id: 'arcana5', name: 'Chaos in the Dark Night', emoji: ':5VS:', itemIds: ['speed'] },
-  { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:', itemIds: ['recovery', 'chicken', 'whip_', 'garlic_', 'flowers', 'vento_', 'revival'] },
+  { id: 'arcana6', name: 'Sarabande of Healing', emoji: ':6VS:', itemIds: ['recovery', 'revival', 'whip_', 'vento_', 'garlic_', 'wind', 'wind_', 'muramasa', 'muramasa_', 'chicken', 'flowers'] },
   { id: 'arcana7', name: 'Iron Blue Will', emoji: ':7VS:', itemIds: ['knife', 'knife_', 'axe', 'axe_', 'guns1', 'guns2', 'cart'] },
   { id: 'arcana8', name: 'Mad Groove', emoji: ':VIIIMadGrooveVS:', itemIds: [] },
-  { id: 'arcana9', name: 'Divine Bloodline', emoji: ':IXDivineBloodlinesVS:', itemIds: ['cross', 'bible', 'garlic', 'water', 'lightning', 'mana', 'vento', 'sword', 'armor', 'health'] },
+  { id: 'arcana9', name: 'Divine Bloodline', emoji: ':IXDivineBloodlinesVS:', itemIds: ['armor', 'health', 'cross', 'bible', 'garlic', 'water', 'lightning', 'mana', 'vento', 'sword', 'wind'] },
   { id: 'arcana10', name: 'Beginning', emoji: ':XBeginningVS:', itemIds: ['amount', 'bone', 'cherry', 'cart', 'flowers', 'furniture'] },
   { id: 'arcana11', name: 'Waltz of Pearls', emoji: ':11VS:', itemIds: ['magicwand', 'magicwand_', 'firewand', 'firewand_', 'cross', 'cross_', 'cart'] },
-  { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIOutOfBounds:', itemIds: ['lancet', 'lancet_', 'orologion'] },
+  { id: 'arcana12', name: 'Out of Bounds', emoji: ':XIIOutOfBounds:', itemIds: ['lancet', 'lancet_', 'mirage', 'mirage_', 'orologion'] },
   { id: 'arcana13', name: 'Wicked Season', emoji: ':XIIIWickedSeasonVS:', itemIds: ['growth', 'luck', 'greed', 'curse'] },
-  { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVJailOfCrystal:', itemIds: ['magicwand', 'magicwand_', 'runetracer', 'runetracer_', 'guns2', 'guns4', 'bird3'] },
+  { id: 'arcana14', name: 'Jail of Crystal', emoji: ':XIVJailOfCrystal:', itemIds: ['magicwand', 'magicwand_', 'runetracer', 'runetracer_', 'bracelet', 'guns2', 'guns4', 'bird3'] },
   { id: 'arcana15', name: 'Disco of Gold', emoji: ':XVDiscoOfGoldVS:', itemIds: ['cat_', 'greed', 'coin', 'coinbag', 'richcoinbag', 'bigcoinbag', 'gildedclover', 'chest'] },
-  { id: 'arcana16', name: 'Slash', emoji: ':16VS:', itemIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword'] },
+  { id: 'arcana16', name: 'Slash', emoji: ':16VS:', itemIds: ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword', 'muramasa_'] },
   { id: 'arcana17', name: 'Lost & Found Painting', emoji: ':17VS:', itemIds: ['duration'] },
   { id: 'arcana18', name: 'Boogaloo of Illusions', emoji: ':XVIIIBoogalOofIllusions:', itemIds: ['area'] },
-  { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:', itemIds: ['firewand', 'firewand_', 'guns1', 'pinion_', 'jubilee', 'guns3', 'bird4', 'brazier'] },
+  { id: 'arcana19', name: 'Heart of Fire', emoji: ':19VS:', itemIds: ['firewand', 'firewand_', 'guns1', 'pinion_', 'bracelet__', 'guns3', 'bird4', 'brazier'] },
   { id: 'arcana20', name: 'Silent Old Sanctuary', emoji: ':XXSilentOldSanctuary:', itemIds: ['reroll', 'skip', 'banish'] },
-  { id: 'arcana21', name: 'Blood Astronomia', emoji: ':XXIBloodAstronomiaVS:', itemIds: ['garlic', 'garlic_', 'pentagram', 'pentagram_', 'mana', 'mana_', 'lancet', 'laurel'] },
+  { id: 'arcana21', name: 'Blood Astronomia', emoji: ':XXIBloodAstronomiaVS:', itemIds: ['amount', 'magnet', 'garlic', 'garlic_', 'pentagram', 'pentagram_', 'mana', 'mana_', 'lancet', 'laurel'] },
 ]
 
 const stages = [
@@ -200,6 +227,7 @@ const stages = [
   { id: 'plant', name: 'Dairy Plant', itemIds: ['magnet', 'area', 'wings', 'armor'] },
   { id: 'tower', name: 'Gallo Tower', itemIds: ['speed', 'duration'] },
   { id: 'capella', name: 'Cappella Magna', itemIds: ['growth', 'revival', 'amount'] },
+  { id: 'moonspell', name: 'Mt.Moonspell', itemIds: ['might', 'recovery', 'area', 'amount', 'magnet', 'greed', 'muramasa'], dlc: true },
   { id: 'acres', name: 'Green Acres', itemIds: [], special: true },
   { id: 'bonezone', name: 'The Bone Zone', itemIds: [], special: true },
   { id: 'molise', name: 'Il Molise', itemIds: [], special: true },
@@ -307,6 +335,15 @@ try {
     fixedData += '\n\n' + fixedGroupString
     try {
       const parsedGroup = JSON.parse(fixedGroupString)
+      if (fixedGroupString.includes('"startingWeapon"')) {
+        Object.assign(parsedGroup, require(`${__dirname}/src/characterData_Moonspell.json`))
+      }
+      if (fixedGroupString.includes('"evoSynergy"')) {
+        Object.assign(parsedGroup, require(`${__dirname}/src/weaponData_Moonspell.json`))
+      }
+      if (fixedGroupString.includes('"stageName"')) {
+        Object.assign(parsedGroup, require(`${__dirname}/src/stageData_Moonspell.json`))
+      }
       const objects = []
       for (const code in parsedGroup) {
         if (parsedGroup[code][0]) {
@@ -318,7 +355,7 @@ try {
       const type = object0.textureName || object0.texture || object0.uiTexture || ''
       if (type === 'characters') {
         for (const character of characters) {
-          const levels = objects.find((lvls) => lvls[0] && lvls[0].charName === character.name)
+          const levels = objects.find((lvls) => lvls[0] && lvls[0].charName === character.name && (!character.id.includes('mega') || lvls[0].prefix?.includes('Megalo')))
           if (levels) {
             levels.sort((a, b) => a.level - b.level)
             Object.assign(character, pickFields(levels[0], baseCharacterParams))

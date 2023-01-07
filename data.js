@@ -264,7 +264,7 @@ window.vs = {
     {
       "id": "assunta",
       "name": "Zi`Assunta",
-      "emoji": ":animZiAssuntaVS:",
+      "emoji": ":charZiAssuntaVS:",
       "itemIds": [
         "vento"
       ],
@@ -308,6 +308,130 @@ window.vs = {
       "price": 0
     },
     {
+      "id": "miang",
+      "name": "Miang",
+      "emoji": ":charMiangVS:",
+      "itemIds": [
+        "wind"
+      ],
+      "dlc": true,
+      "surname": "Moonspell",
+      "description": "Recovery also multiplies all healing sources. Over-healing slightly increases Max Health.",
+      "onEveryLevelUp": {},
+      "price": 1000
+    },
+    {
+      "id": "menya",
+      "name": "Menya",
+      "emoji": ":charMenyaVS:",
+      "itemIds": [
+        "seasons"
+      ],
+      "dlc": true,
+      "surname": "Moonspell",
+      "description": "Becomes stronger and invincible for a fixed interval after defeating a large amount of enemies.",
+      "onEveryLevelUp": {},
+      "price": 5000
+    },
+    {
+      "id": "syuuto",
+      "name": "Syuuto",
+      "emoji": ":charSyuutoVS:",
+      "itemIds": [
+        "night"
+      ],
+      "dlc": true,
+      "surname": "Moonspell",
+      "description": "Starts with hidden Night Sword. Morphs into a stronger version when his base weapon evolves.",
+      "onEveryLevelUp": {},
+      "price": 5000
+    },
+    {
+      "id": "megamenya",
+      "name": "Menya",
+      "emoji": ":charMegaloMenyaVS:",
+      "itemIds": [
+        "bocce"
+      ],
+      "dlc": true,
+      "prefix": "Megalo",
+      "surname": "Moonspell",
+      "description": "Cannot be damaged, but disappears after reaching the current Time Limit. Starts with hidden 108 Bocce.",
+      "onEveryLevelUp": {},
+      "price": 50000
+    },
+    {
+      "id": "megasyuuto",
+      "name": "Syuuto",
+      "emoji": ":charMegaloSyuutoVS:",
+      "itemIds": [
+        "muramasa"
+      ],
+      "dlc": true,
+      "prefix": "Megalo",
+      "surname": "Moonspell",
+      "description": "Gains +1% Might every level.",
+      "onEveryLevelUp": {
+        "power": 0.01
+      },
+      "price": 5000
+    },
+    {
+      "id": "onna",
+      "name": "Babi-Onna",
+      "emoji": ":charBabiOnnaVS:",
+      "itemIds": [
+        "mirage"
+      ],
+      "dlc": true,
+      "surname": "",
+      "description": "Ignores weapons cooldown. Weapons fire at a fixed interval when moving.",
+      "onEveryLevelUp": {},
+      "price": 5000
+    },
+    {
+      "id": "tony",
+      "name": "Gab'Et-Oni",
+      "emoji": ":charGavEtOniVS:",
+      "itemIds": [
+        "bolle"
+      ],
+      "dlc": true,
+      "surname": "",
+      "description": "Gets more projectiles every 20 levels (max+4).",
+      "onEveryLevelUp": {},
+      "price": 500
+    },
+    {
+      "id": "mccoy",
+      "name": "McCoy-Oni",
+      "emoji": ":charMccoyVS:",
+      "itemIds": [
+        "bocce"
+      ],
+      "dlc": true,
+      "surname": "",
+      "description": "Area temporarily increases at fixed intervals.",
+      "onEveryLevelUp": {},
+      "price": 5000,
+      "sineArea": {
+        "min": 1,
+        "max": 2.5,
+        "duration": 1000
+      }
+    },
+    {
+      "id": "scorej",
+      "name": "Scorej-Oni",
+      "emoji": ":charScorejOniVS:",
+      "itemIds": [],
+      "dlc": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
+      "price": 5000
+    },
+    {
       "id": "exdash",
       "name": "Exdash",
       "emoji": ":charExdashVS:",
@@ -334,23 +458,11 @@ window.vs = {
     {
       "id": "smith",
       "name": "Smith",
-      "emoji": ":animSmithVS:",
+      "emoji": ":charSmithVS:",
       "itemIds": [
         "bird_"
       ],
-      "special": true,
-      "surname": "IV",
-      "description": "The quirky white bear.",
-      "onEveryLevelUp": {
-        "regen": 0.01,
-        "power": 0.007,
-        "speed": 0.007,
-        "duration": 0.007,
-        "area": 0.007,
-        "cooldown": -0.0025,
-        "luck": 0.01
-      },
-      "price": 7777
+      "special": true
     },
     {
       "id": "leda",
@@ -394,7 +506,7 @@ window.vs = {
     {
       "id": "minnah",
       "name": "Minnah",
-      "emoji": ":animMinnahVS:",
+      "emoji": ":charMinnahVS:",
       "itemIds": [
         "whip_"
       ],
@@ -510,7 +622,7 @@ window.vs = {
     {
       "id": "random",
       "name": "Random",
-      "emoji": ":animRandomVS:",
+      "emoji": ":charRandomVS:",
       "itemIds": [],
       "special": true,
       "prefix": "",
@@ -521,7 +633,7 @@ window.vs = {
     {
       "id": "avatar",
       "name": "Avatar",
-      "emoji": ":question:",
+      "emoji": ":charAvatarInfernasVS:",
       "itemIds": [
         "flame"
       ],
@@ -791,7 +903,7 @@ window.vs = {
     {
       "id": "flame",
       "name": "Flames of Misspell",
-      "emoji": ":question",
+      "emoji": ":flamesofmisspellVS:",
       "description": "Emits cones of flames.",
       "poolLimit": 100,
       "rarity": 30,
@@ -800,7 +912,7 @@ window.vs = {
     {
       "id": "jubilee",
       "name": "Greatest Jubilee",
-      "emoji": ":question",
+      "emoji": ":greatestjubileeVS:",
       "description": "Has a chance to summon light sources.",
       "poolLimit": 100,
       "critChance": 0.05,
@@ -809,6 +921,16 @@ window.vs = {
       "knockback": 0.1,
       "rarity": 20,
       "tips": "Best with: Luck."
+    },
+    {
+      "id": "bracelet",
+      "name": "Bracelet",
+      "emoji": ":braceletVS:",
+      "description": "Fires three projectiles at a random enemy.",
+      "poolLimit": 80,
+      "hitsWalls": false,
+      "rarity": 40,
+      "tips": ""
     },
     {
       "id": "bone",
@@ -865,17 +987,6 @@ window.vs = {
       "tips": "Best with: duration, speed."
     },
     {
-      "id": "bracelet",
-      "name": "Bracelet",
-      "emoji": ":braceletVS:",
-      "special": true,
-      "description": "Fires three projectiles at a random enemy.",
-      "poolLimit": 80,
-      "hitsWalls": false,
-      "rarity": 40,
-      "tips": ""
-    },
-    {
       "id": "candybox",
       "name": "Candybox",
       "emoji": ":candyboxVS:",
@@ -884,6 +995,95 @@ window.vs = {
       "poolLimit": 0,
       "rarity": 2,
       "tips": "Appearance in level up options affected by Luck."
+    },
+    {
+      "id": "wind",
+      "name": "Silver Wind",
+      "emoji": ":SilverWindVS:",
+      "dlc": true,
+      "description": "Defeated enemies might drop hearts.",
+      "poolLimit": 100,
+      "critChance": 0,
+      "critMul": 1,
+      "hitsWalls": false,
+      "rarity": 50,
+      "tips": ""
+    },
+    {
+      "id": "seasons",
+      "name": "Four Seasons",
+      "emoji": ":FourSeasonsVS:",
+      "dlc": true,
+      "description": "Generates 4 explosions. Amount and Duration affect damage instead.",
+      "poolLimit": 30,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 50,
+      "tips": "Ignores: speed."
+    },
+    {
+      "id": "night",
+      "name": "Summon Night",
+      "emoji": ":SummonNightVS:",
+      "dlc": true,
+      "description": "Generates damaging zones above the character.",
+      "poolLimit": 60,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 50,
+      "tips": "Ignores: speed."
+    },
+    {
+      "id": "mirage",
+      "name": "Mirage Robe",
+      "emoji": ":MirageRobeVS:",
+      "dlc": true,
+      "description": "Generates freezing mines with a chance to explode.",
+      "poolLimit": 50,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 50,
+      "tips": "Ignores: speed."
+    },
+    {
+      "id": "muramasa",
+      "name": "Night Sword",
+      "emoji": ":NightSwordVS:",
+      "dlc": true,
+      "description": "Strikes with a combo attack at the nearest enemy. Retaliates. Might steals hearts.",
+      "poolLimit": 100,
+      "critChance": 0.1,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 30,
+      "tips": "Ignores: speed, duration."
+    },
+    {
+      "id": "bolle",
+      "name": "Mille Bolle Blu",
+      "emoji": ":MilleBolleBluVS:",
+      "dlc": true,
+      "description": "Fires lingering projectiles.",
+      "poolLimit": 140,
+      "knockback": 0.1,
+      "rarity": 1,
+      "tips": ""
+    },
+    {
+      "id": "bocce",
+      "name": "108 Bocce",
+      "emoji": ":108BocceVS:",
+      "dlc": true,
+      "special": true,
+      "description": "Actually it's just 8. Damages nearby enemies.",
+      "poolLimit": 50,
+      "hitsWalls": false,
+      "knockback": 0,
+      "rarity": 10,
+      "tips": "Ignores: amount, duration, speed."
     }
   ],
   "evolutions": [
@@ -1109,6 +1309,34 @@ window.vs = {
       "tips": "Requires: Wings."
     },
     {
+      "id": "sword_",
+      "name": "Sole Solution",
+      "emoji": ":solesolutionVS:",
+      "itemIds": [
+        "sword",
+        "torrona"
+      ],
+      "description": "Gift of Victory Sword. The more enemies are defeated, the stronger it grows.",
+      "poolLimit": 100,
+      "hitsWalls": false,
+      "knockback": 0,
+      "rarity": 1,
+      "tips": "Requires Max: Torrona`s Box."
+    },
+    {
+      "id": "flame_",
+      "name": "Ashes of Muspell",
+      "emoji": ":ashesofmuspellVS:",
+      "itemIds": [
+        "flame",
+        "torrona"
+      ],
+      "description": "Evolved Flames of Misspell. The more enemies are defeated, the stronger it grows.",
+      "poolLimit": 200,
+      "rarity": 1,
+      "tips": "Requires Max: Torrona`s Box."
+    },
+    {
       "id": "lancet_",
       "name": "Infinite Corridor",
       "emoji": ":infinitecorridorVS:",
@@ -1138,34 +1366,6 @@ window.vs = {
       "knockback": 20,
       "rarity": 1,
       "tips": "Requires Max: Metaglio Left, Metaglio Right."
-    },
-    {
-      "id": "sword_",
-      "name": "Sole Solution",
-      "emoji": ":solesolutionVS:",
-      "itemIds": [
-        "sword",
-        "torrona"
-      ],
-      "description": "Gift of Victory Sword. The more enemies are defeated, the stronger it grows.",
-      "poolLimit": 100,
-      "hitsWalls": false,
-      "knockback": 0,
-      "rarity": 1,
-      "tips": "Requires Max: Torrona`s Box."
-    },
-    {
-      "id": "flame_",
-      "name": "Ashes of Muspell",
-      "emoji": ":question:",
-      "itemIds": [
-        "flame",
-        "torrona"
-      ],
-      "description": "Evolved Flames of Misspell. The more enemies are defeated, the stronger it grows.",
-      "poolLimit": 200,
-      "rarity": 1,
-      "tips": "Requires Max: Torrona`s Box."
     },
     {
       "id": "bird_",
@@ -1260,6 +1460,107 @@ window.vs = {
       "poolLimit": 0,
       "rarity": 0.1,
       "tips": "Requires: Candybox."
+    },
+    {
+      "id": "wind_",
+      "name": "Festive Winds",
+      "itemIds": [
+        "wind",
+        "recovery"
+      ],
+      "emoji": ":FestiveWindsVS:",
+      "dlc": true,
+      "description": "Evolved Silver Wind. Weakens enemies defenses.",
+      "poolLimit": 100,
+      "critChance": 0,
+      "critMul": 1,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": "Requires Max: Pummarola."
+    },
+    {
+      "id": "muramasa_",
+      "name": "Muramasa",
+      "itemIds": [
+        "muramasa",
+        "greed"
+      ],
+      "emoji": ":MuraMasaVS:",
+      "dlc": true,
+      "description": "Evolved Night Sword. Enables critical hits and combo finisher. Drains Health.",
+      "poolLimit": 100,
+      "critChance": 0.1,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": "Requires Max: Stone Mask."
+    },
+    {
+      "id": "seasons_",
+      "name": "Godai Shuffle",
+      "itemIds": [
+        "seasons",
+        "might",
+        "area"
+      ],
+      "emoji": ":GodaiShuffleVS:",
+      "dlc": true,
+      "description": "Evolved Four Seasons. Generates an additional explosion.",
+      "poolLimit": 30,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": "Requires Max: Spinach, Candelabrador."
+    },
+    {
+      "id": "night_",
+      "name": "Night's Reach",
+      "itemIds": [
+        "night",
+        "amount"
+      ],
+      "emoji": ":EchoNightVS:",
+      "dlc": true,
+      "description": "Evolved Summon Night. Generates damaging zones below the character.",
+      "poolLimit": 60,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 100,
+      "tips": "Requires Max: Duplicator."
+    },
+    {
+      "id": "mirage_",
+      "name": "J'Odore",
+      "itemIds": [
+        "mirage",
+        "magnet"
+      ],
+      "emoji": ":JOdoreVS:",
+      "dlc": true,
+      "description": "Evolved Mirage Robe. Projectiles move and confuse enemies.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": "Requires Max: Magnet."
+    },
+    {
+      "id": "bolle_",
+      "name": "Boo Roo Boolle",
+      "itemIds": [
+        "bolle",
+        "duration"
+      ],
+      "emoji": ":BooRooBoolleVS:",
+      "dlc": true,
+      "description": "Evolved Mille Bolle Blu. Projectiles can hit the same target more than once.",
+      "poolLimit": 180,
+      "knockback": 0.1,
+      "rarity": 1,
+      "tips": "Requires Max: Spellbinder"
     }
   ],
   "counterparts": [
@@ -1700,12 +2001,17 @@ window.vs = {
       "itemIds": [
         "bible",
         "bible_",
+        "lightning",
+        "lightning_",
         "bird1",
         "bird2",
         "runetracer",
         "pinion",
         "bone",
-        "flowers"
+        "flowers",
+        "bracelet_",
+        "wind",
+        "wind_"
       ],
       "description": "Listed weapon projectiles generate explosions when they expire.",
       "major": true
@@ -1750,7 +2056,7 @@ window.vs = {
       "itemIds": [
         "speed"
       ],
-      "description": "Overall projectile Speed continuously changes between -50% and +50% over 10 seconds. The character starts gaining +1% projectile Speed every level.",
+      "description": "Overall projectile Speed continuously changes between -50% and +200% over 10 seconds.",
       "major": true
     },
     {
@@ -1759,12 +2065,16 @@ window.vs = {
       "emoji": ":6VS:",
       "itemIds": [
         "recovery",
-        "chicken",
+        "revival",
         "whip_",
-        "garlic_",
-        "flowers",
         "vento_",
-        "revival"
+        "garlic_",
+        "wind",
+        "wind_",
+        "muramasa",
+        "muramasa_",
+        "chicken",
+        "flowers"
       ],
       "description": "Healing is doubled. Recovering HP damages nearby enemies for the same amount.",
       "major": true
@@ -1798,6 +2108,8 @@ window.vs = {
       "name": "IX - Divine Bloodline",
       "emoji": ":IXDivineBloodlinesVS:",
       "itemIds": [
+        "armor",
+        "health",
         "cross",
         "bible",
         "garlic",
@@ -1806,8 +2118,7 @@ window.vs = {
         "mana",
         "vento",
         "sword",
-        "armor",
-        "health"
+        "wind"
       ],
       "description": "Armor also affects listed weapons` damage and reflects enemy damage. Character gains bonus damage depending on missing Health. Defeating enemies with retaliatory damage gives +0.5 Max Health.",
       "major": true
@@ -1850,6 +2161,8 @@ window.vs = {
       "itemIds": [
         "lancet",
         "lancet_",
+        "mirage",
+        "mirage_",
         "orologion"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
@@ -1877,6 +2190,7 @@ window.vs = {
         "magicwand_",
         "runetracer",
         "runetracer_",
+        "bracelet",
         "guns2",
         "guns4",
         "bird3"
@@ -1915,7 +2229,8 @@ window.vs = {
         "vento",
         "vento_",
         "cross_",
-        "sword"
+        "sword",
+        "muramasa_"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true
@@ -1927,7 +2242,7 @@ window.vs = {
       "itemIds": [
         "duration"
       ],
-      "description": "Overall Duration continuously changes between -50% and +50% over 10 seconds. The character starts gaining +1% Duration every level.",
+      "description": "Overall Duration continuously changes between -50% and +200% over 10 seconds.",
       "major": true
     },
     {
@@ -1937,7 +2252,7 @@ window.vs = {
       "itemIds": [
         "area"
       ],
-      "description": "Overall Area continuously changes between -25% and +25% over 10 seconds. The character starts gaining +1% Area every level.",
+      "description": "Overall Area continuously changes between -25% and +50% over 10 seconds.",
       "major": true
     },
     {
@@ -1949,7 +2264,7 @@ window.vs = {
         "firewand_",
         "guns1",
         "pinion_",
-        "jubilee",
+        "bracelet__",
         "guns3",
         "bird4",
         "brazier"
@@ -1974,6 +2289,8 @@ window.vs = {
       "name": "XXI - Blood Astronomia",
       "emoji": ":XXIBloodAstronomiaVS:",
       "itemIds": [
+        "amount",
+        "magnet",
         "garlic",
         "garlic_",
         "pentagram",
@@ -2258,11 +2575,14 @@ window.vs = {
         "curse"
       ],
       "description": "The Castle is a lie, but there`s still free roast chicken here, so it`s all good.",
-      "mods": {},
+      "mods": {
+        "EnemySpeed": 1.1,
+        "PlayerPxSpeed": 1.1
+      },
       "hyper": {
-        "EnemySpeed": 0.75,
+        "EnemySpeed": 0.9,
         "GoldMultiplier": 0.5,
-        "PlayerPxSpeed": 0.75,
+        "PlayerPxSpeed": 0.9,
         "ProjectileSpeed": 0.25
       }
     },
@@ -2303,7 +2623,7 @@ window.vs = {
       },
       "hyper": {
         "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.7,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15
@@ -2324,7 +2644,7 @@ window.vs = {
       },
       "hyper": {
         "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.8,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
         "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15
@@ -2345,10 +2665,37 @@ window.vs = {
         "PlayerPxSpeed": 1.4
       },
       "hyper": {
-        "EnemySpeed": 0.5,
-        "GoldMultiplier": 0.9,
+        "EnemySpeed": 0.6,
+        "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.5,
+        "PlayerPxSpeed": 0.6,
+        "ProjectileSpeed": 0.15
+      }
+    },
+    {
+      "id": "moonspell",
+      "name": "Mt.Moonspell",
+      "itemIds": [
+        "might",
+        "recovery",
+        "area",
+        "amount",
+        "magnet",
+        "greed",
+        "muramasa"
+      ],
+      "dlc": true,
+      "description": "Ancestral home of a fallen clan, now overrun by yokai and oni. The night has won in this world where the sun doesn't shine.",
+      "mods": {
+        "EnemySpeed": 1.4,
+        "GoldMultiplier": 1.5,
+        "PlayerPxSpeed": 1.4
+      },
+      "hyper": {
+        "EnemySpeed": 0.6,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 0.6,
         "ProjectileSpeed": 0.15
       }
     },
@@ -2363,10 +2710,10 @@ window.vs = {
         "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "EnemySpeed": 0.9,
+        "EnemySpeed": 0.65,
         "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.9,
+        "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15
       }
     },
@@ -2382,8 +2729,9 @@ window.vs = {
         "PlayerPxSpeed": 1.25
       },
       "hyper": {
-        "EnemySpeed": 0.9,
-        "PlayerPxSpeed": 0.9,
+        "EnemySpeed": 0.65,
+        "GoldMultiplier": 0.5,
+        "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15
       }
     },
@@ -2399,10 +2747,10 @@ window.vs = {
         "TimeLimit": 900
       },
       "hyper": {
-        "EnemySpeed": 0.9,
+        "EnemySpeed": 0.75,
         "GoldMultiplier": 0.5,
         "LuckBonus": 0.2,
-        "PlayerPxSpeed": 0.9,
+        "PlayerPxSpeed": 0.75,
         "ProjectileSpeed": 0.15,
         "TimeLimit": 900
       }
@@ -2436,8 +2784,10 @@ window.vs = {
         "TimeLimit": 900
       },
       "hyper": {
+        "EnemySpeed": 0.65,
         "GoldMultiplier": 0.5,
         "LuckBonus": 0.2,
+        "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15,
         "TimeLimit": 900
       }
@@ -2471,10 +2821,10 @@ window.vs = {
         "TimeLimit": 900
       },
       "hyper": {
-        "EnemySpeed": 0.9,
+        "EnemySpeed": 0.65,
         "GoldMultiplier": 0.5,
         "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.9,
+        "PlayerPxSpeed": 0.65,
         "ProjectileSpeed": 0.15,
         "TimeLimit": 900
       }
