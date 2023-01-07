@@ -685,8 +685,8 @@
             for (const itemId of evolution.itemIds) {
               const item = itemsById[itemId]
               item.evolutionId = evolution.id
-              // add combinations to passives
-              if (item.type === 'passive') {
+              // add combinations to weapons and passives
+              if (item.type === 'weapon' || item.type === 'passive') {
                 item.itemIds = (item.itemIds || []).concat(evolution.itemIds.filter((id) => id !== itemId))
               }
             }
