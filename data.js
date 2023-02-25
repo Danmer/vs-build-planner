@@ -424,7 +424,9 @@ window.vs = {
       "id": "scorej",
       "name": "Scorej-Oni",
       "emoji": ":charScorejOniVS:",
-      "itemIds": [],
+      "itemIds": [
+        "lightning"
+      ],
       "dlc": true,
       "prefix": "",
       "surname": "",

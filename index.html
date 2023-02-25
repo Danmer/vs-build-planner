@@ -962,6 +962,14 @@
             if (selectedCharacter.value.id === 'cosmo') {
               counterparts.push(itemsById.bird1, itemsById.bird2)
             }
+            // megamenya's started weapons
+            if (selectedCharacter.value.id === 'megamenya') {
+              counterparts.push(itemsById.bocce)
+            }
+            // scorej's started weapons
+            if (selectedCharacter.value.id === 'scorej') {
+              counterparts.push(itemsById.lightning)
+            }
             // sword's evolution
             if (itemsById.sword.evolved) {
               counterparts.push(itemsById.sword_)
@@ -1031,8 +1039,8 @@
                   unselectId(itemId)
                 }
               }
-              // do not add cosmo's weapons (they are counterparts)
-              if (newCharacter.id === 'cosmo') {
+              // do not add special "passive" weapons
+              if (newCharacter.id === 'cosmo' || newCharacter.id === 'megamenya' || newCharacter.id === 'scorej') {
                 return
               }
               // add items of the new character
@@ -1129,7 +1137,8 @@
           }
 
           function isItemFixed(item) {
-            const isCharacterWeapon = selectedCharacter.value.id === 'cosmo' ? false : selectedCharacter.value.itemIds.includes(item.id)
+            const isCharacterWithWeapon = !['cosmo', 'megamenya', 'scorej'].includes(selectedCharacter.value.id)
+            const isCharacterWeapon = isCharacterWithWeapon && selectedCharacter.value.itemIds.includes(item.id)
             const isInCharacterEvolution = item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId)
             return isCharacterWeapon || isInCharacterEvolution
           }

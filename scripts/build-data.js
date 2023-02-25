@@ -53,7 +53,7 @@ const characters = [
   { id: 'onna', name: 'Babi-Onna', emoji: ':charBabiOnnaVS:', itemIds: ['mirage'], dlc: true },
   { id: 'tony', name: "Gab'Et-Oni", emoji: ':charGavEtOniVS:', itemIds: ['bolle'], dlc: true },
   { id: 'mccoy', name: 'McCoy-Oni', emoji: ':charMccoyVS:', itemIds: ['bocce'], dlc: true },
-  { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: [], dlc: true },
+  { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: ['lightning'], dlc: true },
 
   { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], special: true },
   { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], special: true },
