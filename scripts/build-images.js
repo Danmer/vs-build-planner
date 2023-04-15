@@ -4,7 +4,9 @@ const { execSync } = require('child_process')
 const src = `${__dirname}/src`
 const dst = `${__dirname}/img`
 
-const sprites = ['characters', 'enemies', 'enemies2', 'enemies3', 'enemiesM', 'items', 'randomazzo', 'UI', 'moonspell', 'moonspellChars']
+// dlc1: 'moonspell', 'moonspellChars'
+// dlc2: 'foscariChars', 'weaponData_Foscari', 'stageData_Foscari'
+const sprites = ['characters', 'enemies', 'enemies2', 'enemies3', 'enemiesM', 'items', 'randomazzo', 'UI']
 
 try {
   for (const sprite of sprites) {
