@@ -255,7 +255,7 @@ const stages = [
   { id: 'capella', name: 'Cappella Magna', itemIds: ['growth', 'revival', 'amount'] },
   { id: 'moonspell', name: 'Mt.Moonspell', itemIds: ['might', 'recovery', 'area', 'amount', 'magnet', 'greed', 'muramasa'], dlc: true },
   { id: 'lake', name: 'Lake Foscari', itemIds: ['armor', 'speed', 'luck', 'growth', 'curse', 'badge' /* BoxArcana */], dlc2: true },
-  { id: 'abyss', name: 'Abyss Foscari', itemIds: ['cooldown', 'magnet', 'greed', 'armor', 'curse', 'torrona'], dlc2: true },
+  { id: 'abyss', name: 'Abyss Foscari', itemIds: ['cooldown', 'magnet', 'greed', 'armor', 'curse', 'torrona', 'badge'], dlc2: true },
   { id: 'acres', name: 'Green Acres', itemIds: [], special: true },
   { id: 'bonezone', name: 'The Bone Zone', itemIds: [], special: true },
   { id: 'molise', name: 'Il Molise', itemIds: [], special: true },
