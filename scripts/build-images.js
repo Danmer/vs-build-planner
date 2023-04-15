@@ -32,6 +32,9 @@ try {
 
 function getFramesById(sprite) {
   const data = JSON.parse('' + readFileSync(`${src}/${sprite}.json`))
+  if (!data.textures || !data.textures[0]) {
+    return {}
+  }
   const texture = data.textures[0]
   const framesById = {}
   for (const frame of texture.frames) {

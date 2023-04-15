@@ -627,6 +627,10 @@ function getCSS() {
   let content = `.icon { width: 1em; height: 1em; background-size: contain; background-position: center; background-repeat: no-repeat; }\n`
   for (const imageId in imagesById) {
     const image = imagesById[imageId]
+    if (!image) {
+      console.log(`Unknown image ${imageId}`)
+      continue
+    }
     const character = characters.find((c) => c.id === imageId)
     const backgroundData = `background-image: url("${image.data}");`
     const backgroundStyle = character ? `background-size: ${image.width / 10}em ${image.height / 10}em; background-position: left bottom;` : ''

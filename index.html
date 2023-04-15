@@ -883,6 +883,10 @@
             for (const itemId in newImpactsById) {
               const impactIds = newImpactsById[itemId]
               const item = itemsById[itemId]
+              if (!item || !impactIds) {
+                console.log(`Unknown item ${itemId}`)
+                continue
+              }
               // add dynamic impacts with conditions
               if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
                 impactIds.push('+ring1')
