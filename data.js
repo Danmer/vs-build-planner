@@ -434,6 +434,92 @@ window.vs = {
       "price": 5000
     },
     {
+      "id": "eleanor",
+      "name": "Eleanor Uziron",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "spell1"
+      ],
+      "dlc2": true
+    },
+    {
+      "id": "maruto",
+      "name": "Maruto Cuts",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "eskizzibur"
+      ],
+      "dlc2": true
+    },
+    {
+      "id": "keitha",
+      "name": "Keitha Muort",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "arrow"
+      ],
+      "dlc2": true
+    },
+    {
+      "id": "luminaire",
+      "name": "Luminaire Foscari",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "prism"
+      ],
+      "dlc2": true
+    },
+    {
+      "id": "genevieve",
+      "name": "Genevieve Gruyère",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "servant"
+      ],
+      "dlc2": true
+    },
+    {
+      "id": "jeneviv",
+      "name": "Je-Ne-Viv",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "servant"
+      ],
+      "dlc2": true,
+      "prefix": "",
+      "surname": "",
+      "description": "It will literally eat the world.",
+      "onEveryLevelUp": {
+        "power": 0.01,
+        "curse": 0.005
+      },
+      "price": 50000
+    },
+    {
+      "id": "sammy",
+      "name": "Sammy",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "cat_"
+      ],
+      "dlc2": true,
+      "surname": "",
+      "description": "Gains XP when picking up Gold Coins and Coin Bags. Starts with temporarily reduced Might.",
+      "price": 50000
+    },
+    {
+      "id": "ghoul",
+      "name": "Rottin'Ghoul",
+      "emoji": ":grey_question:",
+      "itemIds": [
+        "popper"
+      ],
+      "dlc2": true,
+      "surname": "",
+      "description": "Gets more projectiles every 20 levels (max+4).",
+      "price": 500
+    },
+    {
       "id": "exdash",
       "name": "Exdash",
       "emoji": ":charExdashVS:",
@@ -1079,13 +1165,109 @@ window.vs = {
       "name": "108 Bocce",
       "emoji": ":108BocceVS:",
       "dlc": true,
-      "special": true,
       "description": "Actually it's just 8. Damages nearby enemies.",
       "poolLimit": 50,
       "hitsWalls": false,
       "knockback": 0,
       "rarity": 10,
       "tips": "Ignores: amount, duration, speed."
+    },
+    {
+      "id": "spell1",
+      "name": "SpellString",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Strikes at nearby enemies. Damage multiplied by Speed.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 70,
+      "tips": "Ignores: Area, Duration."
+    },
+    {
+      "id": "spell2",
+      "name": "SpellStream",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Generates an expanding damaging zone. Damage multiplied by Area.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 70,
+      "tips": "Ignores: Amount."
+    },
+    {
+      "id": "spell3",
+      "name": "SpellStrike",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Strikes at the nearest enemy. Damage further multiplied by Might.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 70,
+      "tips": "Ignores: Area, Duration."
+    },
+    {
+      "id": "eskizzibur",
+      "name": "Eskizzibur",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Attacks nearby enemies. Retaliates.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 70,
+      "tips": "Ignores: Speed, Duration."
+    },
+    {
+      "id": "arrow",
+      "name": "Flash Arrow",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Can deal critical damage. Amount affects damage instead.",
+      "poolLimit": 100,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": true,
+      "rarity": 70,
+      "tips": "Ignores: Duration."
+    },
+    {
+      "id": "prism",
+      "name": "Prismatic Missile",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Generates explosions around the character. Affected by the first chosen Arcana between II, XIV, or XIX.",
+      "poolLimit": 100,
+      "hitsWalls": false,
+      "knockback": 1,
+      "rarity": 70,
+      "tips": "Ignores: duration."
+    },
+    {
+      "id": "servant",
+      "name": "Shadow Servant",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Has a chance to slow enemies down.",
+      "poolLimit": 100,
+      "rarity": 70,
+      "tips": "Best with: Luck."
+    },
+    {
+      "id": "popper",
+      "name": "Party Popper",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Throws bouncing projectiles.",
+      "poolLimit": 80,
+      "rarity": 1,
+      "tips": "Best with: Duration, Speed."
     }
   ],
   "evolutions": [
@@ -1563,6 +1745,85 @@ window.vs = {
       "knockback": 0.1,
       "rarity": 1,
       "tips": "Requires Max: Spellbinder"
+    },
+    {
+      "id": "spell_",
+      "name": "SpellStrom",
+      "itemIds": [
+        "spell1",
+        "spell2",
+        "spell3"
+      ],
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Union of SpellString, SpellStream, and SpellStrike. Grows stronger after every singularity.",
+      "poolLimit": 60,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": ""
+    },
+    {
+      "id": "eskizzibur_",
+      "name": "Legionnaire",
+      "itemIds": [
+        "eskizzibur",
+        "armor"
+      ],
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Evolved Eskizzibur. Generates additional projectiles that deal retaliatory damage.",
+      "poolLimit": 200,
+      "critChance": 0.1,
+      "critMul": 2,
+      "hitsWalls": false,
+      "rarity": 1,
+      "tips": "Requires Max: Armor"
+    },
+    {
+      "id": "arrow_",
+      "name": "Millionaire",
+      "itemIds": [
+        "arrow",
+        "speed",
+        "luck"
+      ],
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Evolved Flash Arrow. Fires additional projectiles based on Amount and when picking up gold coins.",
+      "poolLimit": 200,
+      "critChance": 0.2,
+      "critMul": 2,
+      "hitsWalls": true,
+      "rarity": 1,
+      "tips": "Requires Max: Bracer, Clover."
+    },
+    {
+      "id": "prism_",
+      "name": "Luminaire Luminaire",
+      "itemIds": [
+        "prism",
+        "growth"
+      ],
+      "emoji": ":grey_question:",
+      "dlc2": true
+    },
+    {
+      "id": "servant_",
+      "name": "Ophion",
+      "itemIds": [
+        "servant",
+        "curse"
+      ],
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Evolved Shadow Servant. Has a chance to instantly kill enemies.",
+      "poolLimit": 150,
+      "hitsWalls": false,
+      "knockback": 1,
+      "rarity": 1,
+      "tips": "Requires Max: Skull'O Maniac."
     }
   ],
   "counterparts": [
@@ -1622,6 +1883,35 @@ window.vs = {
       "knockback": 0.1,
       "rarity": 50,
       "tips": "Best with: luck, floor chicken."
+    },
+    {
+      "id": "pooper",
+      "name": "Party Pooper",
+      "dlc2": true,
+      "description": "Counterpart to Party Popper from Arcana I - Gemini.",
+      "poolLimit": 80,
+      "rarity": 1,
+      "tips": ""
+    },
+    {
+      "id": "sliver",
+      "name": "Silver Sliver",
+      "dlc2": true,
+      "description": "Counterpart to Shadow Servant and Ophion from Arcana I - Gemini.",
+      "poolLimit": 100,
+      "rarity": 1,
+      "tips": ""
+    },
+    {
+      "id": "insatiable",
+      "name": "Insatiable",
+      "dlc2": true,
+      "description": "",
+      "poolLimit": 150,
+      "hitsWalls": false,
+      "knockback": 0,
+      "rarity": 1,
+      "tips": ""
     }
   ],
   "passives": [
@@ -1795,6 +2085,15 @@ window.vs = {
       "emoji": ":metagliorightVS:",
       "special": true,
       "description": "Channels dark powers to curse the bearer.",
+      "isPowerUp": true,
+      "rarity": 10
+    },
+    {
+      "id": "badge",
+      "name": "Academy Badge",
+      "emoji": ":grey_question:",
+      "dlc2": true,
+      "description": "Will provide bonus Amount and Revivals in exchange for Growth.",
       "isPowerUp": true,
       "rarity": 10
     }
@@ -2511,6 +2810,10 @@ window.vs = {
       "value": 0
     },
     {
+      "id": "arcana",
+      "name": "BoxArcana"
+    },
+    {
       "id": "vacuum",
       "name": "Vacuum",
       "description": "Gathers all experience gems left on the ground.",
@@ -2688,6 +2991,51 @@ window.vs = {
       ],
       "dlc": true,
       "description": "Ancestral home of a fallen clan, now overrun by yokai and oni. The night has won in this world where the sun doesn't shine.",
+      "mods": {
+        "EnemySpeed": 1.4,
+        "GoldMultiplier": 1.5,
+        "PlayerPxSpeed": 1.4
+      },
+      "hyper": {
+        "EnemySpeed": 0.6,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 0.6,
+        "ProjectileSpeed": 0.15
+      }
+    },
+    {
+      "id": "lake",
+      "name": "Lake Foscari",
+      "itemIds": [
+        "armor",
+        "speed",
+        "luck",
+        "growth",
+        "curse",
+        "badge"
+      ],
+      "dlc2": true,
+      "description": "An enchanted forest stuffed with fae mysteries and mythological entities. The perfect place to have an average adventure with zero complications.",
+      "mods": {
+        "EnemySpeed": 1.4,
+        "GoldMultiplier": 1.5,
+        "PlayerPxSpeed": 1.4
+      },
+      "hyper": {
+        "EnemySpeed": 0.6,
+        "GoldMultiplier": 0.5,
+        "LuckBonus": 0.1,
+        "PlayerPxSpeed": 0.6,
+        "ProjectileSpeed": 0.15
+      }
+    },
+    {
+      "id": "abyss",
+      "name": "Abyss Foscari",
+      "itemIds": [],
+      "dlc2": true,
+      "description": "Sealed by Luminaire in ancient times to contain the darkness within, these underground ruins are now accessible, but so is the outside world to the evil from the depths.",
       "mods": {
         "EnemySpeed": 1.4,
         "GoldMultiplier": 1.5,
