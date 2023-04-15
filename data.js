@@ -2290,6 +2290,9 @@ window.vs = {
         "guns_",
         "cat",
         "cat_",
+        "popper",
+        "servant",
+        "servant_",
         "fritta"
       ],
       "description": "Listed weapons come with a counterpart.",
@@ -2312,7 +2315,9 @@ window.vs = {
         "flowers",
         "bracelet_",
         "wind",
-        "wind_"
+        "wind_",
+        "prism",
+        "prism_"
       ],
       "description": "Listed weapon projectiles generate explosions when they expire.",
       "major": true
@@ -2345,7 +2350,8 @@ window.vs = {
         "might",
         "area",
         "duration",
-        "speed"
+        "speed",
+        "eskizzibur"
       ],
       "description": "Gives +3 Revivals. Consuming a Revival gives +10% MaxHealth, +1 Armor, and +5% Might, Area, Duration, and Speed.",
       "major": true
@@ -2391,7 +2397,9 @@ window.vs = {
         "axe_",
         "guns1",
         "guns2",
-        "cart"
+        "cart",
+        "arrow",
+        "arrow_"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces and might pass through enemies and walls.",
       "major": true
@@ -2494,7 +2502,9 @@ window.vs = {
         "bracelet",
         "guns2",
         "guns4",
-        "bird3"
+        "bird3",
+        "prism",
+        "prism_"
       ],
       "description": "Listed weapon projectiles have a chance to freeze enemies.",
       "major": true
@@ -2531,7 +2541,11 @@ window.vs = {
         "vento_",
         "cross_",
         "sword",
-        "muramasa_"
+        "muramasa_",
+        "eskizzibur",
+        "eskizzibur_",
+        "arrow",
+        "arrow_"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true
@@ -2566,6 +2580,8 @@ window.vs = {
         "guns1",
         "pinion_",
         "bracelet__",
+        "prism",
+        "prism_",
         "guns3",
         "bird4",
         "brazier"
