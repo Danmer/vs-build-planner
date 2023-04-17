@@ -3054,9 +3054,12 @@ window.vs = {
         "magnet",
         "greed",
         "armor",
+        "growth",
         "curse",
         "torrona",
-        "badge"
+        "badge",
+        "prism",
+        "servant"
       ],
       "dlc2": true,
       "description": "Sealed by Luminaire in ancient times to contain the darkness within, these underground ruins are now accessible, but so is the outside world to the evil from the depths.",
