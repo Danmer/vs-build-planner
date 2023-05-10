@@ -112,7 +112,6 @@ const weapons = [
   { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:', special: true },
   { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:', special: true },
   { id: 'furniture', name: 'La Robba', emoji: ':larobbaVS:', special: true },
-  { id: 'candybox', name: 'Candybox', emoji: ':candyboxVS:', special: true },
   // dlc 1
   { id: 'wind', name: 'Silver Wind', emoji: ':SilverWindVS:', dlc: true },
   { id: 'seasons', name: 'Four Seasons', emoji: ':FourSeasonsVS:', dlc: true },
@@ -158,7 +157,6 @@ const evolutions = [
   { id: 'vento_', name: 'Fuwalafuwaloo', emoji: ':fuwalafuwalooVS:', itemIds: ['vento', 'whip_'], special: true },
   { id: 'bracelet_', name: 'Bi-Bracelet', emoji: ':bibraceletVS:', itemIds: ['bracelet'], special: true },
   { id: 'bracelet__', name: 'Tri-Bracelet', emoji: ':tribraceletVS:', itemIds: ['bracelet_'], special: true },
-  { id: 'candybox_', name: 'Super Candybox II Turbo', emoji: ':supercandyboxIIturboVS:', itemIds: ['candybox'], special: true },
   // dlc 1
   { id: 'wind_', name: 'Festive Winds', itemIds: ['wind', 'recovery'], emoji: ':FestiveWindsVS:', dlc: true },
   { id: 'muramasa_', name: 'Muramasa', itemIds: ['muramasa', 'greed'], emoji: ':MuraMasaVS:', dlc: true },
@@ -306,6 +304,8 @@ const counterparts = [
   { id: 'pooper', name: 'Party Pooper', dlc2: true },
   { id: 'sliver', name: 'Silver Sliver', dlc2: true },
   { id: 'insatiable', name: 'Insatiable', dlc2: true },
+  { id: 'candybox', name: 'Candybox', special: true },
+  { id: 'candybox_', name: 'Super Candybox II Turbo', special: true },
 ]
 
 const enemies = []

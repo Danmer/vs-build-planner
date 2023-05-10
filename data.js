@@ -1075,16 +1075,6 @@ window.vs = {
       "tips": "Best with: duration, speed."
     },
     {
-      "id": "candybox",
-      "name": "Candybox",
-      "emoji": ":candyboxVS:",
-      "special": true,
-      "description": "Allows you to choose any unlocked base weapon.",
-      "poolLimit": 0,
-      "rarity": 2,
-      "tips": "Appearance in level up options affected by Luck."
-    },
-    {
       "id": "wind",
       "name": "Silver Wind",
       "emoji": ":SilverWindVS:",
@@ -1633,19 +1623,6 @@ window.vs = {
       "tips": ""
     },
     {
-      "id": "candybox_",
-      "name": "Super Candybox II Turbo",
-      "emoji": ":supercandyboxIIturboVS:",
-      "itemIds": [
-        "candybox"
-      ],
-      "special": true,
-      "description": "Gift of Candybox. Allows to choose among a selection of advanced weapons.",
-      "poolLimit": 0,
-      "rarity": 0.1,
-      "tips": "Requires: Candybox."
-    },
-    {
       "id": "wind_",
       "name": "Festive Winds",
       "itemIds": [
@@ -1912,6 +1889,24 @@ window.vs = {
       "knockback": 0,
       "rarity": 1,
       "tips": ""
+    },
+    {
+      "id": "candybox",
+      "name": "Candybox",
+      "special": true,
+      "description": "Allows you to choose any unlocked base weapon.",
+      "poolLimit": 0,
+      "rarity": 2,
+      "tips": "Appearance in level up options affected by Luck."
+    },
+    {
+      "id": "candybox_",
+      "name": "Super Candybox II Turbo",
+      "special": true,
+      "description": "Gift of Candybox. Allows to choose among a selection of advanced weapons.",
+      "poolLimit": 0,
+      "rarity": 0.1,
+      "tips": "Requires: Candybox."
     }
   ],
   "passives": [
