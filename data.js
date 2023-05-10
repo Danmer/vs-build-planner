@@ -421,19 +421,6 @@ window.vs = {
       }
     },
     {
-      "id": "scorej",
-      "name": "Scorej-Oni",
-      "emoji": ":charScorejOniVS:",
-      "itemIds": [
-        "lightning"
-      ],
-      "dlc": true,
-      "prefix": "",
-      "surname": "",
-      "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
-      "price": 5000
-    },
-    {
       "id": "eleanor",
       "name": "Eleanor Uziron",
       "emoji": ":grey_question:",
@@ -736,6 +723,19 @@ window.vs = {
         "cooldown": -0.0025
       },
       "price": 666
+    },
+    {
+      "id": "scorej",
+      "name": "Scorej-Oni",
+      "emoji": ":charScorejOniVS:",
+      "itemIds": [
+        "lightning"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
+      "price": 5000
     }
   ],
   "weapons": [

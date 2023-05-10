@@ -53,7 +53,6 @@ const characters = [
   { id: 'onna', name: 'Babi-Onna', emoji: ':charBabiOnnaVS:', itemIds: ['mirage'], dlc: true },
   { id: 'tony', name: "Gab'Et-Oni", emoji: ':charGavEtOniVS:', itemIds: ['bolle'], dlc: true },
   { id: 'mccoy', name: 'McCoy-Oni', emoji: ':charMccoyVS:', itemIds: ['bocce'], dlc: true },
-  { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: ['lightning'], dlc: true },
   // dlc 2
   { id: 'eleanor', name: 'Eleanor Uziron', emoji: ':grey_question:', itemIds: ['spell1'], dlc2: true },
   { id: 'maruto', name: 'Maruto Cuts', emoji: ':grey_question:', itemIds: ['eskizzibur'], dlc2: true },
@@ -78,6 +77,7 @@ const characters = [
   { id: 'trouser', name: 'Trouser', emoji: ':BigTrouserVS:', itemIds: ['candybox'], special: true },
   { id: 'random', name: 'Random', emoji: ':charRandomVS:', itemIds: [], special: true },
   { id: 'avatar', name: 'Avatar', emoji: ':charAvatarInfernasVS:', itemIds: ['flame'], special: true },
+  { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: ['lightning'], special: true },
 ]
 
 const weapons = [
