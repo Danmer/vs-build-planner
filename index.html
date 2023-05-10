@@ -1305,7 +1305,11 @@
           function copyEmojis(event) {
             let text = `Build: <${location.href}>`
             if (selectedCharacter.value.id || selectedArcanas.value.length) {
-              text += `\n${selectedCharacter.value.emoji}${selectedCharacter.value.emoji ? ' ' : ''}${selectedArcanas.value.map((item) => item.emoji).join(' ')}`
+              text += '\n'
+              if (selectedCharacter.value?.id) {
+                text += `${selectedCharacter.value.emoji} `
+              }
+              text += selectedArcanas.value.map((item) => item.emoji).join(' ')
             }
             if (evolvedWeapons.value.length) {
               text += `\n${evolvedWeapons.value.map((item) => item.emoji).join(' ')}`
@@ -1313,7 +1317,7 @@
             if (selectedPassives.value.length) {
               text += `\n${selectedPassives.value
                 .concat(selectedStage.value.items)
-                .map((item) => item.emoji)
+                .map((item) => item?.emoji || '')
                 .join(' ')}`
             }
             navigator.clipboard
