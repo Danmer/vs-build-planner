@@ -54,14 +54,14 @@ const characters = [
   { id: 'tony', name: "Gab'Et-Oni", emoji: ':charGavEtOniVS:', itemIds: ['bolle'], dlc: true },
   { id: 'mccoy', name: 'McCoy-Oni', emoji: ':charMccoyVS:', itemIds: ['bocce'], dlc: true },
   // dlc 2
-  { id: 'eleanor', name: 'Eleanor Uziron', emoji: ':grey_question:', itemIds: ['spell1'], dlc2: true },
-  { id: 'maruto', name: 'Maruto Cuts', emoji: ':grey_question:', itemIds: ['eskizzibur'], dlc2: true },
-  { id: 'keitha', name: 'Keitha Muort', emoji: ':grey_question:', itemIds: ['arrow'], dlc2: true },
-  { id: 'luminaire', name: 'Luminaire Foscari', emoji: ':grey_question:', itemIds: ['prism'], dlc2: true },
-  { id: 'genevieve', name: 'Genevieve Gruyère', emoji: ':grey_question:', itemIds: ['servant'], dlc2: true },
-  { id: 'jeneviv', name: 'Je-Ne-Viv', emoji: ':grey_question:', itemIds: ['servant'], dlc2: true },
-  { id: 'sammy', name: 'Sammy', emoji: ':grey_question:', itemIds: ['cat_'], dlc2: true },
-  { id: 'ghoul', name: "Rottin'Ghoul", emoji: ':grey_question:', itemIds: ['popper'], dlc2: true },
+  { id: 'eleanor', name: 'Eleanor Uziron', emoji: ':charEleanorVS:', itemIds: ['spell1'], dlc2: true },
+  { id: 'maruto', name: 'Maruto Cuts', emoji: ':charMarutoVS:', itemIds: ['eskizzibur'], dlc2: true },
+  { id: 'keitha', name: 'Keitha Muort', emoji: ':charKeithaVS:', itemIds: ['arrow'], dlc2: true },
+  { id: 'luminaire', name: 'Luminaire Foscari', emoji: ':charLuminaireVS:', itemIds: ['prism'], dlc2: true },
+  { id: 'genevieve', name: 'Genevieve Gruyère', emoji: ':charGenevieveVS:', itemIds: ['servant'], dlc2: true },
+  { id: 'jeneviv', name: 'Je-Ne-Viv', emoji: ':charJeNeVivVS:', itemIds: ['servant'], dlc2: true },
+  { id: 'sammy', name: 'Sammy', emoji: ':charSammyVS:', itemIds: ['cat_'], dlc2: true },
+  { id: 'ghoul', name: "Rottin'Ghoul", emoji: ':charRottinGhoulVS:', itemIds: ['popper'], dlc2: true },
   // secret
   { id: 'exdash', name: 'Exdash', emoji: ':charExdashVS:', itemIds: ['bird2'], special: true },
   { id: 'toastie', name: 'Toastie', emoji: ':charToastieVS:', itemIds: ['bird1'], special: true },
@@ -121,14 +121,14 @@ const weapons = [
   { id: 'bolle', name: 'Mille Bolle Blu', emoji: ':MilleBolleBluVS:', dlc: true },
   { id: 'bocce', name: '108 Bocce', emoji: ':108BocceVS:', dlc: true },
   // dlc 2
-  { id: 'spell1', name: 'SpellString', emoji: ':grey_question:', dlc2: true },
-  { id: 'spell2', name: 'SpellStream', emoji: ':grey_question:', dlc2: true },
-  { id: 'spell3', name: 'SpellStrike', emoji: ':grey_question:', dlc2: true },
-  { id: 'eskizzibur', name: 'Eskizzibur', emoji: ':grey_question:', dlc2: true },
-  { id: 'arrow', name: 'Flash Arrow', emoji: ':grey_question:', dlc2: true },
-  { id: 'prism', name: 'Prismatic Missile', emoji: ':grey_question:', dlc2: true },
-  { id: 'servant', name: 'Shadow Servant', emoji: ':grey_question:', dlc2: true },
-  { id: 'popper', name: 'Party Popper', emoji: ':grey_question:', dlc2: true },
+  { id: 'spell1', name: 'SpellString', emoji: ':SpellStringVS:', dlc2: true },
+  { id: 'spell2', name: 'SpellStream', emoji: ':SpellStreamVS:', dlc2: true },
+  { id: 'spell3', name: 'SpellStrike', emoji: ':SpellStrikeVS:', dlc2: true },
+  { id: 'eskizzibur', name: 'Eskizzibur', emoji: ':EskizziburVS:', dlc2: true },
+  { id: 'arrow', name: 'Flash Arrow', emoji: ':FlashArrowVS:', dlc2: true },
+  { id: 'prism', name: 'Prismatic Missile', emoji: ':PrismaticMissileVS:', dlc2: true },
+  { id: 'servant', name: 'Shadow Servant', emoji: ':ShadowServantVS:', dlc2: true },
+  { id: 'popper', name: 'Party Popper', emoji: ':PartyPopperVS:', dlc2: true },
 ]
 
 const evolutions = [
@@ -165,11 +165,11 @@ const evolutions = [
   { id: 'mirage_', name: "J'Odore", itemIds: ['mirage', 'magnet'], emoji: ':JOdoreVS:', dlc: true },
   { id: 'bolle_', name: 'Boo Roo Boolle', itemIds: ['bolle', 'duration'], emoji: ':BooRooBoolleVS:', dlc: true },
   // dlc 2
-  { id: 'spell_', name: 'SpellStrom', itemIds: ['spell1', 'spell2', 'spell3'], emoji: ':grey_question:', dlc2: true },
-  { id: 'eskizzibur_', name: 'Legionnaire', itemIds: ['eskizzibur', 'armor'], emoji: ':grey_question:', dlc2: true },
-  { id: 'arrow_', name: 'Millionaire', itemIds: ['arrow', 'speed', 'luck'], emoji: ':grey_question:', dlc2: true },
-  { id: 'prism_', name: 'Luminaire Luminaire', itemIds: ['prism', 'growth'], emoji: ':grey_question:', dlc2: true },
-  { id: 'servant_', name: 'Ophion', itemIds: ['servant', 'curse'], emoji: ':grey_question:', dlc2: true },
+  { id: 'spell_', name: 'SpellStrom', itemIds: ['spell1', 'spell2', 'spell3'], emoji: ':SpellStromVS:', dlc2: true },
+  { id: 'eskizzibur_', name: 'Legionnaire', itemIds: ['eskizzibur', 'armor'], emoji: ':LegionnaireVS:', dlc2: true },
+  { id: 'arrow_', name: 'Millionaire', itemIds: ['arrow', 'speed', 'luck'], emoji: ':MillionaireVS:', dlc2: true },
+  { id: 'prism_', name: 'Luminaire Luminaire', itemIds: ['prism', 'growth'], emoji: ':LuminaireVS:', dlc2: true },
+  { id: 'servant_', name: 'Ophion', itemIds: ['servant', 'curse'], emoji: ':OphionVS:', dlc2: true },
 ]
 
 const passives = [
@@ -194,7 +194,7 @@ const passives = [
   { id: 'ring2', name: 'Gold Ring', emoji: ':goldringVS:', special: true },
   { id: 'sign1', name: 'Metaglio Left', emoji: ':metaglioleftVS:', special: true },
   { id: 'sign2', name: 'Metaglio Right', emoji: ':metagliorightVS:', special: true },
-  { id: 'badge', name: 'Academy Badge', emoji: ':grey_question:', dlc2: true },
+  { id: 'badge', name: 'Academy Badge', emoji: ':AcademyBadgeVS:', dlc2: true },
 ]
 
 const powerups = [

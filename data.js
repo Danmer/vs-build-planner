@@ -423,7 +423,7 @@ window.vs = {
     {
       "id": "eleanor",
       "name": "Eleanor Uziron",
-      "emoji": ":grey_question:",
+      "emoji": ":charEleanorVS:",
       "itemIds": [
         "spell1"
       ],
@@ -432,7 +432,7 @@ window.vs = {
     {
       "id": "maruto",
       "name": "Maruto Cuts",
-      "emoji": ":grey_question:",
+      "emoji": ":charMarutoVS:",
       "itemIds": [
         "eskizzibur"
       ],
@@ -441,7 +441,7 @@ window.vs = {
     {
       "id": "keitha",
       "name": "Keitha Muort",
-      "emoji": ":grey_question:",
+      "emoji": ":charKeithaVS:",
       "itemIds": [
         "arrow"
       ],
@@ -450,7 +450,7 @@ window.vs = {
     {
       "id": "luminaire",
       "name": "Luminaire Foscari",
-      "emoji": ":grey_question:",
+      "emoji": ":charLuminaireVS:",
       "itemIds": [
         "prism"
       ],
@@ -459,7 +459,7 @@ window.vs = {
     {
       "id": "genevieve",
       "name": "Genevieve Gruyère",
-      "emoji": ":grey_question:",
+      "emoji": ":charGenevieveVS:",
       "itemIds": [
         "servant"
       ],
@@ -468,7 +468,7 @@ window.vs = {
     {
       "id": "jeneviv",
       "name": "Je-Ne-Viv",
-      "emoji": ":grey_question:",
+      "emoji": ":charJeNeVivVS:",
       "itemIds": [
         "servant"
       ],
@@ -485,7 +485,7 @@ window.vs = {
     {
       "id": "sammy",
       "name": "Sammy",
-      "emoji": ":grey_question:",
+      "emoji": ":charSammyVS:",
       "itemIds": [
         "cat_"
       ],
@@ -497,7 +497,7 @@ window.vs = {
     {
       "id": "ghoul",
       "name": "Rottin'Ghoul",
-      "emoji": ":grey_question:",
+      "emoji": ":charRottinGhoulVS:",
       "itemIds": [
         "popper"
       ],
@@ -1165,7 +1165,7 @@ window.vs = {
     {
       "id": "spell1",
       "name": "SpellString",
-      "emoji": ":grey_question:",
+      "emoji": ":SpellStringVS:",
       "dlc2": true,
       "description": "Strikes at nearby enemies. Damage multiplied by Speed.",
       "poolLimit": 100,
@@ -1178,7 +1178,7 @@ window.vs = {
     {
       "id": "spell2",
       "name": "SpellStream",
-      "emoji": ":grey_question:",
+      "emoji": ":SpellStreamVS:",
       "dlc2": true,
       "description": "Generates an expanding damaging zone. Damage multiplied by Area.",
       "poolLimit": 100,
@@ -1191,7 +1191,7 @@ window.vs = {
     {
       "id": "spell3",
       "name": "SpellStrike",
-      "emoji": ":grey_question:",
+      "emoji": ":SpellStrikeVS:",
       "dlc2": true,
       "description": "Strikes at the nearest enemy. Damage further multiplied by Might.",
       "poolLimit": 100,
@@ -1204,7 +1204,7 @@ window.vs = {
     {
       "id": "eskizzibur",
       "name": "Eskizzibur",
-      "emoji": ":grey_question:",
+      "emoji": ":EskizziburVS:",
       "dlc2": true,
       "description": "Attacks nearby enemies. Retaliates.",
       "poolLimit": 100,
@@ -1217,7 +1217,7 @@ window.vs = {
     {
       "id": "arrow",
       "name": "Flash Arrow",
-      "emoji": ":grey_question:",
+      "emoji": ":FlashArrowVS:",
       "dlc2": true,
       "description": "Can deal critical damage. Amount affects damage instead.",
       "poolLimit": 100,
@@ -1230,7 +1230,7 @@ window.vs = {
     {
       "id": "prism",
       "name": "Prismatic Missile",
-      "emoji": ":grey_question:",
+      "emoji": ":PrismaticMissileVS:",
       "dlc2": true,
       "description": "Generates explosions around the character. Affected by the first chosen Arcana between II, XIV, or XIX.",
       "poolLimit": 100,
@@ -1242,7 +1242,7 @@ window.vs = {
     {
       "id": "servant",
       "name": "Shadow Servant",
-      "emoji": ":grey_question:",
+      "emoji": ":ShadowServantVS:",
       "dlc2": true,
       "description": "Has a chance to slow enemies down.",
       "poolLimit": 100,
@@ -1252,7 +1252,7 @@ window.vs = {
     {
       "id": "popper",
       "name": "Party Popper",
-      "emoji": ":grey_question:",
+      "emoji": ":PartyPopperVS:",
       "dlc2": true,
       "description": "Throws bouncing projectiles.",
       "poolLimit": 80,
@@ -1731,7 +1731,7 @@ window.vs = {
         "spell2",
         "spell3"
       ],
-      "emoji": ":grey_question:",
+      "emoji": ":SpellStromVS:",
       "dlc2": true,
       "description": "Union of SpellString, SpellStream, and SpellStrike. Grows stronger after every singularity.",
       "poolLimit": 60,
@@ -1748,7 +1748,7 @@ window.vs = {
         "eskizzibur",
         "armor"
       ],
-      "emoji": ":grey_question:",
+      "emoji": ":LegionnaireVS:",
       "dlc2": true,
       "description": "Evolved Eskizzibur. Generates additional projectiles that deal retaliatory damage.",
       "poolLimit": 200,
@@ -1766,7 +1766,7 @@ window.vs = {
         "speed",
         "luck"
       ],
-      "emoji": ":grey_question:",
+      "emoji": ":MillionaireVS:",
       "dlc2": true,
       "description": "Evolved Flash Arrow. Fires additional projectiles based on Amount and when picking up gold coins.",
       "poolLimit": 200,
@@ -1783,7 +1783,7 @@ window.vs = {
         "prism",
         "growth"
       ],
-      "emoji": ":grey_question:",
+      "emoji": ":LuminaireVS:",
       "dlc2": true
     },
     {
@@ -1793,7 +1793,7 @@ window.vs = {
         "servant",
         "curse"
       ],
-      "emoji": ":grey_question:",
+      "emoji": ":OphionVS:",
       "dlc2": true,
       "description": "Evolved Shadow Servant. Has a chance to instantly kill enemies.",
       "poolLimit": 150,
@@ -2086,7 +2086,7 @@ window.vs = {
     {
       "id": "badge",
       "name": "Academy Badge",
-      "emoji": ":grey_question:",
+      "emoji": ":AcademyBadgeVS:",
       "dlc2": true,
       "description": "Will provide bonus Amount and Revivals in exchange for Growth.",
       "isPowerUp": true,
