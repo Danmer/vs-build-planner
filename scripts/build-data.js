@@ -44,6 +44,7 @@ const characters = [
   { id: 'assunta', name: 'Zi`Assunta', emoji: ':charZiAssuntaVS:', itemIds: ['vento'] },
   { id: 'ambrojoe', name: 'Ambrojoe', emoji: ':charSirAmbrojoeVS:', itemIds: ['furniture'] },
   { id: 'sigma', name: 'Sigma', emoji: ':charQueenSigmaVS:', itemIds: ['sword'] },
+  { id: 'shemoon', name: 'She-Moon', emoji: ':question:', itemIds: ['fandango'] },
   // dlc 1
   { id: 'miang', name: 'Miang', emoji: ':charMiangVS:', itemIds: ['wind'], dlc: true },
   { id: 'menya', name: 'Menya', emoji: ':charMenyaVS:', itemIds: ['seasons'], dlc: true },
@@ -112,6 +113,7 @@ const weapons = [
   { id: 'cart', name: 'Carréllo', emoji: ':carrelloVS:', special: true },
   { id: 'flowers', name: 'Celestial Dusting', emoji: ':celestialdustingVS:', special: true },
   { id: 'furniture', name: 'La Robba', emoji: ':larobbaVS:', special: true },
+  { id: 'fandango', name: 'Glass Fandango', emoji: ':glassfandangoVS:', special: true },
   // dlc 1
   { id: 'wind', name: 'Silver Wind', emoji: ':SilverWindVS:', dlc: true },
   { id: 'seasons', name: 'Four Seasons', emoji: ':FourSeasonsVS:', dlc: true },
@@ -260,6 +262,7 @@ const stages = [
   { id: 'bridge', name: 'Tiny Bridge', itemIds: ['wings', 'vento', 'magnet', 'lightning'], special: true },
   { id: 'moongolow', name: 'Moongolow', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
   { id: 'bosses', name: 'Boss Rash', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
+  { id: 'whiteout', name: 'Whiteout', itemsIds: ['fandanga', 'might', 'wings', 'curse'], special: true },
 ]
 
 const pickups = [

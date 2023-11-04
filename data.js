@@ -308,6 +308,14 @@ window.vs = {
       "price": 0
     },
     {
+      "id": "shemoon",
+      "name": "She-Moon",
+      "emoji": ":question:",
+      "itemIds": [
+        "fandango",
+      ],
+    },
+    {
       "id": "miang",
       "name": "Miang",
       "emoji": ":charMiangVS:",
@@ -1021,6 +1029,11 @@ window.vs = {
       "tips": ""
     },
     {
+      "id": "fandango",
+      "name": "Glass Fandango",
+      "emoji": ":glassfandangoVS:",
+    },
+    {
       "id": "bone",
       "name": "Bone",
       "emoji": ":boneVS:",
@@ -1621,6 +1634,15 @@ window.vs = {
       "hitsWalls": false,
       "rarity": 20,
       "tips": ""
+    },
+    {
+      "id": "fandango_",
+      "name": "Celestial Voulge",
+      "emoji": ":celestialvoulgeVS:",
+      "itemIds": [
+        "fandango",
+        "wings"
+      ],
     },
     {
       "id": "wind_",
@@ -3226,6 +3248,17 @@ window.vs = {
         "ProjectileSpeed": 0.15,
         "TimeLimit": 900
       }
+    },
+    {
+      "id": "whiteout",
+      "name": "Whiteout",
+      "itemIds": [
+        "fandango",
+        "might",
+        "wings",
+        "curse"
+      ],
+      "special": true
     }
   ]
 }
