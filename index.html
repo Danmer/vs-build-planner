@@ -1051,8 +1051,15 @@
             return counterparts
           })
 
-          // how many extra open slots do we need for evolutions/unions if arcana 20 is selected?
-          const needExtraWeaponSlots = computed(() => evolvedWeapons.value.some((weapon) => weapon.type === 'evolution' && weapon.special && weapon.weaponIds.length - 1))
+          // How many extra open slots do we need for evolutions/unions if arcana 20 is selected?
+          const needExtraWeaponSlots = computed(() => {
+            return Math.max(...evolvedWeapons.value.map((weapon) => {
+              const isEvoluteion = weapon.type === 'evolution'
+              const isCharactersWeapon = !selectedCharacter.value.itemIds.includes(weapon.id)
+              const extraCount = weapon.itemIds.length - 1
+              return isEvoluteion && isCharactersWeapon && extraCount
+            })) - (evolvedWeapons.value.length - 1)
+          })
 
           watch(
             selectedIds,
