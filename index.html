@@ -616,7 +616,7 @@
         </section>
 
         <!-- Stages -->
-        <section style="max-width: 90em">
+        <section style="max-width: 85em">
           <div class="objects">
             <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc: stage.dlc, dlc2: stage.dlc2}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${stage.id}`"></div>
