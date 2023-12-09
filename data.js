@@ -310,6 +310,7 @@ window.vs = {
     {
       "id": "shemoon",
       "name": "She-Moon",
+      "description": "Freezes all enemies for 10 seconds when health reaches a critically low level.",
       "emoji": ":question:",
       "itemIds": [
         "fandango",
