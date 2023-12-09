@@ -263,6 +263,8 @@ const stages = [
   { id: 'moongolow', name: 'Moongolow', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
   { id: 'bosses', name: 'Boss Rash', itemIds: ['cooldown', 'might', 'area', 'amount', 'speed', 'duration', 'luck', 'recovery', 'growth', 'armor', 'magnet', 'curse', 'health', 'revival', 'wings', 'greed'], special: true },
   { id: 'whiteout', name: 'Whiteout', itemsIds: ['fandanga', 'might', 'wings', 'curse'], special: true },
+  { id: 'bats', name: 'Bat Country', itemsIds: [], special: true },
+  { id: 'astral', name: 'Astral Stair', itemsIds: ['guns1', 'guns2'], special: true },
 ]
 
 const pickups = [

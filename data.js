@@ -3259,6 +3259,18 @@ window.vs = {
         "curse"
       ],
       "special": true
+    },
+    {
+      id: 'bats',
+      name: 'Bat Country',
+      itemIds: [],
+      special: true,
+    },
+    {
+      id: 'astral',
+      name: 'Astral Stair',
+      itemIds: ['guns1', 'guns2'],
+      special: true,
     }
   ]
 }
