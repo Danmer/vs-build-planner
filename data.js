@@ -317,6 +317,15 @@ window.vs = {
       ],
     },
     {
+      "id": "rose",
+      "name": "Rose De Infernas",
+      "description": "Increases enemy spawn quantity by 100.",
+      "emoji": ":question:",
+      "itemIds": [
+        "vento_",
+      ],
+    },
+    {
       "id": "miang",
       "name": "Miang",
       "emoji": ":charMiangVS:",

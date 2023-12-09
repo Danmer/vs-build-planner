@@ -79,6 +79,7 @@ const characters = [
   { id: 'random', name: 'Random', emoji: ':charRandomVS:', itemIds: [], special: true },
   { id: 'avatar', name: 'Avatar', emoji: ':charAvatarInfernasVS:', itemIds: ['flame'], special: true },
   { id: 'scorej', name: 'Scorej-Oni', emoji: ':charScorejOniVS:', itemIds: ['lightning'], special: true },
+  { id: 'rose', name: 'Rose De Infernas', emoji: ':question:', itemIds: ['vento_'], special: true },
 ]
 
 const weapons = [
