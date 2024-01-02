@@ -934,6 +934,9 @@
               if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
                 impactIds.push('+torrona')
               }
+              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+amount') || impactIds.includes('+revival'))) {
+                impactIds.push('+badge')
+              }
               if (selectedIds.has('arcana9') && ['cross', 'bible', 'garlic', 'water', 'lightning', 'mana', 'vento', 'sword'].includes(itemId)) {
                 impactIds.push('+armor', '+health')
               }
