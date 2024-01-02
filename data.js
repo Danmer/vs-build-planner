@@ -2499,6 +2499,7 @@ window.vs = {
         "lancet_",
         "mirage",
         "mirage_",
+        "fandango_",
         "orologion"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
@@ -2572,7 +2573,8 @@ window.vs = {
         "eskizzibur",
         "eskizzibur_",
         "arrow",
-        "arrow_"
+        "arrow_",
+        "fandango_"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true
