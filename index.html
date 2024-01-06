@@ -477,7 +477,7 @@
                   <div class="icon" :class="`icon-${weapon.id}`"></div>
                 </div>
                 <div v-for="i in (evolvedWeapons.length < 7 ? 6 - evolvedWeapons.length : 0)" class="slot weapon">
-                  <small v-if="itemsById.arcana20.selected && (i > needExtraWeaponSlots)" class="locked">❌</small>
+                  <small v-if="itemsById.arcana20.selected && (i > extraOpenWeaponSlots)" class="locked">❌</small>
                   <small v-else class="empty">WEAPON</small>
                 </div>
                 <div v-for="(weapon, $index) in counterpartsWeapons" :data-id="weapon.id" class="slot weapon" :title="weapon.title" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
@@ -688,7 +688,7 @@
           }
           for (const evolution of evolutions) {
             evolution.type = 'evolution'
-            evolution.weaponIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'weapon')
+            evolution.weaponIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'weapon' || itemsById[itemId].type === 'evolution')
             evolution.evolutionIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'evolution')
             evolution.passiveIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'passive')
             for (const itemId of evolution.itemIds) {
@@ -1059,13 +1059,32 @@
           })
 
           // How many extra open slots do we need for evolutions/unions if arcana 20 is selected?
-          const needExtraWeaponSlots = computed(() => {
-            return Math.max(...evolvedWeapons.value.map((weapon) => {
-              const isEvoluteion = weapon.type === 'evolution'
-              const isCharactersWeapon = !selectedCharacter.value.itemIds.includes(weapon.id)
-              const extraCount = weapon.itemIds.length - 1
-              return isEvoluteion && isCharactersWeapon && extraCount
-            })) - (evolvedWeapons.value.length - 1)
+          const extraOpenWeaponSlots = computed(() => {
+            const evolvedCount = evolvedWeapons.value.length
+            if (!evolvedCount) {
+              return 1
+            }
+            const fixedCount = selectedCharacter.value.id === 'pugnala' && !selectedIds.has('revival') ? 2 : ['cosmo', 'megamenya', 'trouser', 'scorej'].includes(selectedCharacter.value.id) ? 0 : 1
+            let extraCount = 0
+            for (const maybeEvolution of evolvedWeapons.value) {
+              const weaponsCount = maybeEvolution.weaponIds?.length || 1
+              if (
+                //
+                (maybeEvolution.id === 'bird_' && selectedCharacter.value.id !== 'smith') ||
+                (maybeEvolution.id === 'vento_' && selectedCharacter.value.id !== 'rose') ||
+                (maybeEvolution.id === 'guns_' && selectedCharacter.value.id !== 'pugnala') ||
+                (maybeEvolution.id === 'spell_' && selectedCharacter.value.id !== 'eleanor')
+              ) {
+                extraCount = Math.max(extraCount, weaponsCount - 1)
+              }
+            }
+            for (const maybeEvolution of evolvedWeapons.value) {
+              const weaponsCount = maybeEvolution.weaponIds?.length || 1
+              if (weaponsCount <= extraCount && !maybeEvolution.fixed) {
+                extraCount--
+              }
+            }
+            return extraCount
           })
 
           watch(
@@ -1412,7 +1431,7 @@
             selectedArcanas,
             evolvedWeapons,
             counterpartsWeapons,
-            needExtraWeaponSlots,
+            extraOpenWeaponSlots,
             onMouseEnter,
             onMouseLeave,
             toggleItem,
