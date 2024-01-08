@@ -1080,7 +1080,7 @@
             }
             for (const maybeEvolution of evolvedWeapons.value) {
               const weaponsCount = maybeEvolution.weaponIds?.length || 1
-              if (weaponsCount <= extraCount && !maybeEvolution.fixed) {
+              if (weaponsCount < extraCount && !maybeEvolution.fixed) {
                 extraCount--
               }
             }
@@ -1229,7 +1229,7 @@
           function isItemFixed(item) {
             const isCharacterWithWeapon = !['cosmo', 'megamenya', 'scorej'].includes(selectedCharacter.value.id) // trouser?
             const isCharacterWeapon = isCharacterWithWeapon && selectedCharacter.value.itemIds.includes(item.id)
-            const isInCharacterEvolution = item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId)
+            const isInCharacterEvolution = item.type === 'evolution' && item.weaponIds.some((weaponId) => selectedCharacter.value.itemIds.includes(weaponId))
             return isCharacterWeapon || isInCharacterEvolution
           }
 
