@@ -1227,7 +1227,7 @@
           }
 
           function isItemFixed(item) {
-            const isCharacterWithWeapon = !['cosmo', 'megamenya', 'scorej'].includes(selectedCharacter.value.id)
+            const isCharacterWithWeapon = !['cosmo', 'megamenya', 'scorej'].includes(selectedCharacter.value.id) // trouser?
             const isCharacterWeapon = isCharacterWithWeapon && selectedCharacter.value.itemIds.includes(item.id)
             const isInCharacterEvolution = item.type === 'weapon' && selectedCharacter.value.itemIds.includes(item.evolutionId)
             return isCharacterWeapon || isInCharacterEvolution
