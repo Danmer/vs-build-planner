@@ -1175,7 +1175,8 @@
               return false
             }
             if (object.type !== 'arcana' && object.itemIds) {
-              for (const itemId of object.itemIds.concat(object.evolutionId)) {
+              const evolutionIds = evolutions.filter((evolution) => evolution.itemIds.includes(object.id)).map((evolution) => evolution.id)
+              for (const itemId of object.itemIds.concat(evolutionIds)) {
                 document.querySelectorAll(`[data-id="${itemId}"]`).forEach((element) => {
                   element.classList.add('yellow')
                 })
