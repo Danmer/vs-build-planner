@@ -613,7 +613,9 @@ window.vs = {
 	  "id": "megaimpostor",
       "name": "Impostor",
       "emoji": ":question:",
-      "itemIds": [],
+      "itemIds": [
+	    "tongue"
+	  ],
       "dlc3": true,
       "prefix": "Megalo",
       "surname": "Rina",
