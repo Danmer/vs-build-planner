@@ -1275,7 +1275,7 @@
           function onMouseEnter(object) {
             hoveredId = object.id
             // character's gif animation
-            if (object.type === 'character') {
+            if (object.type === 'character' && object.id !== 'shemoon' && !object.dlc3) {
               const iconElements = document.querySelectorAll(`[data-id="${object.id}"] > .icon`)
               for (const iconElement of iconElements) {
                 const image = new Image()
