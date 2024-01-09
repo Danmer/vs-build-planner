@@ -721,7 +721,7 @@
             }
           }
           for (const item of items) {
-            item.items = item.itemIds ? item.itemIds.map((itemId) => itemsById[itemId]) : []
+            item.items = item.itemIds ? item.itemIds.map((itemId) => itemsById[itemId]).filter((it) => !(it.type === 'passive' && item.type === 'passive')) : []
             item.evolution = item.evolutionId && itemsById[item.evolutionId]
             item.title = (item.fullName || item.name) + (item.type === 'weapon' || item.type === 'passive' ? ` (Rarity: ${item.rarity || 'Unknown'})` : '') + (item.price ? ` (Price: ${item.price})` : '') + (item.description ? `\n${item.description}` : '')
           }
