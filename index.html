@@ -106,14 +106,19 @@
         transform: scale(1.4);
         z-index: 2;
       }
+      /*
       .special {
-        /* background-color: #444; */
+        background-color: #444;
       }
+      */
       .dlc {
         background-color: #779;
       }
       .dlc2 {
         background-color: #798;
+      }
+      .dlc3 {
+        background-color: #868;
       }
       .selected {
         background-color: #36f;
@@ -540,7 +545,7 @@
         <!-- Characters -->
         <section style="max-width: 85em">
           <div class="objects">
-            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc: character.dlc, dlc2: character.dlc2}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
+            <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc: character.dlc, dlc2: character.dlc2, dlc3: character.dlc3}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
               <div class="items">
                 <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -551,9 +556,9 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 80em">
+        <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc: weapon.dlc, dlc2: weapon.dlc2, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc: weapon.dlc, dlc2: weapon.dlc2, dlc3: weapon.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -567,9 +572,9 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 80em">
+        <section v-if="config.evolutions" style="max-width: 75em">
           <div class="objects">
-            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc: evolution.dlc, dlc2: evolution.dlc2, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
+            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc: evolution.dlc, dlc2: evolution.dlc2, dlc: evolution.dlc, dlc3: evolution.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -583,9 +588,9 @@
         </section>
 
         <!-- Passives -->
-        <section style="max-width: 55em">
+        <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc: passive.dlc, dlc2: passive.dlc2, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc: passive.dlc, dlc2: passive.dlc2, dlc3: passive.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${passive.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.title"></div>
@@ -602,7 +607,7 @@
         <!-- Arcanas -->
         <section style="max-width: 75em">
           <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc: arcana.dlc, dlc2: arcana.dlc2, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc: arcana.dlc, dlc2: arcana.dlc2, dlc3: arcana.dlc3, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
               <div class="items">
                 <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -618,7 +623,7 @@
         <!-- Stages -->
         <section style="max-width: 85em">
           <div class="objects">
-            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc: stage.dlc, dlc2: stage.dlc2}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
+            <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc: stage.dlc, dlc2: stage.dlc2, dlc3: stage.dlc3}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${stage.id}`"></div>
               <div class="items">
                 <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -772,27 +777,27 @@
               avatar: ['+health', '+might', '+luck', '+magnet', '+revival', '+curse', '+wings', '+cooldown'], // '+reroll'
               // arcanas
               arcana0: ['+experience', '+chest'],
-              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+fritta', '+popper'],
-              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+wind', '+wind_', '+prism'],
-              arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+fritta', '+popper', '+tongue', '+tongue_'],
+              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+wind', '+wind_', '+prism', '+miniengineer', '+minishapeshifter'],
+              arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart', '+minicrewmate', '+miniengineer', '+miniscientist'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur'],
               arcana5: ['+speed'],
-              arcana6: ['+recovery', '+revival', '+whip_', '+vento_', '+garlic_', '+wind', '+wind_', '+muramasa', '+muramasa_', '+chicken', '+flowers'],
-              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow'],
+              arcana6: ['+recovery', '+revival', '+whip_', '+vento_', '+garlic_', '+wind', '+wind_', '+muramasa', '+muramasa_', '+chicken', '+flowers', '+scan', '+scan_'],
+              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow', '+miniimpostor'],
               arcana8: [],
-              arcana9: ['+armor', '+health', '+cross', '+bible', '+garlic', '+water', '+lightning', '+mana', '+vento', '+sword', '+wind', '+eskizzibur', '+arrow'],
-              arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture'],
-              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart'],
-              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion'],
+              arcana9: ['+armor', '+health', '+cross', '+bible', '+garlic', '+water', '+lightning', '+mana', '+vento', '+sword', '+wind', '+eskizzibur', '+arrow', '+minicrewmate', '+miniengineer', '+miniscientist'],
+              arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture', '+minishapeshifter'],
+              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart', '+hats'],
+              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion', '+minighost'],
               arcana13: ['+growth', '+luck', '+greed', '+curse'],
               arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+bracelet', '+guns2', '+guns4', '+bird3', '+prism'],
               arcana15: ['+cat_', '+greed', '+coin', '+coinbag', '+richcoinbag', '+bigcoinbag', '+gildedclover', '+chest'],
-              arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+vento', '+vento_', '+cross_', '+sword', '+jubilee', '+muramasa_', '+fandango_'],
+              arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+vento', '+vento_', '+cross_', '+sword', '+jubilee', '+muramasa_', '+fandango_', '+tongue_', '+miniimpostor'],
               arcana17: ['+duration'],
               arcana18: ['+area'],
               arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism'],
               arcana20: [],
-              arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel'],
+              arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel', '+minicrewmate', '+minighost', '+miniguardian'],
               // weapons
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
@@ -912,6 +917,40 @@
               badge: ['-growth', '+amount', '+revival'],
               sliver: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', 'luck'],
               pooper: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              /* DLC 3 */
+              crewmate: ['+wings'],
+              engineer: ['+wings'],
+              ghost: ['+luck', '+health', '-might'],
+              guardian: ['+recovery', '+armor', '+wings', '+revival'],
+              horse: ['+amount', '+wings'],
+              impostor: ['+might', '+health', '+wings'],
+              scientist: ['+might', '+area', '+speed', '+duration', '+recovery', '+growth', '+luck', '+greed', '+curse', '+wings', '!luck'],
+              shapeshifter: ['+wings', '+recovery'],
+              megaimpostor: ['+cooldown', '+might', '+health', '+wings'],
+              minicrewmate: ['+cooldown', '+might', '+area'],
+              miniengineer: ['+cooldown', '+might', '+area', '+amount'],
+              minighost: ['+cooldown', '+duration'],
+              miniguardian: ['+cooldown'],
+              minihorse: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+              miniimpostor: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              miniscientist: ['+cooldown', '+might', '+area', '+amount', '+duration'],
+              minishapeshifter: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              scan: ['+cooldown', '+area', '+amount', '+recovery'],
+              scan_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck', '+recovery', '+growth', '+armor', '+area', '+health', '+revive', '+wings'],
+              debris: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              debris_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              report: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              report_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              rocks: ['+cooldown', '+might', '+area', '+amount'],
+              rocks_: ['+cooldown', '+might', '+area', '+amount'],
+              swipe: ['+cooldown', '+might', '+area', '+amount', '+speed', '-luck'],
+              swipe_: ['+cooldown', '+might', '+area', '+amount', '+speed', '-luck'],
+              tongue: ['+cooldown', '+might', '+area', '+amount', '+speed', '+recovery'],
+              tongue_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+recovery'],
+              tongue2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+recovery'],
+              vent: ['+cooldown', '+might', '+area', '+amount'],
+              vent_: ['+cooldown', '+might', '+area', '+amount', '+duration'],
+              hats: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
             }
 
             for (const itemId in newImpactsById) {
@@ -922,21 +961,6 @@
                 continue
               }
               // add dynamic impacts with conditions
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+area') || impactIds.includes('+duration'))) {
-                impactIds.push('+ring1')
-              }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && impactIds.includes('+curse')) {
-                impactIds.push('+ring2')
-              }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+recovery') || impactIds.includes('+health'))) {
-                impactIds.push('+sign1')
-              }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area'))) {
-                impactIds.push('+torrona')
-              }
-              if ((item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') && (impactIds.includes('+amount') || impactIds.includes('+revival'))) {
-                impactIds.push('+badge')
-              }
               if (selectedIds.has('arcana9') && ['cross', 'bible', 'garlic', 'water', 'lightning', 'mana', 'vento', 'sword'].includes(itemId)) {
                 impactIds.push('+armor', '+health')
               }
@@ -948,6 +972,50 @@
               }
               if ((item.type === 'weapon' || item.type === 'evolution') && (impactIds.includes('+cooldown') || impactIds.includes('+might')) && evolvedWeapons.value.length < 6) {
                 impactIds.push('+arcana20')
+              }
+              if (item.type === 'weapon' || item.type === 'evolution' || item.type === 'passive') {
+                if (impactIds.includes('+area') || impactIds.includes('+duration')) {
+                  impactIds.push('+ring1')
+                }
+                if (impactIds.includes('+curse')) {
+                  impactIds.push('+ring2')
+                }
+                if (impactIds.includes('+recovery') || impactIds.includes('+health')) {
+                  impactIds.push('+sign1')
+                }
+                if (impactIds.includes('+might') || impactIds.includes('+speed') || impactIds.includes('+duration') || impactIds.includes('+area')) {
+                  impactIds.push('+torrona')
+                }
+                if (impactIds.includes('+amount') || impactIds.includes('+revival')) {
+                  impactIds.push('+badge')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area')) {
+                  impactIds.push('+minicrewmate')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area')) {
+                  impactIds.push('+minicrewmate')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount')) {
+                  impactIds.push('+miniengineer')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+duration')) {
+                  impactIds.push('+minighost')
+                }
+                if (impactIds.includes('+cooldown')) {
+                  impactIds.push('+miniguardian')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+luck')) {
+                  impactIds.push('+minihorse')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+speed')) {
+                  impactIds.push('+miniimpostor')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+duration')) {
+                  impactIds.push('+miniscientist')
+                }
+                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+speed') || impactIds.includes('+duration')) {
+                  impactIds.push('+minishapeshifter')
+                }
               }
               // TODO: minnah does not benefit from dynamic arcanas: (V), (XVIII), (XVII)
               // add weapon impacts to passive
@@ -1026,6 +1094,10 @@
             if (selectedCharacter.value.id === 'jeneviv') {
               counterparts.push(itemsById.insatiable)
             }
+            // megaimpostor's started weapons
+            if (selectedCharacter.value.id === 'megaimpostor') {
+              counterparts.push(itemsById.tongue2)
+            }
             // sword's evolution
             if (itemsById.sword.evolved) {
               counterparts.push(itemsById.sword_)
@@ -1052,6 +1124,9 @@
               }
               if (selectedIds.has('servant')) {
                 counterparts.push(itemsById.sliver)
+              }
+              if (selectedIds.has('tongue')) {
+                counterparts.push(itemsById.tongue2)
               }
             }
 
