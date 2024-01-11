@@ -857,6 +857,14 @@
               whip: ['+cooldown', '+might', '+area', '+amount'],
               whip_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
               // passives
+              minicrewmate: ['+cooldown', '+might', '+area'],
+              miniengineer: ['+cooldown', '+might', '+area', '+amount'],
+              minighost: ['+cooldown', '+duration'],
+              miniguardian: ['+cooldown'],
+              minihorse: ['+cooldown', '+might', '+area', '+amount', '+luck'],
+              miniimpostor: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              miniscientist: ['+cooldown', '+might', '+area', '+amount', '+duration'],
+              minishapeshifter: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
               torrona: ['+might', '+speed', '+duration', '+area', '+curse'],
               ring1: ['+duration', '+area'],
               ring2: ['+curse'],
@@ -988,33 +996,6 @@
                 }
                 if (impactIds.includes('+amount') || impactIds.includes('+revival')) {
                   impactIds.push('+badge')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area')) {
-                  impactIds.push('+minicrewmate')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area')) {
-                  impactIds.push('+minicrewmate')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount')) {
-                  impactIds.push('+miniengineer')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+duration')) {
-                  impactIds.push('+minighost')
-                }
-                if (impactIds.includes('+cooldown')) {
-                  impactIds.push('+miniguardian')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+luck')) {
-                  impactIds.push('+minihorse')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+speed')) {
-                  impactIds.push('+miniimpostor')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+duration')) {
-                  impactIds.push('+miniscientist')
-                }
-                if (impactIds.includes('+cooldown') || impactIds.includes('+might') || impactIds.includes('+area') || impactIds.includes('+amount') || impactIds.includes('+speed') || impactIds.includes('+duration')) {
-                  impactIds.push('+minishapeshifter')
                 }
               }
               // TODO: minnah does not benefit from dynamic arcanas: (V), (XVIII), (XVII)
