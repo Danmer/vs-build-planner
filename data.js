@@ -313,8 +313,8 @@ window.vs = {
       "description": "Freezes all enemies for 10 seconds when health reaches a critically low level.",
       "emoji": ":question:",
       "itemIds": [
-        "fandango",
-      ],
+        "fandango"
+      ]
     },
     {
       "id": "rose",
@@ -322,8 +322,8 @@ window.vs = {
       "description": "Increases enemy spawn quantity by 100.",
       "emoji": ":question:",
       "itemIds": [
-        "vento_",
-      ],
+        "vento_"
+      ]
     },
     {
       "id": "miang",
@@ -524,9 +524,8 @@ window.vs = {
       "description": "Gets more projectiles every 20 levels (max+4).",
       "price": 500
     },
-	/* DLC 3 Characters */
-	{
-	  "id": "crewmate",
+    {
+      "id": "crewmate",
       "name": "Crewmate",
       "emoji": ":question:",
       "itemIds": [
@@ -536,9 +535,9 @@ window.vs = {
       "surname": "Dino",
       "description": "Gains stat bonuses every time anyones weapon is brought to max level.",
       "price": 0
-	},
-	{
-	  "id": "engineer",
+    },
+    {
+      "id": "engineer",
       "name": "Engineer",
       "emoji": ":question:",
       "itemIds": [
@@ -548,9 +547,9 @@ window.vs = {
       "surname": "Gino",
       "description": "Chooses an extra passive weapon at level 2, 12, and 22.",
       "price": 500
-	},
-	{
-	  "id": "ghost",
+    },
+    {
+      "id": "ghost",
       "name": "Ghost",
       "emoji": ":question:",
       "itemIds": [
@@ -560,9 +559,9 @@ window.vs = {
       "surname": "Lino",
       "description": "Can't be damaged or deal damage, but disappears after reaching the current Time Limit. Ignores walls.",
       "price": 500
-	},
-	{
-	  "id": "guardian",
+    },
+    {
+      "id": "guardian",
       "name": "Guardian",
       "emoji": ":question:",
       "itemIds": [
@@ -572,9 +571,9 @@ window.vs = {
       "surname": "Pina",
       "description": "May gain +1 Revival when anyone revives. Increases Armor and Recovery of nearby characters. Ignores walls.",
       "price": 500
-	},
-	{
-	  "id": "scientist",
+    },
+    {
+      "id": "scientist",
       "name": "Scientist",
       "emoji": ":question:",
       "itemIds": [
@@ -584,9 +583,9 @@ window.vs = {
       "surname": "Mina",
       "description": "Gets -10% Luck every 10 levels (max -90%). Can choose a per-level bonus every 10 levels (max 5 times).",
       "price": 500
-	},
-	{
-	  "id": "shapeshifter",
+    },
+    {
+      "id": "shapeshifter",
       "name": "Shapeshifter",
       "emoji": ":question:",
       "itemIds": [
@@ -596,9 +595,9 @@ window.vs = {
       "surname": "Nino",
       "description": "Leaves behind excess body parts when damaged and may shift forms.",
       "price": 500
-	},
-	{
-	  "id": "impostor",
+    },
+    {
+      "id": "impostor",
       "name": "Impostor",
       "emoji": ":question:",
       "itemIds": [
@@ -608,22 +607,22 @@ window.vs = {
       "surname": "Rina",
       "description": "Becomes stronger and briefly invincible after defeating a large amount of enemies, or an ally.",
       "price": 500
-	},
-	{
-	  "id": "megaimpostor",
+    },
+    {
+      "id": "megaimpostor",
       "name": "Impostor",
       "emoji": ":question:",
       "itemIds": [
-	    "tongue"
-	  ],
+        "tongue"
+      ],
       "dlc3": true,
       "prefix": "Megalo",
       "surname": "Rina",
       "description": "I'm not the Impostor.",
       "price": 0
-	},
-	{
-	  "id": "horse",
+    },
+    {
+      "id": "horse",
       "name": "Horse",
       "emoji": ":question:",
       "itemIds": [
@@ -633,8 +632,7 @@ window.vs = {
       "surname": "",
       "description": "Gets more projectiles every 20 levels (max+4).",
       "price": 500
-	},
-	/* Secret characters */
+    },
     {
       "id": "exdash",
       "name": "Exdash",
@@ -1152,7 +1150,7 @@ window.vs = {
     {
       "id": "fandango",
       "name": "Glass Fandango",
-      "emoji": ":glassfandangoVS:",
+      "emoji": ":glassfandangoVS:"
     },
     {
       "id": "bone",
@@ -1296,7 +1294,6 @@ window.vs = {
       "rarity": 10,
       "tips": "Ignores: amount, duration, speed."
     },
-	/* DLC 2 Weapons */
     {
       "id": "spell1",
       "name": "SpellString",
@@ -1394,7 +1391,6 @@ window.vs = {
       "rarity": 1,
       "tips": "Best with: Duration, Speed."
     },
-	/* DLC 3 Weapons */
     {
       "id": "scan",
       "name": "Lifesign Scan",
@@ -1821,7 +1817,7 @@ window.vs = {
       "itemIds": [
         "fandango",
         "wings"
-      ],
+      ]
     },
     {
       "id": "wind_",
@@ -2003,10 +1999,10 @@ window.vs = {
       "rarity": 1,
       "tips": "Requires Max: Skull'O Maniac."
     },
-	{
+    {
       "id": "scan_",
       "name": "Paranormal Scan",
-	  "itemIds": [
+      "itemIds": [
         "scan",
         "minighost"
       ],
@@ -2017,7 +2013,7 @@ window.vs = {
     {
       "id": "debris_",
       "name": "Clear Asteroids",
-	  "itemIds": [
+      "itemIds": [
         "debris",
         "miniguardian"
       ],
@@ -2028,7 +2024,7 @@ window.vs = {
     {
       "id": "report_",
       "name": "Emergency Meeting",
-	  "itemIds": [
+      "itemIds": [
         "report",
         "minicrewmate"
       ],
@@ -2039,7 +2035,7 @@ window.vs = {
     {
       "id": "rocks_",
       "name": "Rocket Science",
-	  "itemIds": [
+      "itemIds": [
         "rocks",
         "miniscientist"
       ],
@@ -2050,7 +2046,7 @@ window.vs = {
     {
       "id": "swipe_",
       "name": "Crossed Wires",
-	  "itemIds": [
+      "itemIds": [
         "swipe",
         "miniengineer"
       ],
@@ -2061,7 +2057,7 @@ window.vs = {
     {
       "id": "tongue_",
       "name": "Impostongue",
-	  "itemIds": [
+      "itemIds": [
         "tongue",
         "miniimpostor"
       ],
@@ -2072,14 +2068,14 @@ window.vs = {
     {
       "id": "vent_",
       "name": "Unjust Ejection",
-	  "itemIds": [
+      "itemIds": [
         "vent",
         "minishapeshifter"
       ],
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
-    },
+    }
   ],
   "counterparts": [
     {
@@ -2184,7 +2180,7 @@ window.vs = {
       "rarity": 0.1,
       "tips": "Requires: Candybox."
     },
-	{
+    {
       "id": "tongue2",
       "name": "Silver Tongue",
       "emoji": ":question:",
@@ -2375,61 +2371,61 @@ window.vs = {
       "isPowerUp": true,
       "rarity": 10
     },
-	{
+    {
       "id": "minicrewmate",
       "name": "Mini Crewmate (Garlic)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "miniengineer",
       "name": "Mini Engineer (Lightning)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "minighost",
       "name": "Mini Ghost (Lancet)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "miniguardian",
       "name": "Mini Guardian (Laurel)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "miniscientist",
       "name": "Mini Scientist (Water)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "minishapeshifter",
       "name": "Mini Shapeshifter (Bone)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "miniimpostor",
       "name": "Mini Impostor (Knife)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     },
     {
       "id": "minihorse",
       "name": "Mini Horse (Jubilee)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": "",
+      "description": ""
     }
   ],
   "powerups": [
@@ -2627,8 +2623,8 @@ window.vs = {
         "popper",
         "servant",
         "servant_",
-		"tongue",
-		"tongue_",
+        "tongue",
+        "tongue_",
         "fritta"
       ],
       "description": "Listed weapons come with a counterpart.",
@@ -2654,8 +2650,8 @@ window.vs = {
         "wind_",
         "prism",
         "prism_",
-		"miniengineer",
-		"minishapeshifter"
+        "miniengineer",
+        "minishapeshifter"
       ],
       "description": "Listed weapon projectiles generate explosions when they expire.",
       "major": true
@@ -2673,9 +2669,9 @@ window.vs = {
         "lightning",
         "lightning_",
         "cart",
-		"minicrewmate",
-		"miniengineer",
-		"miniscientist"
+        "minicrewmate",
+        "miniengineer",
+        "miniscientist"
       ],
       "description": "The cooldown of the listed weapons reduces when moving.",
       "major": true
@@ -2722,8 +2718,8 @@ window.vs = {
         "muramasa",
         "muramasa_",
         "flowers",
-		"scan",
-		"scan_",
+        "scan",
+        "scan_",
         "chicken"
       ],
       "description": "Healing is doubled. Recovering HP damages nearby enemies for the same amount.",
@@ -2743,7 +2739,7 @@ window.vs = {
         "cart",
         "arrow",
         "arrow_",
-		"miniimpostor"
+        "miniimpostor"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces and might pass through enemies and walls.",
       "major": true
@@ -2772,9 +2768,9 @@ window.vs = {
         "vento",
         "sword",
         "wind",
-		"minicrewmate",
-		"miniengineer",
-		"miniscientist"
+        "minicrewmate",
+        "miniengineer",
+        "miniscientist"
       ],
       "description": "Armor also affects listed weapons` damage and reflects enemy damage. Character gains bonus damage depending on missing Health. Defeating enemies with retaliatory damage gives +0.5 Max Health.",
       "major": true
@@ -2790,7 +2786,7 @@ window.vs = {
         "cart",
         "flowers",
         "furniture",
-		"minishapeshifter"
+        "minishapeshifter"
       ],
       "description": "Listed weapons get +1 Amount. The character`s main weapon and its evolution gain +3 Amount instead.",
       "major": true
@@ -2807,7 +2803,7 @@ window.vs = {
         "cross",
         "cross_",
         "cart",
-		"hats"
+        "hats"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces.",
       "major": true
@@ -2823,7 +2819,7 @@ window.vs = {
         "mirage_",
         "fandango_",
         "orologion",
-		"minighost"
+        "minighost"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
       "major": true
@@ -2898,8 +2894,8 @@ window.vs = {
         "arrow",
         "arrow_",
         "fandango_",
-		"tongue_",
-		"miniimpostor"
+        "tongue_",
+        "miniimpostor"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true
@@ -2970,9 +2966,9 @@ window.vs = {
         "mana_",
         "lancet",
         "laurel",
-		"minicrewmate",
-		"minighost",
-		"miniguardian"
+        "minicrewmate",
+        "minighost",
+        "miniguardian"
       ],
       "description": "Listed weapons also emit special damaging zones affected by Amount and Magnet. Enemies within Magnet range take damage based on Amount.",
       "major": true
@@ -3601,31 +3597,34 @@ window.vs = {
       "special": true
     },
     {
-      id: 'bats',
-      name: 'Bat Country',
-      itemIds: [],
-      special: true,
+      "id": "bats",
+      "name": "Bat Country",
+      "itemIds": [],
+      "special": true
     },
     {
-      id: 'astral',
-      name: 'Astral Stair',
-      itemIds: ['guns1', 'guns2'],
-      special: true,
-    },
-    {
-      id: 'polus',
-      name: 'Polus Replica',
-      itemIds: [
-        'minicrewmate',
-        'miniengineer',
-        'minighost',
-        'miniguardian',
-        'miniimpostor',
-        'miniscientist',
-        'minishapeshifter',
-		'scan'
+      "id": "astral",
+      "name": "Astral Stair",
+      "itemIds": [
+        "guns1",
+        "guns2"
       ],
-      special: true,
+      "special": true
+    },
+    {
+      "id": "polus",
+      "name": "Polus Replica",
+      "itemIds": [
+        "minicrewmate",
+        "miniengineer",
+        "minighost",
+        "miniguardian",
+        "miniimpostor",
+        "miniscientist",
+        "minishapeshifter",
+        "scan"
+      ],
+      "special": true
     }
   ]
 }
