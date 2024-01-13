@@ -2376,6 +2376,7 @@ window.vs = {
       "name": "Mini Crewmate (Garlic)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2383,6 +2384,7 @@ window.vs = {
       "name": "Mini Engineer (Lightning)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2390,6 +2392,7 @@ window.vs = {
       "name": "Mini Ghost (Lancet)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2397,6 +2400,7 @@ window.vs = {
       "name": "Mini Guardian (Laurel)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2404,6 +2408,7 @@ window.vs = {
       "name": "Mini Scientist (Water)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2411,6 +2416,7 @@ window.vs = {
       "name": "Mini Shapeshifter (Bone)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {
@@ -2418,6 +2424,7 @@ window.vs = {
       "name": "Mini Impostor (Knife)",
       "emoji": ":question:",
       "dlc3": true,
+      "extra": true,
       "description": ""
     },
     {

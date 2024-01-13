@@ -490,11 +490,14 @@
                 </div>
               </div>
               <div class="flex-col-row passives">
-                <div v-for="(passive, $index) in selectedPassives" :data-id="passive.id" class="slot passive" :title="passive.title" @click="deleteItem(passive, selectedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+                <div v-for="(passive, $index) in pickedPassives" :data-id="passive.id" class="slot passive" :title="passive.title" @click="deleteItem(passive, pickedPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
                   <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
-                <div v-for="i in (selectedPassives.length < 7 ? 6 - selectedPassives.length : 0)" class="slot passive">
+                <div v-for="i in (pickedPassives.length < 7 ? 6 - pickedPassives.length : 0)" class="slot passive">
                   <small class="empty">PASSIVE</small>
+                </div>
+                <div v-for="(passive, $index) in extraPassives" :data-id="passive.id" class="slot passive" :title="passive.title" @click="deleteItem(passive, extraPassives[$index+1])" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+                  <div class="icon" :class="`icon-${passive.id}`"></div>
                 </div>
               </div>
             </div>
@@ -1040,6 +1043,9 @@
           const selectedPassives = computed(() => selectedItems.value.filter((item) => item.type === 'passive' && !selectedStage.value.itemIds.includes(item.id)))
           const selectedArcanas = computed(() => selectedItems.value.filter((item) => item.type === 'arcana'))
 
+          const pickedPassives = computed(() => selectedPassives.value.filter((item) => !item.extra))
+          const extraPassives = computed(() => selectedPassives.value.filter((item) => item.extra))
+
           const evolvedWeapons = computed(() => {
             const evolvedWeapons = selectedWeapons.value.map((weapon) => {
               // sword's evolution is a counterpart, so ignore it
@@ -1332,6 +1338,24 @@
                   selectId(itemId)
                 }
                 break
+              case 'passive':
+                if (selectedIds.has('minicrewmate') && !selectedIds.has('crewmate')) {
+                  selectId('crewmate')
+                } else if (selectedIds.has('miniengineer') && !selectedIds.has('engineer')) {
+                  selectId('engineer')
+                } else if (selectedIds.has('minighost') && !selectedIds.has('ghost')) {
+                  selectId('ghost')
+                } else if (selectedIds.has('miniguardian') && !selectedIds.has('guardian')) {
+                  selectId('guardian')
+                } else if (selectedIds.has('miniscientist') && !selectedIds.has('scientist')) {
+                  selectId('scientist')
+                } else if (selectedIds.has('minishapeshifter') && !selectedIds.has('shapeshifter')) {
+                  selectId('shapeshifter')
+                } else if (selectedIds.has('miniimpostor') && !selectedIds.has('impostor')) {
+                  selectId('impostor')
+                } else if (selectedIds.has('minihorse') && !selectedIds.has('horse')) {
+                  selectId('horse')
+                }
               default:
                 selectedIds.add(item.id)
             }
@@ -1486,6 +1510,8 @@
             selectedWeapons,
             selectedPassives,
             selectedArcanas,
+            pickedPassives,
+            extraPassives,
             evolvedWeapons,
             counterpartsWeapons,
             extraOpenWeaponSlots,
