@@ -2377,7 +2377,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["garlic"]
     },
     {
       "id": "miniengineer",
@@ -2385,7 +2386,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["lightning"]
     },
     {
       "id": "minighost",
@@ -2393,7 +2395,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["lancet"]
     },
     {
       "id": "miniguardian",
@@ -2401,7 +2404,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["laurel"]
     },
     {
       "id": "miniscientist",
@@ -2409,7 +2413,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["water"]
     },
     {
       "id": "minishapeshifter",
@@ -2417,7 +2422,8 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["bone"]
     },
     {
       "id": "miniimpostor",
@@ -2425,14 +2431,16 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "extra": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["knife"]
     },
     {
       "id": "minihorse",
       "name": "Mini Horse (Jubilee)",
       "emoji": ":question:",
       "dlc3": true,
-      "description": ""
+      "description": "",
+      "itemIds": ["jubilee"]
     }
   ],
   "powerups": [
