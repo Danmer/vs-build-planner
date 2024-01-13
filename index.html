@@ -1301,6 +1301,13 @@
               for (const weaponId of item.weaponIds.concat(item.evolutionIds)) {
                 unselectId(weaponId)
               }
+            } else if (item.type === 'weapon' && !item.fixed) {
+              const dlcWeapon = item.items.find((item) => item.dlc3)
+              if (dlcWeapon) {
+                unselectId(dlcWeapon.id)
+              } else if (item.id === 'hats') {
+                unselectId('minihorse')
+              }
             } else {
               if (!item.fixed) {
                 selectedIds.delete(item.id)
@@ -1339,22 +1346,11 @@
                 }
                 break
               case 'passive':
-                if (selectedIds.has('minicrewmate') && !selectedIds.has('crewmate')) {
-                  selectId('crewmate')
-                } else if (selectedIds.has('miniengineer') && !selectedIds.has('engineer')) {
-                  selectId('engineer')
-                } else if (selectedIds.has('minighost') && !selectedIds.has('ghost')) {
-                  selectId('ghost')
-                } else if (selectedIds.has('miniguardian') && !selectedIds.has('guardian')) {
-                  selectId('guardian')
-                } else if (selectedIds.has('miniscientist') && !selectedIds.has('scientist')) {
-                  selectId('scientist')
-                } else if (selectedIds.has('minishapeshifter') && !selectedIds.has('shapeshifter')) {
-                  selectId('shapeshifter')
-                } else if (selectedIds.has('miniimpostor') && !selectedIds.has('impostor')) {
-                  selectId('impostor')
-                } else if (selectedIds.has('minihorse') && !selectedIds.has('horse')) {
-                  selectId('horse')
+                const dlcWeapon = item.items.find((item) => item.dlc3)
+                if (dlcWeapon && !selectedIds.has(dlcWeapon.id)) {
+                  selectId(dlcWeapon.id)
+                } else if (item.id === 'minihorse') {
+                  selectId('hats')
                 }
               default:
                 selectedIds.add(item.id)
