@@ -1308,14 +1308,14 @@
             } else {
               if (!item.fixed) {
                 selectedIds.delete(item.id)
-              }
-            }
-            if (item.type === 'weapon' && !item.fixed) {
-              const dlcWeapon = item.items.find((item) => item.dlc3)
-              if (dlcWeapon) {
-                unselectId(dlcWeapon.id)
-              } else if (item.id === 'hats') {
-                unselectId('minihorse')
+                if (item.type === 'weapon') {
+                  const dlcWeapon = item.items.find((item) => item.dlc3)
+                  if (dlcWeapon) {
+                    unselectId(dlcWeapon.id)
+                  } else if (item.id === 'hats') {
+                    unselectId('minihorse')
+                  }
+                }
               }
             }
           }
@@ -1351,11 +1351,13 @@
                 }
                 break
               case 'passive':
-                const dlcWeapon = item.items.find((item) => item.dlc3)
-                if (dlcWeapon && !selectedIds.has(dlcWeapon.id)) {
-                  selectId(dlcWeapon.id)
-                } else if (item.id === 'minihorse') {
-                  selectId('hats')
+                if (!selectedStage.value.itemIds.includes(item.id)) {
+                  const dlcWeapon = item.items.find((item) => item.dlc3)
+                  if (dlcWeapon && !selectedIds.has(dlcWeapon.id)) {
+                    selectId(dlcWeapon.id)
+                  } else if (item.id === 'minihorse') {
+                    selectId('hats')
+                  }
                 }
               default:
                 selectedIds.add(item.id)
