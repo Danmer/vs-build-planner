@@ -1301,16 +1301,17 @@
               for (const weaponId of item.weaponIds.concat(item.evolutionIds)) {
                 unselectId(weaponId)
               }
-            } else if (item.type === 'weapon' && !item.fixed) {
+            } else {
+              if (!item.fixed) {
+                selectedIds.delete(item.id)
+              }
+            }
+            if (item.type === 'weapon' && !item.fixed) {
               const dlcWeapon = item.items.find((item) => item.dlc3)
               if (dlcWeapon) {
                 unselectId(dlcWeapon.id)
               } else if (item.id === 'hats') {
                 unselectId('minihorse')
-              }
-            } else {
-              if (!item.fixed) {
-                selectedIds.delete(item.id)
               }
             }
           }
