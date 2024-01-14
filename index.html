@@ -978,6 +978,23 @@
               if (selectedIds.has('arcana16') && ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword'].includes(itemId)) {
                 impactIds.push('+luck')
               }
+              if (item.id === 'arcana10' && selectedCharacter.value.id) {
+                if (selectedCharacter.value.id === 'trouser' && evolvedWeapons.value.length) {
+                  impactIds.push(`+${evolvedWeapons.value[0].id}`)
+                } else {
+                  for (const weapon of selectedCharacter.value.items) {
+                    if (isItemFixed(weapon)) {
+                      impactIds.push(`+${weapon.id}`)
+                      if (weapon.evolution) {
+                        impactIds.push(`+${weapon.evolution.id}`)
+                        if (weapon.evolution.evolution) {
+                          impactIds.push(`+${weapon.evolution.evolution.id}`)
+                        }
+                      }
+                    }
+                  }
+                }
+              }
               if (item.id === 'arcana20' && evolvedWeapons.value.length < 6) {
                 impactIds.push('+cooldown', '+might')
               }

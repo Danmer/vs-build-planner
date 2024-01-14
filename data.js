@@ -2796,6 +2796,7 @@ window.vs = {
       "emoji": ":XBeginningVS:",
       "itemIds": [
         "amount",
+        "candybox",
         "bone",
         "cherry",
         "cart",
