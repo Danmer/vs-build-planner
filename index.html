@@ -1251,6 +1251,7 @@
               .join()
             if ('#' + newHash !== location.hash) {
               location.hash = newHash
+              return false
             }
           }
 
