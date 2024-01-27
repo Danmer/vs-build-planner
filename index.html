@@ -978,6 +978,9 @@
               if (selectedIds.has('arcana16') && ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword'].includes(itemId)) {
                 impactIds.push('+luck')
               }
+              if (selectedIds.has('arcana21') && ['garlic', 'garlic_', 'pentagram', 'pentagram_', 'mana', 'mana_', 'lancet', 'laurel'].includes(itemId)) {
+                impactIds.push('+amount', '+magnet')
+              }
               if (item.id === 'arcana10' && selectedCharacter.value.id) {
                 if (selectedCharacter.value.id === 'trouser' && evolvedWeapons.value.length) {
                   impactIds.push(`+${evolvedWeapons.value[0].id}`)
