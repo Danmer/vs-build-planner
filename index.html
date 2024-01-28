@@ -1256,8 +1256,9 @@
               .filter((id) => id)
               .join()
             if ('#' + newHash !== location.hash) {
+              const scrollPosition = document.documentElement.scrollTop
               location.hash = newHash
-              return false
+              document.documentElement.scrollTop = scrollPosition
             }
           }
 
