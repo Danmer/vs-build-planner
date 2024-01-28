@@ -1188,7 +1188,7 @@
               const idsArray = Array.from(selectedIds)
               for (const item of items) {
                 // selected if it's manually selected or it's a stage's item
-                item.selected = idsArray.includes(item.id) || selectedStage.value.itemIds.includes(item.id)
+                item.selected = idsArray.includes(item.id) || (selectedStage.value.itemIds.includes(item.id) && item.type === 'passive')
                 // protected from deleting if it's a character's item
                 item.fixed = isItemFixed(item)
               }
