@@ -2650,6 +2650,7 @@ window.vs = {
       "name": "II - Twilight Requiem",
       "emoji": ":IITwilightRequiemVS:",
       "itemIds": [
+        "curse",
         "bible",
         "bible_",
         "lightning",
@@ -2668,7 +2669,7 @@ window.vs = {
         "miniengineer",
         "minishapeshifter"
       ],
-      "description": "Listed weapon projectiles generate explosions when they expire.",
+      "description": "Listed weapon projectiles generate explosions when they expire. Explosions damage is affected by Curse",
       "major": true
     },
     {
