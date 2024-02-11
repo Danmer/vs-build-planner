@@ -972,6 +972,9 @@
                 continue
               }
               // add dynamic impacts with conditions
+              if (selectedIds.has('arcana14') && ['magicwand', 'magicwand_', 'runetracer', 'runetracer_', 'bracelet', 'bracelet_', 'bracelet__', 'guns2', 'guns4', 'bird3', 'prism', 'prism_'].includes(itemId)) {
+                impactIds.push('+luck', '+duration')
+              }
               if (selectedIds.has('arcana16') && ['knife', 'knife_', 'whip', 'whip_', 'axe', 'axe_', 'vento', 'vento_', 'cross_', 'sword', 'muramasa_', 'eskizzibur', 'eskizzibur_', 'arrow', 'arrow_', 'fandango_', 'tongue_', 'miniimpostor'].includes(itemId)) {
                 impactIds.push('+luck')
               }
