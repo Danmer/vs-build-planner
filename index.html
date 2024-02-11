@@ -179,6 +179,9 @@
         height: 4.5em;
         overflow: hidden;
       }
+      .slot.stage.inverse .icon {
+        transform: rotate(180deg);
+      }
       .weapons .slot:nth-child(n + 7),
       .passives .slot:nth-child(n + 7) {
         opacity: 0.5;
@@ -503,7 +506,7 @@
             </div>
           </div>
           <div class="flex-col-row" v-if="selectedStage.id">
-            <div class="slot stage" :title="selectedStage.title" @click="deleteItem(selectedStage)" @mouseleave="onMouseLeave()">
+            <div class="slot stage" :class="{inverse: isInverse}" :title="selectedStage.title" @click="deleteItem(selectedStage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${selectedStage.id}`"></div>
             </div>
             <div class="flex-row-col">
@@ -1177,6 +1180,10 @@
             return extraCount
           })
 
+          const isInverse = computed(() => {
+            return (selectedCharacter.value.id !== 'sigma' && selectedArcanas.value.length > 3) || selectedArcanas.value.length > 7
+          })
+
           watch(
             selectedIds,
             () => {
@@ -1362,7 +1369,7 @@
                 }
                 break
               case 'arcana':
-                const maxArcanas = selectedCharacter.value.id === 'sigma' ? 7 : 3
+                const maxArcanas = selectedCharacter.value.id === 'sigma' ? 8 : 4
                 if (selectedArcanas.value.length < maxArcanas) {
                   selectedIds.add(item.id)
                 }
@@ -1545,6 +1552,7 @@
             evolvedWeapons,
             counterpartsWeapons,
             extraOpenWeaponSlots,
+            isInverse,
             onMouseEnter,
             onMouseLeave,
             toggleItem,
