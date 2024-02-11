@@ -1165,20 +1165,12 @@
             const fixedCount = selectedCharacter.value.id === 'pugnala' && !selectedIds.has('revival') ? 2 : ['cosmo', 'megamenya', 'trouser', 'scorej'].includes(selectedCharacter.value.id) ? 0 : 1
             let extraCount = 0
             for (const maybeEvolution of evolvedWeapons.value) {
-              const weaponsCount = maybeEvolution.weaponIds?.length || 1
-              if (
-                //
-                (maybeEvolution.id === 'bird_' && selectedCharacter.value.id !== 'smith') ||
-                (maybeEvolution.id === 'vento_' && selectedCharacter.value.id !== 'rose') ||
-                (maybeEvolution.id === 'guns_' && selectedCharacter.value.id !== 'pugnala') ||
-                (maybeEvolution.id === 'spell_' && selectedCharacter.value.id !== 'eleanor')
-              ) {
-                extraCount = Math.max(extraCount, weaponsCount - 1)
-              }
+              const weaponsCount = maybeEvolution.fixed ? 1 : maybeEvolution.weaponIds?.length || 1
+              extraCount = Math.max(extraCount, weaponsCount - 1)
             }
             for (const maybeEvolution of evolvedWeapons.value) {
-              const weaponsCount = maybeEvolution.weaponIds?.length || 1
-              if (weaponsCount < extraCount && !maybeEvolution.fixed) {
+              const weaponsCount = maybeEvolution.fixed ? 1 : maybeEvolution.weaponIds?.length || 1
+              if (weaponsCount <= extraCount && !maybeEvolution.fixed) {
                 extraCount--
               }
             }
