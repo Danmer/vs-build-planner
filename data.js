@@ -837,7 +837,8 @@ window.vs = {
       "name": "Avatar",
       "emoji": ":charAvatarInfernasVS:",
       "itemIds": [
-        "flame"
+        "flame",
+        "arcana19"
       ],
       "special": true,
       "prefix": "",

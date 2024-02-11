@@ -506,7 +506,7 @@
             </div>
           </div>
           <div class="flex-col-row" v-if="selectedStage.id">
-            <div class="slot stage" :class="{inverse: isInverse}" :title="selectedStage.title" @click="deleteItem(selectedStage)" @mouseleave="onMouseLeave()">
+            <div class="slot stage" :class="{inverse: selectedArcanas.length > maxArcanas}" :title="selectedStage.title" @click="deleteItem(selectedStage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${selectedStage.id}`"></div>
             </div>
             <div class="flex-row-col">
@@ -1180,8 +1180,15 @@
             return extraCount
           })
 
-          const isInverse = computed(() => {
-            return (selectedCharacter.value.id !== 'sigma' && selectedArcanas.value.length > 3) || selectedArcanas.value.length > 7
+          const maxArcanas = computed(() => {
+            switch (selectedCharacter.value.id) {
+              case 'sigma':
+                return 7
+              case 'avatar':
+                return 4
+              default:
+                return 3
+            }
           })
 
           watch(
@@ -1369,8 +1376,7 @@
                 }
                 break
               case 'arcana':
-                const maxArcanas = selectedCharacter.value.id === 'sigma' ? 8 : 4
-                if (selectedArcanas.value.length < maxArcanas) {
+                if (selectedArcanas.value.length <= maxArcanas.value) {
                   selectedIds.add(item.id)
                 }
                 break
@@ -1552,7 +1558,7 @@
             evolvedWeapons,
             counterpartsWeapons,
             extraOpenWeaponSlots,
-            isInverse,
+            maxArcanas,
             onMouseEnter,
             onMouseLeave,
             toggleItem,
