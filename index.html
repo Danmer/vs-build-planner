@@ -539,6 +539,7 @@
           <span class="button" @click="settings = !settings">SETTINGS</span>
         </div>
         <div v-if="settings" class="buttons settings">
+          <span class="button" @click="config.sorting = !config.sorting">SORT BY IMPACTS: <span :class="(config.sorting ? 'enabled' : 'disabled')">{{config.sorting ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: <span :class="(config.evolutions ? 'enabled' : 'disabled')">{{config.evolutions ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.combinations = !config.combinations">COMBINATIONS: <span :class="(config.combinations ? 'enabled' : 'disabled')">{{config.combinations ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.impacts = !config.impacts">IMPACTS: <span :class="(config.impacts ? 'enabled' : 'disabled')">{{config.impacts ? 'ON' : 'OFF'}}</span></span>
@@ -563,8 +564,8 @@
 
         <!-- Weapons -->
         <section style="max-width: 75em">
-          <div class="objects">
-            <div v-for="weapon in weapons" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc: weapon.dlc, dlc2: weapon.dlc2, dlc3: weapon.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+          <transition-group tag="div" class="objects">
+            <div v-for="weapon in weapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc: weapon.dlc, dlc2: weapon.dlc2, dlc3: weapon.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -574,13 +575,13 @@
               </div>
               <div v-if="config.titles" class="title">{{weapon.id}}</div>
             </div>
-          </div>
+          </transition-group>
         </section>
 
         <!-- Evolutions -->
         <section v-if="config.evolutions" style="max-width: 75em">
-          <div class="objects">
-            <div v-for="evolution in evolutions" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc: evolution.dlc, dlc2: evolution.dlc2, dlc: evolution.dlc, dlc3: evolution.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
+          <transition-group tag="div" class="objects">
+            <div v-for="evolution in evolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc: evolution.dlc, dlc2: evolution.dlc2, dlc: evolution.dlc, dlc3: evolution.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -590,30 +591,29 @@
               </div>
               <div v-if="config.titles" class="title">{{evolution.id}}</div>
             </div>
-          </div>
+          </transition-group>
         </section>
 
         <!-- Passives -->
         <section style="max-width: 75em">
-          <div class="objects">
-            <div v-for="passive in passives" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc: passive.dlc, dlc2: passive.dlc2, dlc3: passive.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+          <transition-group tag="div" class="objects">
+            <div v-for="passive in passives" :key="passive.id" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc: passive.dlc, dlc2: passive.dlc2, dlc3: passive.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${passive.id}`"></div>
               <div v-if="config.impacts" class="impacts">
-                <div v-for="weapon in evolvedWeapons" class="impact" :class="impactsById[weapon.id] && (impactsById[weapon.id].includes('-' + passive.id) ? 'negative' : impactsById[weapon.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="weapon.title"></div>
-                <div v-if="selectedCharacter.id" class="impact" :class="impactsById[selectedCharacter.id] && (impactsById[selectedCharacter.id].includes('-' + passive.id) ? 'negative' : impactsById[selectedCharacter.id].includes('+' + passive.id) ? 'positive' : 'hidden')" :title="selectedCharacter.title"></div>
+                <div v-for="impact in impactsById[passive.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
               </div>
               <div v-if="config.combinations" class="items">
                 <div v-for="item in passive.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
               </div>
               <div v-if="config.titles" class="title">{{passive.id}}</div>
             </div>
-          </div>
+          </transition-group>
         </section>
 
         <!-- Arcanas -->
         <section style="max-width: 75em">
-          <div class="objects">
-            <div v-for="arcana in arcanas" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc: arcana.dlc, dlc2: arcana.dlc2, dlc3: arcana.dlc3, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+          <transition-group tag="div" class="objects">
+            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc: arcana.dlc, dlc2: arcana.dlc2, dlc3: arcana.dlc3, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
               <div class="items">
                 <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -623,7 +623,7 @@
               </div>
               <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
             </div>
-          </div>
+          </transition-group>
         </section>
 
         <!-- Stages -->
@@ -664,9 +664,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
     <script src="./data.js"></script>
     <script>
-      const { createApp, ref, reactive, computed, watch, watchEffect, nextTick } = Vue
+      const { createApp, ref, reactive, computed, watch, watchEffect, nextTick, TransitionGroup } = Vue
 
       createApp({
+        components: {
+          TransitionGroup,
+        },
         setup() {
           const config = useConfig()
 
@@ -676,6 +679,8 @@
 
           let hoveredId = ''
 
+          window.vs = reactive(window.vs)
+
           // data from data.js
           const { characters, weapons, evolutions, counterparts, powerups, passives, arcanas, stages, pickups, structures } = window.vs
 
@@ -683,21 +688,28 @@
           const items = [...powerups, ...passives, ...weapons, ...evolutions, ...counterparts, ...arcanas, ...characters, ...stages, ...pickups, ...structures]
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
+          for (const item of items) {
+            item.index = 0
+          }
+
           // Extra fields
           for (const character of characters) {
             character.type = 'character'
             character.fullName = `${character.prefix ? character.prefix + ' ' : ''}${character.name}${character.surname ? ' ' + character.surname : ''}`
           }
           for (const weapon of weapons) {
+            weapon.index++
             weapon.type = 'weapon'
           }
           for (const counterpart of counterparts) {
             counterpart.type = 'counterpart'
           }
           for (const passive of passives) {
+            passive.index++
             passive.type = 'passive'
           }
           for (const evolution of evolutions) {
+            evolution.index++
             evolution.type = 'evolution'
             evolution.weaponIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'weapon' || itemsById[itemId].type === 'evolution')
             evolution.evolutionIds = evolution.itemIds.filter((itemId) => itemsById[itemId].type === 'evolution')
@@ -719,6 +731,7 @@
             // }
           }
           for (const arcana of arcanas) {
+            arcana.index++
             arcana.type = 'arcana'
             arcana.roman = toRoman(+arcana.id.substring(6))
           }
@@ -783,7 +796,7 @@
               avatar: ['+health', '+might', '+luck', '+magnet', '+revival', '+curse', '+wings', '+cooldown'], // '+reroll'
               // arcanas
               arcana0: ['+experience', '+chest'],
-              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+fritta', '+popper', '+tongue', '+tongue_'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_'],
               arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+bracelet__', '+wind', '+wind_', '+prism', '+prism_', '+miniengineer', '+minishapeshifter'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+cart', '+minicrewmate', '+miniengineer', '+miniscientist'],
               arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur'],
@@ -1244,6 +1257,31 @@
             { immediate: true }
           )
 
+          watchEffect(() => {
+            if (config.sorting) {
+              weapons.sort((a, b) => {
+                const selected1 = impactsById.value[a.id].filter((i) => selectedIds.has(i.substring(1)))
+                const selected2 = impactsById.value[b.id].filter((i) => selectedIds.has(i.substring(1)))
+                return selected2.length - selected1.length || b.index - a.index
+              })
+              evolutions.sort((a, b) => {
+                const selected1 = impactsById.value[a.id].filter((i) => selectedIds.has(i.substring(1)))
+                const selected2 = impactsById.value[b.id].filter((i) => selectedIds.has(i.substring(1)))
+                return selected2.length - selected1.length || b.index - a.index
+              })
+              passives.sort((a, b) => {
+                const selected1 = impactsById.value[a.id].filter((i) => selectedIds.has(i.substring(1)))
+                const selected2 = impactsById.value[b.id].filter((i) => selectedIds.has(i.substring(1)))
+                return a.dlc3 && !b.dlc3 ? 1 : !a.dlc3 && b.dlc3 ? -1 : selected2.length - selected1.length || b.index - a.index
+              })
+              arcanas.sort((a, b) => {
+                const selected1 = impactsById.value[a.id].filter((i) => selectedIds.has(i.substring(1)))
+                const selected2 = impactsById.value[b.id].filter((i) => selectedIds.has(i.substring(1)))
+                return selected2.length - selected1.length || b.index - a.index
+              })
+            }
+          })
+
           window.config = config
           window.itemsById = itemsById
 
@@ -1506,7 +1544,7 @@
           }
 
           function useConfig(storageKey = 'vs-build') {
-            const defaultConfig = { impacts: true, pixels: true, titles: true, evolutions: false, combinations: true, size: 1, version: 2 }
+            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, evolutions: false, combinations: true, size: 1, version: 2 }
 
             const userConfig = loadUserConfig()
 
