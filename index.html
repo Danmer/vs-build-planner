@@ -737,7 +737,7 @@
           }
           for (const stage of stages) {
             stage.type = 'stage'
-            if (stage.id !== 'bridge' && stage.id !== 'whiteout' && stage.id !== 'bats' && stage.id !== 'astral') {
+            if (stage.id !== 'bridge' && stage.id !== 'whiteout' && stage.id !== 'bats' && stage.id !== 'astral' && stage.id !== 'space') {
               stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
             }
             if (stage.id === 'bats') {
@@ -794,6 +794,8 @@
               reaper: ['+health', '+wings', '+might'],
               random: [],
               avatar: ['+health', '+might', '+luck', '+magnet', '+revival', '+curse', '+wings', '+cooldown'], // '+reroll'
+              robbert: ['+health', '+armor', '+recovery', '+wings'],
+              spacedude: ['+wings'],
               // arcanas
               arcana0: ['+experience', '+chest'],
               arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_'],
@@ -861,7 +863,11 @@
               magicwand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               mana: ['+cooldown', '+might', '+area', '+duration'],
               mana_: ['+cooldown', '+might', '+area', '+duration'],
+              phas3r: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              phas3r_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               pentagram: ['+cooldown', '+luck'],
+              phas3r: ['+cooldown', '+might', '+area', '+amount'],
+              phas3r_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
               pentagram_: ['+cooldown'],
               pinion: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],
               pinion_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+wings'],

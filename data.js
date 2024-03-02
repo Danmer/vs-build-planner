@@ -326,6 +326,26 @@ window.vs = {
       ]
     },
     {
+      "id": "robbert",
+      "name": "Bat",
+      "surname": "Robbert",
+      "description": "Recovers 30% Max Health and gains +16 Max Health (Max +400) when health reaches a critically low level.",
+      "emoji": ":question:",
+      "itemIds": [
+        "pako"
+      ]
+    },
+    {
+      "id": "spacedude",
+      "name": "Space",
+      "surname": "Dude",
+      "description": "May occasionally activate all weapons twice depending on Cooldown.",
+      "emoji": ":question:",
+      "itemIds": [
+        "phas3r"
+      ]
+    },
+    {
       "id": "miang",
       "name": "Miang",
       "emoji": ":charMiangVS:",
@@ -1154,6 +1174,16 @@ window.vs = {
       "emoji": ":glassfandangoVS:"
     },
     {
+      "id": "pako",
+      "name": "Pako Battiliar",
+      "emoji": ":question:"
+    },
+    {
+      "id": "phas3r",
+      "name": "Phas3r",
+      "emoji": ":question:"
+    },
+    {
       "id": "bone",
       "name": "Bone",
       "emoji": ":boneVS:",
@@ -1818,6 +1848,24 @@ window.vs = {
       "itemIds": [
         "fandango",
         "wings"
+      ]
+    },
+    {
+      "id": "pako_",
+      "name": "Mazo Familiar",
+      "emoji": ":question:",
+      "itemIds": [
+        "pako",
+        "health"
+      ]
+    },
+    {
+      "id": "phas3r_",
+      "name": "Photonstorm",
+      "emoji": ":question:",
+      "itemIds": [
+        "phas3r",
+        "cooldown"
       ]
     },
     {
@@ -3641,6 +3689,16 @@ window.vs = {
         "miniscientist",
         "minishapeshifter",
         "scan"
+      ],
+      "special": true
+    },
+    {
+      "id": "space",
+      "name": "Space 54",
+      "itemIds": [
+        "area",
+        "cooldown",
+        "phas3r"
       ],
       "special": true
     }
