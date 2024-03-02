@@ -745,6 +745,7 @@
             }
           }
           for (const item of items) {
+            console.log(item, item.itemIds)
             item.items = item.itemIds ? item.itemIds.map((itemId) => itemsById[itemId]).filter((it) => !(it.type === 'passive' && item.type === 'passive')) : []
             item.evolution = item.evolutionId && itemsById[item.evolutionId]
             item.title = (item.fullName || item.name) + (item.type === 'weapon' || item.type === 'passive' ? ` (Rarity: ${item.rarity || 'Unknown'})` : '') + (item.price ? ` (Price: ${item.price})` : '') + (item.description ? `\n${item.description}` : '')
@@ -863,8 +864,8 @@
               magicwand_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               mana: ['+cooldown', '+might', '+area', '+duration'],
               mana_: ['+cooldown', '+might', '+area', '+duration'],
-              phas3r: ['+cooldown', '+might', '+area', '+amount', '+speed'],
-              phas3r_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              pako: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              pako_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               pentagram: ['+cooldown', '+luck'],
               phas3r: ['+cooldown', '+might', '+area', '+amount'],
               phas3r_: ['+cooldown', '+might', '+area', '+amount', '+luck'],
