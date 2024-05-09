@@ -1273,7 +1273,7 @@
               }
               for (const weapon of weapons) {
                 // evolved if all required items are selected
-                weapon.evolved = weapon.evolutionId && (weapon.evolution.items.every((it) => it.selected) || selectedCharacter.value.itemIds.includes(weapon.evolutionId))
+                weapon.evolved = weapon.evolutionId && weapon.evolution.items.every((it) => it.selected) && !selectedCharacter.value.itemIds.includes(weapon.evolutionId) && !selectedCharacter.value.itemIds.includes(weapon.evolution?.evolutionId)
               }
               for (const evolution of evolutions) {
                 // evolved if all required items are selected or evolved
