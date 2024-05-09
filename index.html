@@ -1151,6 +1151,12 @@
               // level 1 evolution
               return weapon.evolution
             })
+            // character's weapons and evolution
+            for (const item of selectedCharacter.value?.items || []) {
+              if (item.type === 'weapon' || item.type === 'evolution') {
+                evolvedWeapons.unshift(item)
+              }
+            }
             const uniqWeapons = new Set(evolvedWeapons)
             return Array.from(uniqWeapons)
           })
@@ -1295,10 +1301,6 @@
               // do not add special "passive" weapons
               if (newCharacter.id === 'cosmo' || newCharacter.id === 'megamenya' || newCharacter.id === 'scorej' || newCharacter.id === 'megaimpostor') {
                 return
-              }
-              // add items of the new character
-              for (const itemId of newCharacter.itemIds) {
-                selectId(itemId)
               }
             },
             { immediate: true }
@@ -1455,8 +1457,7 @@
                 selectedIds.add(item.id)
                 break
               case 'evolution':
-                const itemids = selectedCharacter.value.itemIds.includes(item.id) ? item.weaponIds : item.itemIds
-                for (const itemId of itemids) {
+                for (const itemId of item.itemIds) {
                   selectId(itemId)
                 }
                 break
