@@ -362,7 +362,7 @@ window.vs = {
       "itemIds": [
         "wind"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "Moonspell",
       "description": "Recovery also multiplies all healing sources. Over-healing slightly increases Max Health.",
       "onEveryLevelUp": {},
@@ -375,7 +375,7 @@ window.vs = {
       "itemIds": [
         "seasons"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "Moonspell",
       "description": "Becomes stronger and invincible for a fixed interval after defeating a large amount of enemies.",
       "onEveryLevelUp": {},
@@ -388,7 +388,7 @@ window.vs = {
       "itemIds": [
         "night"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "Moonspell",
       "description": "Starts with hidden Night Sword. Morphs into a stronger version when his base weapon evolves.",
       "onEveryLevelUp": {},
@@ -401,7 +401,7 @@ window.vs = {
       "itemIds": [
         "bocce"
       ],
-      "dlc": true,
+      "dlc1": true,
       "prefix": "Megalo",
       "surname": "Moonspell",
       "description": "Cannot be damaged, but disappears after reaching the current Time Limit. Starts with hidden 108 Bocce.",
@@ -415,7 +415,7 @@ window.vs = {
       "itemIds": [
         "muramasa"
       ],
-      "dlc": true,
+      "dlc1": true,
       "prefix": "Megalo",
       "surname": "Moonspell",
       "description": "Gains +1% Might every level.",
@@ -431,7 +431,7 @@ window.vs = {
       "itemIds": [
         "mirage"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "",
       "description": "Ignores weapons cooldown. Weapons fire at a fixed interval when moving.",
       "onEveryLevelUp": {},
@@ -444,7 +444,7 @@ window.vs = {
       "itemIds": [
         "bolle"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "",
       "description": "Gets more projectiles every 20 levels (max+4).",
       "onEveryLevelUp": {},
@@ -457,7 +457,7 @@ window.vs = {
       "itemIds": [
         "bocce"
       ],
-      "dlc": true,
+      "dlc1": true,
       "surname": "",
       "description": "Area temporarily increases at fixed intervals.",
       "onEveryLevelUp": {},
@@ -1268,7 +1268,7 @@ window.vs = {
       "id": "wind",
       "name": "Silver Wind",
       "emoji": ":SilverWindVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Defeated enemies might drop hearts.",
       "poolLimit": 100,
       "critChance": 0,
@@ -1281,7 +1281,7 @@ window.vs = {
       "id": "seasons",
       "name": "Four Seasons",
       "emoji": ":FourSeasonsVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Generates 4 explosions. Amount and Duration affect damage instead.",
       "poolLimit": 30,
       "critChance": 0.2,
@@ -1294,7 +1294,7 @@ window.vs = {
       "id": "night",
       "name": "Summon Night",
       "emoji": ":SummonNightVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Generates damaging zones above the character.",
       "poolLimit": 60,
       "critChance": 0.2,
@@ -1307,7 +1307,7 @@ window.vs = {
       "id": "mirage",
       "name": "Mirage Robe",
       "emoji": ":MirageRobeVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Generates freezing mines with a chance to explode.",
       "poolLimit": 50,
       "critChance": 0.2,
@@ -1320,7 +1320,7 @@ window.vs = {
       "id": "muramasa",
       "name": "Night Sword",
       "emoji": ":NightSwordVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Strikes with a combo attack at the nearest enemy. Retaliates. Might steals hearts.",
       "poolLimit": 100,
       "critChance": 0.1,
@@ -1333,7 +1333,7 @@ window.vs = {
       "id": "bolle",
       "name": "Mille Bolle Blu",
       "emoji": ":MilleBolleBluVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Fires lingering projectiles.",
       "poolLimit": 140,
       "knockback": 0.1,
@@ -1344,7 +1344,7 @@ window.vs = {
       "id": "bocce",
       "name": "108 Bocce",
       "emoji": ":108BocceVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Actually it's just 8. Damages nearby enemies.",
       "poolLimit": 50,
       "hitsWalls": false,
@@ -1912,7 +1912,7 @@ window.vs = {
         "recovery"
       ],
       "emoji": ":FestiveWindsVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Silver Wind. Weakens enemies defenses.",
       "poolLimit": 100,
       "critChance": 0,
@@ -1929,7 +1929,7 @@ window.vs = {
         "greed"
       ],
       "emoji": ":MuraMasaVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Night Sword. Enables critical hits and combo finisher. Drains Health.",
       "poolLimit": 100,
       "critChance": 0.1,
@@ -1947,7 +1947,7 @@ window.vs = {
         "area"
       ],
       "emoji": ":GodaiShuffleVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Four Seasons. Generates an additional explosion.",
       "poolLimit": 30,
       "critChance": 0.2,
@@ -1964,7 +1964,7 @@ window.vs = {
         "amount"
       ],
       "emoji": ":EchoNightVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Summon Night. Generates damaging zones below the character.",
       "poolLimit": 60,
       "critChance": 0.2,
@@ -1981,7 +1981,7 @@ window.vs = {
         "magnet"
       ],
       "emoji": ":JOdoreVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Mirage Robe. Projectiles move and confuse enemies.",
       "poolLimit": 100,
       "critChance": 0.2,
@@ -1998,7 +1998,7 @@ window.vs = {
         "duration"
       ],
       "emoji": ":BooRooBoolleVS:",
-      "dlc": true,
+      "dlc1": true,
       "description": "Evolved Mille Bolle Blu. Projectiles can hit the same target more than once.",
       "poolLimit": 180,
       "knockback": 0.1,
@@ -3468,7 +3468,7 @@ window.vs = {
         "greed",
         "muramasa"
       ],
-      "dlc": true,
+      "dlc1": true,
       "description": "Ancestral home of a fallen clan, now overrun by yokai and oni. The night has won in this world where the sun doesn't shine.",
       "mods": {
         "EnemySpeed": 1.4,
@@ -3734,6 +3734,7 @@ window.vs = {
         "minishapeshifter",
         "scan"
       ],
+      "dlc3": true,
       "special": true
     },
     {
