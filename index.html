@@ -550,7 +550,7 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 85em">
+        <section style="max-width: 80em">
           <div class="objects">
             <div v-for="character in characters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc: character.dlc, dlc2: character.dlc2, dlc3: character.dlc3}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
@@ -563,7 +563,7 @@
         </section>
 
         <!-- Weapons -->
-        <section style="max-width: 75em">
+        <section style="max-width: 80em">
           <transition-group tag="div" class="objects">
             <div v-for="weapon in weapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc: weapon.dlc, dlc2: weapon.dlc2, dlc3: weapon.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
@@ -579,7 +579,7 @@
         </section>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 75em">
+        <section v-if="config.evolutions" style="max-width: 80em">
           <transition-group tag="div" class="objects">
             <div v-for="evolution in evolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc: evolution.dlc, dlc2: evolution.dlc2, dlc: evolution.dlc, dlc3: evolution.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
@@ -627,7 +627,7 @@
         </section>
 
         <!-- Stages -->
-        <section style="max-width: 85em">
+        <section style="max-width: 65em">
           <div class="objects">
             <div v-for="stage in stages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc: stage.dlc, dlc2: stage.dlc2, dlc3: stage.dlc3}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${stage.id}`"></div>
