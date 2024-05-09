@@ -1943,7 +1943,6 @@ window.vs = {
       "name": "Godai Shuffle",
       "itemIds": [
         "seasons",
-        "might",
         "area"
       ],
       "emoji": ":GodaiShuffleVS:",
@@ -2045,8 +2044,7 @@ window.vs = {
       "name": "Millionaire",
       "itemIds": [
         "arrow",
-        "speed",
-        "luck"
+        "speed"
       ],
       "emoji": ":MillionaireVS:",
       "dlc2": true,
