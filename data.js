@@ -1958,7 +1958,7 @@ window.vs = {
     },
     {
       "id": "night_",
-      "name": "Night's Reach",
+      "name": "Echo Night",
       "itemIds": [
         "night",
         "amount"
