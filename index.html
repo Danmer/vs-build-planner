@@ -938,6 +938,7 @@
               guns3: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               guns4: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               cat2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
+              javelin2: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               // dlc 1
               onna: ['~cooldown'],
               tony: ['+amount', '+wings'],
@@ -1209,6 +1210,9 @@
               }
               if (selectedIds.has('tongue')) {
                 counterparts.push(itemsById.tongue2)
+              }
+              if (selectedIds.has('javelin')) {
+                counterparts.push(itemsById.javelin2)
               }
             }
 

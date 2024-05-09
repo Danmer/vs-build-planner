@@ -2271,6 +2271,12 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
+    },
+    {
+      "id": "javelin2",
+      "name": "Levelin'Eh",
+      "emoji": ":question:",
+      "description": ""
     }
   ],
   "passives": [
