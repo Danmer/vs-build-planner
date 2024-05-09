@@ -336,6 +336,16 @@ window.vs = {
       ]
     },
     {
+      "id": "santa",
+      "name": "Santa",
+      "surname": "Ladonna",
+      "description": "Starts with temporary Cooldown bonus. Triggers a Rosary when Health reaches a critically low level. Likes to keep secrets.",
+      "emoji": ":santa:",
+      "itemIds": [
+        "javelin"
+      ]
+    },
+    {
       "id": "spacedude",
       "name": "Space",
       "surname": "Dude",
@@ -884,6 +894,18 @@ window.vs = {
       "surname": "",
       "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
       "price": 5000
+    },
+    {
+      "id": "gyoruntin",
+      "name": "Gyoruntin",
+      "emoji": ":question:",
+      "itemIds": [
+        "runetracer_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Starting weapon grows stronger when levelling up. Gains +1% Curse every level. Ignores Walls.",
     }
   ],
   "weapons": [
@@ -1182,6 +1204,11 @@ window.vs = {
       "id": "phas3r",
       "name": "Phas3r",
       "emoji": ":question:"
+    },
+    {
+      "id": "javelin",
+      "name": "Santa Javelin",
+      "emoji": ":question:",
     },
     {
       "id": "bone",
@@ -1857,6 +1884,15 @@ window.vs = {
       "itemIds": [
         "pako",
         "health"
+      ]
+    },
+    {
+      "id": "javelin_",
+      "name": "Seraphic Cry",
+      "emoji": ":question:",
+      "itemIds": [
+        "javelin",
+        "luck"
       ]
     },
     {
@@ -2684,6 +2720,8 @@ window.vs = {
         "guns_",
         "cat",
         "cat_",
+        "javelin",
+        "javelin_",
         "popper",
         "servant",
         "servant_",
@@ -2715,6 +2753,8 @@ window.vs = {
         "wind_",
         "prism",
         "prism_",
+        "javelin",
+        "javelin_",
         "miniengineer",
         "minishapeshifter"
       ],
@@ -2733,6 +2773,8 @@ window.vs = {
         "water_",
         "lightning",
         "lightning_",
+        "javelin",
+        "javelin_",
         "cart",
         "minicrewmate",
         "miniengineer",
@@ -2954,6 +2996,8 @@ window.vs = {
         "vento_",
         "cross_",
         "sword",
+        "javelin",
+        "javelin_",
         "muramasa_",
         "eskizzibur",
         "eskizzibur_",
@@ -2979,7 +3023,7 @@ window.vs = {
     {
       "id": "arcana18",
       "name": "XVIII - Boogaloo of Illusions",
-      "emoji": ":XVIIIBoogalOofIllusions:",
+      "emoji": ":XVIIIBoogaloOfIllusions:",
       "itemIds": [
         "area"
       ],
