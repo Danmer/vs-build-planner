@@ -1045,7 +1045,7 @@
                 impactIds.push('+curse')
               }
               if (item.id === 'arcana10' && selectedCharacter.value.id) {
-                if (selectedCharacter.value.id === 'trouser' && evolvedWeapons.value.length) {
+                if ((evolvedWeapons.value.length && selectedCharacter.value.id === 'trouser') || selectedCharacter.value.id === 'random') {
                   impactIds.push(`+${evolvedWeapons.value[0].id}`)
                 } else {
                   for (const weapon of selectedCharacter.value.items) {
