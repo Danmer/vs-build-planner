@@ -1153,7 +1153,7 @@
             })
             // character's weapons and evolution
             for (const item of selectedCharacter.value?.items || []) {
-              if (item.type === 'weapon' || item.type === 'evolution') {
+              if (item.type === 'evolution') {
                 evolvedWeapons.unshift(item)
               }
             }
@@ -1295,12 +1295,20 @@
                   }
                 }
                 for (const itemId of oldCharacter.itemIds) {
-                  unselectId(itemId)
+                  if (itemsById[itemId].type === 'weapon') {
+                    unselectId(itemId)
+                  }
                 }
               }
               // do not add special "passive" weapons
               if (newCharacter.id === 'cosmo' || newCharacter.id === 'megamenya' || newCharacter.id === 'scorej' || newCharacter.id === 'megaimpostor') {
                 return
+              }
+              // add items of the new character
+              for (const itemId of newCharacter.itemIds) {
+                if (itemsById[itemId].type === 'weapon') {
+                  selectId(itemId)
+                }
               }
             },
             { immediate: true }
