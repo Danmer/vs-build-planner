@@ -3355,114 +3355,176 @@ window.vs = {
     {
       "id": "forest",
       "name": "Mad Forest",
+      "description": "The Castle is a lie, but there`s still free roast chicken here, so it`s all good.",
       "itemIds": [
         "might",
         "luck",
         "health",
         "recovery",
         "curse"
-      ],
-      "description": "The Castle is a lie, but there`s still free roast chicken here, so it`s all good.",
-      "mods": {
-        "EnemySpeed": 1.1,
-        "PlayerPxSpeed": 1.1
-      },
-      "hyper": {
-        "EnemySpeed": 0.9,
-        "GoldMultiplier": 0.5,
-        "PlayerPxSpeed": 0.9,
-        "ProjectileSpeed": 0.25
-      }
+      ]
     },
     {
       "id": "library",
       "name": "Inlaid Library",
+      "description": "This quiet, long library is the ideal place where to rest, meditate, and forage for roast chicken. But what`s a stone mask doing here?",
       "itemIds": [
         "cooldown",
         "greed"
-      ],
-      "description": "This quiet, long library is the ideal place where to rest, meditate, and forage for roast chicken. But what`s a stone mask doing here?",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15
-      }
+      ]
     },
     {
       "id": "plant",
       "name": "Dairy Plant",
+      "description": "The magic map hidden in here might finally lead us to a vampire, or at least to more roast chicken.",
       "itemIds": [
         "magnet",
         "area",
         "wings",
         "armor"
-      ],
-      "description": "The magic map hidden in here might finally lead us to a vampire, or at least to more roast chicken.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "GoldMultiplier": 1.2,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15
-      }
+      ]
     },
     {
       "id": "tower",
       "name": "Gallo Tower",
+      "description": "This tower hides great magical artifacts and historically accurate monsters.",
       "itemIds": [
         "speed",
         "duration"
-      ],
-      "description": "This tower hides great magical artifacts and historically accurate monsters.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "GoldMultiplier": 1.3,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15
-      }
+      ]
     },
     {
       "id": "capella",
       "name": "Cappella Magna",
+      "description": "Have we gone too far? Could have just camped in the forest with all that chicken, but noooo, we had to go chase some random vampire instead.",
       "itemIds": [
         "growth",
         "revival",
         "amount"
+      ]
+    },
+    {
+      "id": "molise",
+      "name": "Il Molise",
+      "description": "There exists places that don`t exist. Come to relax and enjoy life. See you in the country.",
+      "special": true,
+      "itemIds": []
+    },
+    {
+      "id": "moongolow",
+      "name": "Moongolow",
+      "description": "When the moon is red and bright, the remnants of a town swallowed by the sea come back to the surface, bringing mysteries and riches.",
+      "special": true,
+      "itemIds": [
+        "cooldown",
+        "might",
+        "area",
+        "amount",
+        "speed",
+        "duration",
+        "luck",
+        "recovery",
+        "growth",
+        "armor",
+        "magnet",
+        "curse",
+        "health",
+        "revival",
+        "wings",
+        "greed"
       ],
-      "description": "Have we gone too far? Could have just camped in the forest with all that chicken, but noooo, we had to go chase some random vampire instead.",
-      "mods": {
-        "EnemySpeed": 1.4,
-        "GoldMultiplier": 1.4,
-        "PlayerPxSpeed": 1.4
-      },
-      "hyper": {
-        "EnemySpeed": 0.6,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.6,
-        "ProjectileSpeed": 0.15
-      }
+    },
+    {
+      "id": "acres",
+      "name": "Green Acres",
+      "description": "A place not made for mortals. Fate changes every minute.",
+      "special": true,
+      "itemIds": []
+    },
+    {
+      "id": "bonezone",
+      "name": "The Bone Zone",
+      "description": "Come over here and say your unholy vespers.",
+      "special": true,
+      "itemIds": []
+    },
+    {
+      "id": "bosses",
+      "name": "Boss Rash",
+      "description": "\"Distinguished guests, the moment we`ve all be itching for is finally here! Let`s watch the Survivors attempt this challenge of recycled assets!\"",
+      "special": true,
+      "itemIds": [
+        "cooldown",
+        "might",
+        "area",
+        "amount",
+        "speed",
+        "duration",
+        "luck",
+        "recovery",
+        "growth",
+        "armor",
+        "magnet",
+        "curse",
+        "health",
+        "revival",
+        "wings",
+        "greed"
+      ]
+    },
+    {
+      "id": "whiteout",
+      "name": "Whiteout",
+      "special": true,
+      "itemIds": [
+        "fandango",
+        "might",
+        "wings",
+        "curse"
+      ]
+    },
+    {
+      "id": "space",
+      "name": "Space 54",
+      "special": true,
+      "itemIds": [
+        "area",
+        "cooldown",
+        "phas3r"
+      ]
+    },
+    {
+      "id": "astral",
+      "name": "Astral Stair",
+      "special": true,
+      "itemIds": [
+        "guns1",
+        "guns2"
+      ]
+    },
+    {
+      "id": "bats",
+      "name": "Bat Country",
+      "special": true,
+      "itemIds": []
+    },
+    {
+      "id": "bridge",
+      "name": "Tiny Bridge",
+      "description": "Two opposing factions abruptly stopped fighting over this little bridge. No doubt the source of this cessation will turn out to be harmless.",
+      "special": true,
+      "itemIds": [
+        "wings",
+        "vento",
+        "magnet",
+        "lightning"
+      ]
     },
     {
       "id": "moonspell",
       "name": "Mt.Moonspell",
+      "description": "Ancestral home of a fallen clan, now overrun by yokai and oni. The night has won in this world where the sun doesn't shine.",
+      "dlc1": true,
       "itemIds": [
         "might",
         "recovery",
@@ -3471,25 +3533,13 @@ window.vs = {
         "magnet",
         "greed",
         "muramasa"
-      ],
-      "dlc1": true,
-      "description": "Ancestral home of a fallen clan, now overrun by yokai and oni. The night has won in this world where the sun doesn't shine.",
-      "mods": {
-        "EnemySpeed": 1.4,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.4
-      },
-      "hyper": {
-        "EnemySpeed": 0.6,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.6,
-        "ProjectileSpeed": 0.15
-      }
+      ]
     },
     {
       "id": "lake",
       "name": "Lake Foscari",
+      "description": "An enchanted forest stuffed with fae mysteries and mythological entities. The perfect place to have an average adventure with zero complications.",
+      "dlc2": true,
       "itemIds": [
         "armor",
         "speed",
@@ -3497,25 +3547,13 @@ window.vs = {
         "growth",
         "curse",
         "badge"
-      ],
-      "dlc2": true,
-      "description": "An enchanted forest stuffed with fae mysteries and mythological entities. The perfect place to have an average adventure with zero complications.",
-      "mods": {
-        "EnemySpeed": 1.4,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.4
-      },
-      "hyper": {
-        "EnemySpeed": 0.6,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.6,
-        "ProjectileSpeed": 0.15
-      }
+      ]
     },
     {
       "id": "abyss",
       "name": "Abyss Foscari",
+      "description": "Sealed by Luminaire in ancient times to contain the darkness within, these underground ruins are now accessible, but so is the outside world to the evil from the depths.",
+      "dlc2": true,
       "itemIds": [
         "cooldown",
         "magnet",
@@ -3527,207 +3565,12 @@ window.vs = {
         "badge",
         "prism",
         "servant"
-      ],
-      "dlc2": true,
-      "description": "Sealed by Luminaire in ancient times to contain the darkness within, these underground ruins are now accessible, but so is the outside world to the evil from the depths.",
-      "mods": {
-        "EnemySpeed": 1.4,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.4
-      },
-      "hyper": {
-        "EnemySpeed": 0.6,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.6,
-        "ProjectileSpeed": 0.15
-      }
-    },
-    {
-      "id": "acres",
-      "name": "Green Acres",
-      "itemIds": [],
-      "special": true,
-      "description": "A place not made for mortals. Fate changes every minute.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15
-      }
-    },
-    {
-      "id": "bonezone",
-      "name": "The Bone Zone",
-      "itemIds": [],
-      "special": true,
-      "description": "Come over here and say your unholy vespers.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "GoldMultiplier": 1.5,
-        "PlayerPxSpeed": 1.25
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15
-      }
-    },
-    {
-      "id": "molise",
-      "name": "Il Molise",
-      "itemIds": [],
-      "special": true,
-      "description": "There exists places that don`t exist. Come to relax and enjoy life. See you in the country.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25,
-        "TimeLimit": 900
-      },
-      "hyper": {
-        "EnemySpeed": 0.75,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.2,
-        "PlayerPxSpeed": 0.75,
-        "ProjectileSpeed": 0.15,
-        "TimeLimit": 900
-      }
-    },
-    {
-      "id": "bridge",
-      "name": "Tiny Bridge",
-      "itemIds": [
-        "wings",
-        "vento",
-        "magnet",
-        "lightning"
-      ],
-      "special": true,
-      "description": "Two opposing factions abruptly stopped fighting over this little bridge. No doubt the source of this cessation will turn out to be harmless.",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "GoldMultiplier": 1.3,
-        "PlayerPxSpeed": 1.25,
-        "TimeLimit": 1200
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15,
-        "TimeLimit": 1200
-      }
-    },
-    {
-      "id": "moongolow",
-      "name": "Moongolow",
-      "itemIds": [
-        "cooldown",
-        "might",
-        "area",
-        "amount",
-        "speed",
-        "duration",
-        "luck",
-        "recovery",
-        "growth",
-        "armor",
-        "magnet",
-        "curse",
-        "health",
-        "revival",
-        "wings",
-        "greed"
-      ],
-      "special": true,
-      "description": "When the moon is red and bright, the remnants of a town swallowed by the sea come back to the surface, bringing mysteries and riches.",
-      "mods": {
-        "EnemySpeed": 1.35,
-        "PlayerPxSpeed": 1.35,
-        "TimeLimit": 900
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.2,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15,
-        "TimeLimit": 900
-      }
-    },
-    {
-      "id": "bosses",
-      "name": "Boss Rash",
-      "itemIds": [
-        "cooldown",
-        "might",
-        "area",
-        "amount",
-        "speed",
-        "duration",
-        "luck",
-        "recovery",
-        "growth",
-        "armor",
-        "magnet",
-        "curse",
-        "health",
-        "revival",
-        "wings",
-        "greed"
-      ],
-      "special": true,
-      "description": "\"Distinguished guests, the moment we`ve all be itching for is finally here! Let`s watch the Survivors attempt this challenge of recycled assets!\"",
-      "mods": {
-        "EnemySpeed": 1.25,
-        "PlayerPxSpeed": 1.25,
-        "TimeLimit": 900
-      },
-      "hyper": {
-        "EnemySpeed": 0.65,
-        "GoldMultiplier": 0.5,
-        "LuckBonus": 0.1,
-        "PlayerPxSpeed": 0.65,
-        "ProjectileSpeed": 0.15,
-        "TimeLimit": 900
-      }
-    },
-    {
-      "id": "whiteout",
-      "name": "Whiteout",
-      "itemIds": [
-        "fandango",
-        "might",
-        "wings",
-        "curse"
-      ],
-      "special": true
-    },
-    {
-      "id": "bats",
-      "name": "Bat Country",
-      "itemIds": [],
-      "special": true
-    },
-    {
-      "id": "astral",
-      "name": "Astral Stair",
-      "itemIds": [
-        "guns1",
-        "guns2"
-      ],
-      "special": true
+      ]
     },
     {
       "id": "polus",
       "name": "Polus Replica",
+      "dlc3": true,
       "itemIds": [
         "minicrewmate",
         "miniengineer",
@@ -3737,19 +3580,7 @@ window.vs = {
         "miniscientist",
         "minishapeshifter",
         "scan"
-      ],
-      "dlc3": true,
-      "special": true
-    },
-    {
-      "id": "space",
-      "name": "Space 54",
-      "itemIds": [
-        "area",
-        "cooldown",
-        "phas3r"
-      ],
-      "special": true
+      ]
     }
   ]
 }
