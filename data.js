@@ -143,9 +143,17 @@ window.vs = {
       ],
       "surname": "Provola",
       "description": "Gains +1% Might every level.",
-      "onEveryLevelUp": {
-        "power": 0.01
-      },
+      "price": 1000
+    },
+    {
+      "id": "giovanna",
+      "name": "Giovanna",
+      "emoji": ":charGiovannaVS:",
+      "itemIds": [
+        "cat"
+      ],
+      "surname": "Grana",
+      "description": "Gains +1% Projectile Speed every level.",
       "price": 1000
     },
     {
@@ -157,9 +165,17 @@ window.vs = {
       ],
       "surname": "Pecorina",
       "description": "Gains +1% Duration every level.",
-      "onEveryLevelUp": {
-        "duration": 0.01
-      },
+      "price": 1000
+    },
+    {
+      "id": "concetta",
+      "name": "Concetta",
+      "emoji": ":charConcettaVS:",
+      "itemIds": [
+        "pinion"
+      ],
+      "surname": "Caciotta",
+      "description": "Gains +1% Area every level.",
       "price": 1000
     },
     {
@@ -210,32 +226,16 @@ window.vs = {
       "price": 500
     },
     {
-      "id": "giovanna",
-      "name": "Giovanna",
-      "emoji": ":charGiovannaVS:",
+      "id": "ambrojoe",
+      "name": "Ambrojoe",
+      "emoji": ":charSirAmbrojoeVS:",
       "itemIds": [
-        "cat"
+        "furniture"
       ],
-      "surname": "Grana",
-      "description": "Gains +1% Projectile Speed every level.",
-      "onEveryLevelUp": {
-        "speed": 0.01
-      },
-      "price": 1000
-    },
-    {
-      "id": "concetta",
-      "name": "Concetta",
-      "emoji": ":charConcettaVS:",
-      "itemIds": [
-        "pinion"
-      ],
-      "surname": "Caciotta",
-      "description": "Gains +1% Area every level.",
-      "onEveryLevelUp": {
-        "area": 0.01
-      },
-      "price": 1000
+      "prefix": "Sir",
+      "surname": "",
+      "description": "Gets more projectiles every 20 levels (max+3). Starts with temporary Amount bonus.",
+      "price": 500
     },
     {
       "id": "gallo",
@@ -271,25 +271,181 @@ window.vs = {
       "prefix": "",
       "surname": "Belpaese",
       "description": "Gains +0.5% Might, projectile Speed, Duration, and Area every level.",
-      "onEveryLevelUp": {
-        "power": 0.005,
-        "speed": 0.005,
-        "duration": 0.005,
-        "area": 0.005
-      },
       "price": 5000
     },
     {
-      "id": "ambrojoe",
-      "name": "Ambrojoe",
-      "emoji": ":charSirAmbrojoeVS:",
+      "id": "exdash",
+      "name": "Exdash",
+      "emoji": ":charExdashVS:",
       "itemIds": [
-        "furniture"
+        "bird2"
       ],
-      "prefix": "Sir",
+      "special": true,
+      "surname": "Exiviiq",
+      "description": "At least they`re lucky.",
+      "price": 777
+    },
+    {
+      "id": "toastie",
+      "name": "Toastie",
+      "emoji": ":charToastieVS:",
+      "itemIds": [
+        "bird1"
+      ],
+      "special": true,
       "surname": "",
-      "description": "Gets more projectiles every 20 levels (max+3). Starts with temporary Amount bonus.",
-      "price": 500
+      "description": "So much potential.",
+      "price": 777
+    },
+    {
+      "id": "smith",
+      "name": "Smith",
+      "emoji": ":charSmithVS:",
+      "itemIds": [
+        "bird_"
+      ],
+      "special": true
+    },
+    {
+      "id": "random",
+      "name": "Random",
+      "emoji": ":charRandomVS:",
+      "itemIds": [],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Random.",
+      "price": 5000
+    },
+    {
+      "id": "marrabbio",
+      "name": "Marrabbio",
+      "emoji": ":charBoonMarrabbioVS:",
+      "itemIds": [
+        "knife_"
+      ],
+      "special": true,
+      "prefix": "Boon",
+      "surname": "",
+      "description": "",
+      "price": 666
+    },
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "emoji": ":charAvatarInfernasVS:",
+      "itemIds": [
+        "flame",
+        "arcana19"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Infernas",
+      "description": "Starts with extra Arcana XIX - Heart Of Fire. Grows stronger with every level, but also loses control.",
+      "price": 666
+    },
+    {
+      "id": "minnah",
+      "name": "Minnah",
+      "emoji": ":charMinnahVS:",
+      "itemIds": [
+        "whip_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Mannarah",
+      "description": "Might, projectile Speed, Duration, Area, and Cooldown change every minute.",
+      "price": 666,
+    },
+    {
+      "id": "leda",
+      "name": "Leda",
+      "emoji": ":charLedaVS:",
+      "itemIds": [
+        "magicwand_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "",
+      "price": 666
+    },
+    {
+      "id": "cosmo",
+      "name": "Cosmo",
+      "emoji": ":animCosmoPavoneVS:",
+      "itemIds": [
+        "bird1",
+        "bird2"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Pavone",
+      "description": "Gains +1 Recovery and +1% Luck every level. Gains +1 Revival every 100 levels. Has hidden weapons.",
+      "price": 666
+    },
+    {
+      "id": "peppino",
+      "name": "Peppino",
+      "emoji": ":charPeppinoVS:",
+      "itemIds": [
+        "garlic_"
+      ],
+      "special": true,
+      "surname": "",
+      "description": "Starts with temporarily reduced area.",
+      "price": 666
+    },
+    {
+      "id": "trouser",
+      "name": "Trouser",
+      "emoji": ":BigTrouserVS:",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "prefix": "Big",
+      "surname": "",
+      "description": "Gains +1% Greed every level. Gold Fever lasts longer.",
+      "price": 5000
+    },
+    {
+      "id": "gains",
+      "name": "Gains",
+      "emoji": ":charGainsBorosVS:",
+      "itemIds": [
+        "cross_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "Boros",
+      "description": "Gains +2% Growth every level.",
+      "price": 666
+    },
+    {
+      "id": "gyorunton",
+      "name": "Gyorunton",
+      "emoji": ":charGyoruntonVS:",
+      "itemIds": [
+        "bracelet"
+      ],
+      "special": true,
+      "surname": "",
+      "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
+      "price": 5000
+    },
+    {
+      "id": "reaper",
+      "name": "Red Death",
+      "emoji": ":charReddeathVS:",
+      "itemIds": [
+        "axe_"
+      ],
+      "special": true,
+      "prefix": "Mask of the",
+      "surname": "",
+      "description": "A blasphemous mockery.",
+      "price": 666
     },
     {
       "id": "sigma",
@@ -301,29 +457,7 @@ window.vs = {
       "prefix": "Queen",
       "surname": "",
       "description": "She owns everything.",
-      "onEveryLevelUp": {
-        "power": 0.01,
-        "growth": 0.01
-      },
       "price": 0
-    },
-    {
-      "id": "shemoon",
-      "name": "She-Moon",
-      "description": "Freezes all enemies for 10 seconds when health reaches a critically low level.",
-      "emoji": ":question:",
-      "itemIds": [
-        "fandango"
-      ]
-    },
-    {
-      "id": "rose",
-      "name": "Rose De Infernas",
-      "description": "Increases enemy spawn quantity by 100.",
-      "emoji": ":question:",
-      "itemIds": [
-        "vento_"
-      ]
     },
     {
       "id": "robbert",
@@ -333,6 +467,15 @@ window.vs = {
       "emoji": ":question:",
       "itemIds": [
         "pako"
+      ]
+    },
+    {
+      "id": "shemoon",
+      "name": "She-Moon",
+      "description": "Freezes all enemies for 10 seconds when health reaches a critically low level.",
+      "emoji": ":question:",
+      "itemIds": [
+        "fandango"
       ]
     },
     {
@@ -354,6 +497,40 @@ window.vs = {
       "itemIds": [
         "phas3r"
       ]
+    },
+    {
+      "id": "rose",
+      "name": "Rose De Infernas",
+      "description": "Increases enemy spawn quantity by 100.",
+      "emoji": ":question:",
+      "itemIds": [
+        "vento_"
+      ]
+    },
+    {
+      "id": "scorej",
+      "name": "Scorej-Oni",
+      "emoji": ":charScorejOniVS:",
+      "itemIds": [
+        "lightning"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
+      "price": 5000
+    },
+    {
+      "id": "gyoruntin",
+      "name": "Gyoruntin",
+      "emoji": ":question:",
+      "itemIds": [
+        "runetracer_"
+      ],
+      "special": true,
+      "prefix": "",
+      "surname": "",
+      "description": "Starting weapon grows stronger when levelling up. Gains +1% Curse every level. Ignores Walls.",
     },
     {
       "id": "miang",
@@ -395,6 +572,32 @@ window.vs = {
       "price": 5000
     },
     {
+      "id": "onna",
+      "name": "Babi-Onna",
+      "emoji": ":charBabiOnnaVS:",
+      "itemIds": [
+        "mirage"
+      ],
+      "dlc1": true,
+      "surname": "",
+      "description": "Ignores weapons cooldown. Weapons fire at a fixed interval when moving.",
+      "onEveryLevelUp": {},
+      "price": 5000
+    },
+    {
+      "id": "mccoy",
+      "name": "McCoy-Oni",
+      "emoji": ":charMccoyVS:",
+      "itemIds": [
+        "bocce"
+      ],
+      "dlc1": true,
+      "surname": "",
+      "description": "Area temporarily increases at fixed intervals.",
+      "onEveryLevelUp": {},
+      "price": 5000,
+    },
+    {
       "id": "megamenya",
       "name": "Menya",
       "emoji": ":charMegaloMenyaVS:",
@@ -419,22 +622,6 @@ window.vs = {
       "prefix": "Megalo",
       "surname": "Moonspell",
       "description": "Gains +1% Might every level.",
-      "onEveryLevelUp": {
-        "power": 0.01
-      },
-      "price": 5000
-    },
-    {
-      "id": "onna",
-      "name": "Babi-Onna",
-      "emoji": ":charBabiOnnaVS:",
-      "itemIds": [
-        "mirage"
-      ],
-      "dlc1": true,
-      "surname": "",
-      "description": "Ignores weapons cooldown. Weapons fire at a fixed interval when moving.",
-      "onEveryLevelUp": {},
       "price": 5000
     },
     {
@@ -447,26 +634,7 @@ window.vs = {
       "dlc1": true,
       "surname": "",
       "description": "Gets more projectiles every 20 levels (max+4).",
-      "onEveryLevelUp": {},
       "price": 500
-    },
-    {
-      "id": "mccoy",
-      "name": "McCoy-Oni",
-      "emoji": ":charMccoyVS:",
-      "itemIds": [
-        "bocce"
-      ],
-      "dlc1": true,
-      "surname": "",
-      "description": "Area temporarily increases at fixed intervals.",
-      "onEveryLevelUp": {},
-      "price": 5000,
-      "sineArea": {
-        "min": 1,
-        "max": 2.5,
-        "duration": 1000
-      }
     },
     {
       "id": "eleanor",
@@ -524,10 +692,6 @@ window.vs = {
       "prefix": "",
       "surname": "",
       "description": "It will literally eat the world.",
-      "onEveryLevelUp": {
-        "power": 0.01,
-        "curse": 0.005
-      },
       "price": 50000
     },
     {
@@ -591,30 +755,6 @@ window.vs = {
       "price": 500
     },
     {
-      "id": "guardian",
-      "name": "Guardian",
-      "emoji": ":question:",
-      "itemIds": [
-        "debris"
-      ],
-      "dlc3": true,
-      "surname": "Pina",
-      "description": "May gain +1 Revival when anyone revives. Increases Armor and Recovery of nearby characters. Ignores walls.",
-      "price": 500
-    },
-    {
-      "id": "scientist",
-      "name": "Scientist",
-      "emoji": ":question:",
-      "itemIds": [
-        "rocks"
-      ],
-      "dlc3": true,
-      "surname": "Mina",
-      "description": "Gets -10% Luck every 10 levels (max -90%). Can choose a per-level bonus every 10 levels (max 5 times).",
-      "price": 500
-    },
-    {
       "id": "shapeshifter",
       "name": "Shapeshifter",
       "emoji": ":question:",
@@ -624,6 +764,18 @@ window.vs = {
       "dlc3": true,
       "surname": "Nino",
       "description": "Leaves behind excess body parts when damaged and may shift forms.",
+      "price": 500
+    },
+    {
+      "id": "guardian",
+      "name": "Guardian",
+      "emoji": ":question:",
+      "itemIds": [
+        "debris"
+      ],
+      "dlc3": true,
+      "surname": "Pina",
+      "description": "May gain +1 Revival when anyone revives. Increases Armor and Recovery of nearby characters. Ignores walls.",
       "price": 500
     },
     {
@@ -639,17 +791,16 @@ window.vs = {
       "price": 500
     },
     {
-      "id": "megaimpostor",
-      "name": "Impostor",
+      "id": "scientist",
+      "name": "Scientist",
       "emoji": ":question:",
       "itemIds": [
-        "tongue"
+        "rocks"
       ],
       "dlc3": true,
-      "prefix": "Megalo",
-      "surname": "Rina",
-      "description": "I'm not the Impostor.",
-      "price": 0
+      "surname": "Mina",
+      "description": "Gets -10% Luck every 10 levels (max -90%). Can choose a per-level bonus every 10 levels (max 5 times).",
+      "price": 500
     },
     {
       "id": "horse",
@@ -664,267 +815,42 @@ window.vs = {
       "price": 500
     },
     {
-      "id": "exdash",
-      "name": "Exdash",
-      "emoji": ":charExdashVS:",
-      "itemIds": [
-        "bird2"
-      ],
-      "special": true,
-      "surname": "Exiviiq",
-      "description": "At least they`re lucky.",
-      "price": 777
-    },
-    {
-      "id": "toastie",
-      "name": "Toastie",
-      "emoji": ":charToastieVS:",
-      "itemIds": [
-        "bird1"
-      ],
-      "special": true,
-      "surname": "",
-      "description": "So much potential.",
-      "price": 777
-    },
-    {
-      "id": "smith",
-      "name": "Smith",
-      "emoji": ":charSmithVS:",
-      "itemIds": [
-        "bird_"
-      ],
-      "special": true
-    },
-    {
-      "id": "leda",
-      "name": "Leda",
-      "emoji": ":charLedaVS:",
-      "itemIds": [
-        "magicwand_"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "",
-      "description": "",
-      "price": 666
-    },
-    {
-      "id": "reaper",
-      "name": "Red Death",
-      "emoji": ":charReddeathVS:",
-      "itemIds": [
-        "axe_"
-      ],
-      "special": true,
-      "prefix": "Mask of the",
-      "surname": "",
-      "description": "A blasphemous mockery.",
-      "price": 666
-    },
-    {
-      "id": "marrabbio",
-      "name": "Marrabbio",
-      "emoji": ":charBoonMarrabbioVS:",
-      "itemIds": [
-        "knife_"
-      ],
-      "special": true,
-      "prefix": "Boon",
-      "surname": "",
-      "description": "",
-      "price": 666
-    },
-    {
-      "id": "minnah",
-      "name": "Minnah",
-      "emoji": ":charMinnahVS:",
-      "itemIds": [
-        "whip_"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "Mannarah",
-      "description": "Might, projectile Speed, Duration, Area, and Cooldown change every minute.",
-      "price": 666,
-      "sineMight": {
-        "min": 2,
-        "max": 0.5,
-        "duration": 60000
-      },
-      "sineSpeed": {
-        "min": 2,
-        "max": 0.5,
-        "duration": 60000
-      },
-      "sineDuration": {
-        "min": 0.5,
-        "max": 2,
-        "duration": 60000
-      },
-      "sineArea": {
-        "min": 0.5,
-        "max": 2,
-        "duration": 60000
-      },
-      "sineCooldown": {
-        "min": 0.5,
-        "max": 2,
-        "duration": 60000
-      }
-    },
-    {
-      "id": "peppino",
-      "name": "Peppino",
-      "emoji": ":charPeppinoVS:",
-      "itemIds": [
-        "garlic_"
-      ],
-      "special": true,
-      "surname": "",
-      "description": "Starts with temporarily reduced area.",
-      "price": 666
-    },
-    {
-      "id": "gains",
-      "name": "Gains",
-      "emoji": ":charGainsBorosVS:",
-      "itemIds": [
-        "cross_"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "Boros",
-      "description": "Gains +2% Growth every level.",
-      "onEveryLevelUp": {
-        "growth": 0.02
-      },
-      "price": 666
-    },
-    {
-      "id": "gyorunton",
-      "name": "Gyorunton",
-      "emoji": ":charGyoruntonVS:",
-      "itemIds": [
-        "bracelet"
-      ],
-      "special": true,
-      "surname": "",
-      "description": "Gains +1% Curse every level. Can find evolutions in any Treasure.",
-      "onEveryLevelUp": {
-        "curse": 0.01
-      },
-      "price": 5000
-    },
-    {
-      "id": "cosmo",
-      "name": "Cosmo",
-      "emoji": ":animCosmoPavoneVS:",
-      "itemIds": [
-        "bird1",
-        "bird2"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "Pavone",
-      "description": "Gains +1 Recovery and +1% Luck every level. Gains +1 Revival every 100 levels. Has hidden weapons.",
-      "onEveryLevelUp": {
-        "regen": 1,
-        "luck": 0.01,
-        "revivals": 0.01
-      },
-      "price": 666
-    },
-    {
-      "id": "trouser",
-      "name": "Trouser",
-      "emoji": ":BigTrouserVS:",
-      "itemIds": [
-        "candybox"
-      ],
-      "special": true,
-      "prefix": "Big",
-      "surname": "",
-      "description": "Gains +1% Greed every level. Gold Fever lasts longer.",
-      "onEveryLevelUp": {
-        "greed": 0.01
-      },
-      "price": 5000
-    },
-    {
-      "id": "random",
-      "name": "Random",
-      "emoji": ":charRandomVS:",
-      "itemIds": [],
-      "special": true,
-      "prefix": "",
-      "surname": "",
-      "description": "Random.",
-      "price": 5000
-    },
-    {
-      "id": "avatar",
-      "name": "Avatar",
-      "emoji": ":charAvatarInfernasVS:",
-      "itemIds": [
-        "flame",
-        "arcana19"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "Infernas",
-      "description": "Starts with extra Arcana XIX - Heart Of Fire. Grows stronger with every level, but also loses control.",
-      "onEveryLevelUp": {
-        "curse": 0.005,
-        "power": 0.005,
-        "moveSpeed": 0.02,
-        "cooldown": -0.0025
-      },
-      "price": 666
-    },
-    {
-      "id": "scorej",
-      "name": "Scorej-Oni",
-      "emoji": ":charScorejOniVS:",
-      "itemIds": [
-        "lightning"
-      ],
-      "special": true,
-      "prefix": "",
-      "surname": "",
-      "description": "Gains a hidden Lightning Ring every 8 levels (max 6) that also fires when losing health.",
-      "price": 5000
-    },
-    {
-      "id": "gyoruntin",
-      "name": "Gyoruntin",
+      "id": "megaimpostor",
+      "name": "Impostor",
       "emoji": ":question:",
       "itemIds": [
-        "runetracer_"
+        "tongue"
       ],
-      "special": true,
-      "prefix": "",
-      "surname": "",
-      "description": "Starting weapon grows stronger when levelling up. Gains +1% Curse every level. Ignores Walls.",
+      "dlc3": true,
+      "prefix": "Megalo",
+      "surname": "Rina",
+      "description": "I'm not the Impostor.",
+      "price": 0
     }
   ],
   "weapons": [
+    {
+      "id": "whip",
+      "name": "Whip",
+      "emoji": ":whipVS:",
+      "description": "Attacks horizontally, passes through enemies.",
+      "rarity": 100,
+      "tips": "Ignores: speed, duration."
+    },
     {
       "id": "magicwand",
       "name": "Magic Wand",
       "emoji": ":magicwandVS:",
       "description": "Fires at the nearest enemy.",
-      "poolLimit": 60,
       "rarity": 100,
       "tips": "Ignores: duration."
     },
     {
-      "id": "firewand",
-      "name": "Fire Wand",
-      "emoji": ":firewandVS:",
-      "description": "Fires at a random enemy, deals heavy damage.",
-      "poolLimit": 30,
-      "rarity": 80,
+      "id": "knife",
+      "name": "Knife",
+      "emoji": ":knifeVS:",
+      "description": "Fires quickly in the faced direction.",
+      "rarity": 100,
       "tips": "Ignores: duration."
     },
     {
@@ -932,33 +858,15 @@ window.vs = {
       "name": "Axe",
       "emoji": ":axeVS:",
       "description": "High damage, high Area scaling.",
-      "poolLimit": 70,
-      "critChance": 0.3,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 100,
       "tips": "Ignores: duration."
     },
     {
-      "id": "lightning",
-      "name": "Lightning Ring",
-      "emoji": ":lightningringVS:",
-      "description": "Strikes at random enemies.",
-      "poolLimit": 50,
-      "hitsWalls": false,
+      "id": "cross",
+      "name": "Cross",
+      "emoji": ":crossVS:",
+      "description": "Aims at nearest enemy, has boomerang effect.",
       "rarity": 80,
-      "tips": "Ignores: speed, duration."
-    },
-    {
-      "id": "knife",
-      "name": "Knife",
-      "emoji": ":knifeVS:",
-      "description": "Fires quickly in the faced direction.",
-      "poolLimit": 70,
-      "critChance": 0.3,
-      "critMul": 3,
-      "knockback": 0.5,
-      "rarity": 100,
       "tips": "Ignores: duration."
     },
     {
@@ -966,18 +874,14 @@ window.vs = {
       "name": "King Bible",
       "emoji": ":kingbibleVS:",
       "description": "Orbits around the character.",
-      "poolLimit": 50,
-      "hitsWalls": false,
       "rarity": 80,
       "tips": "Best with: speed, duration, area."
     },
     {
-      "id": "cross",
-      "name": "Cross",
-      "emoji": ":crossVS:",
-      "description": "Aims at nearest enemy, has boomerang effect.",
-      "poolLimit": 30,
-      "hitsWalls": false,
+      "id": "firewand",
+      "name": "Fire Wand",
+      "emoji": ":firewandVS:",
+      "description": "Fires at a random enemy, deals heavy damage.",
       "rarity": 80,
       "tips": "Ignores: duration."
     },
@@ -986,87 +890,46 @@ window.vs = {
       "name": "Garlic",
       "emoji": ":garlicVS:",
       "description": "Damages nearby enemies. Reduces resistance to knockback and freeze.",
-      "poolLimit": 50,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 70,
       "tips": "Ignores: amount, duration, speed."
-    },
-    {
-      "id": "pentagram",
-      "name": "Pentagram",
-      "emoji": ":pentagramVS:",
-      "description": "Erases everything in sight.",
-      "poolLimit": 10,
-      "hitsWalls": false,
-      "knockback": -2,
-      "rarity": 60,
-      "tips": "Best with: cooldown and luck only."
-    },
-    {
-      "id": "runetracer",
-      "name": "Runetracer",
-      "emoji": ":runetracerVS:",
-      "description": "Passes through enemies, bounces around.",
-      "poolLimit": 25,
-      "rarity": 80,
-      "tips": "Best with: speed, duration."
     },
     {
       "id": "water",
       "name": "Santa Water",
       "emoji": ":santawaterVS:",
       "description": "Generates damaging zones.",
-      "poolLimit": 20,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 100,
       "tips": "Ignores: speed."
     },
     {
-      "id": "whip",
-      "name": "Whip",
-      "emoji": ":whipVS:",
-      "description": "Attacks horizontally, passes through enemies.",
-      "poolLimit": 30,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
-      "rarity": 100,
+      "id": "runetracer",
+      "name": "Runetracer",
+      "emoji": ":runetracerVS:",
+      "description": "Passes through enemies, bounces around.",
+      "rarity": 80,
+      "tips": "Best with: speed, duration."
+    },
+    {
+      "id": "lightning",
+      "name": "Lightning Ring",
+      "emoji": ":lightningringVS:",
+      "description": "Strikes at random enemies.",
+      "rarity": 80,
       "tips": "Ignores: speed, duration."
     },
     {
-      "id": "guns1",
-      "name": "Phiera Der Tuphello",
-      "emoji": ":phieraVS:",
-      "description": "Fires quickly in four fixed directions.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "knockback": 0.1,
-      "rarity": 50,
-      "tips": "Ignores: duration."
-    },
-    {
-      "id": "guns2",
-      "name": "Eight The Sparrow",
-      "emoji": ":sparrowVS:",
-      "description": "Fires quickly in four fixed directions.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "knockback": 0.1,
-      "rarity": 50,
-      "tips": "Ignores: duration."
+      "id": "pentagram",
+      "name": "Pentagram",
+      "emoji": ":pentagramVS:",
+      "description": "Erases everything in sight.",
+      "rarity": 60,
+      "tips": "Best with: cooldown and luck only."
     },
     {
       "id": "bird1",
       "name": "Peachone",
       "emoji": ":peachoneVS:",
       "description": "Bombards in a circling zone.",
-      "poolLimit": 60,
-      "hitsWalls": false,
-      "knockback": 2,
       "rarity": 50,
       "tips": "Best with: cooldown, duration."
     },
@@ -1075,64 +938,54 @@ window.vs = {
       "name": "Ebony Wings",
       "emoji": ":ebonywingsVS:",
       "description": "Bombards in a circling zone.",
-      "poolLimit": 60,
-      "hitsWalls": false,
-      "knockback": 2,
       "rarity": 50,
       "tips": "Best with: cooldown, duration."
     },
     {
-      "id": "mana",
-      "name": "Song Of Mana",
-      "emoji": ":manaVS:",
-      "description": "Attacks vertically, passes through enemies.",
-      "poolLimit": 30,
-      "hitsWalls": false,
+      "id": "guns1",
+      "name": "Phiera Der Tuphello",
+      "emoji": ":phieraVS:",
+      "description": "Fires quickly in four fixed directions.",
       "rarity": 50,
-      "tips": "Ignores: amount, speed."
+      "tips": "Ignores: duration."
+    },
+    {
+      "id": "guns2",
+      "name": "Eight The Sparrow",
+      "emoji": ":sparrowVS:",
+      "description": "Fires quickly in four fixed directions.",
+      "rarity": 50,
+      "tips": "Ignores: duration."
     },
     {
       "id": "cat",
       "name": "Gatti Amari",
       "emoji": ":catVS:",
       "description": "Summons capricious projectiles. Might interact with pickups.",
-      "poolLimit": 30,
-      "hitsWalls": true,
-      "knockback": 0.1,
       "rarity": 50,
       "tips": "Best with: luck, floor chicken."
+    },
+    {
+      "id": "mana",
+      "name": "Song Of Mana",
+      "emoji": ":manaVS:",
+      "description": "Attacks vertically, passes through enemies.",
+      "rarity": 50,
+      "tips": "Ignores: amount, speed."
     },
     {
       "id": "pinion",
       "name": "Shadow Pinion",
       "emoji": ":shadowpinionVS:",
       "description": "Generates damaging zones when moving, strikes when stopping.",
-      "poolLimit": 100,
-      "hitsWalls": false,
       "rarity": 50,
       "tips": "Best with: moveSpeed."
-    },
-    {
-      "id": "vento",
-      "name": "Vento Sacro",
-      "emoji": ":ventosacroVS:",
-      "description": "Stronger with continuous movement. Can deal critical damage.",
-      "poolLimit": 120,
-      "critChance": 0.05,
-      "critMul": 2,
-      "hitsWalls": false,
-      "knockback": 0.1,
-      "rarity": 50,
-      "tips": "Best with: Luck, MoveSpeed."
     },
     {
       "id": "lancet",
       "name": "Clock Lancet",
       "emoji": ":lancetVS:",
       "description": "Chance to freeze enemies in time.",
-      "poolLimit": 10,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 70,
       "tips": "Ignores: power, speed, amount, area."
     },
@@ -1141,74 +994,16 @@ window.vs = {
       "name": "Laurel",
       "emoji": ":laurelVS:",
       "description": "Shields from damage when active.",
-      "poolLimit": 5,
-      "hitsWalls": false,
       "rarity": 60,
       "tips": "Best with: cooldown only."
     },
     {
-      "id": "sword",
-      "name": "Victory Sword",
-      "emoji": ":victoryswordVS:",
-      "description": "Strikes with a combo attack at the nearest enemy. Retaliates.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
-      "rarity": 30,
-      "tips": "Ignores: speed, duration."
-    },
-    {
-      "id": "flame",
-      "name": "Flames of Misspell",
-      "emoji": ":flamesofmisspellVS:",
-      "description": "Emits cones of flames.",
-      "poolLimit": 100,
-      "rarity": 30,
-      "tips": ""
-    },
-    {
-      "id": "jubilee",
-      "name": "Greatest Jubilee",
-      "emoji": ":greatestjubileeVS:",
-      "description": "Has a chance to summon light sources.",
-      "poolLimit": 100,
-      "critChance": 0.05,
-      "critMul": 2,
-      "hitsWalls": false,
-      "knockback": 0.1,
-      "rarity": 20,
-      "tips": "Best with: Luck."
-    },
-    {
-      "id": "bracelet",
-      "name": "Bracelet",
-      "emoji": ":braceletVS:",
-      "description": "Fires three projectiles at a random enemy.",
-      "poolLimit": 80,
-      "hitsWalls": false,
-      "rarity": 40,
-      "tips": ""
-    },
-    {
-      "id": "fandango",
-      "name": "Glass Fandango",
-      "emoji": ":glassfandangoVS:"
-    },
-    {
-      "id": "pako",
-      "name": "Pako Battiliar",
-      "emoji": ":question:"
-    },
-    {
-      "id": "phas3r",
-      "name": "Phas3r",
-      "emoji": ":question:"
-    },
-    {
-      "id": "javelin",
-      "name": "Santa Javelin",
-      "emoji": ":question:",
+      "id": "vento",
+      "name": "Vento Sacro",
+      "emoji": ":ventosacroVS:",
+      "description": "Stronger with continuous movement. Can deal critical damage.",
+      "rarity": 50,
+      "tips": "Best with: Luck, MoveSpeed."
     },
     {
       "id": "bone",
@@ -1216,7 +1011,6 @@ window.vs = {
       "emoji": ":boneVS:",
       "special": true,
       "description": "Throws a bouncing projectile.",
-      "poolLimit": 50,
       "rarity": 1,
       "tips": "Best with: duration, speed."
     },
@@ -1226,7 +1020,6 @@ window.vs = {
       "emoji": ":cherrybombVS:",
       "special": true,
       "description": "Throws a bouncing projectile. Explodes, sometimes.",
-      "poolLimit": 50,
       "rarity": 1,
       "tips": "Best with: luck."
     },
@@ -1236,8 +1029,6 @@ window.vs = {
       "emoji": ":carrelloVS:",
       "special": true,
       "description": "Throws a bouncing projectile. Number of bounces affected by Amount.",
-      "poolLimit": 50,
-      "hitsWalls": true,
       "rarity": 1,
       "tips": "Ignores: duration."
     },
@@ -1247,8 +1038,6 @@ window.vs = {
       "emoji": ":celestialdustingVS:",
       "special": true,
       "description": "Throws a bouncing projectile. Cooldown reduces when moving.",
-      "poolLimit": 100,
-      "knockback": 0.1,
       "rarity": 1,
       "tips": "Best with: moveSpeed."
     },
@@ -1258,11 +1047,60 @@ window.vs = {
       "emoji": ":larobbaVS:",
       "special": true,
       "description": "Generates bouncing projectiles.",
-      "poolLimit": 50,
-      "hitsWalls": false,
-      "knockback": 0.1,
       "rarity": 1,
       "tips": "Best with: duration, speed."
+    },
+    {
+      "id": "jubilee",
+      "name": "Greatest Jubilee",
+      "emoji": ":greatestjubileeVS:",
+      "description": "Has a chance to summon light sources.",
+      "rarity": 20,
+      "tips": "Best with: Luck."
+    },
+    {
+      "id": "bracelet",
+      "name": "Bracelet",
+      "emoji": ":braceletVS:",
+      "description": "Fires three projectiles at a random enemy.",
+      "rarity": 40,
+      "tips": ""
+    },
+    {
+      "id": "pako",
+      "name": "Pako Battiliar",
+      "emoji": ":question:"
+    },
+    {
+      "id": "sword",
+      "name": "Victory Sword",
+      "emoji": ":victoryswordVS:",
+      "description": "Strikes with a combo attack at the nearest enemy. Retaliates.",
+      "rarity": 30,
+      "tips": "Ignores: speed, duration."
+    },
+    {
+      "id": "flame",
+      "name": "Flames of Misspell",
+      "emoji": ":flamesofmisspellVS:",
+      "description": "Emits cones of flames.",
+      "rarity": 30,
+      "tips": ""
+    },
+    {
+      "id": "fandango",
+      "name": "Glass Fandango",
+      "emoji": ":glassfandangoVS:"
+    },
+    {
+      "id": "javelin",
+      "name": "Santa Javelin",
+      "emoji": ":question:",
+    },
+    {
+      "id": "phas3r",
+      "name": "Phas3r",
+      "emoji": ":question:"
     },
     {
       "id": "wind",
@@ -1270,10 +1108,6 @@ window.vs = {
       "emoji": ":SilverWindVS:",
       "dlc1": true,
       "description": "Defeated enemies might drop hearts.",
-      "poolLimit": 100,
-      "critChance": 0,
-      "critMul": 1,
-      "hitsWalls": false,
       "rarity": 50,
       "tips": ""
     },
@@ -1283,10 +1117,6 @@ window.vs = {
       "emoji": ":FourSeasonsVS:",
       "dlc1": true,
       "description": "Generates 4 explosions. Amount and Duration affect damage instead.",
-      "poolLimit": 30,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 50,
       "tips": "Ignores: speed."
     },
@@ -1296,10 +1126,6 @@ window.vs = {
       "emoji": ":SummonNightVS:",
       "dlc1": true,
       "description": "Generates damaging zones above the character.",
-      "poolLimit": 60,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 50,
       "tips": "Ignores: speed."
     },
@@ -1309,10 +1135,6 @@ window.vs = {
       "emoji": ":MirageRobeVS:",
       "dlc1": true,
       "description": "Generates freezing mines with a chance to explode.",
-      "poolLimit": 50,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 50,
       "tips": "Ignores: speed."
     },
@@ -1322,10 +1144,6 @@ window.vs = {
       "emoji": ":NightSwordVS:",
       "dlc1": true,
       "description": "Strikes with a combo attack at the nearest enemy. Retaliates. Might steals hearts.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 30,
       "tips": "Ignores: speed, duration."
     },
@@ -1335,8 +1153,6 @@ window.vs = {
       "emoji": ":MilleBolleBluVS:",
       "dlc1": true,
       "description": "Fires lingering projectiles.",
-      "poolLimit": 140,
-      "knockback": 0.1,
       "rarity": 1,
       "tips": ""
     },
@@ -1346,9 +1162,6 @@ window.vs = {
       "emoji": ":108BocceVS:",
       "dlc1": true,
       "description": "Actually it's just 8. Damages nearby enemies.",
-      "poolLimit": 50,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 10,
       "tips": "Ignores: amount, duration, speed."
     },
@@ -1358,10 +1171,6 @@ window.vs = {
       "emoji": ":SpellStringVS:",
       "dlc2": true,
       "description": "Strikes at nearby enemies. Damage multiplied by Speed.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 70,
       "tips": "Ignores: Area, Duration."
     },
@@ -1371,10 +1180,6 @@ window.vs = {
       "emoji": ":SpellStreamVS:",
       "dlc2": true,
       "description": "Generates an expanding damaging zone. Damage multiplied by Area.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 70,
       "tips": "Ignores: Amount."
     },
@@ -1384,10 +1189,6 @@ window.vs = {
       "emoji": ":SpellStrikeVS:",
       "dlc2": true,
       "description": "Strikes at the nearest enemy. Damage further multiplied by Might.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 70,
       "tips": "Ignores: Area, Duration."
     },
@@ -1397,10 +1198,6 @@ window.vs = {
       "emoji": ":EskizziburVS:",
       "dlc2": true,
       "description": "Attacks nearby enemies. Retaliates.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 70,
       "tips": "Ignores: Speed, Duration."
     },
@@ -1410,10 +1207,6 @@ window.vs = {
       "emoji": ":FlashArrowVS:",
       "dlc2": true,
       "description": "Can deal critical damage. Amount affects damage instead.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": true,
       "rarity": 70,
       "tips": "Ignores: Duration."
     },
@@ -1423,9 +1216,6 @@ window.vs = {
       "emoji": ":PrismaticMissileVS:",
       "dlc2": true,
       "description": "Generates explosions around the character. Affected by the first chosen Arcana between II, XIV, or XIX.",
-      "poolLimit": 100,
-      "hitsWalls": false,
-      "knockback": 1,
       "rarity": 70,
       "tips": "Ignores: duration."
     },
@@ -1435,7 +1225,6 @@ window.vs = {
       "emoji": ":ShadowServantVS:",
       "dlc2": true,
       "description": "Has a chance to slow enemies down.",
-      "poolLimit": 100,
       "rarity": 70,
       "tips": "Best with: Luck."
     },
@@ -1445,34 +1234,12 @@ window.vs = {
       "emoji": ":PartyPopperVS:",
       "dlc2": true,
       "description": "Throws bouncing projectiles.",
-      "poolLimit": 80,
       "rarity": 1,
       "tips": "Best with: Duration, Speed."
     },
     {
-      "id": "scan",
-      "name": "Lifesign Scan",
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
-    },
-    {
-      "id": "debris",
-      "name": "Clear Debris",
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
-    },
-    {
       "id": "report",
       "name": "Report!",
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
-    },
-    {
-      "id": "rocks",
-      "name": "Science Rocks",
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
@@ -1485,8 +1252,8 @@ window.vs = {
       "description": ""
     },
     {
-      "id": "tongue",
-      "name": "Sharp Tongue",
+      "id": "scan",
+      "name": "Lifesign Scan",
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
@@ -1494,6 +1261,27 @@ window.vs = {
     {
       "id": "vent",
       "name": "Just Vent",
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
+    },
+    {
+      "id": "debris",
+      "name": "Clear Debris",
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
+    },
+    {
+      "id": "tongue",
+      "name": "Sharp Tongue",
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
+    },
+    {
+      "id": "rocks",
+      "name": "Science Rocks",
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
@@ -1508,6 +1296,18 @@ window.vs = {
   ],
   "evolutions": [
     {
+      "id": "whip_",
+      "name": "Bloody Tear",
+      "emoji": ":bloodytearVS:",
+      "itemIds": [
+        "whip",
+        "health"
+      ],
+      "description": "Evolved Whip. Can deal critical damage and absorb HP.",
+      "rarity": 1,
+      "tips": "Requires: Hollow Heart"
+    },
+    {
       "id": "magicwand_",
       "name": "Holy Wand",
       "emoji": ":holywandVS:",
@@ -1516,53 +1316,8 @@ window.vs = {
         "cooldown"
       ],
       "description": "Evolved Magic Wand. Fires with no delay.",
-      "poolLimit": 60,
       "rarity": 1,
       "tips": "Requires: Empty Tome."
-    },
-    {
-      "id": "firewand_",
-      "name": "Hellfire",
-      "emoji": ":hellfireVS:",
-      "itemIds": [
-        "firewand",
-        "might"
-      ],
-      "description": "Evolved Fire Wand. Passes through enemies.",
-      "poolLimit": 20,
-      "hitsWalls": false,
-      "rarity": 1,
-      "tips": "Requires: Spinach."
-    },
-    {
-      "id": "axe_",
-      "name": "Death Spiral",
-      "emoji": ":deathspiralVS:",
-      "itemIds": [
-        "axe",
-        "area"
-      ],
-      "description": "Evolved Axe. Passes through enemies.",
-      "poolLimit": 50,
-      "critChance": 0.3,
-      "critMul": 2,
-      "hitsWalls": false,
-      "rarity": 1,
-      "tips": "Requires: Candelabrador."
-    },
-    {
-      "id": "lightning_",
-      "name": "Thunder Loop",
-      "emoji": ":thunderloopVS:",
-      "itemIds": [
-        "lightning",
-        "amount"
-      ],
-      "description": "Evolved Lightning Ring. Projectiles strike twice.",
-      "poolLimit": 70,
-      "hitsWalls": false,
-      "rarity": 1,
-      "tips": "Requires: Duplicator."
     },
     {
       "id": "knife_",
@@ -1573,27 +1328,20 @@ window.vs = {
         "speed"
       ],
       "description": "Evolved Knife. Fires with no delay.",
-      "poolLimit": 70,
-      "critChance": 0.3,
-      "critMul": 3,
-      "knockback": 0.5,
       "rarity": 1,
       "tips": "Requires: Bracer."
     },
     {
-      "id": "bible_",
-      "name": "Unholy Vespers",
-      "emoji": ":unholyvespersVS:",
+      "id": "axe_",
+      "name": "Death Spiral",
+      "emoji": ":deathspiralVS:",
       "itemIds": [
-        "bible",
-        "duration"
+        "axe",
+        "area"
       ],
-      "description": "Evolved King Bible. Never ends.",
-      "poolLimit": 50,
-      "hitsWalls": false,
-      "knockback": 4,
+      "description": "Evolved Axe. Passes through enemies.",
       "rarity": 1,
-      "tips": "Requires: Spellbinder."
+      "tips": "Requires: Candelabrador."
     },
     {
       "id": "cross_",
@@ -1604,13 +1352,32 @@ window.vs = {
         "luck"
       ],
       "description": "Evolved Cross. Can deal critical damage.",
-      "poolLimit": 20,
-      "critChance": 0.1,
-      "critMul": 2.5,
-      "hitsWalls": false,
-      "knockback": 6,
       "rarity": 1,
       "tips": "Requires: Clover."
+    },
+    {
+      "id": "bible_",
+      "name": "Unholy Vespers",
+      "emoji": ":unholyvespersVS:",
+      "itemIds": [
+        "bible",
+        "duration"
+      ],
+      "description": "Evolved King Bible. Never ends.",
+      "rarity": 1,
+      "tips": "Requires: Spellbinder."
+    },
+    {
+      "id": "firewand_",
+      "name": "Hellfire",
+      "emoji": ":hellfireVS:",
+      "itemIds": [
+        "firewand",
+        "might"
+      ],
+      "description": "Evolved Fire Wand. Passes through enemies.",
+      "rarity": 1,
+      "tips": "Requires: Spinach."
     },
     {
       "id": "garlic_",
@@ -1621,38 +1388,8 @@ window.vs = {
         "recovery"
       ],
       "description": "Evolved Garlic. Steals hearts. Power increases when recovering HP.",
-      "poolLimit": 50,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 1,
       "tips": "Requires: Pummarola."
-    },
-    {
-      "id": "pentagram_",
-      "name": "Gorgeous Moon",
-      "emoji": ":gorgeousmoonVS:",
-      "itemIds": [
-        "pentagram",
-        "growth"
-      ],
-      "description": "Evolved Pentagram. Generates extra gems and gathers all of them.",
-      "hitsWalls": false,
-      "knockback": 1,
-      "rarity": 1,
-      "tips": "Requires: Crown."
-    },
-    {
-      "id": "runetracer_",
-      "name": "NO FUTURE",
-      "emoji": ":NOFUTUREVS:",
-      "itemIds": [
-        "runetracer",
-        "armor"
-      ],
-      "description": "Evolved Runetracer. Explodes when bouncing and in retaliation.",
-      "poolLimit": 40,
-      "rarity": 1,
-      "tips": "Requires: Armor"
     },
     {
       "id": "water_",
@@ -1663,129 +1400,44 @@ window.vs = {
         "magnet"
       ],
       "description": "Evolved Santa Water. Damaging zones follow you and grow when they move.",
-      "poolLimit": 30,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 1,
       "tips": "Requires: Attractorb."
     },
     {
-      "id": "mana_",
-      "name": "Mannajja",
-      "emoji": ":mannajjaVS:",
+      "id": "runetracer_",
+      "name": "NO FUTURE",
+      "emoji": ":NOFUTUREVS:",
       "itemIds": [
-        "mana",
-        "curse"
+        "runetracer",
+        "armor"
       ],
-      "description": "Evolved Song of Mana. Might slow enemies down.",
-      "poolLimit": 30,
-      "hitsWalls": false,
+      "description": "Evolved Runetracer. Explodes when bouncing and in retaliation.",
       "rarity": 1,
-      "tips": "Requires: Skull O`Maniac"
+      "tips": "Requires: Armor"
     },
     {
-      "id": "whip_",
-      "name": "Bloody Tear",
-      "emoji": ":bloodytearVS:",
+      "id": "lightning_",
+      "name": "Thunder Loop",
+      "emoji": ":thunderloopVS:",
       "itemIds": [
-        "whip",
-        "health"
+        "lightning",
+        "amount"
       ],
-      "description": "Evolved Whip. Can deal critical damage and absorb HP.",
-      "poolLimit": 30,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
+      "description": "Evolved Lightning Ring. Projectiles strike twice.",
       "rarity": 1,
-      "tips": "Requires: Hollow Heart"
+      "tips": "Requires: Duplicator."
     },
     {
-      "id": "cat_",
-      "name": "Vicious Hunger",
-      "emoji": ":vicioushungerVS:",
+      "id": "pentagram_",
+      "name": "Gorgeous Moon",
+      "emoji": ":gorgeousmoonVS:",
       "itemIds": [
-        "cat",
-        "greed"
+        "pentagram",
+        "growth"
       ],
-      "description": "Evolved Gatti Amari. Might turn anything into gold.",
-      "poolLimit": 60,
-      "hitsWalls": true,
-      "knockback": 0.1,
+      "description": "Evolved Pentagram. Generates extra gems and gathers all of them.",
       "rarity": 1,
-      "tips": "Requires: Stone Mask."
-    },
-    {
-      "id": "pinion_",
-      "name": "Valkyrie Turner",
-      "emoji": ":valkyrieVS:",
-      "itemIds": [
-        "pinion",
-        "wings"
-      ],
-      "description": "Evolved Shadow Pinion. Bigger, longer, faster, stronger.",
-      "poolLimit": 100,
-      "hitsWalls": false,
-      "rarity": 1,
-      "tips": "Requires: Wings."
-    },
-    {
-      "id": "sword_",
-      "name": "Sole Solution",
-      "emoji": ":solesolutionVS:",
-      "itemIds": [
-        "sword",
-        "torrona"
-      ],
-      "description": "Gift of Victory Sword. The more enemies are defeated, the stronger it grows.",
-      "poolLimit": 100,
-      "hitsWalls": false,
-      "knockback": 0,
-      "rarity": 1,
-      "tips": "Requires Max: Torrona`s Box."
-    },
-    {
-      "id": "flame_",
-      "name": "Ashes of Muspell",
-      "emoji": ":ashesofmuspellVS:",
-      "itemIds": [
-        "flame",
-        "torrona"
-      ],
-      "description": "Evolved Flames of Misspell. The more enemies are defeated, the stronger it grows.",
-      "poolLimit": 200,
-      "rarity": 1,
-      "tips": "Requires Max: Torrona`s Box."
-    },
-    {
-      "id": "lancet_",
-      "name": "Infinite Corridor",
-      "emoji": ":infinitecorridorVS:",
-      "itemIds": [
-        "lancet",
-        "ring1",
-        "ring2"
-      ],
-      "description": "Evolved Clock Lancet. Halves enemies health.",
-      "poolLimit": 10,
-      "hitsWalls": false,
-      "knockback": 0,
-      "rarity": 1,
-      "tips": "Requires Max: Gold Ring, Silver Ring."
-    },
-    {
-      "id": "laurel_",
-      "name": "Crimson Shroud",
-      "emoji": ":cloakVS:",
-      "itemIds": [
-        "laurel",
-        "sign1",
-        "sign2"
-      ],
-      "description": "Evolved Laurel. Caps incoming damage at 10. Retaliates when losing charges.",
-      "poolLimit": 50,
-      "knockback": 20,
-      "rarity": 1,
-      "tips": "Requires Max: Metaglio Left, Metaglio Right."
+      "tips": "Requires: Crown."
     },
     {
       "id": "bird_",
@@ -1797,9 +1449,6 @@ window.vs = {
       ],
       "special": true,
       "description": "Union of Ebony Wings and Peachone.",
-      "poolLimit": 100,
-      "hitsWalls": false,
-      "knockback": 2,
       "rarity": 1,
       "tips": ""
     },
@@ -1814,13 +1463,70 @@ window.vs = {
       ],
       "special": true,
       "description": "Union of Phiera Der Tuphello and Eight The Sparrow. Scales with Revivals.",
-      "poolLimit": 200,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
-      "knockback": 0.05,
       "rarity": 1,
       "tips": "Requires: Tiragisú"
+    },
+    {
+      "id": "cat_",
+      "name": "Vicious Hunger",
+      "emoji": ":vicioushungerVS:",
+      "itemIds": [
+        "cat",
+        "greed"
+      ],
+      "description": "Evolved Gatti Amari. Might turn anything into gold.",
+      "rarity": 1,
+      "tips": "Requires: Stone Mask."
+    },
+    {
+      "id": "mana_",
+      "name": "Mannajja",
+      "emoji": ":mannajjaVS:",
+      "itemIds": [
+        "mana",
+        "curse"
+      ],
+      "description": "Evolved Song of Mana. Might slow enemies down.",
+      "rarity": 1,
+      "tips": "Requires: Skull O`Maniac"
+    },
+    {
+      "id": "pinion_",
+      "name": "Valkyrie Turner",
+      "emoji": ":valkyrieVS:",
+      "itemIds": [
+        "pinion",
+        "wings"
+      ],
+      "description": "Evolved Shadow Pinion. Bigger, longer, faster, stronger.",
+      "rarity": 1,
+      "tips": "Requires: Wings."
+    },
+    {
+      "id": "lancet_",
+      "name": "Infinite Corridor",
+      "emoji": ":infinitecorridorVS:",
+      "itemIds": [
+        "lancet",
+        "ring1",
+        "ring2"
+      ],
+      "description": "Evolved Clock Lancet. Halves enemies health.",
+      "rarity": 1,
+      "tips": "Requires Max: Gold Ring, Silver Ring."
+    },
+    {
+      "id": "laurel_",
+      "name": "Crimson Shroud",
+      "emoji": ":cloakVS:",
+      "itemIds": [
+        "laurel",
+        "sign1",
+        "sign2"
+      ],
+      "description": "Evolved Laurel. Caps incoming damage at 10. Retaliates when losing charges.",
+      "rarity": 1,
+      "tips": "Requires Max: Metaglio Left, Metaglio Right."
     },
     {
       "id": "vento_",
@@ -1832,11 +1538,6 @@ window.vs = {
       ],
       "special": true,
       "description": "Union of Vento Sacro and Bloody Tear. Critical hits might generate explosions.",
-      "poolLimit": 120,
-      "critChance": 0.05,
-      "critMul": 2,
-      "hitsWalls": false,
-      "knockback": 0.2,
       "rarity": 1,
       "tips": ""
     },
@@ -1849,8 +1550,6 @@ window.vs = {
       ],
       "special": true,
       "description": "Fires three projectiles at a random enemy.",
-      "poolLimit": 80,
-      "hitsWalls": false,
       "rarity": 20,
       "tips": ""
     },
@@ -1863,19 +1562,8 @@ window.vs = {
       ],
       "special": true,
       "description": "Fires three projectiles at a random enemy.",
-      "poolLimit": 80,
-      "hitsWalls": false,
       "rarity": 20,
       "tips": ""
-    },
-    {
-      "id": "fandango_",
-      "name": "Celestial Voulge",
-      "emoji": ":celestialvoulgeVS:",
-      "itemIds": [
-        "fandango",
-        "wings"
-      ]
     },
     {
       "id": "pako_",
@@ -1884,6 +1572,39 @@ window.vs = {
       "itemIds": [
         "pako",
         "health"
+      ]
+    },
+    {
+      "id": "sword_",
+      "name": "Sole Solution",
+      "emoji": ":solesolutionVS:",
+      "itemIds": [
+        "sword",
+        "torrona"
+      ],
+      "description": "Gift of Victory Sword. The more enemies are defeated, the stronger it grows.",
+      "rarity": 1,
+      "tips": "Requires Max: Torrona`s Box."
+    },
+    {
+      "id": "flame_",
+      "name": "Ashes of Muspell",
+      "emoji": ":ashesofmuspellVS:",
+      "itemIds": [
+        "flame",
+        "torrona"
+      ],
+      "description": "Evolved Flames of Misspell. The more enemies are defeated, the stronger it grows.",
+      "rarity": 1,
+      "tips": "Requires Max: Torrona`s Box."
+    },
+    {
+      "id": "fandango_",
+      "name": "Celestial Voulge",
+      "emoji": ":celestialvoulgeVS:",
+      "itemIds": [
+        "fandango",
+        "wings"
       ]
     },
     {
@@ -1914,29 +1635,8 @@ window.vs = {
       "emoji": ":FestiveWindsVS:",
       "dlc1": true,
       "description": "Evolved Silver Wind. Weakens enemies defenses.",
-      "poolLimit": 100,
-      "critChance": 0,
-      "critMul": 1,
-      "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires Max: Pummarola."
-    },
-    {
-      "id": "muramasa_",
-      "name": "Muramasa",
-      "itemIds": [
-        "muramasa",
-        "greed"
-      ],
-      "emoji": ":MuraMasaVS:",
-      "dlc1": true,
-      "description": "Evolved Night Sword. Enables critical hits and combo finisher. Drains Health.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
-      "rarity": 1,
-      "tips": "Requires Max: Stone Mask."
     },
     {
       "id": "seasons_",
@@ -1948,10 +1648,6 @@ window.vs = {
       "emoji": ":GodaiShuffleVS:",
       "dlc1": true,
       "description": "Evolved Four Seasons. Generates an additional explosion.",
-      "poolLimit": 30,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires Max: Spinach, Candelabrador."
     },
@@ -1965,10 +1661,6 @@ window.vs = {
       "emoji": ":EchoNightVS:",
       "dlc1": true,
       "description": "Evolved Summon Night. Generates damaging zones below the character.",
-      "poolLimit": 60,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 100,
       "tips": "Requires Max: Duplicator."
     },
@@ -1982,12 +1674,21 @@ window.vs = {
       "emoji": ":JOdoreVS:",
       "dlc1": true,
       "description": "Evolved Mirage Robe. Projectiles move and confuse enemies.",
-      "poolLimit": 100,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires Max: Magnet."
+    },
+    {
+      "id": "muramasa_",
+      "name": "Muramasa",
+      "itemIds": [
+        "muramasa",
+        "greed"
+      ],
+      "emoji": ":MuraMasaVS:",
+      "dlc1": true,
+      "description": "Evolved Night Sword. Enables critical hits and combo finisher. Drains Health.",
+      "rarity": 1,
+      "tips": "Requires Max: Stone Mask."
     },
     {
       "id": "bolle_",
@@ -1999,8 +1700,6 @@ window.vs = {
       "emoji": ":BooRooBoolleVS:",
       "dlc1": true,
       "description": "Evolved Mille Bolle Blu. Projectiles can hit the same target more than once.",
-      "poolLimit": 180,
-      "knockback": 0.1,
       "rarity": 1,
       "tips": "Requires Max: Spellbinder"
     },
@@ -2015,10 +1714,6 @@ window.vs = {
       "emoji": ":SpellStromVS:",
       "dlc2": true,
       "description": "Union of SpellString, SpellStream, and SpellStrike. Grows stronger after every singularity.",
-      "poolLimit": 60,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 1,
       "tips": ""
     },
@@ -2032,10 +1727,6 @@ window.vs = {
       "emoji": ":LegionnaireVS:",
       "dlc2": true,
       "description": "Evolved Eskizzibur. Generates additional projectiles that deal retaliatory damage.",
-      "poolLimit": 200,
-      "critChance": 0.1,
-      "critMul": 2,
-      "hitsWalls": false,
       "rarity": 1,
       "tips": "Requires Max: Armor"
     },
@@ -2049,10 +1740,6 @@ window.vs = {
       "emoji": ":MillionaireVS:",
       "dlc2": true,
       "description": "Evolved Flash Arrow. Fires additional projectiles based on Amount and when picking up gold coins.",
-      "poolLimit": 200,
-      "critChance": 0.2,
-      "critMul": 2,
-      "hitsWalls": true,
       "rarity": 1,
       "tips": "Requires Max: Bracer, Clover."
     },
@@ -2076,33 +1763,8 @@ window.vs = {
       "emoji": ":OphionVS:",
       "dlc2": true,
       "description": "Evolved Shadow Servant. Has a chance to instantly kill enemies.",
-      "poolLimit": 150,
-      "hitsWalls": false,
-      "knockback": 1,
       "rarity": 1,
       "tips": "Requires Max: Skull'O Maniac."
-    },
-    {
-      "id": "scan_",
-      "name": "Paranormal Scan",
-      "itemIds": [
-        "scan",
-        "minighost"
-      ],
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
-    },
-    {
-      "id": "debris_",
-      "name": "Clear Asteroids",
-      "itemIds": [
-        "debris",
-        "miniguardian"
-      ],
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
     },
     {
       "id": "report_",
@@ -2110,17 +1772,6 @@ window.vs = {
       "itemIds": [
         "report",
         "minicrewmate"
-      ],
-      "emoji": ":question:",
-      "dlc3": true,
-      "description": ""
-    },
-    {
-      "id": "rocks_",
-      "name": "Rocket Science",
-      "itemIds": [
-        "rocks",
-        "miniscientist"
       ],
       "emoji": ":question:",
       "dlc3": true,
@@ -2138,11 +1789,11 @@ window.vs = {
       "description": ""
     },
     {
-      "id": "tongue_",
-      "name": "Impostongue",
+      "id": "scan_",
+      "name": "Paranormal Scan",
       "itemIds": [
-        "tongue",
-        "miniimpostor"
+        "scan",
+        "minighost"
       ],
       "emoji": ":question:",
       "dlc3": true,
@@ -2158,6 +1809,39 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
+    },
+    {
+      "id": "debris_",
+      "name": "Clear Asteroids",
+      "itemIds": [
+        "debris",
+        "miniguardian"
+      ],
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
+    },
+    {
+      "id": "tongue_",
+      "name": "Impostongue",
+      "itemIds": [
+        "tongue",
+        "miniimpostor"
+      ],
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
+    },
+    {
+      "id": "rocks_",
+      "name": "Rocket Science",
+      "itemIds": [
+        "rocks",
+        "miniscientist"
+      ],
+      "emoji": ":question:",
+      "dlc3": true,
+      "description": ""
     }
   ],
   "counterparts": [
@@ -2166,9 +1850,6 @@ window.vs = {
       "name": "Cygnus",
       "itemsIds": [],
       "description": "Bombards in a circling zone.",
-      "poolLimit": 60,
-      "hitsWalls": false,
-      "knockback": 2,
       "rarity": 50,
       "tips": "Best with: cooldown, duration."
     },
@@ -2177,9 +1858,6 @@ window.vs = {
       "name": "Zhar Ptytsia",
       "itemsIds": [],
       "description": "Bombards in a circling zone.",
-      "poolLimit": 60,
-      "hitsWalls": false,
-      "knockback": 2,
       "rarity": 50,
       "tips": "Best with: cooldown, duration."
     },
@@ -2188,10 +1866,6 @@ window.vs = {
       "name": "Red Muscle",
       "itemsIds": [],
       "description": "Fires quickly in four fixed directions.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "knockback": 0.1,
       "rarity": 50,
       "tips": "Ignores: duration."
     },
@@ -2200,10 +1874,6 @@ window.vs = {
       "name": "Twice Upon a Time",
       "itemsIds": [],
       "description": "Fires quickly in four fixed directions.",
-      "poolLimit": 100,
-      "critChance": 0.1,
-      "critMul": 2,
-      "knockback": 0.1,
       "rarity": 50,
       "tips": "Ignores: duration."
     },
@@ -2212,9 +1882,6 @@ window.vs = {
       "name": "Flock Destroyer",
       "itemsIds": [],
       "description": "Summons capricious projectiles. Might interact with pickups.",
-      "poolLimit": 30,
-      "hitsWalls": true,
-      "knockback": 0.1,
       "rarity": 50,
       "tips": "Best with: luck, floor chicken."
     },
@@ -2223,7 +1890,6 @@ window.vs = {
       "name": "Party Pooper",
       "dlc2": true,
       "description": "Counterpart to Party Popper from Arcana I - Gemini.",
-      "poolLimit": 80,
       "rarity": 1,
       "tips": ""
     },
@@ -2232,7 +1898,6 @@ window.vs = {
       "name": "Silver Sliver",
       "dlc2": true,
       "description": "Counterpart to Shadow Servant and Ophion from Arcana I - Gemini.",
-      "poolLimit": 100,
       "rarity": 1,
       "tips": ""
     },
@@ -2241,9 +1906,6 @@ window.vs = {
       "name": "Insatiable",
       "dlc2": true,
       "description": "",
-      "poolLimit": 150,
-      "hitsWalls": false,
-      "knockback": 0,
       "rarity": 1,
       "tips": ""
     },
@@ -2251,7 +1913,6 @@ window.vs = {
       "id": "candybox",
       "name": "Candybox",
       "description": "Allows you to choose any unlocked base weapon.",
-      "poolLimit": 0,
       "rarity": 2,
       "tips": "Appearance in level up options affected by Luck."
     },
@@ -2259,7 +1920,6 @@ window.vs = {
       "id": "candybox_",
       "name": "Super Candybox II Turbo",
       "description": "Gift of Candybox. Allows to choose among a selection of advanced weapons.",
-      "poolLimit": 0,
       "rarity": 0.1,
       "tips": "Requires: Candybox."
     },
@@ -2279,14 +1939,6 @@ window.vs = {
   ],
   "passives": [
     {
-      "id": "cooldown",
-      "name": "Empty Tome",
-      "emoji": ":emptytomeVS:",
-      "description": "Reduces weapons cooldown by 8%.",
-      "isPowerUp": true,
-      "rarity": 50
-    },
-    {
       "id": "might",
       "name": "Spinach",
       "emoji": ":spinachVS:",
@@ -2295,20 +1947,45 @@ window.vs = {
       "rarity": 100
     },
     {
+      "id": "armor",
+      "name": "Armor",
+      "emoji": ":armorVS:",
+      "description": "Reduces incoming damage by 1. Increases retaliatory damage by 10%.",
+      "isPowerUp": true,
+      "price": 600,
+      "rarity": 100
+    },
+    {
+      "id": "health",
+      "name": "Hollow Heart",
+      "emoji": ":hollowheartVS:",
+      "description": "Augments max health by 20%.",
+      "isPowerUp": true,
+      "rarity": 90
+    },
+    {
+      "id": "recovery",
+      "name": "Pummarola",
+      "emoji": ":pummarolaVS:",
+      "description": "Character recovers 0.2 HP per second.",
+      "isPowerUp": true,
+      "rarity": 90
+    },
+    {
+      "id": "cooldown",
+      "name": "Empty Tome",
+      "emoji": ":emptytomeVS:",
+      "description": "Reduces weapons cooldown by 8%.",
+      "isPowerUp": true,
+      "rarity": 50
+    },
+    {
       "id": "area",
       "name": "Candelabrador",
       "emoji": ":candelabradorVS:",
       "description": "Augments area of attacks by 10%.",
       "isPowerUp": true,
       "rarity": 100
-    },
-    {
-      "id": "amount",
-      "name": "Duplicator",
-      "emoji": ":duplicatorVS:",
-      "description": "Weapons fire more projectiles.",
-      "isPowerUp": true,
-      "rarity": 50
     },
     {
       "id": "speed",
@@ -2327,69 +2004,12 @@ window.vs = {
       "rarity": 100
     },
     {
-      "id": "luck",
-      "name": "Clover",
-      "emoji": ":cloverVS:",
-      "description": "Character gets 10% luckier.",
+      "id": "amount",
+      "name": "Duplicator",
+      "emoji": ":duplicatorVS:",
+      "description": "Weapons fire more projectiles.",
       "isPowerUp": true,
-      "rarity": 100
-    },
-    {
-      "id": "recovery",
-      "name": "Pummarola",
-      "emoji": ":pummarolaVS:",
-      "description": "Character recovers 0.2 HP per second.",
-      "isPowerUp": true,
-      "rarity": 90
-    },
-    {
-      "id": "growth",
-      "name": "Crown",
-      "emoji": ":crownVS:",
-      "description": "Character gains 8% more experience.",
-      "isPowerUp": true,
-      "rarity": 70
-    },
-    {
-      "id": "armor",
-      "name": "Armor",
-      "emoji": ":armorVS:",
-      "description": "Reduces incoming damage by 1. Increases retaliatory damage by 10%.",
-      "isPowerUp": true,
-      "price": 600,
-      "rarity": 100
-    },
-    {
-      "id": "magnet",
-      "name": "Attractorb",
-      "emoji": ":attractorbVS:",
-      "description": "Character pickups items from further away.",
-      "isPowerUp": true,
-      "rarity": 100
-    },
-    {
-      "id": "curse",
-      "name": "Skull O`Maniac",
-      "emoji": ":curseVS:",
-      "description": "Increases enemy speed, health, quantity, and frequency by 10%.",
-      "isPowerUp": true,
-      "rarity": 40
-    },
-    {
-      "id": "health",
-      "name": "Hollow Heart",
-      "emoji": ":hollowheartVS:",
-      "description": "Augments max health by 20%.",
-      "isPowerUp": true,
-      "rarity": 90
-    },
-    {
-      "id": "revival",
-      "name": "Tiragisú",
-      "emoji": ":tiragisuVS:",
-      "description": "Revives once with 50% health.",
-      "isPowerUp": true,
-      "rarity": 40
+      "rarity": 50
     },
     {
       "id": "wings",
@@ -2400,12 +2020,52 @@ window.vs = {
       "rarity": 50
     },
     {
+      "id": "magnet",
+      "name": "Attractorb",
+      "emoji": ":attractorbVS:",
+      "description": "Character pickups items from further away.",
+      "isPowerUp": true,
+      "rarity": 100
+    },
+    {
+      "id": "luck",
+      "name": "Clover",
+      "emoji": ":cloverVS:",
+      "description": "Character gets 10% luckier.",
+      "isPowerUp": true,
+      "rarity": 100
+    },
+    {
+      "id": "growth",
+      "name": "Crown",
+      "emoji": ":crownVS:",
+      "description": "Character gains 8% more experience.",
+      "isPowerUp": true,
+      "rarity": 70
+    },
+    {
       "id": "greed",
       "name": "Stone Mask",
       "emoji": ":maskVS:",
       "description": "Character earns 10% more coins.",
       "isPowerUp": true,
       "rarity": 70
+    },
+    {
+      "id": "curse",
+      "name": "Skull O`Maniac",
+      "emoji": ":curseVS:",
+      "description": "Increases enemy speed, health, quantity, and frequency by 10%.",
+      "isPowerUp": true,
+      "rarity": 40
+    },
+    {
+      "id": "revival",
+      "name": "Tiragisú",
+      "emoji": ":tiragisuVS:",
+      "description": "Revives once with 50% health.",
+      "isPowerUp": true,
+      "rarity": 40
     },
     {
       "id": "torrona",
@@ -2488,24 +2148,6 @@ window.vs = {
       "itemIds": ["lancet"]
     },
     {
-      "id": "miniguardian",
-      "name": "Mini Guardian (Laurel)",
-      "emoji": ":question:",
-      "dlc3": true,
-      "extra": true,
-      "description": "",
-      "itemIds": ["laurel"]
-    },
-    {
-      "id": "miniscientist",
-      "name": "Mini Scientist (Water)",
-      "emoji": ":question:",
-      "dlc3": true,
-      "extra": true,
-      "description": "",
-      "itemIds": ["water"]
-    },
-    {
       "id": "minishapeshifter",
       "name": "Mini Shapeshifter (Bone)",
       "emoji": ":question:",
@@ -2515,6 +2157,15 @@ window.vs = {
       "itemIds": ["bone"]
     },
     {
+      "id": "miniguardian",
+      "name": "Mini Guardian (Laurel)",
+      "emoji": ":question:",
+      "dlc3": true,
+      "extra": true,
+      "description": "",
+      "itemIds": ["laurel"]
+    },
+    {
       "id": "miniimpostor",
       "name": "Mini Impostor (Knife)",
       "emoji": ":question:",
@@ -2522,6 +2173,15 @@ window.vs = {
       "extra": true,
       "description": "",
       "itemIds": ["knife"]
+    },
+    {
+      "id": "miniscientist",
+      "name": "Mini Scientist (Water)",
+      "emoji": ":question:",
+      "dlc3": true,
+      "extra": true,
+      "description": "",
+      "itemIds": ["water"]
     },
     {
       "id": "minihorse",
@@ -3494,6 +3154,12 @@ window.vs = {
       ]
     },
     {
+      "id": "bats",
+      "name": "Bat Country",
+      "special": true,
+      "itemIds": []
+    },
+    {
       "id": "astral",
       "name": "Astral Stair",
       "special": true,
@@ -3501,12 +3167,6 @@ window.vs = {
         "guns1",
         "guns2"
       ]
-    },
-    {
-      "id": "bats",
-      "name": "Bat Country",
-      "special": true,
-      "itemIds": []
     },
     {
       "id": "bridge",
