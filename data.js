@@ -3241,6 +3241,13 @@ window.vs = {
         "minishapeshifter",
         "scan"
       ]
+    },
+    {
+      "id": "lab",
+      "name": "Laborratory",
+      "itemIds": [
+        "javelin"
+      ]
     }
   ]
 }

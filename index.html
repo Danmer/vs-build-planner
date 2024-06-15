@@ -770,8 +770,11 @@
           }
           for (const stage of stages) {
             stage.type = 'stage'
-            if (stage.id !== 'bridge' && stage.id !== 'whiteout' && stage.id !== 'bats' && stage.id !== 'astral' && stage.id !== 'space') {
+            if (!['bridge', 'whiteout', 'bats', 'astral', 'space', 'lab'].includes(stage.id)) {
               stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
+            }
+            if (stage.id === 'lab') {
+              stage.itemIds.push('sign1', 'sign2')
             }
             if (stage.id === 'bats') {
               stage.itemIds.push('ring2')
