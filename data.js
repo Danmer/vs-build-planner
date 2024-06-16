@@ -826,6 +826,149 @@ window.vs = {
       "surname": "Rina",
       "description": "I'm not the Impostor.",
       "price": 0
+    },
+    {
+      "id": "bill",
+      "name": "Bill",
+      "emoji": ":question:",
+      "itemIds": [
+        "longgun"
+      ],
+      "dlc4": true,
+      "surname": "Rizer",
+      "description": "Receives a bonus to Projectile Speed (max 50%) and to Might when defeating many enemies. Can find special pickups.",
+      "price": 100
+    },
+    {
+      "id": "lance",
+      "name": "Lance",
+      "emoji": ":question:",
+      "itemIds": [
+        "shortgun"
+      ],
+      "dlc4": true,
+      "surname": "Bean",
+      "description": "Receive a bonus to Projectile Speed (max 50%) and to Cooldown (max-25%) when defeating many enemies. Can find special pickups.",
+      "price": 100
+    },
+    {
+      "id": "ariana",
+      "name": "Ariana",
+      "emoji": ":question:",
+      "itemIds": [
+        "spreadshot"
+      ],
+      "dlc4": true,
+      "surname": "",
+      "description": "Movement Speed increses Armour. Can find special pickups.",
+      "price": 100
+    },
+    {
+      "id": "lucia",
+      "name": "Lucia",
+      "emoji": ":question:",
+      "itemIds": [
+        "laser"
+      ],
+      "dlc4": true,
+      "surname": "Zero",
+      "description": "Gain a bonus to all stats after Reviving. Can find special pickups.",
+      "price": 500
+    },
+    {
+      "id": "brad",
+      "name": "Brad",
+      "emoji": ":question:",
+      "itemIds": [
+        "firearm"
+      ],
+      "dlc4": true,
+      "surname": "Fang",
+      "description": "When Health is low, Cooldown is decreased and Move Speed and Speed increase. Can find special Pickups.",
+      "price": 500
+    },
+    {
+      "id": "browny",
+      "name": "Browny",
+      "emoji": ":question:",
+      "itemIds": [
+        "sonic"
+      ],
+      "dlc4": true,
+      "surname": "",
+      "description": "Decreasing Colldown increases Area. Can find extra explosive props and special pickups.",
+      "price": 500
+    },
+    {
+      "id": "sheena",
+      "name": "Sheena",
+      "emoji": ":question:",
+      "itemIds": [
+        "crossbow"
+      ],
+      "dlc4": true,
+      "surname": "Etranzi",
+      "description": "Move Speed decreases Cooldown. Can find special pickups.",
+      "price": 500
+    },
+    {
+      "id": "probotector",
+      "name": "Probotector",
+      "emoji": ":question:",
+      "itemIds": [
+        "lass"
+      ],
+      "dlc4": true,
+      "surname": "",
+      "description": "Armour increses Might. Can find special pickups.",
+      "price": 500
+    },
+    {
+      "id": "stanley",
+      "name": "Stanley",
+      "emoji": ":question:",
+      "itemIds": [
+        "homingmiss"
+      ],
+      "dlc4": true,
+      "surname": "",
+      "description": "Might increases Armour. Can find special pickups.",
+      "price": 500
+    },
+    {
+      "id": "newt",
+      "name": "Newt",
+      "emoji": ":question:",
+      "itemIds": [
+        "mines"
+      ],
+      "dlc4": true,
+      "surname": "Plissken",
+      "description": "Projectile Speed increases Might. Can find extra explosive props and special pickups.",
+      "price": 500
+    },
+    {
+      "id": "bahamut",
+      "name": "Bahamut",
+      "emoji": ":question:",
+      "itemIds": [
+        "claw"
+      ],
+      "dlc4": true,
+      "prefix": "Colonel",
+      "surname": "",
+      "description": "Greed and Curse increase Might. Can find special pickups.",
+      "price": 5000
+    },
+    {
+      "id": "simondo",
+      "name": "Simondo",
+      "emoji": ":question:",
+      "itemIds": [],
+      "dlc4": true,
+      "surname": "Belmont",
+      "description": "Simondo says he doesn't even need guns. Gets more projectiles every 20 levels (max +4).",
+      "price": 10000
     }
   ],
   "weapons": [
@@ -1292,6 +1435,95 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
+    },
+    
+    {
+      "id": "longgun",
+      "name": "Long Gun",
+      "emoji": ":question:",
+      "description": "Fires constantly in the faced direction.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "shortgun",
+      "name": "Short Gun",
+      "emoji": ":question:",
+      "description": "Fires bursts of decaying projectiles horizontally.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "spreadshot",
+      "name": "Spread Shot",
+      "emoji": ":question:",
+      "description": "Fires in a wide spread in the faced direction.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "laser",
+      "name": "C-U-Laser",
+      "emoji": ":question:",
+      "description": "Fires a piercing projectile in the faced direction.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "firearm",
+      "name": "Firearm",
+      "emoji": ":question:",
+      "description": "Fires spinning projectiles at the nearest enemy.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "sonic",
+      "name": "Sonic Bloom",
+      "emoji": ":question:",
+      "description": "Fires growing projectiles in the faced direction.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "homingmiss",
+      "name": "Homing Miss",
+      "emoji": ":question:",
+      "description": "Fires exploding projectiles that home in on enemies.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "mines",
+      "name": "Diver Mines",
+      "emoji": ":question:",
+      "description": "Fires explosive projectiles that travel along walls.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "crossbow",
+      "name": "Blade Crossbow",
+      "emoji": ":question:",
+      "description": "Fires homing projectiles that spin in place when they hit.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "lass",
+      "name": "Prism Lass",
+      "emoji": ":question:",
+      "description": "Has a small chance to freeze enemies.",
+      "dlc4": true,
+      "rarity": 1,
+    },
+    {
+      "id": "claw",
+      "name": "Metal Claw",
+      "emoji": ":question:",
+      "description": "Cooldown is affected by missing health.",
+      "dlc4": true,
+      "rarity": 1,
     }
   ],
   "evolutions": [
@@ -1842,6 +2074,137 @@ window.vs = {
       "emoji": ":question:",
       "dlc3": true,
       "description": ""
+    },
+    {
+      "id": "longgun_",
+      "name": "Prototype A",
+      "itemIds": [
+        "longgun",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Long Gun. Calls forth 2 drones for support fire."
+    },
+    {
+      "id": "shortgun_",
+      "name": "Prototype B",
+      "itemIds": [
+        "shortgun",
+        "speed",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Short Gun. Calls forth 2 drones for support fire."
+    },
+    {
+      "id": "spreadshot_",
+      "name": "Prototype C",
+      "itemIds": [
+        "spreadshot",
+        "cooldown",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Spread Shot. Calls forth 2 drones for support fire."
+    },
+    {
+      "id": "laser_",
+      "name": "Pronto Beam",
+      "itemIds": [
+        "laser",
+        "revival",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved C-U-Laser. Lasers split into multiple beams when they hit."
+    },
+    {
+      "id": "firearm_",
+      "name": "Fire-L3GS",
+      "itemIds": [
+        "firearm",
+        "area",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Fire Arm. Fires again when destroying a light source or destructible item."
+    },
+    {
+      "id": "sonic_",
+      "name": "Wave Beam",
+      "itemIds": [
+        "sonic",
+        "armor",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Sonic Bloom. Charges up a more powerful auto-aimed blast when standing still."
+    },
+    {
+      "id": "homingmiss_",
+      "name": "Multistage Missiles",
+      "itemIds": [
+        "homingmiss",
+        "amount",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Homing Miss. Projectiles split into smaller ones when they hit."
+    },
+    {
+      "id": "mines_",
+      "name": "Atmo-Torpedo",
+      "itemIds": [
+        "mines",
+        "magnet",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Diver Mines. Creates damaging zones that attract enemies."
+    },
+    {
+      "id": "crossbow_",
+      "name": "BFC2000-AD",
+      "itemIds": [
+        "crossbow",
+        "luck",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Blade Crossbow. Calls forth divine intervention with a Luck-based frequency."
+    },
+    {
+      "id": "lass_",
+      "name": "Time Warp",
+      "itemIds": [
+        "lass",
+        "wings",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Prism Lass. May freeze, slow down, or DeFang enemies."
+    },
+    {
+      "id": "claw_",
+      "name": "Big Fuzzy Fist",
+      "itemIds": [
+        "claw",
+        "health",
+        "powerup"
+      ],
+      "emoji": ":question:",
+      "dlc4": true,
+      "description": "Evolved Metal Claw. Pummels the most powerful enemies in sight."
     }
   ],
   "counterparts": [
@@ -1935,6 +2298,13 @@ window.vs = {
       "name": "Levelin'Eh",
       "emoji": ":question:",
       "description": ""
+    },
+    {
+      "id": "lass2",
+      "name": "Prism Damsel",
+      "emoji": ":question:",
+      "description": "Has a small chance to freeze enemies.",
+      "dlc4": true
     }
   ],
   "passives": [
@@ -2190,6 +2560,15 @@ window.vs = {
       "dlc3": true,
       "description": "",
       "itemIds": ["jubilee"]
+    },
+    {
+      "id": "powerup",
+      "name": "Weapon Power-Up",
+      "emoji": ":question:",
+      "description": "Levels up a random equipped weapon. Gives +1 Revival. Does not occupy a weapon slot",
+      "itemIds": [],
+      "dlc4": true,
+      "extra": true
     }
   ],
   "powerups": [
@@ -2391,6 +2770,8 @@ window.vs = {
         "servant_",
         "tongue",
         "tongue_",
+        "lass",
+        "lass_",
         "fritta"
       ],
       "description": "Listed weapons come with a counterpart.",
@@ -2420,7 +2801,9 @@ window.vs = {
         "javelin",
         "javelin_",
         "miniengineer",
-        "minishapeshifter"
+        "minishapeshifter",
+        "laser",
+        "laser_"
       ],
       "description": "Listed weapon projectiles generate explosions when they expire. Explosions damage is affected by Curse",
       "major": true
@@ -2459,7 +2842,8 @@ window.vs = {
         "area",
         "duration",
         "speed",
-        "eskizzibur"
+        "eskizzibur",
+        "powerup"
       ],
       "description": "Gives +3 Revivals. Consuming a Revival gives +10% MaxHealth, +1 Armor, and +5% Might, Area, Duration, and Speed.",
       "major": true
@@ -2510,7 +2894,10 @@ window.vs = {
         "cart",
         "arrow",
         "arrow_",
-        "miniimpostor"
+        "miniimpostor",
+        "longgun_",
+        "shortgun_",
+        "spreadshot_",
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces and might pass through enemies and walls.",
       "major": true
@@ -2575,7 +2962,9 @@ window.vs = {
         "cross",
         "cross_",
         "cart",
-        "hats"
+        "hats",
+        "sonic",
+        "sonic_"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces.",
       "major": true
@@ -2591,7 +2980,10 @@ window.vs = {
         "mirage_",
         "fandango_",
         "orologion",
-        "minighost"
+        "minighost",
+        "lass",
+        "lass_",
+        "lass2"
       ],
       "description": "Freezing enemies generates explosions. Orologions are easier to find.",
       "major": true
@@ -2623,7 +3015,11 @@ window.vs = {
         "guns4",
         "bird3",
         "prism",
-        "prism_"
+        "prism_",
+        "laser",
+        "laser_",
+        "lass",
+        "lass2"
       ],
       "description": "Listed weapon projectiles have a chance to freeze enemies.",
       "major": true
@@ -2708,6 +3104,16 @@ window.vs = {
         "prism_",
         "guns3",
         "bird4",
+        "longgun",
+        "longgun_",
+        "shortgun",
+        "shortgun_",
+        "spreadshot",
+        "spreadshot_",
+        "firearm",
+        "firearm_",
+        "homingmiss",
+        "homingmiss_",
         "brazier"
       ],
       "description": "Listed weapon projectiles explode on impact. Light sources explode. Character explodes when damaged.",
@@ -2977,6 +3383,9 @@ window.vs = {
       "tips": "",
       "unlocksAt": 1000000,
       "value": 0
+    },
+    {
+      "id": "armadio"
     }
   ],
   "structures": [
@@ -3247,6 +3656,18 @@ window.vs = {
       "name": "Laborratory",
       "itemIds": [
         "javelin"
+      ]
+    },
+    {
+      "id": "galuga",
+      "name": "Neo Galuga",
+      "itemIds": [
+        "homingmiss",
+        "claw",
+        "lass",
+        "wings",
+        "powerup",
+        "armadio"
       ]
     }
   ]

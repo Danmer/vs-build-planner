@@ -123,6 +123,9 @@
       .dlc3 {
         background-color: #868;
       }
+      .dlc4 {
+        background-color: #996;
+      }
       .selected {
         background-color: #36f;
       }
@@ -553,6 +556,7 @@
           <span class="button" @click="config.dlc1 = !config.dlc1">DLC 1: <span :class="(config.dlc1 ? 'enabled' : 'disabled')">{{config.dlc1 ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.dlc2 = !config.dlc2">DLC 2: <span :class="(config.dlc2 ? 'enabled' : 'disabled')">{{config.dlc2 ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.dlc3 = !config.dlc3">DLC 3: <span :class="(config.dlc3 ? 'enabled' : 'disabled')">{{config.dlc3 ? 'ON' : 'OFF'}}</span></span>
+          <span class="button" @click="config.dlc4 = !config.dlc4">DLC 4: <span :class="(config.dlc4 ? 'enabled' : 'disabled')">{{config.dlc4 ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: <span :class="(config.evolutions ? 'enabled' : 'disabled')">{{config.evolutions ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.combinations = !config.combinations">COMBINATIONS: <span :class="(config.combinations ? 'enabled' : 'disabled')">{{config.combinations ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.impacts = !config.impacts">IMPACTS: <span :class="(config.impacts ? 'enabled' : 'disabled')">{{config.impacts ? 'ON' : 'OFF'}}</span></span>
@@ -565,7 +569,7 @@
         <!-- Characters -->
         <section style="max-width: 80em">
           <div class="objects">
-            <div v-for="character in visibleCharacters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc1: character.dlc1, dlc2: character.dlc2, dlc3: character.dlc3}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
+            <div v-for="character in visibleCharacters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc1: character.dlc1, dlc2: character.dlc2, dlc3: character.dlc3, dlc4: character.dlc4}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
               <div class="icon" :class="`icon-${character.id}`"></div>
               <div class="items">
                 <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -578,7 +582,7 @@
         <!-- Weapons -->
         <section style="max-width: 80em">
           <transition-group tag="div" class="objects">
-            <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+            <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3, dlc4: weapon.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${weapon.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -594,7 +598,7 @@
         <!-- Evolutions -->
         <section v-if="config.evolutions" style="max-width: 80em">
           <transition-group tag="div" class="objects">
-            <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
+            <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3, dlc4: evolution.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${evolution.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -610,7 +614,7 @@
         <!-- Passives -->
         <section style="max-width: 75em">
           <transition-group tag="div" class="objects">
-            <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+            <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3, dlc4: passive.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${passive.id}`"></div>
               <div v-if="config.impacts" class="impacts">
                 <div v-for="impact in impactsById[passive.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
@@ -626,7 +630,7 @@
         <!-- Arcanas -->
         <section style="max-width: 75em">
           <transition-group tag="div" class="objects">
-            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3, dlc4: arcana.dlc4, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${arcana.id}`"></div>
               <div class="items">
                 <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -642,7 +646,7 @@
         <!-- Stages -->
         <section style="max-width: 65em">
           <div class="objects">
-            <div v-for="stage in visibleStages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc1: stage.dlc1, dlc2: stage.dlc2, dlc3: stage.dlc3}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
+            <div v-for="stage in visibleStages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc1: stage.dlc1, dlc2: stage.dlc2, dlc3: stage.dlc3, dlc4: stage.dlc4}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
               <div class="icon" :class="`icon-${stage.id}`"></div>
               <div class="items">
                 <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -702,23 +706,23 @@
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
           const visibleCharacters = computed(() => {
-            return characters.filter((character) => (config.dlc1 || !character.dlc1) && (config.dlc2 || !character.dlc2) && (config.dlc3 || !character.dlc3))
+            return characters.filter((character) => (config.dlc1 || !character.dlc1) && (config.dlc2 || !character.dlc2) && (config.dlc3 || !character.dlc3) && (config.dlc4 || !character.dlc4))
           })
 
           const visibleWeapons = computed(() => {
-            return weapons.filter((weapon) => (config.dlc1 || !weapon.dlc1) && (config.dlc2 || !weapon.dlc2) && (config.dlc3 || !weapon.dlc3))
+            return weapons.filter((weapon) => (config.dlc1 || !weapon.dlc1) && (config.dlc2 || !weapon.dlc2) && (config.dlc3 || !weapon.dlc3) && (config.dlc4 || !weapon.dlc4))
           })
 
           const visibleEvolutions = computed(() => {
-            return evolutions.filter((evolution) => (config.dlc1 || !evolution.dlc1) && (config.dlc2 || !evolution.dlc2) && (config.dlc3 || !evolution.dlc3))
+            return evolutions.filter((evolution) => (config.dlc1 || !evolution.dlc1) && (config.dlc2 || !evolution.dlc2) && (config.dlc3 || !evolution.dlc3) && (config.dlc4 || !evolution.dlc4))
           })
 
           const visiblePassives = computed(() => {
-            return passives.filter((passive) => (config.dlc1 || !passive.dlc1) && (config.dlc2 || !passive.dlc2) && (config.dlc3 || !passive.dlc3))
+            return passives.filter((passive) => (config.dlc1 || !passive.dlc1) && (config.dlc2 || !passive.dlc2) && (config.dlc3 || !passive.dlc3) && (config.dlc4 || !passive.dlc4))
           })
 
           const visibleStages = computed(() => {
-            return stages.filter((stage) => (config.dlc1 || !stage.dlc1) && (config.dlc2 || !stage.dlc2) && (config.dlc3 || !stage.dlc3))
+            return stages.filter((stage) => (config.dlc1 || !stage.dlc1) && (config.dlc2 || !stage.dlc2) && (config.dlc3 || !stage.dlc3) && (config.dlc4 || !stage.dlc4))
           })
 
           for (const item of items) {
@@ -751,7 +755,7 @@
               const item = itemsById[itemId]
               item.evolutionId = evolution.id
               // add combinations to weapons and passives
-              if (item.type === 'weapon' || item.type === 'passive') {
+              if (item.type === 'weapon' || (item.type === 'passive' && item.id !== 'powerup')) {
                 item.itemIds = (item.itemIds || []).concat(evolution.itemIds.filter((id) => id !== itemId))
               }
             }
@@ -836,25 +840,25 @@
               spacedude: ['+cooldown', '+wings'],
               // arcanas
               arcana0: ['+experience', '+chest'],
-              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+javelin', '+javelin_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_'],
-              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+bracelet__', '+wind', '+wind_', '+prism', '+prism_', '+javelin', '+javelin_', '+miniengineer', '+minishapeshifter'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+javelin', '+javelin_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_', '+lass', '+lass_'],
+              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+bracelet__', '+wind', '+wind_', '+prism', '+prism_', '+javelin', '+javelin_', '+miniengineer', '+minishapeshifter', '+laser', '+laser_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+javelin', '+javelin_', '+cart', '+minicrewmate', '+miniengineer', '+miniscientist'],
-              arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur'],
+              arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur', '+powerup'],
               arcana5: ['+speed'],
               arcana6: ['+recovery', '+revival', '+whip_', '+vento_', '+garlic_', '+wind', '+wind_', '+muramasa', '+muramasa_', '+chicken', '+flowers', '+scan', '+scan_'],
-              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow', '+arrow_', '+miniimpostor'],
+              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow', '+arrow_', '+miniimpostor', '+longgun_', '+shortgun_', '+spreadshot_'],
               arcana8: [],
               arcana9: ['+armor', '+health', '+cross', '+bible', '+garlic', '+water', '+lightning', '+mana', '+vento', '+sword', '+wind', '+minicrewmate', '+miniengineer', '+miniscientist'],
               arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture', '+minishapeshifter'],
-              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart', '+hats'],
-              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion', '+minighost'],
+              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart', '+hats', '+sonic', '+sonic_'],
+              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion', '+minighost', '+lass', '+lass_', '+lass2'],
               arcana13: ['+growth', '+luck', '+greed', '+curse'],
-              arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+bracelet', '+bracelet_', '+bracelet__', '+guns2', '+guns4', '+bird3', '+prism', '+prism_'],
+              arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+bracelet', '+bracelet_', '+bracelet__', '+guns2', '+guns4', '+bird3', '+prism', '+prism_', '+laser', '+laser_', '+lass', '+lass2'],
               arcana15: ['+cat_', '+greed', '+coin', '+coinbag', '+richcoinbag', '+bigcoinbag', '+gildedclover', '+chest'],
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+vento', '+vento_', '+cross_', '+sword', '+jubilee', '+javelin', '+javelin_', '+muramasa_', '+eskizzibur', '+eskizzibur_', '+arrow', '+arrow_', '+fandango_', '+tongue_', '+miniimpostor'],
               arcana17: ['+duration'],
               arcana18: ['+area'],
-              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_'],
+              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_', '+longgun', '+longgun_', '+shortgun', '+shortgun_', '+spreadshot', '+spreadshot_', '+firearm', '+firearm_', '+homingmiss', '+homingmiss_'],
               arcana20: [],
               arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel', '+minicrewmate', '+minighost', '+miniguardian'],
               // weapons
@@ -1025,6 +1029,42 @@
               vent: ['+cooldown', '+might', '+area', '+amount'],
               vent_: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               hats: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              // dlc 4
+              bill: ['+health', '+wings', '+speed'],
+              lance: ['+health', '+cooldown', '+speed'],
+              ariana: ['+wings', '+speed', '+armor', '+growth'],
+              lucia: ['+recovery', '+wings', '+revival'],
+              brad: ['+health', '+might', '+cooldown', '+wings', '+speed'],
+              browny: ['+health', '+armor', '+wings', '+luck', '+cooldown', '+area'],
+              sheena: ['+recovery', '+wings', '+cooldown'],
+              probotector: ['+health', '+armor', '+might'],
+              stanley: ['+health', '+armor', '+might'],
+              newt: ['+health', '+wings', '+luck', '+speed', '+might'],
+              bahamut: ['+health', '+armor', '+wings', '+might', '+magnet', '+greed', '+curse'],
+              simondo: ['+amount'],
+              longgun: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              shortgun: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              spreadshot: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              laser: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              firearm: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              sonic: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              homingmiss: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              mines: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              crossbow: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              lass: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              claw: ['+cooldown', '+might', '+area', '+amount'],
+              longgun_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              shortgun_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              spreadshot_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              laser_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              firearm_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              sonic_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              homingmiss_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              mines_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              crossbow_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              lass_: ['+cooldown', '+might', '+area', '+amount', '+duration'],
+              claw_: ['+cooldown', '+might', '+area', '+amount'],
+              lass2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
             }
 
             for (const itemId in newImpactsById) {
@@ -1222,6 +1262,9 @@
               }
               if (selectedIds.has('javelin')) {
                 counterparts.push(itemsById.javelin2)
+              }
+              if (selectedIds.has('lass')) {
+                counterparts.push(itemsById.lass2)
               }
             }
 
@@ -1603,7 +1646,7 @@
           }
 
           function useConfig(storageKey = 'vs-build') {
-            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, evolutions: false, combinations: true, size: 1, version: 2 }
+            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, dlc4: true, evolutions: false, combinations: true, size: 1, version: 2 }
 
             const userConfig = loadUserConfig()
 
