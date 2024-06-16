@@ -133,6 +133,9 @@
       .dlc3 {
         background-color: #979;
       }
+      .dlc4 {
+        background-color: #997;
+      }
       .special {
         background-color: #999;
       }
@@ -510,7 +513,8 @@
                 special:stage.special,
                 dlc1:stage.dlc1,
                 dlc2:stage.dlc2,
-                dlc3:stage.dlc3
+                dlc3:stage.dlc3,
+                dl43:stage.dlc4
               }"
               :title="stage.title"
               @click="toggleItem(stage)"
@@ -536,7 +540,8 @@
                 special: character.special,
                 dlc1: character.dlc1,
                 dlc2: character.dlc2,
-                dlc3: character.dlc3
+                dlc3: character.dlc3,
+                dlc4: character.dlc4
               }"
               style="background-position: bottom left"
               :title="character.title"
@@ -558,7 +563,7 @@
 
           <!-- Weapons -->
           <transition-group tag="section" class="objects objects-weapons">
-            <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object object-weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+            <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object object-weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3, dlc4: weapon.dlc4}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
               <div class="icon icon-weapon" :class="`icon-${weapon.id}`"></div>
               <div v-if="config.combinations" class="items">
                 <div v-for="item in weapon.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -568,7 +573,7 @@
 
           <!-- Evolutions -->
           <transition-group v-if="config.evolutions" tag="section" class="objects objects-evolutions">
-            <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object object-evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
+            <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object object-evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3, dlc4: evolution.dlc4}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
               <div class="icon icon-evolution" :class="`icon-${evolution.id}`"></div>
               <div v-if="config.combinations" class="items">
                 <div v-for="item in evolution.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -578,7 +583,7 @@
 
           <!-- Passives -->
           <transition-group tag="section" class="objects objects-passives">
-            <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object object-passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+            <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object object-passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3, dlc4: passive.dlc4}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
               <div class="icon icon-passive" :class="`icon-${passive.id}`"></div>
               <div v-if="config.combinations" class="items">
                 <div v-for="item in passive.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -588,7 +593,7 @@
 
           <!-- Arcanas -->
           <transition-group tag="section" class="objects objects-arcanas">
-            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object object-arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object object-arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3, dlc4: arcana.dlc4}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
               <div class="icon icon-arcana" :class="`icon-${arcana.id}`"></div>
               <div class="items">
                 <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
@@ -694,7 +699,7 @@
               const item = itemsById[itemId]
               item.evolutionId = evolution.id
               // add combinations to weapons and passives
-              if (item.type === 'weapon' || item.type === 'passive') {
+              if (item.type === 'weapon' || (item.type === 'passive' && item.id !== 'powerup')) {
                 item.itemIds = (item.itemIds || []).concat(evolution.itemIds.filter((id) => id !== itemId))
               }
             }
@@ -776,25 +781,25 @@
               spacedude: ['+cooldown', '+wings'],
               // arcanas
               arcana0: ['+experience', '+chest'],
-              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+javelin', '+javelin_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_'],
-              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+bracelet__', '+wind', '+wind_', '+prism', '+prism_', '+javelin', '+javelin_', '+miniengineer', '+minishapeshifter'],
+              arcana1: ['+bird1', '+bird2', '+bird_', '+guns1', '+guns2', '+guns_', '+cat', '+cat_', '+javelin', '+javelin_', '+fritta', '+popper', '+servant', '+servant_', '+tongue', '+tongue_', '+lass', '+lass_'],
+              arcana2: ['+bible', '+bible_', '+lightning', '+lightning_', '+bird1', '+bird2', '+runetracer', '+pinion', '+bone', '+flowers', '+bracelet_', '+bracelet__', '+wind', '+wind_', '+prism', '+prism_', '+javelin', '+javelin_', '+miniengineer', '+minishapeshifter', '+laser', '+laser_'],
               arcana3: ['+cooldown', '+garlic', '+garlic_', '+water', '+water_', '+lightning', '+lightning_', '+javelin', '+javelin_', '+cart', '+minicrewmate', '+miniengineer', '+miniscientist'],
-              arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur'],
+              arcana4: ['+revival', '+health', '+armor', '+might', '+area', '+duration', '+speed', '+eskizzibur', '+powerup'],
               arcana5: ['+speed'],
               arcana6: ['+recovery', '+revival', '+whip_', '+vento_', '+garlic_', '+wind', '+wind_', '+muramasa', '+muramasa_', '+chicken', '+flowers', '+scan', '+scan_'],
-              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow', '+arrow_', '+miniimpostor'],
+              arcana7: ['+knife', '+knife_', '+axe', '+axe_', '+guns1', '+guns2', '+cart', '+arrow', '+arrow_', '+miniimpostor', '+longgun_', '+shortgun_', '+spreadshot_'],
               arcana8: [],
               arcana9: ['+armor', '+health', '+cross', '+bible', '+garlic', '+water', '+lightning', '+mana', '+vento', '+sword', '+wind', '+minicrewmate', '+miniengineer', '+miniscientist'],
               arcana10: ['+amount', '+bone', '+cherry', '+cart', '+flowers', '+furniture', '+minishapeshifter'],
-              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart', '+hats'],
-              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion', '+minighost'],
+              arcana11: ['+magicwand', '+magicwand_', '+firewand', '+firewand_', '+cross', '+cross_', '+cart', '+hats', '+sonic', '+sonic_'],
+              arcana12: ['+lancet', '+lancet_', '+mirage', '+mirage_', '+fandango_', '+orologion', '+minighost', '+lass', '+lass_', '+lass2'],
               arcana13: ['+growth', '+luck', '+greed', '+curse'],
-              arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+bracelet', '+bracelet_', '+bracelet__', '+guns2', '+guns4', '+bird3', '+prism', '+prism_'],
+              arcana14: ['+magicwand', '+magicwand_', '+runetracer', '+runetracer_', '+bracelet', '+bracelet_', '+bracelet__', '+guns2', '+guns4', '+bird3', '+prism', '+prism_', '+laser', '+laser_', '+lass', '+lass2'],
               arcana15: ['+cat_', '+greed', '+coin', '+coinbag', '+richcoinbag', '+bigcoinbag', '+gildedclover', '+chest'],
               arcana16: ['+knife', '+knife_', '+whip', '+whip_', '+axe', '+axe_', '+vento', '+vento_', '+cross_', '+sword', '+jubilee', '+javelin', '+javelin_', '+muramasa_', '+eskizzibur', '+eskizzibur_', '+arrow', '+arrow_', '+fandango_', '+tongue_', '+miniimpostor'],
               arcana17: ['+duration'],
               arcana18: ['+area'],
-              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_'],
+              arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_', '+longgun', '+longgun_', '+shortgun', '+shortgun_', '+spreadshot', '+spreadshot_', '+firearm', '+firearm_', '+homingmiss', '+homingmiss_'],
               arcana20: [],
               arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel', '+minicrewmate', '+minighost', '+miniguardian'],
               // weapons
