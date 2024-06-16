@@ -971,6 +971,42 @@
               vent: ['+cooldown', '+might', '+area', '+amount'],
               vent_: ['+cooldown', '+might', '+area', '+amount', '+duration'],
               hats: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              // dlc 4
+              bill: ['+health', '+wings', '+speed'],
+              lance: ['+health', '+cooldown', '+speed'],
+              ariana: ['+wings', '+speed', '+armor', '+growth'],
+              lucia: ['+recovery', '+wings', '+revival'],
+              brad: ['+health', '+might', '+cooldown', '+wings', '+speed'],
+              browny: ['+health', '+armor', '+wings', '+luck', '+cooldown', '+area'],
+              sheena: ['+recovery', '+wings', '+cooldown'],
+              probotector: ['+health', '+armor', '+might'],
+              stanley: ['+health', '+armor', '+might'],
+              newt: ['+health', '+wings', '+luck', '+speed', '+might'],
+              bahamut: ['+health', '+armor', '+wings', '+might', '+magnet', '+greed', '+curse'],
+              simondo: ['+amount'],
+              longgun: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              shortgun: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              spreadshot: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              laser: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              firearm: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              sonic: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              homingmiss: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              mines: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              crossbow: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              lass: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
+              claw: ['+cooldown', '+might', '+area', '+amount'],
+              longgun_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              shortgun_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              spreadshot_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              laser_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              firearm_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              sonic_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              homingmiss_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
+              mines_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              crossbow_: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration'],
+              lass_: ['+cooldown', '+might', '+area', '+amount', '+duration', '+luck'],
+              claw_: ['+cooldown', '+might', '+area', '+amount'],
+              lass2: ['+cooldown', '+might', '+area', '+amount', '+speed', '+duration', '+luck'],
             }
 
             for (const itemId in newImpactsById) {
@@ -1168,6 +1204,9 @@
               }
               if (selectedIds.has('javelin')) {
                 counterparts.push(itemsById.javelin2)
+              }
+              if (selectedIds.has('lass')) {
+                counterparts.push(itemsById.lass2)
               }
             }
 
