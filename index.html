@@ -51,8 +51,27 @@
         font-weight: 800;
         font-size: 1.6em;
       }
-      section {
+      h2 {
+        display: flex;
+        align-items: center;
         margin: 0.5em;
+        cursor: pointer;
+        user-select: none;
+      }
+      h2:hover {
+        color: #ffc;
+      }
+      h2 small {
+        margin-right: 0.7em;
+        font-size: 0.6em;
+        transform: scale(1, 0.5) rotate(90deg);
+        transition: transform 0.2s;
+      }
+      h2.collapsed small {
+        transform: rotate(0);
+      }
+      section {
+        margin-bottom: 0.5em;
       }
       .pixels {
         image-rendering: pixelated;
@@ -402,6 +421,24 @@
         cursor: pointer;
       }
 
+      .slidedown-enter-active,
+      .slidedown-leave-active {
+        transition: all 0.3s;
+      }
+
+      .slidedown-enter-to,
+      .slidedown-leave-from {
+        overflow: hidden;
+        max-height: 500px;
+      }
+
+      .slidedown-enter-from,
+      .slidedown-leave-to {
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+      }
+
       @media (max-width: 50em) {
         .flex-col-row {
           flex-direction: column;
@@ -557,7 +594,6 @@
           <span class="button" @click="config.dlc2 = !config.dlc2">DLC 2: <span :class="(config.dlc2 ? 'enabled' : 'disabled')">{{config.dlc2 ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.dlc3 = !config.dlc3">DLC 3: <span :class="(config.dlc3 ? 'enabled' : 'disabled')">{{config.dlc3 ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.dlc4 = !config.dlc4">DLC 4: <span :class="(config.dlc4 ? 'enabled' : 'disabled')">{{config.dlc4 ? 'ON' : 'OFF'}}</span></span>
-          <span class="button" @click="config.evolutions = !config.evolutions">EVOLUTIONS: <span :class="(config.evolutions ? 'enabled' : 'disabled')">{{config.evolutions ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.combinations = !config.combinations">COMBINATIONS: <span :class="(config.combinations ? 'enabled' : 'disabled')">{{config.combinations ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.impacts = !config.impacts">IMPACTS: <span :class="(config.impacts ? 'enabled' : 'disabled')">{{config.impacts ? 'ON' : 'OFF'}}</span></span>
           <span class="button" @click="config.titles = !config.titles">TITLES: <span :class="(config.titles ? 'enabled' : 'disabled')">{{config.titles ? 'ON' : 'OFF'}}</span></span>
@@ -567,96 +603,114 @@
         </div>
 
         <!-- Characters -->
-        <section style="max-width: 75em">
-          <div class="objects">
-            <div v-for="character in visibleCharacters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc1: character.dlc1, dlc2: character.dlc2, dlc3: character.dlc3, dlc4: character.dlc4}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
-              <div class="icon" :class="`icon-${character.id}`"></div>
-              <div class="items">
-                <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+        <h2 @click="collapsedSections.characters = !collapsedSections.characters"><small :style="{transform: collapsedSections.characters ? 'none' : 'rotate(90deg)'}">►</small> Characters</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.characters" style="max-width: 75em">
+            <div class="objects">
+              <div v-for="character in visibleCharacters" :data-id="character.id" class="object character" :class="{selected: selectedCharacter.id === character.id, special: character.special, dlc1: character.dlc1, dlc2: character.dlc2, dlc3: character.dlc3, dlc4: character.dlc4}" :title="character.title" @click="toggleItem(character)" @mouseenter="onMouseEnter(character)" @mouseleave="onMouseLeave(character)">
+                <div class="icon" :class="`icon-${character.id}`"></div>
+                <div class="items">
+                  <div v-for="item in character.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.titles" class="title">{{character.id}}</div>
               </div>
-              <div v-if="config.titles" class="title">{{character.id}}</div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Transition>
 
         <!-- Weapons -->
-        <section style="max-width: 75em">
-          <transition-group tag="div" class="objects">
-            <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3, dlc4: weapon.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
-              <div class="icon" :class="`icon-${weapon.id}`"></div>
-              <div v-if="config.impacts" class="impacts">
-                <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+        <h2 @click="collapsedSections.weapons = !collapsedSections.weapons"><small :style="{transform: collapsedSections.weapons ? 'none' : 'rotate(90deg)'}">►</small> Weapons</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.weapons" style="max-width: 75em">
+            <transition-group tag="div" class="objects">
+              <div v-for="weapon in visibleWeapons" :key="weapon.id" :data-id="weapon.id" class="object weapon" :class="{selected: weapon.selected, special: weapon.special, dlc1: weapon.dlc1, dlc2: weapon.dlc2, dlc3: weapon.dlc3, dlc4: weapon.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="weapon.title" @click="toggleItem(weapon)" @mouseenter="onMouseEnter(weapon)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${weapon.id}`"></div>
+                <div v-if="config.impacts" class="impacts">
+                  <div v-for="impact in impactsById[weapon.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+                </div>
+                <div v-if="config.combinations" class="items">
+                  <div v-for="item in weapon.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.titles" class="title">{{weapon.id}}</div>
               </div>
-              <div v-if="config.combinations" class="items">
-                <div v-for="item in weapon.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
-              </div>
-              <div v-if="config.titles" class="title">{{weapon.id}}</div>
-            </div>
-          </transition-group>
-        </section>
+            </transition-group>
+          </section>
+        </Transition>
 
         <!-- Evolutions -->
-        <section v-if="config.evolutions" style="max-width: 75em">
-          <transition-group tag="div" class="objects">
-            <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3, dlc4: evolution.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
-              <div class="icon" :class="`icon-${evolution.id}`"></div>
-              <div v-if="config.impacts" class="impacts">
-                <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+        <h2 @click="collapsedSections.evolutions = !collapsedSections.evolutions"><small :style="{transform: collapsedSections.evolutions ? 'none' : 'rotate(90deg)'}">►</small> Evolutions</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.evolutions" style="max-width: 75em">
+            <transition-group tag="div" class="objects">
+              <div v-for="evolution in visibleEvolutions" :key="evolution.id" :data-id="evolution.id" class="object evolution" :class="{selected: evolution.selected, special: evolution.special, dlc1: evolution.dlc1, dlc2: evolution.dlc2, dlc1: evolution.dlc1, dlc3: evolution.dlc3, dlc4: evolution.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="evolution.title" @click="toggleItem(evolution)" @mouseenter="onMouseEnter(evolution)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${evolution.id}`"></div>
+                <div v-if="config.impacts" class="impacts">
+                  <div v-for="impact in impactsById[evolution.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+                </div>
+                <div v-if="config.combinations" class="items">
+                  <div v-for="item in evolution.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.titles" class="title">{{evolution.id}}</div>
               </div>
-              <div v-if="config.combinations" class="items">
-                <div v-for="item in evolution.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
-              </div>
-              <div v-if="config.titles" class="title">{{evolution.id}}</div>
-            </div>
-          </transition-group>
-        </section>
+            </transition-group>
+          </section>
+        </Transition>
 
         <!-- Passives -->
-        <section style="max-width: 55em">
-          <transition-group tag="div" class="objects">
-            <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3, dlc4: passive.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
-              <div class="icon" :class="`icon-${passive.id}`"></div>
-              <div v-if="config.impacts" class="impacts">
-                <div v-for="impact in impactsById[passive.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+        <h2 @click="collapsedSections.passives = !collapsedSections.passives"><small :style="{transform: collapsedSections.passives ? 'none' : 'rotate(90deg)'}">►</small> Passives</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.passives" style="max-width: 55em">
+            <transition-group tag="div" class="objects">
+              <div v-for="passive in visiblePassives" :key="passive.id" :data-id="passive.id" class="object passive" :class="{selected: passive.selected, special: passive.special, dlc1: passive.dlc1, dlc2: passive.dlc2, dlc3: passive.dlc3, dlc4: passive.dlc4, center: !config.combinations && !config.titles && !config.impacts}" :title="passive.title" @click="toggleItem(passive)" @mouseenter="onMouseEnter(passive)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${passive.id}`"></div>
+                <div v-if="config.impacts" class="impacts">
+                  <div v-for="impact in impactsById[passive.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+                </div>
+                <div v-if="config.combinations" class="items">
+                  <div v-for="item in passive.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.titles" class="title">{{passive.id}}</div>
               </div>
-              <div v-if="config.combinations" class="items">
-                <div v-for="item in passive.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
-              </div>
-              <div v-if="config.titles" class="title">{{passive.id}}</div>
-            </div>
-          </transition-group>
-        </section>
+            </transition-group>
+          </section>
+        </Transition>
 
         <!-- Arcanas -->
-        <section style="max-width: 75em">
-          <transition-group tag="div" class="objects">
-            <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3, dlc4: arcana.dlc4, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
-              <div class="icon" :class="`icon-${arcana.id}`"></div>
-              <div class="items">
-                <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+        <h2 @click="collapsedSections.arcanas = !collapsedSections.arcanas"><small :style="{transform: collapsedSections.arcanas ? 'none' : 'rotate(90deg)'}">►</small> Arcanas</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.arcanas" style="max-width: 75em">
+            <transition-group tag="div" class="objects">
+              <div v-for="arcana in arcanas" :key="arcana.id" :data-id="arcana.id" class="object arcana" :class="{selected: arcana.selected, special: arcana.special, dlc1: arcana.dlc1, dlc2: arcana.dlc2, dlc3: arcana.dlc3, dlc4: arcana.dlc4, center: !config.titles}" :title="arcana.title" @click="toggleItem(arcana)" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${arcana.id}`"></div>
+                <div class="items">
+                  <div v-for="item in arcana.items" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.impacts" class="impacts">
+                  <div v-for="impact in impactsById[arcana.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
+                </div>
+                <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
               </div>
-              <div v-if="config.impacts" class="impacts">
-                <div v-for="impact in impactsById[arcana.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
-              </div>
-              <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
-            </div>
-          </transition-group>
-        </section>
+            </transition-group>
+          </section>
+        </Transition>
 
         <!-- Stages -->
-        <section style="max-width: 75em">
-          <div class="objects">
-            <div v-for="stage in visibleStages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc1: stage.dlc1, dlc2: stage.dlc2, dlc3: stage.dlc3, dlc4: stage.dlc4}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
-              <div class="icon" :class="`icon-${stage.id}`"></div>
-              <div class="items">
-                <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
-                <div style="width: 100%"></div>
-                <div v-for="item in stage.items.slice(0, -4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+        <h2 @click="collapsedSections.stages = !collapsedSections.stages"><small :style="{transform: collapsedSections.stages ? 'none' : 'rotate(90deg)'}">►</small> Stages</h2>
+        <Transition name="slidedown">
+          <section v-if="!collapsedSections.stages" style="max-width: 75em">
+            <div class="objects">
+              <div v-for="stage in visibleStages" :data-id="stage.id" class="object stage center" :class="{selected: stage.selected, special: stage.special, dlc1: stage.dlc1, dlc2: stage.dlc2, dlc3: stage.dlc3, dlc4: stage.dlc4}" :title="stage.title" @click="toggleItem(stage)" @mouseenter="onMouseEnter(stage)" @mouseleave="onMouseLeave()">
+                <div class="icon" :class="`icon-${stage.id}`"></div>
+                <div class="items">
+                  <div v-for="item in stage.items.slice(-4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                  <div style="width: 100%"></div>
+                  <div v-for="item in stage.items.slice(0, -4)" class="icon" :class="`icon-${item.id}`" :title="item.title"></div>
+                </div>
+                <div v-if="config.titles" class="title">{{stage.id}}</div>
               </div>
-              <div v-if="config.titles" class="title">{{stage.id}}</div>
             </div>
-          </div>
-        </section>
+          </section>
+        </Transition>
 
         <!-- Footer -->
         <footer>
@@ -693,6 +747,8 @@
           const settings = ref(false)
 
           const selectedIds = reactive(new Set(getHashIds()))
+
+          const collapsedSections = reactive({})
 
           let hoveredId = ''
 
@@ -1646,7 +1702,7 @@
           }
 
           function useConfig(storageKey = 'vs-build') {
-            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, dlc4: true, evolutions: false, combinations: true, size: 1, version: 2 }
+            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, dlc4: true, combinations: true, size: 1, version: 2 }
 
             const userConfig = loadUserConfig()
 
@@ -1679,6 +1735,7 @@
           return {
             config,
             settings,
+            collapsedSections,
             characters,
             weapons,
             passives,
