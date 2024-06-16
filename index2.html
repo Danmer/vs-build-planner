@@ -434,6 +434,7 @@
             <span class="button" @click="config.dlc1 = !config.dlc1">DLC1: <span :class="(config.dlc1 ? 'enabled' : 'disabled')">{{config.dlc1 ? 'ON' : 'OFF'}}</span></span>
             <span class="button" @click="config.dlc2 = !config.dlc2">DLC2: <span :class="(config.dlc2 ? 'enabled' : 'disabled')">{{config.dlc2 ? 'ON' : 'OFF'}}</span></span>
             <span class="button" @click="config.dlc3 = !config.dlc3">DLC3: <span :class="(config.dlc3 ? 'enabled' : 'disabled')">{{config.dlc3 ? 'ON' : 'OFF'}}</span></span>
+            <span class="button" @click="config.dlc4 = !config.dlc4">DLC4: <span :class="(config.dlc4 ? 'enabled' : 'disabled')">{{config.dlc4 ? 'ON' : 'OFF'}}</span></span>
             <span class="button" @click="config.pixels = !config.pixels">PIXELS: <span :class="(config.pixels ? 'enabled' : 'disabled')">{{config.pixels ? 'ON' : 'OFF'}}</span></span>
             <span class="button" @click="config.size -= 0.1">SIZE <span class="modifier">-</span></span>
             <span class="button" style="margin-left: 0" @click="config.size += 0.1">SIZE <span class="modifier">+</span></span>
@@ -650,23 +651,23 @@
           const itemsById = items.reduce((itemsById, item) => Object.assign(itemsById, { [item.id]: item }), {})
 
           const visibleCharacters = computed(() => {
-            return characters.filter((character) => (config.dlc1 || !character.dlc1) && (config.dlc2 || !character.dlc2) && (config.dlc3 || !character.dlc3))
+            return characters.filter((character) => (config.dlc1 || !character.dlc1) && (config.dlc2 || !character.dlc2) && (config.dlc3 || !character.dlc3) && (config.dlc4 || !character.dlc4))
           })
 
           const visibleWeapons = computed(() => {
-            return weapons.filter((weapon) => (config.dlc1 || !weapon.dlc1) && (config.dlc2 || !weapon.dlc2) && (config.dlc3 || !weapon.dlc3))
+            return weapons.filter((weapon) => (config.dlc1 || !weapon.dlc1) && (config.dlc2 || !weapon.dlc2) && (config.dlc3 || !weapon.dlc3) && (config.dlc4 || !weapon.dlc4))
           })
 
           const visibleEvolutions = computed(() => {
-            return evolutions.filter((evolution) => (config.dlc1 || !evolution.dlc1) && (config.dlc2 || !evolution.dlc2) && (config.dlc3 || !evolution.dlc3))
+            return evolutions.filter((evolution) => (config.dlc1 || !evolution.dlc1) && (config.dlc2 || !evolution.dlc2) && (config.dlc3 || !evolution.dlc3) && (config.dlc4 || !evolution.dlc4))
           })
 
           const visiblePassives = computed(() => {
-            return passives.filter((passive) => (config.dlc1 || !passive.dlc1) && (config.dlc2 || !passive.dlc2) && (config.dlc3 || !passive.dlc3))
+            return passives.filter((passive) => (config.dlc1 || !passive.dlc1) && (config.dlc2 || !passive.dlc2) && (config.dlc3 || !passive.dlc3) && (config.dlc4 || !passive.dlc4))
           })
 
           const visibleStages = computed(() => {
-            return stages.filter((stage) => (config.dlc1 || !stage.dlc1) && (config.dlc2 || !stage.dlc2) && (config.dlc3 || !stage.dlc3))
+            return stages.filter((stage) => (config.dlc1 || !stage.dlc1) && (config.dlc2 || !stage.dlc2) && (config.dlc3 || !stage.dlc3) && (config.dlc4 || !stage.dlc4))
           })
 
           for (const item of items) {
@@ -1535,7 +1536,7 @@
           }
 
           function useConfig(storageKey = 'vs-build') {
-            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, evolutions: false, combinations: true, size: 1, version: 2 }
+            const defaultConfig = { sorting: false, impacts: true, pixels: true, titles: true, dlc1: true, dlc2: true, dlc3: true, dlc4: true, evolutions: false, combinations: true, size: 1, version: 2 }
 
             const userConfig = loadUserConfig()
 
