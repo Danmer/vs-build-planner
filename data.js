@@ -3655,7 +3655,14 @@ window.vs = {
       "id": "lab",
       "name": "Laborratory",
       "itemIds": [
-        "javelin"
+        "cross",
+        "bible",
+        "water",
+        "javelin",
+        "luck",
+        "magnet",
+        "duration",
+        "armadio"
       ]
     },
     {
