@@ -23,6 +23,17 @@ window.vs = {
       "price": 10
     },
     {
+      "id": "imelda2",
+      "prefix": "Unblinded",
+      "name": "Imelda",
+      "emoji": ":charImeldaVS:",
+      "itemIds": [
+        "magicwand",
+        "cooldown"
+      ],
+      "description": "Starts with a level 5 Empty Tome and gets the following bonuses: +40% projectile Speed, +40% MoveSpeed, -10% Cooldown."
+    },
+    {
       "id": "pasqualina",
       "name": "Pasqualina",
       "emoji": ":charPasqualinaVS:",
@@ -87,6 +98,18 @@ window.vs = {
       "surname": "Ratcho",
       "description": "Permanent +25% pickup radius and -30 max health.",
       "price": 500
+    },
+    {
+      "id": "poe2",
+      "prefix": "Retired",
+      "name": "Poe",
+      "emoji": ":charPoeVS:",
+      "itemIds": [
+        "garlic",
+        "recovery"
+      ],
+      "surname": "Ratcho",
+      "description": "Starts with a level 5 Pummarola and gets the following bonuses: +30 MaxHealth, 5hp/s Recovery."
     },
     {
       "id": "clerici",
