@@ -189,8 +189,11 @@
         font-size: 0.9em;
       }
       .slot.character {
+        display: flex;
         width: 9em;
         height: 9em;
+        align-items: center;
+        justify-content: center;
       }
       .slot.arcana {
         overflow: hidden;
@@ -217,16 +220,10 @@
         position: absolute;
         width: 2.5em;
         height: 2.5em;
-        background-position: center;
       }
       .slot.character > .icon {
-        width: 100%;
-        height: 100%;
-        font-size: 1.5em;
-      }
-      .slot.weapon > .icon,
-      .slot.passive > .icon {
-        background-size: contain;
+        width: 6em;
+        height: 6em;
       }
       .slot.arcana > .icon,
       .slot.stage > .icon {
@@ -248,7 +245,6 @@
       }
       .object.center > .icon {
         position: initial;
-        background-position: center center;
       }
       .object.arcana {
         width: 6em;
@@ -283,12 +279,13 @@
         position: absolute;
         left: 0.3em;
         bottom: 0.3em;
+        background-repeat: no-repeat;
       }
       .object.character > .icon {
         bottom: 0.1em;
-        width: 5em;
-        height: 5em;
-        background-position: bottom left;
+        width: 3em;
+        height: 3em;
+        background-position: bottom center;
       }
       .object.weapon > .icon,
       .object.evolution > .icon,
@@ -330,10 +327,6 @@
         margin: 0.1em;
         width: 1.1em;
         height: 1.1em;
-        background-position: right center;
-      }
-      .object.stage > .items > .icon {
-        background-position: center center;
       }
       .object > .impacts {
         position: absolute;
