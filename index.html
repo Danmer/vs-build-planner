@@ -1366,11 +1366,8 @@
           })
 
           watch(maxArcanas, (newMax) => {
-            if (selectedArcanas.value.length > newMax) {
-              for (let index = newMax; index < selectedArcanas.value.length; index++) {
-                const arcana = selectedArcanas.value[index]
-                unselectId(arcana.id)
-              }
+            for (const arcana of selectedArcanas.value.slice(newMax)) {
+              unselectId(arcana.id)
             }
           })
 
