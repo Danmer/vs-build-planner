@@ -823,10 +823,10 @@
           }
           for (const stage of stages) {
             stage.type = 'stage'
-            if (!['bridge', 'whiteout', 'bats', 'astral', 'space'].includes(stage.id)) {
+            if (!['bridge', 'whiteout', 'batcountry', 'astral', 'space'].includes(stage.id)) {
               stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
             }
-            if (stage.id === 'bats') {
+            if (stage.id === 'batcountry') {
               stage.itemIds.push('ring2')
             }
           }
@@ -865,6 +865,7 @@
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
               sigma: ['+health', '+recovery', '+armor', '+wings', '+might', '+duration', '+amount', '+cooldown', '+luck', '+growth', '+curse', '+magnet', '+revival'],
               shemoon: ['+armor', '+wings'],
+              bats: ['+health', '+wings', '+revival', '+amount'],
               rose: ['+wings', '-might', '-growth'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],

@@ -499,6 +499,15 @@ window.vs = {
       ]
     },
     {
+      "id": "bats",
+      "name": "Bats Bats Bats",
+      "description": "Starting weapon gets stronger when levelling up. Revivals also affect Amount. Receives a follower after reviving.",
+      "emoji": ":question:",
+      "itemIds": [
+        "pako_"
+      ]
+    },
+    {
       "id": "rose",
       "name": "Rose De Infernas",
       "description": "Increases enemy spawn quantity by 100.",
@@ -3563,7 +3572,7 @@ window.vs = {
       ]
     },
     {
-      "id": "bats",
+      "id": "batcountry",
       "name": "Bat Country",
       "special": true,
       "itemIds": []
