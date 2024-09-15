@@ -719,10 +719,10 @@
           }
           for (const stage of stages) {
             stage.type = 'stage'
-            if (stage.id !== 'bridge' && stage.id !== 'whiteout' && stage.id !== 'bats' && stage.id !== 'astral' && stage.id !== 'space') {
+            if (stage.id !== 'bridge' && stage.id !== 'whiteout' && stage.id !== 'batcountry' && stage.id !== 'astral' && stage.id !== 'space') {
               stage.itemIds.push('ring1', 'ring2', 'sign1', 'sign2')
             }
-            if (stage.id === 'bats') {
+            if (stage.id === 'batcountry') {
               stage.itemIds.push('ring2')
             }
           }
@@ -737,12 +737,14 @@
               // characters
               antonio: ['+armor', '+health', '+might'],
               imelda: ['+growth'],
+              imelda2: ['+growth', '+speed', '+wings', '+cooldown'],
               pasqualina: ['+speed'],
               gennaro: ['+health', '+amount'],
               arca: ['+cooldown', '+might'],
               porta: ['+area'],
               lama: ['+health', '+wings', '+might', '+curse'],
               poe: ['+magnet', '-health'],
+              poe2: ['+magnet', '+health', '+recovery'],
               clerici: ['+health', '+recovery'],
               dommario: ['+speed', '+duration', '-wings'],
               krochi: ['+revival', '+wings'],
@@ -761,6 +763,7 @@
               ambrojoe: ['+amount', '+luck', '+greed', '+magnet'],
               sigma: ['+health', '+recovery', '+armor', '+wings', '+might', '+duration', '+amount', '+cooldown', '+luck', '+growth', '+curse', '+magnet', '+revival'],
               shemoon: ['+armor', '+wings'],
+              bats: ['+health', '+wings', '+revival', '+amount'],
               rose: ['+wings', '-might', '-growth'],
               exdash: ['+luck', '-health', '-wings', '-might', '-area', '-speed', '-duration', '-cooldown'],
               toastie: ['+wings', '+luck', '+armor', '~health', '-might', '-area', '-speed', '-duration', '-cooldown'],
@@ -803,6 +806,11 @@
               arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_', '+longgun', '+longgun_', '+shortgun', '+shortgun_', '+spreadshot', '+spreadshot_', '+firearm', '+firearm_', '+homingmiss', '+homingmiss_'],
               arcana20: [],
               arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel', '+minicrewmate', '+minighost', '+miniguardian'],
+              darkana1: ['+bracelet', '+bracelet_', '+bracelet__', '+flame', '+flame_', '+bolle', '+bolle_', '+popper', '+luck'],
+              darkana6: [],
+              darkana10: [],
+              darkana12: ['+health', '+recovery', '+growth'],
+              darkana21: ['+whip_', '+vento_', '+garlic_', '+flowers', '+recovery', '+wind', '+wind_', '+muramasa', '+scan', '+magnet'],
               // weapons
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],
@@ -1235,6 +1243,9 @@
           })
 
           const maxArcanas = computed(() => {
+            if (selectedIds.has('darkana6')) {
+              return 99
+            }
             switch (selectedCharacter.value.id) {
               case 'sigma':
                 return 5
@@ -1242,6 +1253,12 @@
                 return 4
               default:
                 return 3
+            }
+          })
+
+          watch(maxArcanas, (newMax) => {
+            for (const arcana of selectedArcanas.value.slice(newMax)) {
+              unselectId(arcana.id)
             }
           })
 
@@ -1445,7 +1462,7 @@
                 }
                 break
               case 'arcana':
-                if (selectedArcanas.value.length <= maxArcanas.value) {
+                if (item.id === 'darkana6' || selectedArcanas.value.length <= maxArcanas.value) {
                   selectedIds.add(item.id)
                 }
                 break
