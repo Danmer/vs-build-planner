@@ -92,6 +92,12 @@
       .flex-reverse-row {
         display: flex;
       }
+      .flex-reverse-col {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap-reverse;
+        height: 9em;
+      }
       .app {
         display: flex;
         flex-direction: column;
@@ -450,6 +456,9 @@
           flex-direction: row-reverse;
           justify-content: flex-end;
         }
+        .flex-reverse-col {
+          flex-wrap: wrap;
+        }
         .slot.stage {
           margin-left: 0;
           min-width: 9em;
@@ -504,18 +513,8 @@
         <!-- Slots -->
         <section class="slots flex-col-row">
           <div class="flex-reverse-row">
-            <div class="arcanas">
-              <div v-for="(arcana, $index) in selectedArcanas.slice(6, 9)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
-                <div class="icon" :class="`icon-${arcana.id}`"></div>
-              </div>
-            </div>
-            <div class="arcanas">
-              <div v-for="(arcana, $index) in selectedArcanas.slice(3, 6)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
-                <div class="icon" :class="`icon-${arcana.id}`"></div>
-              </div>
-            </div>
-            <div class="arcanas">
-              <div v-for="(arcana, $index) in selectedArcanas.slice(0, 3)" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
+            <div class="arcanas flex-reverse-col">
+              <div v-for="(arcana, $index) in selectedArcanas" :data-id="arcana.id" class="slot arcana" :class="arcana.type" :title="arcana.title" @click="deleteItem(arcana, selectedArcanas[$index+1])" @mouseenter="onMouseEnter(arcana)" @mouseleave="onMouseLeave()">
                 <div class="icon" :class="`icon-${arcana.id}`"></div>
               </div>
               <div v-for="i in (selectedArcanas.length < 3 ? 3 - selectedArcanas.length : 0)" class="slot arcana">
@@ -1351,6 +1350,9 @@
           })
 
           const maxArcanas = computed(() => {
+            if (selectedIds.has('darkana6')) {
+              return 99
+            }
             switch (selectedCharacter.value.id) {
               case 'sigma':
                 return 5
@@ -1358,6 +1360,15 @@
                 return 4
               default:
                 return 3
+            }
+          })
+
+          watch(maxArcanas, (newMax) => {
+            if (selectedArcanas.value.length > newMax) {
+              for (let index = newMax; index < selectedArcanas.value.length; index++) {
+                const arcana = selectedArcanas.value[index]
+                unselectId(arcana.id)
+              }
             }
           })
 
@@ -1574,7 +1585,7 @@
                 }
                 break
               case 'arcana':
-                if (selectedArcanas.value.length <= maxArcanas.value) {
+                if (item.id === 'darkana6' || selectedArcanas.value.length <= maxArcanas.value) {
                   selectedIds.add(item.id)
                 }
                 break
