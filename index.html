@@ -272,6 +272,12 @@
         border-radius: 0.3em;
         font-size: 0.9em;
       }
+      .object > .roman.arcana {
+        background-color: rgba(70, 0, 70, 0.8);
+      }
+      .object > .roman.darkana {
+        background-color: rgba(100, 0, 0, 0.8);
+      }
       .object > .character {
         position: absolute;
       }
@@ -681,7 +687,7 @@
                 <div v-if="config.impacts" class="impacts">
                   <div v-for="impact in impactsById[arcana.id]" class="impact" :class="itemsById[impact.substring(1)]?.selected ? (impact[0] === '+' ? 'positive' : 'negative') : '' " :title="impact.substring(1)"></div>
                 </div>
-                <div v-if="config.titles" class="roman">{{arcana.roman}}</div>
+                <div v-if="config.titles" class="roman" :class="arcana.id.includes('darkana') ? 'darkana': 'arcana'">{{arcana.roman}}</div>
               </div>
             </transition-group>
           </section>
@@ -819,7 +825,7 @@
           for (const arcana of arcanas) {
             arcana.index++
             arcana.type = 'arcana'
-            arcana.roman = toRoman(+arcana.id.substring(6))
+            arcana.roman = toRoman(+arcana.id.substring(6) || +arcana.id.substring(7))
           }
           for (const stage of stages) {
             stage.type = 'stage'
@@ -908,6 +914,11 @@
               arcana19: ['+firewand', '+firewand_', '+guns1', '+pinion_', '+bracelet__', '+guns3', '+bird4', '+brazier', '+prism', '+prism_', '+longgun', '+longgun_', '+shortgun', '+shortgun_', '+spreadshot', '+spreadshot_', '+firearm', '+firearm_', '+homingmiss', '+homingmiss_'],
               arcana20: [],
               arcana21: ['+amount', '+magnet', '+garlic', '+garlic_', '+pentagram', '+pentagram_', '+mana', '+mana_', '+lancet', '+laurel', '+minicrewmate', '+minighost', '+miniguardian'],
+              darkana1: ['+bracelet', '+bracelet_', '+bracelet__', '+flame', '+flame_', '+bolle', '+bolle_', '+popper', '+luck'],
+              darkana6: [],
+              darkana10: [],
+              darkana12: ['+health', '+recovery', '+growth'],
+              darkana21: ['+whip_', '+vento_', '+garlic_', '+flowers', '+recovery', '+wind', '+wind_', '+muramasa', '+scan', '+magnet'],
               // weapons
               axe: ['+cooldown', '+might', '+area', '+amount', '+speed'],
               axe_: ['+cooldown', '+might', '+area', '+amount', '+speed'],

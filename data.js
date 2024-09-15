@@ -3161,6 +3161,83 @@ window.vs = {
       ],
       "description": "Listed weapons also emit special damaging zones affected by Amount and Magnet. Enemies within Magnet range take damage based on Amount.",
       "major": true
+    },
+    {
+      "id": "darkana1",
+      "name": "I - Sapphire Mist",
+      "emoji": ":question:",
+      "itemIds": [
+        "bracelet",
+        "bracelet_",
+        "bracelet__",
+        "flame",
+        "flame_",
+        "bolle",
+        "bolle_",
+        "popper",
+        "luck"
+      ],
+      "description": "All weapons have a chance to fire twice instead of once when activated. Listed weapons might fire more than twice instead.",
+      "major": true
+    },
+    {
+      "id": "darkana6",
+      "name": "VI - Moonlight Bolero",
+      "emoji": ":question:",
+      "itemIds": [
+        "chest"
+      ],
+      "description": "An extra treasure boss spawns every minute. The treasure it carries might occasionally contain arcanas and random passive weapons.",
+      "major": true
+    },
+    {
+      "id": "darkana10",
+      "name": "X - Hail from the Future",
+      "emoji": ":question:",
+      "itemIds": [
+        "candybox",
+        "armadio",
+        "rosary",
+        "orologion",
+        "vacuum",
+        "gildedclover",
+        "goldfinger"
+      ],
+      "description": "Receive one of the listed items when levelling up.",
+      "major": true
+    },
+    {
+      "id": "darkana12",
+      "name": "XII - Crystal Cries",
+      "emoji": ":question:",
+      "itemIds": [
+        "health",
+        "recovery",
+        "growth",
+        "orologion"
+      ],
+      "description": "Defeating frozen enemies gives bonus MaxHealth, Recovery, and Growth. Triggers an Orologion when health reaches a critically low level.",
+      "major": true
+    },
+    {
+      "id": "darkana21",
+      "name": "XXI - Wandering the Jet Black",
+      "emoji": ":question:",
+      "itemIds": [
+        "whip_",
+        "vento_",
+        "garlic_",
+        "flowers",
+        "recovery",
+        "wind",
+        "wind_",
+        "muramasa",
+        "scan",
+        "magnet",
+        "chicken"
+      ],
+      "description": "Losing health generates exploding projectiles. Explosion damage is increased by total recovered health and Magnet bonus. Explosion Area is increased by Magnet.",
+      "major": true
     }
   ],
   "pickups": [
@@ -3394,7 +3471,19 @@ window.vs = {
       "value": 0
     },
     {
-      "id": "armadio"
+      "id": "armadio",
+      "name": "Arma Dio",
+      "description": "Allows you to choose an extra passive weapon.",
+      "rarity": 50
+    },
+    {
+      "id": "goldfinger",
+      "name": "Gold Finger",
+      "description": "Gives temporary invulnerability, bonus Charm, and minimum Cooldown. Defeat as many enemies as possible to win a prize.",
+      "rarity": 0.02,
+      "tips": "Drop rate affected by Luck.",
+      "unlocksAt": 8,
+      "value": 0
     }
   ],
   "structures": [
