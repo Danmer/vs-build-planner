@@ -397,7 +397,8 @@ window.vs = {
       "id": "cosmo",
       "name": "Cosmo",
       "emoji": ":animCosmoPavoneVS:",
-      "itemIds": [
+      "itemIds": [],
+      "hiddenitemIds": [
         "bird1",
         "bird2"
       ],
@@ -543,7 +544,8 @@ window.vs = {
       "id": "scorej",
       "name": "Scorej-Oni",
       "emoji": ":charScorejOniVS:",
-      "itemIds": [
+      "itemIds": [],
+      "hiddenitemIds": [
         "lightning"
       ],
       "special": true,
@@ -597,6 +599,9 @@ window.vs = {
       "itemIds": [
         "night"
       ],
+      hiddenitemIds: [
+        "muramasa"
+      ],
       "dlc1": true,
       "surname": "Moonspell",
       "description": "Starts with hidden Night Sword. Morphs into a stronger version when his base weapon evolves.",
@@ -633,7 +638,8 @@ window.vs = {
       "id": "megamenya",
       "name": "Menya",
       "emoji": ":charMegaloMenyaVS:",
-      "itemIds": [
+      "itemIds": [],
+      "hiddenitemIds": [
         "bocce"
       ],
       "dlc1": true,
@@ -647,9 +653,7 @@ window.vs = {
       "id": "megasyuuto",
       "name": "Syuuto",
       "emoji": ":charMegaloSyuutoVS:",
-      "itemIds": [
-        "muramasa"
-      ],
+      "itemIds": ["muramasa"],
       "dlc1": true,
       "prefix": "Megalo",
       "surname": "Moonspell",
@@ -850,7 +854,8 @@ window.vs = {
       "id": "megaimpostor",
       "name": "Impostor",
       "emoji": ":question:",
-      "itemIds": [
+      "itemIds": [],
+      "hiddenitemIds": [
         "tongue"
       ],
       "dlc3": true,
@@ -1001,7 +1006,1100 @@ window.vs = {
       "surname": "Belmont",
       "description": "Simondo says he doesn't even need guns. Gets more projectiles every 20 levels (max +4).",
       "price": 10000
-    }
+    },
+    {
+      "id": "leon",
+      "name": "Leon",
+      "emoji": ":question:",
+      "description": "Receives a hidden Svarog Statue at Level 5. Gets a bonus to most stats when Vampire Killer is equipped. Can find special pickups.",
+      "itemIds": [
+        "morningstar",
+      ],
+      "hiddenitemIds": [
+        "savrogweapon",
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 10
+    },
+    {
+      "id": "sonia",
+      "name": "Sonia",
+      "emoji": ":question:",
+      "description": "Gains a temporary Cooldown reduction when overhealing by 8+. Can find special pickups.",
+      "itemIds": [
+        "morningstar"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "trevor",
+      "name": "Trevor",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana X - Beginning. Gains +1 Amount every 10 levels (max +3). Can find special pickups.",
+      "itemIds": [
+        "morningstar",
+        "arcana10"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "christopher",
+      "name": "Christopher",
+      "emoji": ":question:",
+      "description": "Greed can occasionally affect Might, Area, and Armor. Can find special pickups.",
+      "itemIds": [
+        "morningstar"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "simon",
+      "name": "Simon",
+      "emoji": ":question:",
+      "description": "Growth can occasionally affect Might, Area, and Armor. Can find special pickups.",
+      "itemIds": [
+        "morningstar"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "juste",
+      "name": "Juste",
+      "emoji": ":question:",
+      "description": "Can receive Spellnades'Spellbook as 4th level up option until Level 7. Every 6 levels automatically levels up any equipped spell from the Spellnades'Spellbook. Can find special pickups.",
+      "itemIds": [
+        "morningstar",
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "richter",
+      "name": "Richter",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana IX - Divine Bloodline.",
+      "itemIds": [
+        "morningstar",
+        "arcana9"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "julius",
+      "name": "Julius",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XIX - Heart of Fire. When Health is low, Might is increased. Can find special pickups.",
+      "itemIds": [
+        "morningstar",
+        "arcana19"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 500
+    },
+    {
+      "id": "grant",
+      "name": "Grant",
+      "emoji": ":question:",
+      "description": "Retaliates by triggering any equipped knives. Can find special pickups.",
+      "itemIds": [
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Danasty",
+      "price": 200
+    },
+    {
+      "id": "quincy",
+      "name": "Quincy",
+      "emoji": ":question:",
+      "description": "Charge ability affected by Might: attempts to safely detonate a Neutron Bomb.",
+      "itemIds": [
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Morris",
+      "price": 2000
+    },
+    {
+      "id": "john",
+      "name": "John",
+      "emoji": ":question:",
+      "description": "Gains an extra Arcana VII - Iron Blue Will at level 10. Obtains a Mirror of Truth every 5 levels.",
+      "itemIds": [
+        "coatofarms",
+        "morningstar",
+        "arcana7"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Morris",
+      "price": 500
+    },
+    {
+      "id": "jonathan",
+      "name": "Jonathan",
+      "emoji": ":question:",
+      "description": "Charge ability affected by Speed: triggers all equipped weapons from the Coat of Arms. Can find special pickups.",
+      "itemIds": [
+        "morningstar",
+        "coatofarms",
+        "spectralsword"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Morris",
+      "price": 500
+    },
+    {
+      "id": "maxim",
+      "name": "Maxim",
+      "emoji": ":question:",
+      "description": "Overhealing slightly increases Speed. Might is greatly increased while Invulnerable.",
+      "itemIds": [
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Kischine",
+      "price": 2000
+    },
+    {
+      "id": "henry",
+      "name": "Henry",
+      "emoji": ":question:",
+      "description": "Gains a bonus to Area and Luck depending on how many enemies are in sight.",
+      "itemIds": [
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "soma",
+      "name": "Soma",
+      "emoji": ":question:",
+      "description": "Gains +1% Might every level. Immune to health drain. Once per life, triggers Soul Steal after receiving fatal damage.",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Cruz",
+      "price": 1000
+    },
+    {
+      "id": "dracula",
+      "name": "Dracula",
+      "emoji": ":question:",
+      "description": "Gains +1% Might every level and +1 Revival every 100 levels. Curse increases Might. Incoming damage capped at 10. Immune to health drain.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 0
+    },
+    {
+      "id": "charlotte",
+      "name": "Charlotte",
+      "emoji": ":question:",
+      "description": "Charge ability affected by Growth: triggers all equipped weapons from the Belnades'Spellbook. Can find special pickups.",
+      "itemIds": [
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Aulin",
+      "price": 500
+    },
+    {
+      "id": "sypha",
+      "name": "Sypha",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XIV - Jail of Crystal.",
+      "itemIds": [
+        "spellbook",
+        "arcana14"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belnades",
+      "price": 1665
+    },
+    {
+      "id": "julia",
+      "name": "Julia",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana VI - Sarabande of Healing. Obtains a Heart Refresh every 2 levels. Can find special pickups.",
+      "itemIds": [
+        "spellbook",
+        "arcana6"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Laforeze",
+      "price": 7
+    },
+    {
+      "id": "carrie",
+      "name": "Carrie",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XI - Waltz of Pearls.",
+      "itemIds": [
+        "spellbook",
+        "arcana11"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Fernandez",
+      "price": 1665
+    },
+    {
+      "id": "yoko",
+      "name": "Yoko",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana III - Tragic Princess. Activates any equipped lightning-themed weapon after walking a certain distance.",
+      "itemIds": [
+        "spellbook",
+        "arcana3"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belnades",
+      "price": 1665
+    },
+    {
+      "id": "rinaldo",
+      "name": "Rinaldo",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana I - Gemini.",
+      "itemIds": [
+        "spellbook",
+        "arcana1"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Gandolfi",
+      "price": 1665
+    },
+    {
+      "id": "mina",
+      "name": "Mina",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana II - Twilight Requiem.",
+      "itemIds": [
+        "spellbook",
+        "arcana2"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Hakuba",
+      "price": 1665
+    },
+    {
+      "id": "elizabeth",
+      "name": "Elizabeth",
+      "emoji": ":question:",
+      "description": "Increases enemies spawn quantity by 50. Immune to health drain. Reveals a demonic form after defeating a large amount of enemies.",
+      "itemIds": [
+        "spellbook",
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Bartley",
+      "price": 6665
+    },
+    {
+      "id": "alucard",
+      "name": "Alucard",
+      "emoji": ":question:",
+      "description": "Charge: Soul Steal.\nLevelUp: Dark Inferno.\nOverheal 8+: Summon Spirit.\nHP-Critical: Sword Brothers.\nImmune to health drain.",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 1000
+    },
+    {
+      "id": "reinhardt",
+      "name": "Reinhardt",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XVI - Slash. Inflicts higher overall critical damage.",
+      "itemIds": [
+        "spectralsword",
+        "coatofarms",
+        "morningstar",
+        "arcana16"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Schneider",
+      "price": 2000
+    },
+    {
+      "id": "eric",
+      "name": "Eric",
+      "emoji": ":question:",
+      "description": "Becomes invincible and deals damage to nearby enemies for 20 seconds when health reaches a critically low level.",
+      "itemIds": [
+        "spectralsword",
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Lecarde",
+      "price": 500
+    },
+    {
+      "id": "isaac",
+      "name": "Isaac",
+      "emoji": ":question:",
+      "description": "Gains a random Familiar as a follower every 10 levels (max 4).",
+      "itemIds": [
+        "spectralsword",
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "hector",
+      "name": "Hector",
+      "emoji": ":question:",
+      "description": "Gains a random Familiar as a follower every 10 levels (max 4).",
+      "itemIds": [
+        "spectralsword",
+        "coatofarms"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 500
+    },
+    {
+      "id": "sara",
+      "name": "Sara",
+      "emoji": ":question:",
+      "description": "Gains +0.02 Recovery every level. Once per life, triggers Firebreathing in any character. Evolves the Alchemy Whip when reviving.",
+      "itemIds": [
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Trantoul",
+      "price": 2000
+    },
+    {
+      "id": "vincent",
+      "name": "Vincent",
+      "emoji": ":question:",
+      "description": "Overhealing slightly increases Greed. Greed is doubled while Invulnerable. Starts with extra Arcana XV - Disco of Gold.",
+      "itemIds": [
+        "coatofarms",
+        "arcana15"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Dorin",
+      "price": 9000
+    },
+    {
+      "id": "mariaa",
+      "name": "Maria",
+      "emoji": ":question:",
+      "description": "Gains a follower every 10 levels starting from level 2. Overhealing slightly increases Might. Overhealing by +32 temporarily boosts all current followers.",
+      "itemIds": [
+        "spectralsword",
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Renard",
+      "price": 1000
+    },
+    {
+      "id": "shanoa",
+      "name": "Shanoa",
+      "emoji": ":question:",
+      "description": "Gains +1% Might every level. Charge ability: triggers all equipped weapons from the Ebony Diabologue. Can find special pickups.",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 1000
+    },
+    {
+      "id": "albus",
+      "name": "Albus",
+      "emoji": ":question:",
+      "description": "Gains a bonus to Might and Cooldown depending on how many enemies are in sight.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "lisa",
+      "name": "Lisa",
+      "emoji": ":question:",
+      "description": "Gains +1 Growth every level. Starts with extra Arcana XX - Silent Old Sanctuary.",
+      "itemIds": [
+        "spellbook",
+        "arcana20"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "shaft",
+      "name": "Shaft",
+      "emoji": ":question:",
+      "description": "Gains +1% Curse every level. Becomes invincible and deals damage to nearby enemies for 20 seconds when health reaches a critically low level.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "stgermain",
+      "name": "Saint Germain",
+      "emoji": ":question:",
+      "description": "Gains 0.002% Cooldown reduction per level. Starts with extra Arcana XII - Out of Bounds.",
+      "itemIds": [
+        "spectralsword",
+        "diabologue",
+        "arcana12"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "nathan",
+      "name": "Nathan",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana V - Awake. Obtains an extra choice of Arcana after surviving 7 and 14 minutes.",
+      "itemIds": [
+        "morningstar",
+        "spellbook",
+        "arcana4"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Graves",
+      "price": 2000
+    },
+    {
+      "id": "cornell",
+      "name": "Cornell",
+      "emoji": ":question:",
+      "description": "Morphs into a stronger version when equipped with Trinum Custodem.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "barlowe",
+      "name": "Barlowe",
+      "emoji": ":question:",
+      "description": "Overhealing slightly increases Might and Curse. Might receive Ebony Diabologue as 4th level up option until Level 11.",
+      "itemIds": [
+        "diabologue",
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "mariab",
+      "name": "Maria",
+      "emoji": ":question:",
+      "description": "Cannot be damaged, but disappears after reaching the current Time Limit. Always has a forced 4th level up option.",
+      "itemIds": [
+        "familiarforge"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Renard",
+      "price": 9000
+    },
+    {
+      "id": "familiars",
+      "name": "Familiar",
+      "emoji": ":question:",
+      "description": "Gets more projectiles every 20 levels (max +3).",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 100
+    },
+    {
+      "id": "innocent_devils",
+      "name": "Innocent",
+      "emoji": ":question:",
+      "description": "Gets more projectiles every 20 levels (max +3).",
+      "itemIds": [
+        "candybox"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Devil",
+      "price": 100
+    },
+    {
+      "id": "cornell_bcm",
+      "name": "Cornell",
+      "emoji": ":question:",
+      "description": "Gains +1% Might every level. ",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 9000
+    },
+    {
+      "id": "ferryman",
+      "name": "Ferryman",
+      "emoji": ":question:",
+      "description": "Water included.",
+      "itemIds": [],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 1665
+    },
+    {
+      "id": "librarian",
+      "name": "Librarian",
+      "emoji": ":question:",
+      "description": "",
+      "itemIds": [
+        "rapidus_",
+        "arcana8"
+      ],
+      "hiddenitemIds": [],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 65536
+    },
+    {
+      "id": "hammer",
+      "name": "Hammer",
+      "emoji": ":question:",
+      "description": "Gets more projectiles every 20 levels (Max +3). Amount is doubled while invulnerable.",
+      "itemIds": [
+        "rpg_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 9000
+    },
+    {
+      "id": "windch",
+      "name": "Wind",
+      "emoji": ":question:",
+      "description": "Retaliates with Aura Blast. Triggers Aura Blast and a random equipped weapon from the Coat of Arms when overhealing by +8.",
+      "itemIds": [
+        "aurablastweapon"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "jonathan_and_charlotte",
+      "name": "Jonathan & Charlotte",
+      "emoji": ":question:",
+      "description": "Jonathan! Charlotte! Jonathan! Charlotte! Jonathan! Charlotte! Jonathan! Charlotte!",
+      "itemIds": [
+        "morningstar",
+        "coatofarms",
+        "spectralsword"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "charlotte_and_jonathan",
+      "name": "Charlotte & Jonathan",
+      "emoji": ":question:",
+      "description": "Charlotte! Jonathan! Charlotte! Jonathan! Charlotte! Jonathan! Charlotte! Jonathan! Charlotte! Jonathan! Charlotte! Jonathan!",
+      "itemIds": [
+        "spellbook"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "stella_and_loretta",
+      "name": "Stella & Loretta",
+      "emoji": ":question:",
+      "description": "Immune to health drain.",
+      "itemIds": [
+        "windC_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Lecarde",
+      "price": 2000
+    },
+    {
+      "id": "loretta_and_stella",
+      "name": "Loretta & Stella",
+      "emoji": ":question:",
+      "description": "Immune to health drain.",
+      "itemIds": [
+        "ice_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Lecarde",
+      "price": 2000
+    },
+    {
+      "id": "stella",
+      "name": "Stella",
+      "emoji": ":question:",
+      "description": "Immune to health drain.",
+      "itemIds": [
+        "windC_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Lecarde",
+      "price": 2000
+    },
+    {
+      "id": "loretta",
+      "name": "Loretta",
+      "emoji": ":question:",
+      "description": "Immune to health drain.",
+      "itemIds": [
+        "ice_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Lecarde",
+      "price": 2000
+    },
+    {
+      "id": "brauner",
+      "name": "Brauner",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XXI - Blood Astronomia. Immune to health drain.",
+      "itemIds": [
+        "diabologue",
+        "arcana21"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "soleil",
+      "name": "Soleil",
+      "emoji": ":question:",
+      "description": "Recently got into whips.",
+      "itemIds": [
+        "lemuria",
+        "holywhip",
+        "martialwhip"
+      ],
+      "hiddenitemIds": [
+        "lemuria",
+        "holywhip",
+        "martialwhip"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Belmont",
+      "price": 1665
+    },
+    {
+      "id": "dario",
+      "name": "Dario",
+      "emoji": ":question:",
+      "description": "Increases the base damage of every equipped fire-type weapon when levelling up.",
+      "itemIds": [
+        "fire_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Bossi",
+      "price": 1665
+    },
+    {
+      "id": "dmitri",
+      "name": "Dmitri",
+      "emoji": ":question:",
+      "description": "Gets a hidden clone of the latest equipped weapon or evolution.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Blinov",
+      "price": 1665
+    },
+    {
+      "id": "celia",
+      "name": "Celia",
+      "emoji": ":question:",
+      "description": "Obtains a Karma Coin every 2 levels",
+      "itemIds": [
+        "light_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Fortner",
+      "price": 1665
+    },
+    {
+      "id": "graham",
+      "name": "Graham",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XIII - Wicked Season. Immune to health drain.",
+      "itemIds": [
+        "dark_",
+        "arcana13"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Jones",
+      "price": 16650
+    },
+    {
+      "id": "joachim",
+      "name": "Joachim",
+      "emoji": ":question:",
+      "description": "Immune to health drain. Can choose a per-level bonus.",
+      "itemIds": [
+        "slash_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "walter",
+      "name": "Walter",
+      "emoji": ":question:",
+      "description": "Triggers a random equipped weapon from the Ebony Diabologue when overhealing by +8. Immune to health drain.",
+      "itemIds": [
+        "energy_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "carmilla",
+      "name": "Carmilla",
+      "emoji": ":question:",
+      "description": "Charge ability affected by Curse: triggers all equipped Dominus weapons. Immune to health drain. Can fly.",
+      "itemIds": [],
+      "hiddenitemIds": [
+        "dominus2"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "olrox",
+      "name": "Olrox",
+      "emoji": ":question:",
+      "description": "Count on him to change halfway through the dinner.",
+      "itemIds": [
+        "darkrift"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "cavetroll",
+      "name": "Cave Troll",
+      "emoji": ":question:",
+      "description": "Gets more projectiles every 20 levels (max +4).",
+      "itemIds": [
+        "neutronweapon"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 500
+    },
+    {
+      "id": "fleaman",
+      "name": "Fleman",
+      "emoji": ":question:",
+      "description": "He doesn't understand the game.",
+      "itemIds": [
+        "arcana0"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 500
+    },
+    {
+      "id": "axearmor",
+      "name": "Axe Armor",
+      "emoji": ":question:",
+      "description": "Six axes axe axes as axes axe.",
+      "itemIds": [
+        "axe"
+      ],
+      hiddenitemIds: [
+        "axe"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 2000
+    },
+    {
+      "id": "frozenshade",
+      "name": "Frozenshade",
+      "emoji": ":question:",
+      "description": "She likes her Wall and Floor chicken well frozen.",
+      "itemIds": [
+        "icebrand"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 500
+    },
+    {
+      "id": "succubus",
+      "name": "Succubus",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XVIII - Boogaloo of Illusions.",
+      "itemIds": [
+        "evil_",
+        "arcana18"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "keremet",
+      "name": "Keremet",
+      "emoji": ":question:",
+      "description": "Starts with extra Arcana XVII - Lost & Found Painting. Triggers Keremet Morbus when overhealing by +8.",
+      "itemIds": [
+        "acid_",
+        "arcana17"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "sniper",
+      "name": "Sniper",
+      "emoji": ":question:",
+      "description": "Gains +1% Luck every level. Flies.",
+      "itemIds": [
+        "gothmissile"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "blackmore",
+      "name": "Blackmore",
+      "emoji": ":question:",
+      "description": "Can choose a per-level bonus after defeating a set amount of enemies (max 5 times).",
+      "itemIds": [
+        "summonspirit",
+        "arcana5"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "malphas",
+      "name": "Malphas",
+      "emoji": ":question:",
+      "description": "Has hidden weapons that grow stronger when levelling up. Flies.",
+      "itemIds": [],
+      "hiddenitemIds": [
+        "knife_",
+        "elec_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "death",
+      "name": "Death",
+      "emoji": ":question:",
+      "description": "Doesn't appreciate getting blasphemously mockered.",
+      "itemIds": [
+        "axe_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "galamoth",
+      "name": "Galamoth",
+      "emoji": ":question:",
+      "description": "",
+      "itemIds": [
+        "elec_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "elizabeth_mega",
+      "name": "Elizabeth",
+      "emoji": ":question:",
+      "description": "Increases enemies spawn quantity by 50. Immune to health drain.",
+      "itemIds": [
+        "spellbook",
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "Bartley",
+      "price": 16650
+    },
+    {
+      "id": "olrox_mega",
+      "name": "Olrox",
+      "emoji": ":question:",
+      "description": "Count on him to change halfway through dinner.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "death_mega",
+      "name": "Death",
+      "emoji": ":question:",
+      "description": "Doesn't appreciate getting blasphemously mockered.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "dracula_mega",
+      "name": "Dracula",
+      "emoji": ":question:",
+      "description": "Gains +1% Might every level and +1 Revival every 100 levels. Curse increases Might. Incoming damage capped at 10. Immune to health drain.",
+      "itemIds": [
+        "diabologue"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 16650
+    },
+    {
+      "id": "chaos",
+      "name": "Chaos",
+      "emoji": ":question:",
+      "description": "",
+      "itemIds": [
+        "lancet_"
+      ],
+      "special": true,
+      "dlc5": true,
+      "surname": "",
+      "price": 1048576
+    },
   ],
   "weapons": [
     {
@@ -1468,7 +2566,7 @@ window.vs = {
       "dlc3": true,
       "description": ""
     },
-    
+
     {
       "id": "longgun",
       "name": "Long Gun",
@@ -1556,6 +2654,630 @@ window.vs = {
       "description": "Cooldown is affected by missing health.",
       "dlc4": true,
       "rarity": 1,
+    },
+    {
+      "id": "alchemywhip",
+      "name": "Alchemy Whip",
+      "emoji": ":question:",
+      "description": "Grows stronger every time a boss enemy is defeated.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "windwhip",
+      "name": "Wind Whip",
+      "emoji": ":question:",
+      "description": "Damage affected by growth.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "platinumwhip",
+      "name": "Platinum Whip",
+      "emoji": ":question:",
+      "description": "Every 3rd activation fires projectiles in fixed directions.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "dragonwater",
+      "name": "Dragon Water Whip",
+      "emoji": ":question:",
+      "description": "Every 7th activation fires a snaking dragon projectile.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "sonicwhip",
+      "name": "Sonic Whip",
+      "emoji": ":question:",
+      "description": "Chance to instant kill based on curse.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "lemuria",
+      "name": "Jet Black Whip",
+      "emoji": ":question:",
+      "description": "Strikes at the nearest enemy and generates a linear damaging zone.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "holywhip",
+      "name": "Vibhuti Whip",
+      "emoji": ":question:",
+      "description": "Strikes at the nearest enemy and generates a cluster of explosions.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "martialwhip",
+      "name": "Vanitas Whip",
+      "emoji": ":question:",
+      "description": "Strikes at the nearest enemy and generates a perpendicular damaging zone. Zone damage affected by MaxHealth.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "shuriken",
+      "name": "Shuriken",
+      "emoji": ":question:",
+      "description": "Fires projectiles in the faced direction.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "bwaka",
+      "name": "Curved Knife",
+      "emoji": ":question:",
+      "description": "Fires a spinning projectile at random enemy.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "javelinC",
+      "name": "Javelin",
+      "emoji": ":question:",
+      "description": "Fires a penetrating projectile in a fixed direction.",
+      "dlc5": true,
+      "rarity": 70
+    },
+    {
+      "id": "discus",
+      "name": "Discus",
+      "emoji": ":question:",
+      "description": "Fires a defensive projectile.",
+      "dlc5": true,
+      "rarity": 70
+    },
+    {
+      "id": "ironball",
+      "name": "Iron Ball",
+      "emoji": ":question:",
+      "description": "Damage affected by Armor.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "gun",
+      "name": "Silver Revolver",
+      "emoji": ":question:",
+      "description": "Fires a powerful projectiles, six times.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "rpg",
+      "name": "Hand Grenade",
+      "emoji": ":question:",
+      "description": "Fires an exploding projectile.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "wineglass",
+      "name": "Wine Glass",
+      "emoji": ":question:",
+      "description": "Throws an exploding projectile.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "fire",
+      "name": "Raging Fire",
+      "emoji": ":question:",
+      "description": "Generates an exploding damaging zone.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "ice",
+      "name": "Ice Fang",
+      "emoji": ":question:",
+      "description": "Generates damaging zones in a straight line.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "windC",
+      "name": "Gale Force",
+      "emoji": ":question:",
+      "description": "Fires light-hitting projectiles backwards.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "earth",
+      "name": "Rock Riot",
+      "emoji": ":question:",
+      "description": "Fires projectiles from a fixed location.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "elec",
+      "name": "Fulgur",
+      "emoji": ":question:",
+      "description": "Strikes at fixed locations.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "acid",
+      "name": "Keremet Bubbles",
+      "emoji": ":question:",
+      "description": "Fires slow moving damaging zones.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "evil",
+      "name": "Hex",
+      "emoji": ":question:",
+      "description": "Generates a moving damaging zone. Damage affected by Curse.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "holy",
+      "name": "Refectio",
+      "emoji": ":question:",
+      "description": "Generates a damaging zone that also provides light healing.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "mace",
+      "name": "Mace",
+      "emoji": ":question:",
+      "description": "Amount affects number of hits.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "starflail",
+      "name": "Star Flail",
+      "emoji": ":question:",
+      "description": "Fires lingering projectiles. Damage multiplied by Recovery.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "alucardspear",
+      "name": "Alucard Spear",
+      "emoji": ":question:",
+      "description": "Executes a spinning attack when changing horizontal direction.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "chauve",
+      "name": "Trident",
+      "emoji": ":question:",
+      "description": "Strikes at fixed locations.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "shield",
+      "name": "Iron Shield",
+      "emoji": ":question:",
+      "description": "Retaliates by shooting lingering projectiles.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "sacredbeasts",
+      "name": "Guardian's Targe",
+      "emoji": ":question:",
+      "description": "Summons defensive followers. Overhealing triggers additional follower's attacks.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "slash",
+      "name": "Tyrfing",
+      "emoji": ":question:",
+      "description": "Has boomerang effect, can deal critical damage.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "alucardsword",
+      "name": "Alucart Sworb",
+      "emoji": ":question:",
+      "description": "Allegedly strikes at the nearest enemy.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "confodere",
+      "name": "Confodere",
+      "emoji": ":question:",
+      "description": "Attack nearby enemies. Speed affects damage.",
+      "dlc5": true,
+      "rarity": 80
+    },
+    {
+      "id": "energy",
+      "name": "Globus",
+      "emoji": ":question:",
+      "description": "Fires two bouncing projectiles. Amount affects Duration.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "spite",
+      "name": "Optical Shot",
+      "emoji": ":question:",
+      "description": "Fires two penetrating projectiles.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "custos1",
+      "name": "Dextro Custos",
+      "emoji": ":question:",
+      "description": "Summons Cerberus' fiery head in faced direction.",
+      "dlc5": true,
+      "rarity": 70
+    },
+    {
+      "id": "custos2",
+      "name": "Sinestro Custos",
+      "emoji": ":question:",
+      "description": "Summons Cerberus' icy head in faced direction.",
+      "dlc5": true,
+      "rarity": 70
+    },
+    {
+      "id": "custos3",
+      "name": "Centralis Custos",
+      "emoji": ":question:",
+      "description": "Summons Cerberus' vengeful head. Boosts Armor, Recovery and Cooldown when damaged.",
+      "dlc5": true,
+      "rarity": 70
+    },
+    {
+      "id": "dominus1",
+      "name": "Dominus Anger",
+      "emoji": ":question:",
+      "description": "Fires a penetrating projectile. Drains health.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "dominus2",
+      "name": "Dominus Hatred",
+      "emoji": ":question:",
+      "description": "Fires projectiles from above. Drains health.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "dominus3",
+      "name": "Dominus Agony",
+      "emoji": ":question:",
+      "description": "Increases Might, Speed, Duration, and Area. Drains Health.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "rapidus",
+      "name": "Sonic Dash",
+      "emoji": ":question:",
+      "description": "Increases Move Speed by 10% per level and damages nearby enemies. Area and speed increases damage.",
+      "dlc5": true,
+      "rarity": 50
+    },
+    {
+      "id": "light",
+      "name": "Luminatio",
+      "emoji": ":question:",
+      "description": "Fires spinning projectiles made of light.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "dark",
+      "name": "Umbra",
+      "emoji": ":question:",
+      "description": "Fires spinning projectiles made of darkness.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "gearsweapon",
+      "name": "Endo Gears",
+      "emoji": ":question:",
+      "description": "Also triggers other clockwork weapons. Damage increased by Amount and currently found Orologions.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "pendulumweapon",
+      "name": "Peri Pendulum",
+      "emoji": ":question:",
+      "description": "Also triggers other clockwork weapons. Damage increased by Amount and currently found Orologions.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "elevatorweapon",
+      "name": "Myo Lift",
+      "emoji": ":question:",
+      "description": "Also triggers other clockwork weapons. Damage increased by Amount and currently found Orologions.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "headsweapon",
+      "name": "Epi Head",
+      "emoji": ":question:",
+      "description": "Also triggers other clockwork weapons. Damage increased by Amount and currently found Orologions.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "morningstar",
+      "name": "Morning Star",
+      "itemIds": [
+        "alchemywhip",
+        "windwhip",
+        "platinumwhip",
+        "dragonwater",
+        "sonicwhip",
+        "lemuria",
+        "holywhip",
+        "martialwhip"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to choose from a selection of magic whips.",
+      "dlc5": true,
+      "rarity": 2
+    },
+    {
+      "id": "coatofarms",
+      "name": "Coat of Arms",
+      "itemIds": [
+        "whip",
+        "axe",
+        "knife",
+        "water",
+        "runetracer",
+        "bible",
+        "cross",
+        "lightning",
+        "bwaka",
+        "shuriken",
+        "javelinC",
+        "ironball",
+        "discus",
+        "gun",
+        "rpg",
+        "wineglass",
+        "savrogweapon",
+        "neutronweapon",
+        "hydrostorm",
+        "grandcross"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to choose from a selection of vampire-killing tools.",
+      "dlc5": true,
+      "rarity": 2
+    },
+    {
+      "id": "spellbook",
+      "name": "Belnades' Spellbook",
+      "itemIds": [
+        "fire",
+        "ice",
+        "windC",
+        "earth",
+        "elec",
+        "acid",
+        "evil",
+        "holy",
+        "spirittornado"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to choose from a selection of spells.",
+      "dlc5": true,
+      "rarity": 2
+    },
+    {
+      "id": "spectralsword",
+      "name": "Spectral Sword",
+      "itemIds": [
+        "alucardsword",
+        "slash",
+        "alucardspear",
+        "chauve",
+        "mace",
+        "starflail",
+        "shield",
+        "sacredbeasts",
+        "valmanway",
+        "icebrand",
+        "gothmissile",
+        "aurablastweapon"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to choose from a selection of magic weapons.",
+      "dlc5": true,
+      "rarity": 2
+    },
+    {
+      "id": "diabologue",
+      "name": "Ebony Diabologue",
+      "itemIds": [
+        "confodere",
+        "spite",
+        "rapidus",
+        "light",
+        "dark",
+        "energy",
+        "custos1",
+        "custos2",
+        "custos3",
+        "dominus1",
+        "dominus2",
+        "dominus3",
+        "summonspirit",
+        "darkrift",
+        "swordbrothers",
+        "soulstealweapon"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to choose from a selection of ambiguous powers.",
+      "dlc5": true,
+      "rarity": 2
+    },
+    {
+      "id": "familiarforge",
+      "name": "Familiar Forge",
+      "itemIds": [
+        "accfamiliarukoback",
+        "accfamiliarbitterfly",
+        "accfamiliarimp",
+        "accfamiliarallegedghost",
+        "accfamiliarwizard",
+        "accfamiliarfairy",
+        "accfamiliarpumpkin",
+        "accfamiliarcardinal",
+        "accfamiliardragon",
+        "accfamiliartiger",
+        "accfamiliarturtle"
+      ],
+      "emoji": ":question:",
+      "description": "Allows you to summon a familiar.",
+      "dlc5": true,
+      "rarity": 6
+    },
+    {
+      "id": "valmanway",
+      "name": "Valmanway",
+      "emoji": ":question:",
+      "description": "Fires faster when moving.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "icebrand",
+      "name": "Icebrand",
+      "emoji": ":question:",
+      "description": "Fires lingering projectiles. Might freeze enemies.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "gothmissile",
+      "name": "Arrow of Goth",
+      "emoji": ":question:",
+      "description": "Critical hits maximise amount of projectiles.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "aurablastweapon",
+      "name": "Aura Blast",
+      "emoji": ":question:",
+      "description": "Generates explosive sideways.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "savrogweapon",
+      "name": "Svarog Statue",
+      "emoji": ":question:",
+      "description": "Geneartes damaging zones when moving.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "neutronweapon",
+      "name": "Troll Bomb",
+      "emoji": ":question:",
+      "description": "This one doesn't bounce.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "hydrostorm",
+      "name": "Hydro Storm",
+      "emoji": ":question:",
+      "description": "Generates damaging waves based on Projectile Speed and Duration.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "grandcross",
+      "name": "Grand Cross",
+      "emoji": ":question:",
+      "description": "Summons holy light.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "summonspirit",
+      "name": "Summon Spirit",
+      "emoji": ":question:",
+      "description": "Fires a homing projectile.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "soulstealweapon",
+      "name": "Soul Steal",
+      "emoji": ":question:",
+      "description": "Damages all enemies in sight and attempts to turn them into hearts.",
+      "dlc5": true,
+      "rarity": 1
+    },
+    {
+      "id": "darkrift",
+      "name": "Dark Rift",
+      "emoji": ":question:",
+      "description": "Generates vertical damaging zones.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "swordbrothers",
+      "name": "Sword Brothers",
+      "emoji": ":question:",
+      "description": "Grants a brief moment of Invulnerability and generates a damaging wave.",
+      "dlc5": true,
+      "rarity": 20
+    },
+    {
+      "id": "spirittornado",
+      "name": "Summon Spirit Tornado",
+      "emoji": ":question:",
+      "description": "Summons spirits that will occasionally pick up XP gems for you.",
+      "dlc5": true,
+      "rarity": 20
     }
   ],
   "evolutions": [
@@ -1800,7 +3522,6 @@ window.vs = {
         "vento",
         "whip_"
       ],
-      "special": true,
       "description": "Union of Vento Sacro and Bloody Tear. Critical hits might generate explosions.",
       "rarity": 1,
       "tips": ""
@@ -2237,6 +3958,493 @@ window.vs = {
       "emoji": ":question:",
       "dlc4": true,
       "description": "Evolved Metal Claw. Pummels the most powerful enemies in sight."
+    },
+    {
+      "id": "alchemywhip_",
+      "name": "Vampire Killer",
+      "itemIds": [
+          "alchemywhip",
+          "revival"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Alchemy Whip. Every 3rd activation fires additional projectiles. Intense sunlught incinerates boss enemies."
+    },
+    {
+      "id": "windwhip_",
+      "name": "Spirit Tornado Tip",
+      "itemIds": [
+          "windwhip",
+          "growth"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Wind Whip. Every 7th activation summons a spirit that violently collects XP gems for you."
+    },
+    {
+      "id": "platinumwhip_",
+      "name": "Cross Crasher Tip",
+      "itemIds": [
+          "platinumwhip",
+          "luck"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Platinum Whip. Every 7th activation also fires special projectiles."
+    },
+    {
+      "id": "dragonwater_",
+      "name": "Hydrostormer Tip",
+      "itemIds": [
+          "dragonwater",
+          "magnet"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Dragon Water Whip. Every 13th activation generates damaging waves based on Projectile Speed and Duration."
+    },
+    {
+      "id": "sonicwhip_",
+      "name": "Crissaegrim Tip",
+      "itemIds": [
+          "sonicwhip",
+          "curse"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Sonic Whip. Every 5th activation also triggers a blast of damaging waves."
+    },
+    {
+      "id": "lemuria_",
+      "name": "Mormegil Tip",
+      "itemIds": [
+          "lemuria",
+          "greed"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Jet Black Whip. Every 8th activation also triggers damaging zones."
+    },
+    {
+      "id": "holywhip_",
+      "name": "Daybreaker Tip",
+      "itemIds": [
+          "holywhip",
+          "area"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Vibhuti Whip. Critical hits maximise amount of projectiles."
+    },
+    {
+      "id": "martialwhip_",
+      "name": "Aurablaster Tip",
+      "itemIds": [
+          "martialwhip",
+          "health"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Vanitas Whip. Every 7th activation generates an explosion."
+    },
+    {
+      "id": "shuriken_",
+      "name": "Yagyu Shuriken",
+      "itemIds": [
+          "shuriken",
+          "cooldown"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Shuriken. Fires with no delay."
+    },
+    {
+      "id": "bwaka_",
+      "name": "Bwaka Knife",
+      "itemIds": [
+          "bwaka",
+          "speed"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Curved Knife. Projectiles bounce forever until Duration expires."
+    },
+    {
+      "id": "javelinC_",
+      "name": "Long Inus",
+      "itemIds": [
+          "javelinC",
+          "duration"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Javelin. Projectiles reappear after leaving the screen."
+    },
+    {
+      "id": "discus_",
+      "name": "Stellar Blade",
+      "itemIds": [
+          "discus",
+          "parma"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Discus. Travels along walls. Deals critical damage if the user is invulnerable."
+    },
+    {
+      "id": "ironball_",
+      "name": "Wrecking Ball",
+      "itemIds": [
+          "ironball",
+          "armor"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Iron Ball. Fires a very heavy projectile."
+    },
+    {
+      "id": "gun_",
+      "name": "Jewel Gun",
+      "itemIds": [
+          "gun",
+          "dominion"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Silver Revolver. Critical hits instantly kill enemies and turn them into Jewels."
+    },
+    {
+      "id": "rpg_",
+      "name": "The RPG",
+      "itemIds": [
+          "rpg",
+          "area"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Hand Grenade. Explosions propagate."
+    },
+    {
+      "id": "wineglass_",
+      "name": "Meal Ticket",
+      "itemIds": [
+          "wineglass",
+          "revival"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Wine Glass. Soulful food deals Revival-based damage to unrefined palates."
+    },
+    {
+      "id": "fire_",
+      "name": "Salamender",
+      "itemIds": [
+          "fire",
+          "might"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Raging Fire. Also summons a snake of fire."
+    },
+    {
+      "id": "ice_",
+      "name": "Cocytus",
+      "itemIds": [
+          "ice",
+          "duration"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Ice Fang. Also triggers a freezing wind."
+    },
+    {
+      "id": "windC_",
+      "name": "Pneuma Tempestas",
+      "itemIds": [
+          "windC",
+          "speed"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Gale Force. Also triggers a spinning tornado."
+    },
+    {
+      "id": "earth_",
+      "name": "Gemma Torpor",
+      "itemIds": [
+          "earth",
+          "greed"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Rock Riot. Also triggers a rain of crystals that can turn enemies into valuable jewels."
+    },
+    {
+      "id": "elec_",
+      "name": "Tenebris Tonitrus",
+      "itemIds": [
+          "elec",
+          "amount"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Fulgur. Also triggers ball lightnings."
+    },
+    {
+      "id": "acid_",
+      "name": "Keremet Morbus",
+      "itemIds": [
+          "acid",
+          "armor"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Keremet Bubbles. Also triggers a slimy swarm that chases enemies down."
+    },
+    {
+      "id": "evil_",
+      "name": "Nightmare",
+      "itemIds": [
+          "evil",
+          "curse"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Hex. Also tirggers a negative energy zone that doubles Curse when stepped into."
+    },
+    {
+      "id": "holy_",
+      "name": "Sanctuary",
+      "itemIds": [
+          "holy",
+          "luck"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Refectio. At fixed intervals, also fully heals characters and purifies all enemies in sight."
+    },
+    {
+      "id": "mace_",
+      "name": "Stamazza",
+      "itemIds": [
+          "mace",
+          "health"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Mace. Has a catastrophically high critical damage multiplier."
+    },
+    {
+      "id": "starflail_",
+      "name": "Moon Rod",
+      "itemIds": [
+          "starflail",
+          "recovery"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Star Flail. Projectiles are shot in the faced direction."
+    },
+    {
+      "id": "alucardspear_",
+      "name": "Thunderbolt Spear",
+      "itemIds": [
+          "alucardspear",
+          "wings"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Alucard Spear. Every 7th activation triggers a special attack based on speed."
+    },
+    {
+      "id": "chauve_",
+      "name": "Gungnir-Souris",
+      "itemIds": [
+          "chauve",
+          "amount"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Trident. Critical hits also fire a damaging beam."
+    },
+    {
+      "id": "shield_",
+      "name": "Dark Iron Shield",
+      "itemIds": [
+          "shield",
+          "parma"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Iron Shield. Critical hits retaliate with spinning swords."
+    },
+    {
+      "id": "sacredbeasts_",
+      "name": "Sacred Beasts Tower Shield",
+      "itemIds": [
+          "sacredbeasts",
+          "recovery"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Guardian's Targe. Overhealing also triggers a period of invulnerability."
+    },
+    {
+      "id": "slash_",
+      "name": "Rune Sword",
+      "itemIds": [
+          "slash",
+          "might"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Tyrfing. Critical damage also affected by Area, Speed, and Duration."
+    },
+    {
+      "id": "alucardsword_",
+      "name": "Alucard Swords",
+      "itemIds": [
+          "alucardsword"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Alucart Sworb. Apparitions of the sword's true bearer seek out enemies."
+    },
+    {
+      "id": "alucardshield_",
+      "name": "Alucard Shield",
+      "itemIds": [
+          "alucardsword_"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Gift of Alucard Swords. Absorbs and triggers all other equipped evolutions. Hovering shield damages enemies.",
+    },
+    {
+      "id": "confodere_",
+      "name": "Vol Confodere",
+      "itemIds": [
+          "confodere"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Attack nearby enemies. Speed affects Damage."
+    },
+    {
+      "id": "confodere__",
+      "name": "Melio Confodere",
+      "itemIds": [
+          "confodere_"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Attack nearby enemies. Speed affects Cooldown and Damage."
+    },
+    {
+      "id": "energy_",
+      "name": "Nitesco",
+      "itemIds": [
+          "energy",
+          "cooldown"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Globus. Fires a piercing energy beam in the faced direction."
+    },
+    {
+      "id": "spite_",
+      "name": "Acerbatus",
+      "itemIds": [
+          "spite",
+          "dominion"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Optical Shot. Damage is affected by the amount of defeated enemies."
+    },
+    {
+      "id": "custos_",
+      "name": "Trinum Custodem",
+      "itemIds": [
+          "custos1",
+          "custos2",
+          "custos3"
+      ],
+      "special": true,
+      "emoji": ":question:",
+        "dlc5": true,
+        "description": "Union of Dextros, Sinistro, and Arma Custos."
+    },
+    {
+      "id": "dominus_",
+      "name": "Power of Sire",
+      "itemIds": [
+          "dominus1",
+          "dominus2",
+          "dominus3"
+      ],
+      "special": true,
+      "emoji": ":question:",
+        "dlc5": true,
+        "description": "Union of Dominus Anger, Dominus Hatred and Dominus Agony. Deals critical damage to anything in sight. Drains health."
+    },
+    {
+      "id": "rapidus_",
+      "name": "Rapidus Fio",
+      "itemIds": [
+          "rapidus",
+          "wings"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Sonic Dash. Also triggers a single shield charge."
+    },
+    {
+      "id": "light_",
+      "name": "Vol Luminatio",
+      "itemIds": [
+          "light",
+          "growth"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Luminatio. Damage, Speed, Area, and Duration affected by Growth."
+    },
+    {
+      "id": "dark_",
+      "name": "Vol Umbra",
+      "itemIds": [
+          "dark",
+          "magnet"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Evolved Umbra. Damage, Speed, Area, and Duration affected by Magnet."
+    },
+    {
+      "id": "universitas",
+      "name": "Universitas",
+      "itemIds": [
+        "light_",
+        "dark_",
+        "candybox"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Gift of Vol Luminatio and Vol Umbra. Meteors rain down on enemies at fixed intervals.",
+    },
+    {
+      "id": "clocktower_weapon",
+      "name": "Clock Tower",
+      "itemIds": [
+        "gearsweapon",
+        "pendulumweapon",
+        "elevatorweapon",
+        "headsweapon"
+      ],
+      "emoji": ":question:",
+      "dlc5": true,
+      "description": "Union of Endo Gears, Peri Pendulum, Myo Lift, and Epi Heads.",
     }
   ],
   "counterparts": [
@@ -2337,7 +4545,79 @@ window.vs = {
       "emoji": ":question:",
       "description": "Has a small chance to freeze enemies.",
       "dlc4": true
-    }
+    },
+    {
+      "id": "energy2",
+      "name": "Anti Globus",
+      "emoji": ":question:",
+      "description": "Fires two bouncing projectiles. Duration affected by Amount.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "fire2",
+      "name": "Anti Raging Fire",
+      "emoji": ":question:",
+      "description": "Generates an exploding damaging zone.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "ice2",
+      "name": "Anti Ice Fang",
+      "emoji": ":question:",
+      "description": "Generates damaging zones in a straight line.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "earth2",
+      "name": "Anti Rock Riot",
+      "emoji": ":question:",
+      "description": "Fires projectiles from a fixed location.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "windC2",
+      "name": "Anti Gale Force",
+      "emoji": ":question:",
+      "description": "Fires lingering projectiles.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "elec2",
+      "name": "Anti Fulgur",
+      "emoji": ":question:",
+      "description": "Strikes at fixed locations.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "acid2",
+      "name": "Speculo Acidic Bubbles",
+      "emoji": ":question:",
+      "description": "Fires slow moving damaging zones.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "holy2",
+      "name": "Anti Refectio",
+      "emoji": ":question:",
+      "description": "Damages nearby enemies. Decreases Curse by 5% per Amount.",
+      "dlc5": true,
+      "rarity": 60
+    },
+    {
+      "id": "evil2",
+      "name": "Anti Hex",
+      "emoji": ":question:",
+      "description": "-",
+      "dlc5": true,
+      "rarity": 60
+    },
   ],
   "passives": [
     {
@@ -2601,7 +4881,123 @@ window.vs = {
       "itemIds": [],
       "dlc4": true,
       "extra": true
-    }
+    },
+    {
+      "id": "parma",
+      "name": "Parm Aegis",
+      "emoji": ":question:",
+      "description": "Increases invulnerability time after getting damaged by 50ms.",
+      "itemIds": [],
+      "dlc5": true
+    },
+    {
+      "id": "dominion",
+      "name": "Karoma's Mana",
+      "emoji": ":question:",
+      "description": "Increases enemies spawn quantity by 10. Increases duration of Gold Fever and Gold Finger by 10%",
+      "itemIds": [],
+      "dlc5": true
+    },
+    {
+      "id": "accfamiliarukoback",
+      "name": "Ukoback Familiar",
+      "emoji": ":question:",
+      "description": "Summons an angry familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarbitterfly",
+      "name": "Bitterfly Familiar",
+      "emoji": ":question:",
+      "description": "Summons a quiet familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarimp",
+      "name": "Imp Familiar",
+      "emoji": ":question:",
+      "description": "Summons a naughty familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarallegedghost",
+      "name": "Alleged Ghost Familiar",
+      "emoji": ":question:",
+      "description": "Summons a non-existent familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarwizard",
+      "name": "Mage Familiar",
+      "emoji": ":question:",
+      "description": "Summons a magical familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarfairy",
+      "name": "Faerie Familiar",
+      "emoji": ":question:",
+      "description": "Summons a good natured familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarpumpkin",
+      "name": "Pumpkin Familiar",
+      "emoji": ":question:",
+      "description": "Summons a crazy familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarcardinal",
+      "name": "Sacred Cardinal",
+      "emoji": ":question:",
+      "description": "Summons a fiery familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliardragon",
+      "name": "Sacred Dragon",
+      "emoji": ":question:",
+      "description": "Summons a fizzy familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliartiger",
+      "name": "Sacred Tiger",
+      "emoji": ":question:",
+      "description": "Summons a chilled familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+    {
+      "id": "accfamiliarturtle",
+      "name": "Sacred Turtle",
+      "emoji": ":question:",
+      "description": "Summons a grounded familiar.",
+      "dlc5": true,
+      "extra": true,
+      "rarity": 1
+    },
+
   ],
   "powerups": [
     {
@@ -2804,7 +5200,25 @@ window.vs = {
         "tongue_",
         "lass",
         "lass_",
-        "fritta"
+        "fritta",
+        "fire",
+        "fire_",
+        "ice",
+        "ice_",
+        "wind",
+        "wind_",
+        "earth",
+        "earth_",
+        "elec",
+        "elec_",
+        "acid",
+        "acid_",
+        "holy",
+        "holy_",
+        "evil",
+        "evil_",
+        "energy",
+        "energy_"
       ],
       "description": "Listed weapons come with a counterpart.",
       "major": true
@@ -2835,7 +5249,12 @@ window.vs = {
         "miniengineer",
         "minishapeshifter",
         "laser",
-        "laser_"
+        "laser_",
+        "alchemywhip_",
+        "lemuria",
+        "lemuria_",
+        "holy",
+        "holy_"
       ],
       "description": "Listed weapon projectiles generate explosions when they expire. Explosions damage is affected by Curse",
       "major": true
@@ -2857,7 +5276,11 @@ window.vs = {
         "cart",
         "minicrewmate",
         "miniengineer",
-        "miniscientist"
+        "miniscientist",
+        "elec",
+        "elec_",
+        "acid",
+        "acid_"
       ],
       "description": "The cooldown of the listed weapons reduces when moving.",
       "major": true
@@ -2930,6 +5353,14 @@ window.vs = {
         "longgun_",
         "shortgun_",
         "spreadshot_",
+        "javelinC",
+        "javelinC_",
+        "ironball",
+        "ironball_",
+        "bwaka",
+        "bwaka_",
+        "shuriken",
+        "shuriken_"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces and might pass through enemies and walls.",
       "major": true
@@ -2996,7 +5427,11 @@ window.vs = {
         "cart",
         "hats",
         "sonic",
-        "sonic_"
+        "sonic_",
+        "windC",
+        "windC_",
+        "earth",
+        "earth_"
       ],
       "description": "Listed weapon projectiles gain up to 3 bounces.",
       "major": true
@@ -3051,7 +5486,12 @@ window.vs = {
         "laser",
         "laser_",
         "lass",
-        "lass2"
+        "lass2",
+        "dragonwater",
+        "dragonwater_",
+        "ice",
+        "ice_",
+        "icebrand"
       ],
       "description": "Listed weapon projectiles have a chance to freeze enemies.",
       "major": true
@@ -3097,7 +5537,28 @@ window.vs = {
         "arrow_",
         "fandango_",
         "tongue_",
-        "miniimpostor"
+        "miniimpostor",
+        "alchemywhip",
+        "alchemywhip_",
+        "sonicwhip",
+        "sonicwhip_",
+        "dragonwater",
+        "dragonwater_",
+        "lemuria",
+        "lemuria_",
+        "windwhip",
+        "windwhip_",
+        "holywhip",
+        "holywhip_",
+        "platinumwhip",
+        "platinumwhip_",
+        "martialwhip",
+        "martialwhip_",
+        "slash",
+        "slash_",
+        "confodere",
+        "confodere_",
+        "confodere__"
       ],
       "description": "Enables critical hits for listed weapons. Doubles overall critical damage.",
       "major": true
@@ -3146,7 +5607,15 @@ window.vs = {
         "firearm_",
         "homingmiss",
         "homingmiss_",
-        "brazier"
+        "brazier",
+        "martialwhip",
+        "martialwhip_",
+        "fire",
+        "fire_",
+        "rpg",
+        "rpg_",
+        "savrogweapon",
+        "aurablastweapon"
       ],
       "description": "Listed weapon projectiles explode on impact. Light sources explode. Character explodes when damaged.",
       "major": true
@@ -3180,7 +5649,9 @@ window.vs = {
         "laurel",
         "minicrewmate",
         "minighost",
-        "miniguardian"
+        "miniguardian",
+        "rapidus",
+        "rapidus_"
       ],
       "description": "Listed weapons also emit special damaging zones affected by Amount and Magnet. Enemies within Magnet range take damage based on Amount.",
       "major": true
